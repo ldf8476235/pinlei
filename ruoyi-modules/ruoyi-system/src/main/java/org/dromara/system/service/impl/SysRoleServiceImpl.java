@@ -257,11 +257,9 @@ public class SysRoleServiceImpl implements ISysRoleService, RoleService {
         if (LoginHelper.isSuperAdmin()) {
             return;
         }
-        List<SysRoleVo> roles = this.selectRoleList(new SysRoleBo(roleId));
-        if (CollUtil.isEmpty(roles)) {
+        if (baseMapper.selectRoleCount(Collections.singletonList(roleId)) == 0) {
             throw new ServiceException("没有权限访问角色数据！");
         }
-
     }
 
     /**
