@@ -39,6 +39,7 @@ public class FlowProcessEventHandler {
         ProcessEvent processEvent = new ProcessEvent();
         processEvent.setTenantId(tenantId);
         processEvent.setFlowCode(flowCode);
+        processEvent.setInstanceId(instance.getId());
         processEvent.setBusinessId(instance.getBusinessId());
         processEvent.setNodeType(instance.getNodeType());
         processEvent.setNodeCode(instance.getNodeCode());
