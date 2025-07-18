@@ -42,3 +42,51 @@ INSERT INTO sys_menu VALUES ('11803', '流程spel达式定义新增', '11801', 2
 INSERT INTO sys_menu VALUES ('11804', '流程spel达式定义修改', '11801', 3, '#', '', NULL, 1, 0, 'F', '0', '0', 'workflow:spel:edit', '#', 103, 1, now(), NULL, NULL, '');
 INSERT INTO sys_menu VALUES ('11805', '流程spel达式定义删除', '11801', 4, '#', '', NULL, 1, 0, 'F', '0', '0', 'workflow:spel:remove', '#', 103, 1, now(), NULL, NULL, '');
 INSERT INTO sys_menu VALUES ('11806', '流程spel达式定义导出', '11801', 5, '#', '', NULL, 1, 0, 'F', '0', '0', 'workflow:spel:export', '#', 103, 1, now(), NULL, NULL, '');
+
+
+-- ----------------------------
+-- SnailJob 升级 1.6.0
+-- ----------------------------
+
+-- drop 号段模式序号ID分配表 用户自行决定是否drop
+-- DROP TABLE IF EXISTS sj_sequence_alloc;
+
+-- create 任务执行器信息表
+CREATE TABLE sj_job_executor
+(
+    id            bigserial PRIMARY KEY,
+    namespace_id  varchar(64)  NOT NULL DEFAULT '764d604ec6fc45f68cd92514c40e9e1a',
+    group_name    varchar(64)  NOT NULL,
+    executor_info varchar(256) NOT NULL,
+    executor_type varchar(3)   NOT NULL,
+    create_dt     timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    update_dt     timestamp    NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+CREATE INDEX idx_sj_job_executor_01 ON sj_job_executor (namespace_id, group_name);
+CREATE INDEX idx_sj_job_executor_02 ON sj_job_executor (create_dt);
+
+COMMENT ON COLUMN sj_job_executor.id IS '主键';
+COMMENT ON COLUMN sj_job_executor.namespace_id IS '命名空间id';
+COMMENT ON COLUMN sj_job_executor.group_name IS '组名称';
+COMMENT ON COLUMN sj_job_executor.executor_info IS '任务执行器名称';
+COMMENT ON COLUMN sj_job_executor.executor_type IS '1:java 2:python 3:go';
+COMMENT ON COLUMN sj_job_executor.create_dt IS '创建时间';
+COMMENT ON COLUMN sj_job_executor.update_dt IS '修改时间';
+COMMENT ON TABLE sj_job_executor IS '任务执行器信息';
+
+-- 新增字段
+ALTER TABLE sj_retry_dead_letter ADD COLUMN serializer_name varchar(32) not null default 'jackson'::varchar;
+COMMENT ON COLUMN sj_retry_dead_letter.serializer_name IS '执行方法参数序列化器名称';
+ALTER TABLE sj_retry ADD COLUMN serializer_name varchar(32) not null default 'jackson'::varchar;
+COMMENT ON COLUMN sj_retry.serializer_name IS '执行方法参数序列化器名称';
+ALTER TABLE sj_retry_scene_config ADD COLUMN owner_id bigint null default null;
+COMMENT ON COLUMN sj_retry_scene_config.owner_id IS '负责人id';
+ALTER TABLE sj_retry_scene_config ADD COLUMN labels varchar(512) null default ''::varchar;
+COMMENT ON COLUMN sj_retry_scene_config.labels IS '标签';
+ALTER TABLE sj_server_node ADD COLUMN labels varchar(512) null default ''::varchar;
+COMMENT ON COLUMN sj_server_node.labels IS '标签';
+ALTER TABLE sj_job ADD COLUMN labels varchar(512) null default ''::varchar;
+COMMENT ON COLUMN sj_job.labels IS '标签';
+ALTER TABLE sj_workflow ADD COLUMN owner_id bigint null default null;
+COMMENT ON COLUMN sj_workflow.owner_id IS '负责人id';
