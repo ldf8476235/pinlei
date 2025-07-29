@@ -11,15 +11,18 @@ import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerIntercept
 import com.baomidou.mybatisplus.extension.plugins.inner.TenantLineInnerInterceptor;
 import org.dromara.common.core.factory.YmlPropertySourceFactory;
 import org.dromara.common.core.utils.SpringUtils;
-import org.dromara.common.mybatis.aspect.DataPermissionAspect;
+import org.dromara.common.mybatis.aop.DataPermissionPointcutAdvisor;
 import org.dromara.common.mybatis.handler.InjectionMetaObjectHandler;
 import org.dromara.common.mybatis.handler.MybatisExceptionHandler;
 import org.dromara.common.mybatis.handler.PlusPostInitTableInfoHandler;
 import org.dromara.common.mybatis.interceptor.PlusDataPermissionInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.config.BeanDefinition;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.annotation.Role;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 /**
@@ -54,15 +57,15 @@ public class MybatisPlusConfig {
      * 数据权限拦截器
      */
     public PlusDataPermissionInterceptor dataPermissionInterceptor() {
-        return new PlusDataPermissionInterceptor(SpringUtils.getProperty("mybatis-plus.mapperPackage"));
+        return new PlusDataPermissionInterceptor();
     }
 
     /**
      * 数据权限切面处理器
      */
     @Bean
-    public DataPermissionAspect dataPermissionAspect() {
-        return new DataPermissionAspect();
+    public DataPermissionPointcutAdvisor dataPermissionPointcutAdvisor() {
+        return new DataPermissionPointcutAdvisor();
     }
 
     /**
