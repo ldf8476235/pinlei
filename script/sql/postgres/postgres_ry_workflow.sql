@@ -325,7 +325,7 @@ INSERT INTO flow_category VALUES (109, '000000', 102, '0,100,102', '离职', 2, 
 -- 流程spel表达式定义表
 -- ----------------------------
 CREATE TABLE flow_spel (
-    id BIGINT NOT NULL,
+    id int8 NOT NULL,
     component_name VARCHAR(255),
     method_name VARCHAR(255),
     method_params VARCHAR(255),
@@ -333,10 +333,10 @@ CREATE TABLE flow_spel (
     remark VARCHAR(255),
     status CHAR(1) DEFAULT '0',
     del_flag CHAR(1) DEFAULT '0',
-    create_dept BIGINT,
-    create_by BIGINT,
+    create_dept int8,
+    create_by int8,
     create_time TIMESTAMP,
-    update_by BIGINT,
+    update_by int8,
     update_time TIMESTAMP,
     PRIMARY KEY (id)
 );
@@ -363,22 +363,23 @@ INSERT INTO flow_spel VALUES (2, NULL, NULL, 'initiator', '${initiator}', '流�
 -- 流程实例业务扩展表
 -- ----------------------------
 CREATE TABLE flow_instance_biz_ext (
-    id             BIGINT        PRIMARY KEY,
+    id             int8,
     tenant_id      VARCHAR(20)   DEFAULT '000000',
-    create_dept    BIGINT,
-    create_by      BIGINT,
+    create_dept    int8,
+    create_by      int8,
     create_time    TIMESTAMP,
-    update_by      BIGINT,
+    update_by      int8,
     update_time    TIMESTAMP,
     business_code  VARCHAR(255),
     business_title VARCHAR(1000),
     del_flag       CHAR(1)       DEFAULT '0',
-    instance_id    BIGINT,
-    business_id    VARCHAR(255)
+    instance_id    int8,
+    business_id    VARCHAR(255),
+    PRIMARY KEY (id)
 );
 
 COMMENT ON TABLE flow_instance_biz_ext IS '流程实例业务扩展表';
-COMMENT ON COLUMN flow_instance_biz_ext.id  IS 'ID';
+COMMENT ON COLUMN flow_instance_biz_ext.id  IS '主键id';
 COMMENT ON COLUMN flow_instance_biz_ext.tenant_id  IS '租户编号';
 COMMENT ON COLUMN flow_instance_biz_ext.create_dept  IS '创建部门';
 COMMENT ON COLUMN flow_instance_biz_ext.create_by  IS '创建者';

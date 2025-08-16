@@ -211,10 +211,8 @@ INSERT INTO flow_spel VALUES (2, NULL, NULL, 'initiator', '${initiator}', '流�
 -- 流程实例业务扩展表
 -- ----------------------------
 
-create table flow_instance_biz_ext
-(
-    id             bigint                       not null comment 'ID'
-        primary key,
+create table flow_instance_biz_ext (
+    id             bigint                       not null comment '主键id',
     tenant_id      varchar(20) default '000000' null comment '租户编号',
     create_dept    bigint                       null comment '创建部门',
     create_by      bigint                       null comment '创建者',
@@ -225,9 +223,9 @@ create table flow_instance_biz_ext
     business_title varchar(1000)                null comment '业务标题',
     del_flag       char        default '0'      null comment '删除标志（0代表存在 1代表删除）',
     instance_id    bigint                       null comment '流程实例Id',
-    business_id    varchar(255)                 null comment '业务Id'
-)
-    comment '流程实例业务扩展表';
+    business_id    varchar(255)                 null comment '业务Id',
+    PRIMARY KEY (id)
+)  ENGINE = InnoDB COMMENT '流程实例业务扩展表';
 
 -- ----------------------------
 -- 请假单信息
