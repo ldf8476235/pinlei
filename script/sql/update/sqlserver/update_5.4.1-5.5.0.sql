@@ -270,3 +270,12 @@ EXEC sp_addextendedproperty
     'TABLE', N'flow_instance_biz_ext',
     'COLUMN', N'business_id'
 GO
+
+ALTER TABLE test_leave ADD apply_code nvarchar(50) NOT NULL;
+GO
+EXEC sp_addextendedproperty
+'MS_Description', N'申请编号',
+'SCHEMA', N'dbo',
+'TABLE', N'test_leave',
+'COLUMN', N'apply_code'
+GO
