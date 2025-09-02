@@ -279,3 +279,16 @@ EXEC sp_addextendedproperty
 'TABLE', N'test_leave',
 'COLUMN', N'apply_code'
 GO
+
+update sys_menu set remark = N'/tool/gen' where menu_id = 116;
+GO
+update sys_menu set remark = N'/system/role' where menu_id = 130;
+GO
+update sys_menu set remark = N'/system/user' where menu_id = 131;
+GO
+update sys_menu set remark = N'/system/dict' where menu_id = 132;
+GO
+update sys_menu set remark = N'/system/oss' where menu_id = 133;
+GO
+update sys_menu set remark = N'/workflow/processDefinition' where menu_id = 11700;
+GO
