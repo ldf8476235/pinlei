@@ -21,8 +21,5 @@ ALTER TABLE flow_task ADD update_by VARCHAR2(64) DEFAULT '' NOT NULL;
 COMMENT ON COLUMN flow_task.create_by IS '创建人';
 COMMENT ON COLUMN flow_task.update_by IS '更新人';
 
-ALTER TABLE flow_his_task ADD update_by VARCHAR2(64) DEFAULT '' NOT NULL;
-COMMENT ON COLUMN flow_his_task.update_by IS '更新人';
-
 ALTER TABLE flow_user ADD update_by VARCHAR2(64) DEFAULT '' NOT NULL;
 COMMENT ON COLUMN flow_user.update_by IS '更新人';

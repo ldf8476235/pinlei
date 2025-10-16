@@ -88,16 +88,6 @@ EXEC sp_addextendedproperty
 'COLUMN', N'update_by'
 GO
 
-ALTER TABLE flow_his_task ADD update_by nvarchar(64) NOT NULL CONSTRAINT DF_flow_his_task_update_by DEFAULT '';
-GO
-
-EXEC sp_addextendedproperty
-'MS_Description', N'更新人',
-'SCHEMA', N'dbo',
-'TABLE', N'flow_his_task',
-'COLUMN', N'update_by'
-GO
-
 ALTER TABLE flow_user ADD update_by nvarchar(64) NOT NULL CONSTRAINT DF_flow_user_update_by DEFAULT '';
 GO
 
