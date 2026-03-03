@@ -269,7 +269,7 @@ public class RedisUtils {
      *
      * @param key      缓存的键值
      * @param dataList 待缓存的List数据
-     * @return 缓存的对象
+     * @return 操作是否成功
      */
     public static <T> boolean setCacheList(final String key, final List<T> dataList) {
         RList<T> rList = CLIENT.getList(key);
@@ -281,11 +281,41 @@ public class RedisUtils {
      *
      * @param key  缓存的键值
      * @param data 待缓存的数据
-     * @return 缓存的对象
+     * @return 操作是否成功
      */
     public static <T> boolean addCacheList(final String key, final T data) {
         RList<T> rList = CLIENT.getList(key);
         return rList.add(data);
+    }
+
+    /**
+     * 向缓存List首部插入数据
+     *
+     * @param key  缓存的键值
+     * @param data 待插入到列表首部的最新数据
+     */
+    public static <T> void addCacheListToFirst(final String key, final T data) {
+        RList<T> rList = CLIENT.getList(key);
+        rList.addFirst(data);
+    }
+
+    /**
+     * 向缓存List首部插入数据并限制列表最大长度
+     * （超出长度时自动删除列表末尾最旧的数据，保证列表只保留最新的N条）
+     *
+     * @param key     缓存的键值
+     * @param data    待插入到列表首部的最新数据
+     * @param maxSize 列表允许的最大长度（超出该长度则删除末尾数据）
+     */
+    public static <T> void addCacheListToFirst(final String key, final T data, int maxSize) {
+        RList<T> rList = CLIENT.getList(key);
+        rList.addFirst(data);
+        // 若列表长度超出最大限制，删除末尾最旧的数据
+        // 注：remove(index)会删除指定索引的元素，此处删除maxSize索引（即第maxSize+1条）
+        while (rList.size() > maxSize) {
+            // 循环删除直到列表长度符合限制（防止并发场景下多次插入导致长度超限）
+            rList.remove(maxSize);
+        }
     }
 
     /**
@@ -536,24 +566,22 @@ public class RedisUtils {
      * chunkSize-设置每次扫描的块大小(默认为0,本方法设置为1000)
      * type-设置键的类型(默认为null,查询全部类型)
      * </P>
-     * @see KeysScanOptions
      * @param pattern 字符串前缀
      * @return 对象列表
      */
     public static Collection<String> keys(final String pattern) {
-        return  keys(KeysScanOptions.defaults().pattern(pattern).chunkSize(1000));
+        return keys(KeysScanOptions.defaults().pattern(pattern).chunkSize(1000));
     }
 
     /**
      * 通过扫描参数获取缓存的基本对象列表
      * @param keysScanOptions 扫描参数
      * <P>
-     * limit-设置扫描的限制数量(默认为0,查询全部)
-     * pattern-设置键的匹配模式(默认为null)
-     * chunkSize-设置每次扫描的块大小(默认为0)
-     * type-设置键的类型(默认为null,查询全部类型)
-     * </P>
-     * @see KeysScanOptions
+     *                        limit-设置扫描的限制数量(默认为0,查询全部)
+     *                        pattern-设置键的匹配模式(默认为null)
+     *                        chunkSize-设置每次扫描的块大小(默认为0)
+     *                        type-设置键的类型(默认为null,查询全部类型)
+     *                        </P>
      */
     public static Collection<String> keys(final KeysScanOptions keysScanOptions) {
         Stream<String> keysStream = CLIENT.getKeys().getKeysStream(keysScanOptions);
