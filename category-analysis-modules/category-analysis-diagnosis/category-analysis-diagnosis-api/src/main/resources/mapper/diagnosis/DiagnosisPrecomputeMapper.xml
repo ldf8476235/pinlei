@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper">
+
+    <insert id="insertJob" useGeneratedKeys="true" keyProperty="row.jobId">
+        INSERT INTO diag_precompute_job
+        (
+            tenant_id, job_code, module_code, status_code, priority,
+            request_json, request_hash, read_range_type, read_start, read_end, window_types,
+            force_rebuild, max_retry, retry_count, progress_percent, current_stage, total_windows, done_windows,
+            rows_read, rows_written, submitted_by, submitted_time
+        )
+        VALUES
+        (
+            #{row.tenantId}, #{row.jobCode}, #{row.moduleCode}, #{row.statusCode}, #{row.priority},
+            #{row.requestJson}, #{row.requestHash}, #{row.readRangeType}, #{row.readStart}, #{row.readEnd}, #{row.windowTypes},
+            #{row.forceRebuild}, #{row.maxRetry}, #{row.retryCount}, #{row.progressPercent}, #{row.currentStage}, #{row.totalWindows}, #{row.doneWindows},
+            #{row.rowsRead}, #{row.rowsWritten}, #{row.submittedBy}, ISNULL(#{row.submittedTime}, SYSUTCDATETIME())
+        )
+    </insert>
+
+    <update id="updateJobProgress">
+        UPDATE diag_precompute_job
+        SET progress_percent = #{row.progressPercent},
+            current_stage = #{row.currentStage},
+            total_windows = #{row.totalWindows},
+            done_windows = #{row.doneWindows},
+            rows_read = #{row.rowsRead},
+            rows_written = #{row.rowsWritten},
+            update_time = SYSUTCDATETIME()
+        WHERE tenant_id = #{row.tenantId}
+          AND job_id = #{row.jobId}
+    </update>
+
+    <update id="updateJobStatus">
+        UPDATE diag_precompute_job
+        SET status_code = #{row.statusCode},
+            current_stage = #{row.currentStage},
+            retry_count = COALESCE(#{row.retryCount}, retry_count),
+            started_time = COALESCE(#{row.startedTime}, started_time),
+            finished_time = COALESCE(#{row.finishedTime}, finished_time),
+            error_message = #{row.errorMessage},
+            update_time = SYSUTCDATETIME()
+        WHERE tenant_id = #{row.tenantId}
+          AND job_id = #{row.jobId}
+    </update>
+
+    <select id="selectJobById" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow">
+        SELECT
+            job_id AS jobId,
+            tenant_id AS tenantId,
+            job_code AS jobCode,
+            module_code AS moduleCode,
+            status_code AS statusCode,
+            priority,
+            request_json AS requestJson,
+            request_hash AS requestHash,
+            read_range_type AS readRangeType,
+            read_start AS readStart,
+            read_end AS readEnd,
+            window_types AS windowTypes,
+            force_rebuild AS forceRebuild,
+            max_retry AS maxRetry,
+            retry_count AS retryCount,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            total_windows AS totalWindows,
+            done_windows AS doneWindows,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            submitted_by AS submittedBy,
+            submitted_time AS submittedTime,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_job
+        WHERE tenant_id = #{tenantId}
+          AND job_id = #{jobId}
+    </select>
+
+    <select id="selectJobByCode" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow">
+        SELECT
+            job_id AS jobId,
+            tenant_id AS tenantId,
+            job_code AS jobCode,
+            module_code AS moduleCode,
+            status_code AS statusCode,
+            priority,
+            request_json AS requestJson,
+            request_hash AS requestHash,
+            read_range_type AS readRangeType,
+            read_start AS readStart,
+            read_end AS readEnd,
+            window_types AS windowTypes,
+            force_rebuild AS forceRebuild,
+            max_retry AS maxRetry,
+            retry_count AS retryCount,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            total_windows AS totalWindows,
+            done_windows AS doneWindows,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            submitted_by AS submittedBy,
+            submitted_time AS submittedTime,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_job
+        WHERE tenant_id = #{tenantId}
+          AND job_code = #{jobCode}
+    </select>
+
+    <select id="selectLatestActiveJobByRequestHash" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow">
+        SELECT TOP 1
+            job_id AS jobId,
+            tenant_id AS tenantId,
+            job_code AS jobCode,
+            module_code AS moduleCode,
+            status_code AS statusCode,
+            priority,
+            request_json AS requestJson,
+            request_hash AS requestHash,
+            read_range_type AS readRangeType,
+            read_start AS readStart,
+            read_end AS readEnd,
+            window_types AS windowTypes,
+            force_rebuild AS forceRebuild,
+            max_retry AS maxRetry,
+            retry_count AS retryCount,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            total_windows AS totalWindows,
+            done_windows AS doneWindows,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            submitted_by AS submittedBy,
+            submitted_time AS submittedTime,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_job
+        WHERE tenant_id = #{tenantId}
+          AND request_hash = #{requestHash}
+          AND status_code IN ('PENDING', 'RUNNING', 'RETRYING')
+        ORDER BY submitted_time DESC, job_id DESC
+    </select>
+
+    <insert id="insertWindow" useGeneratedKeys="true" keyProperty="row.windowId">
+        INSERT INTO diag_precompute_window
+        (
+            tenant_id, job_id, window_key, window_type,
+            period_start, period_end, compare_start, compare_end,
+            status_code, progress_percent, current_stage, data_version, retry_count,
+            rows_read, rows_written, started_time, finished_time, error_message
+        )
+        VALUES
+        (
+            #{row.tenantId}, #{row.jobId}, #{row.windowKey}, #{row.windowType},
+            #{row.periodStart}, #{row.periodEnd}, #{row.compareStart}, #{row.compareEnd},
+            #{row.statusCode}, #{row.progressPercent}, #{row.currentStage}, #{row.dataVersion}, #{row.retryCount},
+            #{row.rowsRead}, #{row.rowsWritten}, #{row.startedTime}, #{row.finishedTime}, #{row.errorMessage}
+        )
+    </insert>
+
+    <update id="updateWindowStatus">
+        UPDATE diag_precompute_window
+        SET status_code = #{row.statusCode},
+            progress_percent = #{row.progressPercent},
+            current_stage = #{row.currentStage},
+            data_version = #{row.dataVersion},
+            retry_count = COALESCE(#{row.retryCount}, retry_count),
+            rows_read = #{row.rowsRead},
+            rows_written = #{row.rowsWritten},
+            started_time = COALESCE(#{row.startedTime}, started_time),
+            finished_time = COALESCE(#{row.finishedTime}, finished_time),
+            error_message = #{row.errorMessage},
+            update_time = SYSUTCDATETIME()
+        WHERE tenant_id = #{row.tenantId}
+          AND window_id = #{row.windowId}
+    </update>
+
+    <select id="selectWindowsByJobId" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow">
+        SELECT
+            window_id AS windowId,
+            tenant_id AS tenantId,
+            job_id AS jobId,
+            window_key AS windowKey,
+            window_type AS windowType,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            status_code AS statusCode,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            data_version AS dataVersion,
+            retry_count AS retryCount,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_window
+        WHERE tenant_id = #{tenantId}
+          AND job_id = #{jobId}
+        ORDER BY window_id ASC
+    </select>
+
+    <select id="selectWindowById" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow">
+        SELECT
+            window_id AS windowId,
+            tenant_id AS tenantId,
+            job_id AS jobId,
+            window_key AS windowKey,
+            window_type AS windowType,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            status_code AS statusCode,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            data_version AS dataVersion,
+            retry_count AS retryCount,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_window
+        WHERE tenant_id = #{tenantId}
+          AND window_id = #{windowId}
+    </select>
+
+    <select id="selectNextPendingWindow" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow">
+        SELECT TOP 1
+            window_id AS windowId,
+            tenant_id AS tenantId,
+            job_id AS jobId,
+            window_key AS windowKey,
+            window_type AS windowType,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            status_code AS statusCode,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            data_version AS dataVersion,
+            retry_count AS retryCount,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_window
+        WHERE tenant_id = #{tenantId}
+          AND job_id = #{jobId}
+          AND status_code = 'PENDING'
+        ORDER BY window_id ASC
+    </select>
+
+    <insert id="insertEvent" useGeneratedKeys="true" keyProperty="row.eventId">
+        INSERT INTO diag_precompute_event
+        (
+            tenant_id, job_id, window_id, event_time,
+            event_level, event_stage, event_message, payload_json
+        )
+        VALUES
+        (
+            #{row.tenantId}, #{row.jobId}, #{row.windowId}, COALESCE(#{row.eventTime}, SYSUTCDATETIME()),
+            #{row.eventLevel}, #{row.eventStage}, #{row.eventMessage}, #{row.payloadJson}
+        )
+    </insert>
+
+    <select id="selectRecentEventsByJobId" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeEventRow">
+        SELECT
+            t.event_id AS eventId,
+            t.tenant_id AS tenantId,
+            t.job_id AS jobId,
+            t.window_id AS windowId,
+            t.event_time AS eventTime,
+            t.event_level AS eventLevel,
+            t.event_stage AS eventStage,
+            t.event_message AS eventMessage,
+            t.payload_json AS payloadJson,
+            t.create_time AS createTime
+        FROM (
+            SELECT
+                event_id,
+                tenant_id,
+                job_id,
+                window_id,
+                event_time,
+                event_level,
+                event_stage,
+                event_message,
+                payload_json,
+                create_time,
+                ROW_NUMBER() OVER (ORDER BY event_id DESC) AS rn
+            FROM diag_precompute_event
+            WHERE tenant_id = #{tenantId}
+              AND job_id = #{jobId}
+        ) t
+        WHERE t.rn &lt;= COALESCE(#{limit}, 200)
+        ORDER BY t.event_id DESC
+    </select>
+
+</mapper>

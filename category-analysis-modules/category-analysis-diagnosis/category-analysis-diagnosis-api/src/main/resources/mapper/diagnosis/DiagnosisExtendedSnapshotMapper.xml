@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisExtendedSnapshotMapper">
+
+    <delete id="deleteRoleDistributionByVersion">
+        DELETE FROM diag_result_role_distribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertRoleDistribution">
+        INSERT INTO diag_result_role_distribution
+        (
+            tenant_id, query_hash, role_code, role_name,
+            sales_amount, sku_count, sales_ratio,
+            data_version, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.roleCode}, #{row.roleName},
+                #{row.salesAmount}, #{row.skuCount}, #{row.salesRatio},
+                #{row.dataVersion}, COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteInsightsByVersion">
+        DELETE FROM diag_result_insights
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertInsights">
+        INSERT INTO diag_result_insights
+        (
+            tenant_id, query_hash, insight_type, insight_code,
+            title, content, severity, sort_no,
+            data_version, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.insightType}, #{row.insightCode},
+                #{row.title}, #{row.content}, #{row.severity}, #{row.sortNo},
+                #{row.dataVersion}, COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+</mapper>
+

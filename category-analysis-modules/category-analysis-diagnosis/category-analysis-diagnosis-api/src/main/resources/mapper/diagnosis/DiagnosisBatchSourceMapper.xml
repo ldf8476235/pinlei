@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisBatchSourceMapper">
+
+    <sql id="baseWhere">
+        WHERE sale_date &gt;= #{param.periodStart}
+          AND sale_date &lt;= #{param.periodEnd}
+        <if test="param.startId != null">
+            AND id &gt;= #{param.startId}
+        </if>
+        <if test="param.endId != null">
+            AND id &lt;= #{param.endId}
+        </if>
+    </sql>
+
+    <select id="selectIdRange" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceIdRangeRow">
+        SELECT
+            MIN(CAST(id AS BIGINT)) AS minId,
+            MAX(CAST(id AS BIGINT)) AS maxId
+        FROM fact_sales_day
+        <include refid="baseWhere"/>
+    </select>
+
+    <select id="countRows" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM fact_sales_day
+        <include refid="baseWhere"/>
+    </select>
+
+    <select id="aggregateOverview" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceOverviewAggRow">
+        SELECT
+            ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales,
+            ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS totalGross,
+            CAST(COUNT(DISTINCT product_no) AS INT) AS totalSku,
+            CAST(COUNT(DISTINCT CASE WHEN sales &gt; 0 THEN product_no ELSE NULL END) AS INT) AS activeSku
+        FROM fact_sales_day
+        <include refid="baseWhere"/>
+    </select>
+
+    <select id="aggregateTrendsByDate" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow">
+        SELECT
+            sale_date AS saleDate,
+            ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales,
+            ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS totalGross
+        FROM fact_sales_day
+        <include refid="baseWhere"/>
+        GROUP BY sale_date
+        ORDER BY sale_date ASC
+    </select>
+
+</mapper>

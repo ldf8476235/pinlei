@@ -4,17 +4,17 @@
 - - -
 ## 平台简介
 
-[![码云Gitee](https://gitee.com/dromara/RuoYi-Vue-Plus/badge/star.svg?theme=blue)](https://gitee.com/dromara/RuoYi-Vue-Plus)
-[![GitHub](https://img.shields.io/github/stars/dromara/RuoYi-Vue-Plus.svg?label=Github%20Stars)](https://github.com/dromara/RuoYi-Vue-Plus)
-[![Star](https://gitcode.com/dromara/RuoYi-Vue-Plus/star/badge.svg)](https://gitcode.com/dromara/RuoYi-Vue-Plus)
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://gitee.com/dromara/RuoYi-Vue-Plus/blob/5.X/LICENSE)
+[![码云Gitee](https://gitee.com/dromara/category-analysis/badge/star.svg?theme=blue)](https://gitee.com/dromara/category-analysis)
+[![GitHub](https://img.shields.io/github/stars/dromara/category-analysis.svg?label=Github%20Stars)](https://github.com/dromara/category-analysis)
+[![Star](https://gitcode.com/dromara/category-analysis/star/badge.svg)](https://gitcode.com/dromara/category-analysis)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://gitee.com/dromara/category-analysis/blob/5.X/LICENSE)
 <br>
-[![RuoYi-Vue-Plus](https://img.shields.io/badge/RuoYi_Vue_Plus-5.6.0-success.svg)](https://gitee.com/dromara/RuoYi-Vue-Plus)
+[![category-analysis](https://img.shields.io/badge/category-analysis-5.6.0-success.svg)](https://gitee.com/dromara/category-analysis)
 [![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5-blue.svg)]()
 [![JDK-17](https://img.shields.io/badge/JDK-17-green.svg)]()
 [![JDK-21](https://img.shields.io/badge/JDK-21-green.svg)]()
 
-> Dromara RuoYi-Vue-Plus 是重写 RuoYi-Vue 针对 `分布式集群与多租户` 场景全方位升级(不兼容原框架)
+> Dromara category-analysis 是重写 RuoYi-Vue 针对 `分布式集群与多租户` 场景全方位升级(不兼容原框架)
 
 > 项目代码、文档 均开源免费可商用 遵循开源协议在项目中保留开源协议文件即可<br>
 活到老写到老 为兴趣而开源 为学习而开源 为让大家真正可以学到技术而开源
@@ -24,7 +24,7 @@
 > 官方前端项目地址: [gitee](https://gitee.com/JavaLionLi/plus-ui) - [github](https://github.com/JavaLionLi/plus-ui) - [gitcode](https://gitcode.com/dromara/plus-ui)<br>
 > 成员前端项目地址: 基于vben5 [ruoyi-plus-vben5](https://github.com/imdap/ruoyi-plus-vben5)<br>
 > 成员前端项目地址: 基于soybean [ruoyi-plus-soybean](https://gitee.com/xlsea/ruoyi-plus-soybean)<br>
-> 成员项目地址: 删除多租户与工作流 [RuoYi-Vue-Plus-Single](https://gitee.com/ColorDreams/RuoYi-Vue-Plus-Single)<br>
+> 成员项目地址: 删除多租户与工作流 [category-analysis-Single](https://gitee.com/ColorDreams/category-analysis-Single)<br>
 
 > 文档地址: [plus-doc](https://plus-doc.dromara.org) 国内加速: [plus-doc.top](https://plus-doc.top)
 
@@ -124,14 +124,14 @@ Topiam IAM/IDaaS身份管理平台 - https://www.topiam.cn/ <br>
 
 使用框架前请仔细阅读文档重点注意事项
 <br>
->[初始化项目 必看](https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/init)
->>[https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/init](https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/init)
+>[初始化项目 必看](https://plus-doc.dromara.org/#/category-analysis/quickstart/init)
+>>[https://plus-doc.dromara.org/#/category-analysis/quickstart/init](https://plus-doc.dromara.org/#/category-analysis/quickstart/init)
 >
 >[专栏与视频 入门必看](https://plus-doc.dromara.org/#/common/column)
 >>[https://plus-doc.dromara.org/#/common/column](https://plus-doc.dromara.org/#/common/column)
 >
->[部署项目 必看](https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/deploy)
->>[https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/deploy](https://plus-doc.dromara.org/#/ruoyi-vue-plus/quickstart/deploy)
+>[部署项目 必看](https://plus-doc.dromara.org/#/category-analysis/quickstart/deploy)
+>>[https://plus-doc.dromara.org/#/category-analysis/quickstart/deploy](https://plus-doc.dromara.org/#/category-analysis/quickstart/deploy)
 >
 >[如何加群](https://plus-doc.dromara.org/#/common/add_group)
 >>[https://plus-doc.dromara.org/#/common/add_group](https://plus-doc.dromara.org/#/common/add_group)

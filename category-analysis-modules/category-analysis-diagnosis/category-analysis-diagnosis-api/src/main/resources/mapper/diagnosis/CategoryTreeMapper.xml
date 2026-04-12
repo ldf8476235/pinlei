@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.CategoryTreeMapper">
+
+    <select id="selectClassHierarchy" resultType="org.dromara.diagnosis.infrastructure.model.CategoryHierarchyRow">
+        WITH class_rows AS (
+            SELECT
+                one_class_no AS class_no,
+                one_class_name AS class_name,
+                '0' AS parent_class_no,
+                1 AS class_level
+            FROM base_class
+            WHERE one_class_no IS NOT NULL AND LTRIM(RTRIM(one_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT
+                two_class_no AS class_no,
+                two_class_name AS class_name,
+                one_class_no AS parent_class_no,
+                2 AS class_level
+            FROM base_class
+            WHERE two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT
+                three_class_no AS class_no,
+                three_class_name AS class_name,
+                two_class_no AS parent_class_no,
+                3 AS class_level
+            FROM base_class
+            WHERE three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT
+                four_class_no AS class_no,
+                four_class_name AS class_name,
+                three_class_no AS parent_class_no,
+                4 AS class_level
+            FROM base_class
+            WHERE four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT
+                five_class_no AS class_no,
+                five_class_name AS class_name,
+                four_class_no AS parent_class_no,
+                5 AS class_level
+            FROM base_class
+            WHERE five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
+        )
+        SELECT DISTINCT
+            class_no AS classNo,
+            class_name AS className,
+            parent_class_no AS parentClassNo,
+            class_level AS classLevel
+        FROM class_rows
+        WHERE class_no IS NOT NULL AND LTRIM(RTRIM(class_no)) &lt;&gt; ''
+        ORDER BY class_level, class_no
+    </select>
+
+    <sql id="storeFilterSql">
+        <if test="param.storeNo != null and param.storeNo != ''">
+            AND d.store_no = #{param.storeNo}
+        </if>
+        <if test="param.retailTypeId != null and param.retailTypeId != ''">
+            AND d.store_format_no = #{param.retailTypeId}
+        </if>
+        <if test="param.businessCircleId != null and param.businessCircleId != ''">
+            AND d.business_circle_no = #{param.businessCircleId}
+        </if>
+        <if test="param.deptGroupId != null and param.deptGroupId != ''">
+            AND d.store_group_no = #{param.deptGroupId}
+        </if>
+    </sql>
+
+    <select id="selectCategorySkuMetrics" resultType="org.dromara.diagnosis.infrastructure.model.CategorySkuMetricRow">
+        SELECT
+            s.class_no AS classNo,
+            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.class_sku)), '')), 0)) AS INT) AS suggestSaleSku,
+            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.class_sku)), '')), 0)) AS INT) AS sysSuggestSaleSku,
+            MAX(LTRIM(RTRIM(s.class_role))) AS roleNo
+        FROM base_class_sku s
+        LEFT JOIN base_department d ON d.store_no = s.store_no
+        WHERE s.class_no IS NOT NULL AND LTRIM(RTRIM(s.class_no)) &lt;&gt; ''
+        <include refid="storeFilterSql"/>
+        GROUP BY s.class_no
+    </select>
+
+    <select id="selectCategorySaleSku" resultType="org.dromara.diagnosis.infrastructure.model.CategorySaleSkuRow">
+        WITH filtered_products AS (
+            SELECT
+                p.*
+            FROM base_dept_products p
+            LEFT JOIN base_department d ON d.store_no = p.store_no
+            WHERE 1 = 1
+            <include refid="storeFilterSql"/>
+        ),
+        class_products AS (
+            SELECT one_class_no AS class_no, product_no
+            FROM filtered_products
+            WHERE one_class_no IS NOT NULL AND LTRIM(RTRIM(one_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT two_class_no AS class_no, product_no
+            FROM filtered_products
+            WHERE two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT three_class_no AS class_no, product_no
+            FROM filtered_products
+            WHERE three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT four_class_no AS class_no, product_no
+            FROM filtered_products
+            WHERE four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT five_class_no AS class_no, product_no
+            FROM filtered_products
+            WHERE five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
+        )
+        SELECT
+            class_no AS classNo,
+            CAST(COUNT(DISTINCT product_no) AS INT) AS saleSku
+        FROM class_products
+        WHERE class_no IS NOT NULL AND LTRIM(RTRIM(class_no)) &lt;&gt; ''
+        GROUP BY class_no
+    </select>
+
+    <select id="selectDictRowsByType" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow">
+        SELECT
+            d.dict_code AS dictCode,
+            t.dict_id AS dictId,
+            d.dict_sort AS dictSort,
+            d.dict_label AS dictLabel,
+            d.dict_value AS dictValue,
+            CONVERT(VARCHAR(19), d.create_time, 120) AS createTime
+        FROM sys_dict_data d
+                 LEFT JOIN sys_dict_type t
+                           ON t.dict_type = d.dict_type
+                               AND t.tenant_id = d.tenant_id
+        WHERE d.tenant_id = N'000000'
+          AND d.dict_type = #{dictType}
+        ORDER BY d.dict_sort ASC, d.dict_code ASC
+    </select>
+
+</mapper>

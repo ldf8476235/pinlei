@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>category-analysis</artifactId>
+        <groupId>org.dromara</groupId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <modules>
+        <module>category-analysis-common-bom</module>
+        <module>category-analysis-common-social</module>
+        <module>category-analysis-common-core</module>
+        <module>category-analysis-common-doc</module>
+        <module>category-analysis-common-excel</module>
+        <module>category-analysis-common-idempotent</module>
+        <module>category-analysis-common-job</module>
+        <module>category-analysis-common-log</module>
+        <module>category-analysis-common-mail</module>
+        <module>category-analysis-common-mybatis</module>
+        <module>category-analysis-common-oss</module>
+        <module>category-analysis-common-ratelimiter</module>
+        <module>category-analysis-common-redis</module>
+        <module>category-analysis-common-satoken</module>
+        <module>category-analysis-common-security</module>
+        <module>category-analysis-common-sms</module>
+        <module>category-analysis-common-web</module>
+        <module>category-analysis-common-translation</module>
+        <module>category-analysis-common-sensitive</module>
+        <module>category-analysis-common-json</module>
+        <module>category-analysis-common-encrypt</module>
+        <module>category-analysis-common-tenant</module>
+        <module>category-analysis-common-websocket</module>
+        <module>category-analysis-common-sse</module>
+    </modules>
+
+    <artifactId>category-analysis-common</artifactId>
+    <packaging>pom</packaging>
+
+    <description>
+        common 通用模块
+    </description>
+
+</project>

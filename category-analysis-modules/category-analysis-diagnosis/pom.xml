@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <groupId>org.dromara</groupId>
+        <artifactId>category-analysis-modules</artifactId>
+        <version>${revision}</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>category-analysis-diagnosis</artifactId>
+    <packaging>pom</packaging>
+
+    <description>diagnosis 业务聚合模块</description>
+
+    <modules>
+        <module>category-analysis-diagnosis-api</module>
+        <module>category-analysis-diagnosis-job</module>
+        <module>category-analysis-diagnosis-batch</module>
+        <module>category-analysis-diagnosis-repo</module>
+        <module>category-analysis-diagnosis-cache</module>
+        <module>category-analysis-diagnosis-monitor</module>
+    </modules>
+</project>

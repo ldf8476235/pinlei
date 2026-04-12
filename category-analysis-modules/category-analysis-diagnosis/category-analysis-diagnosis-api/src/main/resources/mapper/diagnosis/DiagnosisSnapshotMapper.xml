@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper">
+
+    <insert id="upsertOverviewSnapshot">
+        MERGE diag_result_overview AS t
+        USING (
+            SELECT
+                #{row.tenantId} AS tenant_id,
+                #{row.queryHash} AS query_hash,
+                #{row.dataVersion} AS data_version
+        ) AS s
+        ON (t.tenant_id = s.tenant_id AND t.query_hash = s.query_hash AND t.data_version = s.data_version)
+        WHEN MATCHED THEN
+            UPDATE SET
+                class_level = #{row.classLevel},
+                class_no = #{row.classNo},
+                class_name = #{row.className},
+                retail_type_id = #{row.retailTypeId},
+                dept_id = #{row.deptId},
+                business_circle_id = #{row.businessCircleId},
+                dept_group_id = #{row.deptGroupId},
+                store_no = #{row.storeNo},
+                period_start = #{row.periodStart},
+                period_end = #{row.periodEnd},
+                compare_start = #{row.compareStart},
+                compare_end = #{row.compareEnd},
+                metric_total_sales = #{row.metricTotalSales},
+                metric_total_profit = #{row.metricTotalProfit},
+                metric_profit_margin = #{row.metricProfitMargin},
+                metric_total_sku = #{row.metricTotalSku},
+                metric_active_sku = #{row.metricActiveSku},
+                metric_sales_rate = #{row.metricSalesRate},
+                snapshot_time = COALESCE(#{row.snapshotTime}, SYSUTCDATETIME()),
+                update_time = SYSUTCDATETIME()
+        WHEN NOT MATCHED THEN
+            INSERT
+            (
+                tenant_id, query_hash, class_level, class_no, class_name,
+                retail_type_id, dept_id, business_circle_id, dept_group_id, store_no,
+                period_start, period_end, compare_start, compare_end,
+                metric_total_sales, metric_total_profit, metric_profit_margin,
+                metric_total_sku, metric_active_sku, metric_sales_rate,
+                data_version, snapshot_time
+            )
+            VALUES
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.classLevel}, #{row.classNo}, #{row.className},
+                #{row.retailTypeId}, #{row.deptId}, #{row.businessCircleId}, #{row.deptGroupId}, #{row.storeNo},
+                #{row.periodStart}, #{row.periodEnd}, #{row.compareStart}, #{row.compareEnd},
+                #{row.metricTotalSales}, #{row.metricTotalProfit}, #{row.metricProfitMargin},
+                #{row.metricTotalSku}, #{row.metricActiveSku}, #{row.metricSalesRate},
+                #{row.dataVersion}, COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            );
+    </insert>
+
+    <select id="selectLatestOverviewByQuery" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow">
+        SELECT TOP 1
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            class_level AS classLevel,
+            class_no AS classNo,
+            class_name AS className,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            metric_total_sales AS metricTotalSales,
+            metric_total_profit AS metricTotalProfit,
+            metric_profit_margin AS metricProfitMargin,
+            metric_total_sku AS metricTotalSku,
+            metric_active_sku AS metricActiveSku,
+            metric_sales_rate AS metricSalesRate,
+            data_version AS dataVersion,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_overview
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+        ORDER BY snapshot_time DESC, id DESC
+    </select>
+
+    <delete id="deleteTrendsByVersion">
+        DELETE FROM diag_result_trends
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertTrends">
+        INSERT INTO diag_result_trends
+        (
+            tenant_id, query_hash, metric_code, point_date,
+            current_value, compare_value, growth_rate,
+            period_label, data_version, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.metricCode}, #{row.pointDate},
+                #{row.currentValue}, #{row.compareValue}, #{row.growthRate},
+                #{row.periodLabel}, #{row.dataVersion}, COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectLatestTrendsByQuery" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow">
+        WITH latest_version AS (
+            SELECT TOP 1 data_version
+            FROM diag_result_trends
+            WHERE tenant_id = #{tenantId}
+              AND query_hash = #{queryHash}
+            ORDER BY snapshot_time DESC, id DESC
+        )
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            metric_code AS metricCode,
+            point_date AS pointDate,
+            current_value AS currentValue,
+            compare_value AS compareValue,
+            growth_rate AS growthRate,
+            period_label AS periodLabel,
+            data_version AS dataVersion,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_trends
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = (SELECT data_version FROM latest_version)
+          <if test="metricCode != null and metricCode != ''">
+              AND metric_code = #{metricCode}
+          </if>
+        ORDER BY point_date ASC, id ASC
+    </select>
+
+</mapper>
