@@ -8,15 +8,18 @@ import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;
 import org.dromara.diagnosis.application.service.DiagnosisProgressCacheService;
 import org.dromara.diagnosis.application.service.DiagnosisQueryHashService;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisBatchSourceMapper;
+import org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategoryPerformanceTrendMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisExtendedSnapshotMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisCategoryPerformanceTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisInsightSnapshotRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeEventRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisRoleDistributionSnapshotRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceDailyTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceOverviewAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceShardParam;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow;
@@ -32,6 +35,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -49,6 +53,8 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
     private final DiagnosisBatchSourceMapper batchSourceMapper;
 
     private final DiagnosisSnapshotMapper snapshotMapper;
+
+    private final DiagnosisCategoryPerformanceTrendMapper categoryPerformanceTrendMapper;
 
     private final DiagnosisExtendedSnapshotMapper extendedSnapshotMapper;
 
@@ -134,9 +140,11 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         BigDecimal compareGross = compareAgg == null ? null : nvl(compareAgg.getTotalGross());
         BigDecimal compareSaleQuantity = compareAgg == null ? null : nvl(compareAgg.getTotalSaleQuantity());
         BigDecimal compareSalesCost = compareAgg == null ? null : nvl(compareAgg.getTotalSalesCost());
+        Integer compareTotalSku = compareAgg == null || compareAgg.getTotalSku() == null ? null : compareAgg.getTotalSku();
         BigDecimal compareInventorySalesRatio = compareAgg == null ? null : safeDivide(compareAvgInventory, compareSales);
         BigDecimal compareTurnoverDays = compareInventorySalesRatio == null ? null : compareInventorySalesRatio.multiply(BigDecimal.valueOf(Math.max(1L, compareDays)));
         BigDecimal comparePenetrateRate = compareAgg == null ? null : ratioPercent(compareCustomerCount, compareCustomerCountTotal);
+        BigDecimal compareSalesRate = compareAgg == null ? null : calcRate(compareAgg.getActiveSku(), compareAgg.getTotalSku());
 
         DiagnosisOverviewSnapshotRow overview = new DiagnosisOverviewSnapshotRow();
         overview.setTenantId(TENANT_ID);
@@ -170,6 +178,8 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         overview.setMetricTotalSku(totalSku);
         overview.setMetricActiveSku(activeSku);
         overview.setMetricSalesRate(calcRate(activeSku, totalSku));
+        overview.setMetricCompareTotalSku(compareTotalSku);
+        overview.setMetricCompareSalesRate(compareSalesRate);
         overview.setMetricCompareSales(compareSales);
         overview.setMetricCompareGross(compareGross);
         overview.setMetricCompareSaleQuantity(compareSaleQuantity);
@@ -219,6 +229,31 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
             snapshotMapper.batchInsertTrends(grossTrend);
         }
 
+        DiagnosisSourceShardParam compareParam = null;
+        if (compareStart != null && compareEnd != null) {
+            compareParam = new DiagnosisSourceShardParam();
+            compareParam.setPeriodStart(compareStart);
+            compareParam.setPeriodEnd(compareEnd);
+            fillFilterParam(compareParam, requestJson);
+            long compareDaySize = ChronoUnit.DAYS.between(compareStart, compareEnd) + 1;
+            if (compareDaySize != periodDays) {
+                throw new IllegalStateException("对比期天数必须与当前期一致");
+            }
+        }
+
+        categoryPerformanceTrendMapper.deleteByVersion(TENANT_ID, queryHash, dataVersion);
+        List<DiagnosisCategoryPerformanceTrendRow> categoryPerformanceRows = buildCategoryPerformanceRows(
+            queryHash, dataVersion, hashRequest, param, periodStart, periodEnd, "1"
+        );
+        if (compareParam != null) {
+            categoryPerformanceRows.addAll(buildCategoryPerformanceRows(
+                queryHash, dataVersion, hashRequest, compareParam, compareStart, compareEnd, "2"
+            ));
+        }
+        if (!categoryPerformanceRows.isEmpty()) {
+            categoryPerformanceTrendMapper.batchInsert(categoryPerformanceRows);
+        }
+
         extendedSnapshotMapper.deleteRoleDistributionByVersion(TENANT_ID, queryHash, dataVersion);
         DiagnosisRoleDistributionSnapshotRow roleRow = new DiagnosisRoleDistributionSnapshotRow();
         roleRow.setTenantId(TENANT_ID);
@@ -257,7 +292,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         window.setCurrentStage("FINALIZE");
         window.setDataVersion(dataVersion);
         window.setRowsRead(totalRows == null ? 0L : totalRows);
-        window.setRowsWritten(trendRows == null ? 1L : trendRows.size() * 2L + 1L);
+        long basicTrendRows = trendRows == null ? 0L : trendRows.size() * 2L;
+        long categoryTrendRows = categoryPerformanceRows.size();
+        window.setRowsWritten(1L + basicTrendRows + categoryTrendRows);
         window.setFinishedTime(LocalDateTime.now());
         precomputeMapper.updateWindowStatus(window);
 
@@ -309,6 +346,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("avgInventory", avgInventory);
         payload.put("customerCount", customerCount);
         payload.put("customerCountTotal", customerCountTotal);
+        payload.put("categoryPerformanceTrendRows", categoryPerformanceRows.size());
         payload.put("windowRowsRead", windowRowsRead);
         payload.put("windowRowsWritten", windowRowsWritten);
         payload.put("jobDoneWindows", nextDone);
@@ -325,6 +363,86 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         precomputeMapper.insertEvent(event);
 
         return RepeatStatus.FINISHED;
+    }
+
+    private List<DiagnosisCategoryPerformanceTrendRow> buildCategoryPerformanceRows(String queryHash,
+                                                                                   String dataVersion,
+                                                                                   DiagnosisSessionCreateRequest hashRequest,
+                                                                                   DiagnosisSourceShardParam param,
+                                                                                   LocalDate periodStart,
+                                                                                   LocalDate periodEnd,
+                                                                                   String periodFlag) {
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> salesFacts = toDailyMap(batchSourceMapper.aggregateDailySalesFacts(param));
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> customerCounts = toDailyMap(batchSourceMapper.aggregateDailyCustomerCounts(param));
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> stockCosts = toDailyMap(batchSourceMapper.aggregateDailyStockCosts(param));
+        List<LocalDate> dates = enumerateDates(periodStart, periodEnd);
+        LocalDateTime snapshotTime = LocalDateTime.now();
+
+        List<DiagnosisCategoryPerformanceTrendRow> rows = new ArrayList<>(dates.size());
+        for (int i = 0; i < dates.size(); i++) {
+            LocalDate pointDate = dates.get(i);
+            DiagnosisSourceDailyTrendRow salesRow = salesFacts.get(pointDate);
+            DiagnosisSourceDailyTrendRow customerRow = customerCounts.get(pointDate);
+            DiagnosisSourceDailyTrendRow stockRow = stockCosts.get(pointDate);
+
+            BigDecimal sales = round2(nvl(salesRow == null ? null : salesRow.getTotalSales()));
+            BigDecimal saleQuantity = round2(nvl(salesRow == null ? null : salesRow.getTotalSaleQuantity()));
+            BigDecimal gross = round2(nvl(salesRow == null ? null : salesRow.getTotalGross()));
+            BigDecimal saleCost = round2(nvl(salesRow == null ? null : salesRow.getTotalSaleCost()));
+            BigDecimal customerCount = round2(toDecimal(customerRow == null ? null : customerRow.getTotalCustomerCount()));
+            BigDecimal stockCost = round2(nvl(stockRow == null ? null : stockRow.getTotalStockCost()));
+
+            DiagnosisCategoryPerformanceTrendRow row = new DiagnosisCategoryPerformanceTrendRow();
+            row.setTenantId(TENANT_ID);
+            row.setQueryHash(queryHash);
+            row.setDataVersion(dataVersion);
+            row.setPeriodFlag(periodFlag);
+            row.setPointIndex(i + 1);
+            row.setPointDate(pointDate);
+            row.setClassLevel(param.getClassLevel());
+            row.setClassNo(param.getClassNo());
+            row.setClassName(hashRequest.getClassName());
+            row.setRetailTypeId(param.getRetailTypeId());
+            row.setDeptId(toLong(param.getDeptId()));
+            row.setBusinessCircleId(param.getBusinessCircleId());
+            row.setDeptGroupId(param.getDeptGroupId());
+            row.setStoreNo(param.getStoreNo());
+            row.setSales(sales);
+            row.setSaleQuantity(saleQuantity);
+            row.setGross(gross);
+            row.setGrossRate(round2(ratioPercentOrZero(gross, sales)));
+            row.setCustomerCount(customerCount);
+            row.setCustomerPrice(round2(divideOrZero(sales, customerCount)));
+            row.setSaleCost(saleCost);
+            row.setStockCost(stockCost);
+            row.setStockCostRate(round2(divideOrZero(stockCost, sales)));
+            row.setSnapshotTime(snapshotTime);
+            rows.add(row);
+        }
+        return rows;
+    }
+
+    private Map<LocalDate, DiagnosisSourceDailyTrendRow> toDailyMap(List<DiagnosisSourceDailyTrendRow> rows) {
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> map = new HashMap<>();
+        if (rows == null) {
+            return map;
+        }
+        for (DiagnosisSourceDailyTrendRow row : rows) {
+            if (row == null || row.getPointDate() == null) {
+                continue;
+            }
+            map.put(row.getPointDate(), row);
+        }
+        return map;
+    }
+
+    private List<LocalDate> enumerateDates(LocalDate start, LocalDate end) {
+        long days = ChronoUnit.DAYS.between(start, end);
+        List<LocalDate> dates = new ArrayList<>((int) days + 1);
+        for (long i = 0; i <= days; i++) {
+            dates.add(start.plusDays(i));
+        }
+        return dates;
     }
 
     private DiagnosisTrendSnapshotRow buildTrendRow(String queryHash,
@@ -483,5 +601,19 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         return currentValue.subtract(compareValue)
             .multiply(new BigDecimal("100"))
             .divide(compareValue, 6, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal divideOrZero(BigDecimal dividend, BigDecimal divisor) {
+        BigDecimal result = safeDivide(dividend, divisor);
+        return result == null ? BigDecimal.ZERO : result;
+    }
+
+    private BigDecimal ratioPercentOrZero(BigDecimal numerator, BigDecimal denominator) {
+        BigDecimal result = ratioPercent(numerator, denominator);
+        return result == null ? BigDecimal.ZERO : result;
+    }
+
+    private BigDecimal round2(BigDecimal value) {
+        return nvl(value).setScale(2, RoundingMode.HALF_UP);
     }
 }

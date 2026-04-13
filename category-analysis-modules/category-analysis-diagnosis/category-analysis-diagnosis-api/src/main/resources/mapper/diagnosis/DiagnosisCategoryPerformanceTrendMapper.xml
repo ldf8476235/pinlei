@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategoryPerformanceTrendMapper">
+
+    <delete id="deleteByVersion">
+        DELETE FROM diag_result_category_performance_trend
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsert">
+        INSERT INTO diag_result_category_performance_trend
+        (
+            tenant_id, query_hash, data_version, period_flag, point_index, point_date,
+            class_level, class_no, class_name,
+            retail_type_id, dept_id, business_circle_id, dept_group_id, store_no,
+            sales, sale_quantity, gross, gross_rate,
+            customer_count, customer_price,
+            sale_cost, stock_cost, stock_cost_rate,
+            snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.periodFlag}, #{row.pointIndex}, #{row.pointDate},
+                #{row.classLevel}, #{row.classNo}, #{row.className},
+                #{row.retailTypeId}, #{row.deptId}, #{row.businessCircleId}, #{row.deptGroupId}, #{row.storeNo},
+                #{row.sales}, #{row.saleQuantity}, #{row.gross}, #{row.grossRate},
+                #{row.customerCount}, #{row.customerPrice},
+                #{row.saleCost}, #{row.stockCost}, #{row.stockCostRate},
+                COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisCategoryPerformanceTrendRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            period_flag AS periodFlag,
+            point_index AS pointIndex,
+            point_date AS pointDate,
+            class_level AS classLevel,
+            class_no AS classNo,
+            class_name AS className,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            sales,
+            sale_quantity AS saleQuantity,
+            gross,
+            gross_rate AS grossRate,
+            customer_count AS customerCount,
+            customer_price AS customerPrice,
+            sale_cost AS saleCost,
+            stock_cost AS stockCost,
+            stock_cost_rate AS stockCostRate,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_category_performance_trend
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY period_flag ASC, point_index ASC, point_date ASC, id ASC
+    </select>
+
+</mapper>

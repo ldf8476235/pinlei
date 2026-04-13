@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceIdRangeRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceDailyTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceOverviewAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceShardParam;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow;
@@ -31,4 +32,10 @@ public interface DiagnosisBatchSourceMapper {
     Long countCustomerTotal(@Param("param") DiagnosisSourceShardParam param);
 
     List<DiagnosisSourceTrendAggRow> aggregateTrendsByDate(@Param("param") DiagnosisSourceShardParam param);
+
+    List<DiagnosisSourceDailyTrendRow> aggregateDailySalesFacts(@Param("param") DiagnosisSourceShardParam param);
+
+    List<DiagnosisSourceDailyTrendRow> aggregateDailyCustomerCounts(@Param("param") DiagnosisSourceShardParam param);
+
+    List<DiagnosisSourceDailyTrendRow> aggregateDailyStockCosts(@Param("param") DiagnosisSourceShardParam param);
 }

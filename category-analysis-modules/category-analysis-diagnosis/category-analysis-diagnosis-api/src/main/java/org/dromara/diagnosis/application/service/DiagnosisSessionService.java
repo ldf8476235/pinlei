@@ -3,6 +3,8 @@ package org.dromara.diagnosis.application.service;
 import lombok.RequiredArgsConstructor;
 import org.dromara.common.json.utils.JsonUtils;
 import org.dromara.common.redis.utils.RedisUtils;
+import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendPointResponse;
+import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;
 import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
@@ -13,7 +15,9 @@ import org.dromara.diagnosis.application.config.DiagnosisRedisKeyPrefixPropertie
 import org.dromara.diagnosis.application.model.DiagnosisSessionCacheModel;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
+import org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategoryPerformanceTrendMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisCategoryPerformanceTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow;
 import org.springframework.stereotype.Service;
@@ -21,6 +25,7 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +41,8 @@ public class DiagnosisSessionService {
     private static final String TENANT_ID = "000000";
 
     private final DiagnosisSnapshotMapper snapshotMapper;
+
+    private final DiagnosisCategoryPerformanceTrendMapper categoryPerformanceTrendMapper;
 
     private final DiagnosisQueryHashService queryHashService;
 
@@ -109,7 +116,7 @@ public class DiagnosisSessionService {
         response.setClassName(overview.getClassName());
 
         response.setCurrentClassSku(overview.getMetricTotalSku());
-        response.setCompareClassSku(null);
+        response.setCompareClassSku(overview.getMetricCompareTotalSku());
         response.setComparativeGrowthRate(calcGrowthPercent(toBigDecimal(response.getCurrentClassSku()), toBigDecimal(response.getCompareClassSku())));
 
         response.setCurrentSales(nvl(overview.getMetricTotalSales()));
@@ -167,7 +174,7 @@ public class DiagnosisSessionService {
         response.setComparativePenetrateRate(calcDiff(response.getCurrentPenetrateRate(), response.getComparePenetrateRate()));
 
         response.setCurrentTurnoverRate(overview.getMetricSalesRate());
-        response.setCompareTurnoverRate(null);
+        response.setCompareTurnoverRate(overview.getMetricCompareSalesRate());
         response.setComparativeTurnoverRate(calcGrowthPercent(response.getCurrentTurnoverRate(), response.getCompareTurnoverRate()));
 
         return response;
@@ -189,6 +196,26 @@ public class DiagnosisSessionService {
         response.setDataVersion(session.getDataVersion());
         response.setCacheHit(Boolean.TRUE);
         response.setTrends(trends);
+        return response;
+    }
+
+    public DiagnosisCategoryPerformanceTrendResponse getTrendChanges(String sessionId) {
+        DiagnosisSessionCacheModel session = getSession(sessionId);
+        DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
+        if (overview == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话对应结果不存在，请先触发预计算");
+        }
+
+        List<DiagnosisCategoryPerformanceTrendRow> rows = categoryPerformanceTrendMapper.selectByVersion(
+            TENANT_ID, session.getQueryHash(), session.getDataVersion());
+
+        DiagnosisCategoryPerformanceTrendResponse response = new DiagnosisCategoryPerformanceTrendResponse();
+        response.setSessionId(sessionId);
+        response.setDataVersion(session.getDataVersion());
+        response.setCacheHit(Boolean.TRUE);
+        response.setXdata(extractDates(rows, "1"));
+        response.setXdataDB(extractDates(rows, "2"));
+        response.setLineDate(mapTrendPoints(rows));
         return response;
     }
 
@@ -294,5 +321,46 @@ public class DiagnosisSessionService {
         payload.put("storeNo", request.getStoreNo());
         payload.put("extraFilterJson", request.getExtraFilterJson());
         return JsonUtils.toJsonString(payload);
+    }
+
+    private List<String> extractDates(List<DiagnosisCategoryPerformanceTrendRow> rows, String periodFlag) {
+        List<String> dates = new ArrayList<>();
+        if (rows == null) {
+            return dates;
+        }
+        for (DiagnosisCategoryPerformanceTrendRow row : rows) {
+            if (row == null || !periodFlag.equals(row.getPeriodFlag()) || row.getPointDate() == null) {
+                continue;
+            }
+            dates.add(row.getPointDate().toString());
+        }
+        return dates;
+    }
+
+    private List<DiagnosisCategoryPerformanceTrendPointResponse> mapTrendPoints(List<DiagnosisCategoryPerformanceTrendRow> rows) {
+        List<DiagnosisCategoryPerformanceTrendPointResponse> points = new ArrayList<>();
+        if (rows == null) {
+            return points;
+        }
+        for (DiagnosisCategoryPerformanceTrendRow row : rows) {
+            if (row == null) {
+                continue;
+            }
+            DiagnosisCategoryPerformanceTrendPointResponse point = new DiagnosisCategoryPerformanceTrendPointResponse();
+            point.setPointIndex(row.getPointIndex());
+            point.setDataDate(row.getPointDate() == null ? null : row.getPointDate().toString());
+            point.setSales(row.getSales());
+            point.setSaleQuantity(row.getSaleQuantity());
+            point.setGross(row.getGross());
+            point.setGrossRate(row.getGrossRate());
+            point.setCustomerCount(row.getCustomerCount());
+            point.setCustomerPrice(row.getCustomerPrice());
+            point.setSaleCost(row.getSaleCost());
+            point.setStockCost(row.getStockCost());
+            point.setStockCostRate(row.getStockCostRate());
+            point.setFlag(row.getPeriodFlag());
+            points.add(point);
+        }
+        return points;
     }
 }

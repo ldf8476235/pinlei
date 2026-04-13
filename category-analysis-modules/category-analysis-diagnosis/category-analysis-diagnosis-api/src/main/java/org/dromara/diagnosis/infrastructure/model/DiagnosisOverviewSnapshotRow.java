@@ -76,6 +76,10 @@ public class DiagnosisOverviewSnapshotRow {
 
     private BigDecimal metricSalesRate;
 
+    private Integer metricCompareTotalSku;
+
+    private BigDecimal metricCompareSalesRate;
+
     private BigDecimal metricCompareSales;
 
     private BigDecimal metricCompareGross;

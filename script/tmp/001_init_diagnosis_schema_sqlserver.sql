@@ -1,5 +1,11 @@
 ﻿-- 诊断模块第1步建表脚本（SQL Server）
--- 目标：先落地任务中心 + 首屏快照结果表
+-- 用途：新环境/新库一次性初始化 diagnosis 结果层与任务中心结构
+-- 说明：
+-- 1) 本脚本已吸收早期 iter2 / iter3 的结构变更，不需要再额外执行对应脚本
+-- 2) 当前建议执行顺序：
+--    第一步：执行本脚本
+--    第二步：执行 002_upgrade_diagnosis_overview_metrics_sqlserver.sql
+-- 3) 历史增量脚本已归档到 script/tmp/archive，仅用于老环境追溯或特殊补丁
 -- 包含：
 -- 1) diag_precompute_job
 -- 2) diag_precompute_window

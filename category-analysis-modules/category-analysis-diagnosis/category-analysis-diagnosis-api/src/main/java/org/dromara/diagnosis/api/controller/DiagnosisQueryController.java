@@ -1,6 +1,7 @@
 package org.dromara.diagnosis.api.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
 import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
@@ -43,6 +44,11 @@ public class DiagnosisQueryController {
     public DiagnosisApiResponse<DiagnosisTrendsResponse> getTrends(@RequestParam("sessionId") String sessionId,
                                                                    @RequestParam(value = "metricCode", required = false) String metricCode) {
         return DiagnosisApiResponse.ok(diagnosisSessionService.getTrends(sessionId, metricCode), nextRequestId());
+    }
+
+    @GetMapping("/trend-changes")
+    public DiagnosisApiResponse<DiagnosisCategoryPerformanceTrendResponse> getTrendChanges(@RequestParam("sessionId") String sessionId) {
+        return DiagnosisApiResponse.ok(diagnosisSessionService.getTrendChanges(sessionId), nextRequestId());
     }
 
     private String nextRequestId() {
