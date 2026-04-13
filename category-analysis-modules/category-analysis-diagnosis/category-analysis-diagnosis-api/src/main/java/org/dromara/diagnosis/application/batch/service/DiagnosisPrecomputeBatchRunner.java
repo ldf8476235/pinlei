@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.batch.service;
+package org.dromara.diagnosis.application.batch.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.Job;
@@ -20,16 +20,19 @@ public class DiagnosisPrecomputeBatchRunner {
 
     private final Job diagnosisSingleMonthPrecomputeJob;
 
-    public void launch(Long jobId, Long windowId, LocalDate periodStart, LocalDate periodEnd, String dataVersion) {
+    public void launch(Long jobId, Long windowId, LocalDate periodStart, LocalDate periodEnd, String dataVersion, String requestJson) {
         try {
-            JobParameters parameters = new JobParametersBuilder()
+            JobParametersBuilder builder = new JobParametersBuilder()
                 .addLong("jobId", jobId)
                 .addLong("windowId", windowId)
                 .addString("periodStart", periodStart.toString())
                 .addString("periodEnd", periodEnd.toString())
                 .addString("dataVersion", dataVersion)
-                .addLong("runTs", System.currentTimeMillis())
-                .toJobParameters();
+                .addLong("runTs", System.currentTimeMillis());
+            if (requestJson != null) {
+                builder.addString("requestJson", requestJson);
+            }
+            JobParameters parameters = builder.toJobParameters();
 
             jobLauncher.run(diagnosisSingleMonthPrecomputeJob, parameters);
         } catch (Exception e) {

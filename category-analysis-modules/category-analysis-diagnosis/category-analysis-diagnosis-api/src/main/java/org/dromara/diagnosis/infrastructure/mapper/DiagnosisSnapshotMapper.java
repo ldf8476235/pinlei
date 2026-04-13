@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.infrastructure.mapper;
+package org.dromara.diagnosis.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import org.apache.ibatis.annotations.Mapper;
@@ -20,6 +20,10 @@ public interface DiagnosisSnapshotMapper {
     DiagnosisOverviewSnapshotRow selectLatestOverviewByQuery(@Param("tenantId") String tenantId,
                                                              @Param("queryHash") String queryHash);
 
+    DiagnosisOverviewSnapshotRow selectOverviewByQueryAndVersion(@Param("tenantId") String tenantId,
+                                                                 @Param("queryHash") String queryHash,
+                                                                 @Param("dataVersion") String dataVersion);
+
     int deleteTrendsByVersion(@Param("tenantId") String tenantId,
                               @Param("queryHash") String queryHash,
                               @Param("dataVersion") String dataVersion);
@@ -29,4 +33,9 @@ public interface DiagnosisSnapshotMapper {
     List<DiagnosisTrendSnapshotRow> selectLatestTrendsByQuery(@Param("tenantId") String tenantId,
                                                               @Param("queryHash") String queryHash,
                                                               @Param("metricCode") String metricCode);
+
+    List<DiagnosisTrendSnapshotRow> selectTrendsByQueryAndVersion(@Param("tenantId") String tenantId,
+                                                                  @Param("queryHash") String queryHash,
+                                                                  @Param("dataVersion") String dataVersion,
+                                                                  @Param("metricCode") String metricCode);
 }

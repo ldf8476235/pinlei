@@ -1,5 +1,7 @@
-﻿package org.dromara.diagnosis.application.batch.job;
+package org.dromara.diagnosis.application.batch.job;
 
+import cn.hutool.core.lang.Dict;
+import org.dromara.common.json.utils.JsonUtils;
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.application.batch.config.DiagnosisBatchProperties;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisBatchSourceMapper;
@@ -38,6 +40,10 @@ public class DiagnosisIdRangePartitioner implements Partitioner {
             .getStepExecution()
             .getJobParameters()
             .getString("periodEnd");
+        String requestJson = StepSynchronizationManager.getContext()
+            .getStepExecution()
+            .getJobParameters()
+            .getString("requestJson");
 
         LocalDate periodStart = LocalDate.parse(periodStartText);
         LocalDate periodEnd = LocalDate.parse(periodEndText);
@@ -45,6 +51,7 @@ public class DiagnosisIdRangePartitioner implements Partitioner {
         DiagnosisSourceShardParam rangeParam = new DiagnosisSourceShardParam();
         rangeParam.setPeriodStart(periodStart);
         rangeParam.setPeriodEnd(periodEnd);
+        fillFilterParam(rangeParam, requestJson);
 
         DiagnosisSourceIdRangeRow idRange = batchSourceMapper.selectIdRange(rangeParam);
         long minId = idRange == null || idRange.getMinId() == null ? 0L : idRange.getMinId();
@@ -75,5 +82,27 @@ public class DiagnosisIdRangePartitioner implements Partitioner {
             shardIndex++;
         }
         return result;
+    }
+
+    private void fillFilterParam(DiagnosisSourceShardParam param, String requestJson) {
+        Dict map = JsonUtils.parseMap(requestJson);
+        if (map == null) {
+            return;
+        }
+        param.setClassLevel(map.getInt("classLevel"));
+        param.setClassNo(trim(map.getStr("classNo")));
+        param.setDeptId(trim(map.getStr("deptId")));
+        param.setRetailTypeId(trim(map.getStr("retailTypeId")));
+        param.setBusinessCircleId(trim(map.getStr("businessCircleId")));
+        param.setDeptGroupId(trim(map.getStr("deptGroupId")));
+        param.setStoreNo(trim(map.getStr("storeNo")));
+    }
+
+    private String trim(String value) {
+        if (value == null) {
+            return null;
+        }
+        String v = value.trim();
+        return v.isEmpty() ? null : v;
     }
 }

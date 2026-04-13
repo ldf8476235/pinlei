@@ -80,7 +80,7 @@ diagnosis:
     emptyResultTtlSeconds: ${DIAG_CACHE_EMPTY_TTL_SECONDS:60}
     progressTtlMinutes: ${DIAG_CACHE_PROGRESS_TTL_MINUTES:120}
   redis:
-    keyPrefix:
+    key-prefix:
       jobProgress: diag:job:progress
       resultQuery: diag:result:query
       windowLock: diag:lock:window

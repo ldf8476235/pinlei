@@ -77,7 +77,7 @@ diagnosis:
     emptyResultTtlSeconds: 60
     progressTtlMinutes: 120
   redis:
-    keyPrefix:
+    key-prefix:
       jobProgress: diag:job:progress
       resultQuery: diag:result:query
       windowLock: diag:lock:window

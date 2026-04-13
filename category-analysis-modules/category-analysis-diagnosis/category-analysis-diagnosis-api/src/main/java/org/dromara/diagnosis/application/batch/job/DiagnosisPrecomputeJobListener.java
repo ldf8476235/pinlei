@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.batch.job;
+package org.dromara.diagnosis.application.batch.job;
 
 import lombok.RequiredArgsConstructor;
 import org.dromara.common.json.utils.JsonUtils;
@@ -97,7 +97,7 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
                 DiagnosisPrecomputeBatchRunner batchRunner = batchRunnerProvider.getIfAvailable();
                 if (batchRunner != null) {
                     String dataVersion = "V" + System.currentTimeMillis();
-                    batchRunner.launch(jobId, nextWindow.getWindowId(), nextWindow.getPeriodStart(), nextWindow.getPeriodEnd(), dataVersion);
+                    batchRunner.launch(jobId, nextWindow.getWindowId(), nextWindow.getPeriodStart(), nextWindow.getPeriodEnd(), dataVersion, latestStatus == null ? null : latestStatus.getRequestJson());
                 }
 
                 Map<String, Object> payload = new LinkedHashMap<>();

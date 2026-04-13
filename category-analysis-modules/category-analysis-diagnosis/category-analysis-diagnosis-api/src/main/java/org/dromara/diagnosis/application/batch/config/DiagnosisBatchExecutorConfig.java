@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.batch.config;
+package org.dromara.diagnosis.application.batch.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

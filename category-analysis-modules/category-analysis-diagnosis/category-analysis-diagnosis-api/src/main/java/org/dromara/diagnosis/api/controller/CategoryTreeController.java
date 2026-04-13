@@ -8,6 +8,7 @@ import org.dromara.diagnosis.api.request.CategoryTreeQueryRequest;
 import org.dromara.diagnosis.api.response.CategoryTreeNodeResponse;
 import org.dromara.diagnosis.api.response.CategoryTreeResponse;
 import org.dromara.diagnosis.application.service.CategoryTreeService;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -30,6 +31,11 @@ public class CategoryTreeController {
     @PostMapping({"/tree", "/tree/query"})
     public CategoryTreeResponse<List<CategoryTreeNodeResponse>> queryTree(@RequestBody(required = false) CategoryTreeQueryRequest request) {
         return CategoryTreeResponse.ok(categoryTreeService.queryTree(request));
+    }
+
+    @GetMapping("/tree")
+    public CategoryTreeResponse<List<CategoryTreeNodeResponse>> queryTreeByGet() {
+        return CategoryTreeResponse.ok(categoryTreeService.queryTree(null));
     }
 
     @PostMapping("/filter-options")

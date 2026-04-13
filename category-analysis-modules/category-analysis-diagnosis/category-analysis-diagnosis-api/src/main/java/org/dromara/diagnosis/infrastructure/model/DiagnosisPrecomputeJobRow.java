@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.infrastructure.model;
+package org.dromara.diagnosis.infrastructure.model;
 
 import lombok.Data;
 

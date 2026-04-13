@@ -39,8 +39,6 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
 
     private static final String ROOT_PARENT_CLASS_NO = "-1";
 
-    private static final String DICT_TYPE_CATEGORY_LEVEL = "class_level_type_one";
-
     private static final String DICT_TYPE_CATEGORY_ROLE = "class_role_type";
 
     private static final String DICT_TYPE_CLASS_SALES_STATUS_NO = "class_sales_status_no";
@@ -105,15 +103,40 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
 
     @Override
     public CategoryFilterOptionsResponse queryFilterOptions() {
-        List<DiagnosisDictRow> levelRows = categoryTreeMapper.selectDictRowsByType(DICT_TYPE_CATEGORY_LEVEL);
         List<DiagnosisDictRow> roleRows = categoryTreeMapper.selectDictRowsByType(DICT_TYPE_CATEGORY_ROLE);
         List<DiagnosisDictRow> salesStatusRows = categoryTreeMapper.selectDictRowsByType(DICT_TYPE_CLASS_SALES_STATUS_NO);
 
         CategoryFilterOptionsResponse response = new CategoryFilterOptionsResponse();
-        response.setCategoryLevels(toDictOptions(levelRows));
+        response.setCategoryLevels(buildFixedCategoryLevels());
         response.setCategoryRoles(toDictOptions(roleRows));
+        response.setSkuAbnormal(buildSkuAbnormalOptions());
         response.setClassSalesStatusNo(toDictDetails(salesStatusRows));
         return response;
+    }
+
+    private List<DictOptionResponse> buildFixedCategoryLevels() {
+        return List.of(
+            dictOption("一级品类", "1"),
+            dictOption("二级品类", "2"),
+            dictOption("三级品类", "3"),
+            dictOption("四级品类", "4")
+        );
+    }
+
+    private DictOptionResponse dictOption(String label, String value) {
+        DictOptionResponse option = new DictOptionResponse();
+        option.setLabel(label);
+        option.setValue(value);
+        return option;
+    }
+
+    private List<DictOptionResponse> buildSkuAbnormalOptions() {
+        return List.of(
+            dictOption("全部", "0"),
+            dictOption("实际数比系统建议少", "1"),
+            dictOption("实际数比系统建议多", "2"),
+            dictOption("实际数与预设标准不一致", "3")
+        );
     }
 
     private CategoryTreeQueryParam toQueryParam(CategoryTreeQueryRequest request) {
@@ -276,13 +299,13 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         if (differ == null) {
             return false;
         }
-        if (abnormalSet.contains("1") && differ > 0) {
+        if (abnormalSet.contains("1") && differ < 0) {
             return true;
         }
-        if (abnormalSet.contains("2") && differ == 0) {
+        if (abnormalSet.contains("2") && differ > 0) {
             return true;
         }
-        return abnormalSet.contains("3") && differ < 0;
+        return abnormalSet.contains("3") && differ != 0;
     }
 
     private boolean hasClassNoMatch(MutableNode root, Set<String> classNoSet, int level) {

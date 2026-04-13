@@ -16,6 +16,31 @@ public class DiagnosisSessionCreateRequest {
 
     private String className;
 
+    /**
+     * 组织ID（兼容旧接口 deptId）.
+     */
+    private String deptId;
+
+    /**
+     * 业态ID（兼容旧接口 retailTypeId）.
+     */
+    private String retailTypeId;
+
+    /**
+     * 商圈ID（兼容旧接口 businessCircleId）.
+     */
+    private String businessCircleId;
+
+    /**
+     * 店组ID（兼容旧接口 deptGroupId）.
+     */
+    private String deptGroupId;
+
+    /**
+     * 门店编码（兼容旧接口 storeNo；0 表示全部）.
+     */
+    private String storeNo;
+
     private LocalDate periodStart;
 
     private LocalDate periodEnd;

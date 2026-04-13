@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.batch.service;
+package org.dromara.diagnosis.application.batch.service;
 
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.application.batch.model.DiagnosisWindowType;

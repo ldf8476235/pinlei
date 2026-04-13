@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.api.controller;
+package org.dromara.diagnosis.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;

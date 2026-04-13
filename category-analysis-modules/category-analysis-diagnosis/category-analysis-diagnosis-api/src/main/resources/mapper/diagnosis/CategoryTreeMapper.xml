@@ -139,4 +139,30 @@
         ORDER BY d.dict_sort ASC, d.dict_code ASC
     </select>
 
+    <select id="selectStores" resultType="org.dromara.diagnosis.infrastructure.model.StoreBaseRow">
+        SELECT TOP (#{param.limit})
+            store_no AS storeNo,
+            MAX(store_name) AS storeName
+        FROM base_department
+        WHERE store_no IS NOT NULL
+          AND LTRIM(RTRIM(store_no)) &lt;&gt; ''
+          <if test="param.retailTypeId != null and param.retailTypeId != ''">
+              AND store_format_no = #{param.retailTypeId}
+          </if>
+          <if test="param.businessCircleId != null and param.businessCircleId != ''">
+              AND business_circle_no = #{param.businessCircleId}
+          </if>
+          <if test="param.deptGroupId != null and param.deptGroupId != ''">
+              AND store_group_no = #{param.deptGroupId}
+          </if>
+          <if test="param.keyword != null and param.keyword != ''">
+              AND (
+                  store_no LIKE CONCAT('%', #{param.keyword}, '%')
+                  OR store_name LIKE CONCAT('%', #{param.keyword}, '%')
+              )
+          </if>
+        GROUP BY store_no
+        ORDER BY store_no ASC
+    </select>
+
 </mapper>

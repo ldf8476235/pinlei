@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.infrastructure.mapper;
+package org.dromara.diagnosis.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import org.apache.ibatis.annotations.Mapper;
@@ -8,6 +8,7 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceOverviewAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceShardParam;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -22,6 +23,12 @@ public interface DiagnosisBatchSourceMapper {
     Long countRows(@Param("param") DiagnosisSourceShardParam param);
 
     DiagnosisSourceOverviewAggRow aggregateOverview(@Param("param") DiagnosisSourceShardParam param);
+
+    BigDecimal selectAvgInventory(@Param("param") DiagnosisSourceShardParam param);
+
+    Long countCustomerByClass(@Param("param") DiagnosisSourceShardParam param);
+
+    Long countCustomerTotal(@Param("param") DiagnosisSourceShardParam param);
 
     List<DiagnosisSourceTrendAggRow> aggregateTrendsByDate(@Param("param") DiagnosisSourceShardParam param);
 }

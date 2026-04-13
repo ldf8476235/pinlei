@@ -15,5 +15,8 @@ public class CategoryTreeQueryParam {
     private String deptGroupId;
 
     private String storeNo;
-}
 
+    private String keyword;
+
+    private Integer limit;
+}

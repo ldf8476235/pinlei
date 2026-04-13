@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.infrastructure.model;
+package org.dromara.diagnosis.infrastructure.model;
 
 import lombok.Data;
 
@@ -13,6 +13,20 @@ public class DiagnosisSourceShardParam {
     private LocalDate periodStart;
 
     private LocalDate periodEnd;
+
+    private Integer classLevel;
+
+    private String classNo;
+
+    private String deptId;
+
+    private String retailTypeId;
+
+    private String businessCircleId;
+
+    private String deptGroupId;
+
+    private String storeNo;
 
     private Long startId;
 

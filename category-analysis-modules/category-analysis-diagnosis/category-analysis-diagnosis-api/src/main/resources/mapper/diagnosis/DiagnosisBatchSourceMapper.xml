@@ -4,9 +4,191 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisBatchSourceMapper">
 
+    <sql id="classFilterSales">
+        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <choose>
+                <when test="param.classLevel == 1">
+                    AND one_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 2">
+                    AND two_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 3">
+                    AND three_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 4">
+                    AND four_class_no = #{param.classNo}
+                </when>
+                <otherwise>
+                    AND (
+                        one_class_no = #{param.classNo}
+                        OR two_class_no = #{param.classNo}
+                        OR three_class_no = #{param.classNo}
+                        OR four_class_no = #{param.classNo}
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="storeFilterSales">
+        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+            AND store_no = #{param.storeNo}
+        </if>
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+            and (
+                (param.deptId != null and param.deptId != '' and param.deptId != '0')
+                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
+                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
+                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+            )">
+            AND EXISTS (
+                SELECT 1
+                FROM base_department bd
+                WHERE bd.store_no = fact_sales_day.store_no
+                  AND bd.status_no = 1
+                  AND bd.store_type_no = '1'
+                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                    AND bd.preorgcode = #{param.deptId}
+                </if>
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                    AND bd.store_format_no = #{param.retailTypeId}
+                </if>
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                    AND bd.business_circle_no = #{param.businessCircleId}
+                </if>
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                    AND bd.store_group_no = #{param.deptGroupId}
+                </if>
+            )
+        </if>
+    </sql>
+
+    <sql id="classFilterStock">
+        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <choose>
+                <when test="param.classLevel == 1">
+                    AND one_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 2">
+                    AND two_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 3">
+                    AND three_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 4">
+                    AND four_class_no = #{param.classNo}
+                </when>
+                <otherwise>
+                    AND (
+                        one_class_no = #{param.classNo}
+                        OR two_class_no = #{param.classNo}
+                        OR three_class_no = #{param.classNo}
+                        OR four_class_no = #{param.classNo}
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="storeFilterStock">
+        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+            AND store_no = #{param.storeNo}
+        </if>
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+            and (
+                (param.deptId != null and param.deptId != '' and param.deptId != '0')
+                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
+                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
+                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+            )">
+            AND EXISTS (
+                SELECT 1
+                FROM base_department bd
+                WHERE bd.store_no = fact_stock_day.store_no
+                  AND bd.status_no = 1
+                  AND bd.store_type_no = '1'
+                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                    AND bd.preorgcode = #{param.deptId}
+                </if>
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                    AND bd.store_format_no = #{param.retailTypeId}
+                </if>
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                    AND bd.business_circle_no = #{param.businessCircleId}
+                </if>
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                    AND bd.store_group_no = #{param.deptGroupId}
+                </if>
+            )
+        </if>
+    </sql>
+
+    <sql id="classFilterSh7">
+        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <choose>
+                <when test="param.classLevel == 1">
+                    AND one_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 2">
+                    AND two_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 3">
+                    AND three_class_no = #{param.classNo}
+                </when>
+                <when test="param.classLevel == 4">
+                    AND four_class_no = #{param.classNo}
+                </when>
+                <otherwise>
+                    AND (
+                        one_class_no = #{param.classNo}
+                        OR two_class_no = #{param.classNo}
+                        OR three_class_no = #{param.classNo}
+                        OR four_class_no = #{param.classNo}
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="storeFilterSh7">
+        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+            AND store_no = #{param.storeNo}
+        </if>
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+            and (
+                (param.deptId != null and param.deptId != '' and param.deptId != '0')
+                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
+                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
+                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+            )">
+            AND EXISTS (
+                SELECT 1
+                FROM base_department bd
+                WHERE bd.store_no = sh7_saleplu.store_no
+                  AND bd.status_no = 1
+                  AND bd.store_type_no = '1'
+                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                    AND bd.preorgcode = #{param.deptId}
+                </if>
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                    AND bd.store_format_no = #{param.retailTypeId}
+                </if>
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                    AND bd.business_circle_no = #{param.businessCircleId}
+                </if>
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                    AND bd.store_group_no = #{param.deptGroupId}
+                </if>
+            )
+        </if>
+    </sql>
+
     <sql id="baseWhere">
         WHERE sale_date &gt;= #{param.periodStart}
           AND sale_date &lt;= #{param.periodEnd}
+        <include refid="classFilterSales"/>
+        <include refid="storeFilterSales"/>
         <if test="param.startId != null">
             AND id &gt;= #{param.startId}
         </if>
@@ -33,10 +215,45 @@
         SELECT
             ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales,
             ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS totalGross,
+            ISNULL(SUM(CAST(sale_quantity AS DECIMAL(20, 6))), 0) AS totalSaleQuantity,
+            ISNULL(SUM(CAST(sale_cost AS DECIMAL(20, 6))), 0) AS totalSalesCost,
             CAST(COUNT(DISTINCT product_no) AS INT) AS totalSku,
             CAST(COUNT(DISTINCT CASE WHEN sales &gt; 0 THEN product_no ELSE NULL END) AS INT) AS activeSku
         FROM fact_sales_day
         <include refid="baseWhere"/>
+    </select>
+
+    <select id="selectAvgInventory" resultType="java.math.BigDecimal">
+        WITH daily_stock AS (
+            SELECT
+                stock_date,
+                ISNULL(SUM(CAST(stock_sale_money AS DECIMAL(20, 6))), 0) AS dayStockSaleMoney
+            FROM fact_stock_day
+            WHERE stock_date &gt;= #{param.periodStart}
+              AND stock_date &lt;= #{param.periodEnd}
+              <include refid="classFilterStock"/>
+              <include refid="storeFilterStock"/>
+            GROUP BY stock_date
+        )
+        SELECT ISNULL(AVG(CAST(dayStockSaleMoney AS DECIMAL(20, 6))), 0)
+        FROM daily_stock
+    </select>
+
+    <select id="countCustomerByClass" resultType="java.lang.Long">
+        SELECT COUNT(DISTINCT sale_no)
+        FROM sh7_saleplu
+        WHERE CAST(xsdate AS DATE) &gt;= #{param.periodStart}
+          AND CAST(xsdate AS DATE) &lt;= #{param.periodEnd}
+          <include refid="classFilterSh7"/>
+          <include refid="storeFilterSh7"/>
+    </select>
+
+    <select id="countCustomerTotal" resultType="java.lang.Long">
+        SELECT COUNT(DISTINCT sale_no)
+        FROM sh7_saleplu
+        WHERE CAST(xsdate AS DATE) &gt;= #{param.periodStart}
+          AND CAST(xsdate AS DATE) &lt;= #{param.periodEnd}
+          <include refid="storeFilterSh7"/>
     </select>
 
     <select id="aggregateTrendsByDate" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow">

@@ -1,0 +1,62 @@
+地址：/salesStoreClass/classPerformance
+
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+
+返回参数：
+
+{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "classNo": "004",
+        "className": "洗化部",
+        "currentClassSku": null,
+        "compareClassSku": null,
+        "comparativeGrowthRate": null,
+        "currentTurnoverRate": null,
+        "compareTurnoverRate": null,
+        "comparativeTurnoverRate": null,
+        "currentPenetrateRate": 1.1500,
+        "comparePenetrateRate": 1.1200,
+        "comparativePenetrateRate": 0.0300,
+        "currentTurnoverDays": 65.5445,
+        "compareTurnoverDays": 69.9697,
+        "comparativeTurnoverDays": -6.32,
+        "currentInventorySales": 0.9499,
+        "compareInventorySales": 1.0141,
+        "comparativeInventorySales": -6.33,
+        "currentAvgInventory": 6010702.08,
+        "compareAvgInventory": 5805327.22,
+        "comparativeAvgInventory": 3.5400,
+        "currentSaleQuantity": 488900.49,
+        "compareSaleQuantity": 459618.48,
+        "comparativeSaleQuantity": 6.37,
+        "currentSales": 7585282.91,
+        "compareSales": 6843461.53,
+        "comparativeSales": 10.84,
+        "currentGross": 1257694.67,
+        "compareGross": 1118591.23,
+        "comparativeGross": 12.44,
+        "currentGrossRate": 16.58,
+        "compareGrossRate": 16.35,
+        "comparativeGrossRate": 0.24,
+        "currentCustomerCount": 353543.00,
+        "compareCustomerCount": 236035.00,
+        "comparativeCustomerCount": 49.78,
+        "currentCustomerPrice": 21.46,
+        "compareCustomerPrice": 28.99,
+        "comparativeCustomerPrice": -26.00,
+        "currentCustomerAvgQuantity": 1.38,
+        "compareCustomerAvgQuantity": 1.95,
+        "comparativeCustomerAvgQuantity": -28.98,
+        "currentPieceAvgPrice": 15.51,
+        "comparePieceAvgPrice": 14.89,
+        "comparativePieceAvgPrice": 4.20,
+        "currentSalesCost": 6327581.23,
+        "compareSalesCost": 5724871.57,
+        "currentCustomerCountTotal": 30860479.00,
+        "compareCustomerCountTotal": 21000327.00
+    },
+    "timestamp": 1776057994973
+}

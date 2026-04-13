@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.infrastructure.model;
+package org.dromara.diagnosis.infrastructure.model;
 
 import lombok.Data;
 
@@ -48,11 +48,53 @@ public class DiagnosisOverviewSnapshotRow {
 
     private BigDecimal metricProfitMargin;
 
+    private BigDecimal metricSaleQuantity;
+
+    private BigDecimal metricSalesCost;
+
+    private BigDecimal metricCustomerCount;
+
+    private BigDecimal metricCustomerCountTotal;
+
+    private BigDecimal metricCustomerPrice;
+
+    private BigDecimal metricCustomerAvgQuantity;
+
+    private BigDecimal metricPieceAvgPrice;
+
+    private BigDecimal metricAvgInventory;
+
+    private BigDecimal metricInventorySalesRatio;
+
+    private BigDecimal metricInventoryTurnoverDays;
+
+    private BigDecimal metricPenetrateRate;
+
     private Integer metricTotalSku;
 
     private Integer metricActiveSku;
 
     private BigDecimal metricSalesRate;
+
+    private BigDecimal metricCompareSales;
+
+    private BigDecimal metricCompareGross;
+
+    private BigDecimal metricCompareSaleQuantity;
+
+    private BigDecimal metricCompareSalesCost;
+
+    private BigDecimal metricCompareCustomerCount;
+
+    private BigDecimal metricCompareCustomerCountTotal;
+
+    private BigDecimal metricCompareAvgInventory;
+
+    private BigDecimal metricCompareInventorySalesRatio;
+
+    private BigDecimal metricCompareInventoryTurnoverDays;
+
+    private BigDecimal metricComparePenetrateRate;
 
     private String dataVersion;
 

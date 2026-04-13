@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 @Data
 @Component
-@ConfigurationProperties(prefix = "diagnosis.redis.keyPrefix")
+@ConfigurationProperties(prefix = "diagnosis.redis.key-prefix")
 public class DiagnosisRedisKeyPrefixProperties {
 
     private String jobProgress = "diag:job:progress";

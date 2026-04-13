@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.api.response;
+package org.dromara.diagnosis.api.response;
 
 import lombok.Data;
 

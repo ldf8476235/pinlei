@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
+import java.time.LocalDate;
 import java.util.Locale;
 
 /**
@@ -15,12 +16,33 @@ public class DiagnosisQueryHashService {
 
     public String buildQueryHash(DiagnosisSessionCreateRequest request) {
         try {
-            // 与批处理落快照的 queryHash 保持一致，避免会话查不到结果。
+            String classLevel = normalizeClassLevel(request.getClassLevel());
+            String classNo = normalizeCommon(request.getClassNo());
+            String deptId = normalizeCommon(request.getDeptId());
+            String retailTypeId = normalizeCommon(request.getRetailTypeId());
+            String businessCircleId = normalizeCommon(request.getBusinessCircleId());
+            String deptGroupId = normalizeCommon(request.getDeptGroupId());
+            String storeNo = normalizeStoreNo(request.getStoreNo());
+            String extraFilterJson = normalizeCommon(request.getExtraFilterJson());
+            String periodStart = normalizeDate(request.getPeriodStart());
+            String periodEnd = normalizeDate(request.getPeriodEnd());
+            String compareStart = normalizeDate(request.getCompareStart());
+            String compareEnd = normalizeDate(request.getCompareEnd());
+
             String text = "000000|"
-                + request.getPeriodStart() + "|"
-                + request.getPeriodEnd() + "|"
-                + request.getCompareStart() + "|"
-                + request.getCompareEnd();
+                + nvl(classLevel) + "|"
+                + nvl(classNo) + "|"
+                + nvl(deptId) + "|"
+                + nvl(retailTypeId) + "|"
+                + nvl(businessCircleId) + "|"
+                + nvl(deptGroupId) + "|"
+                + nvl(storeNo) + "|"
+                + nvl(periodStart) + "|"
+                + nvl(periodEnd) + "|"
+                + nvl(compareStart) + "|"
+                + nvl(compareEnd) + "|"
+                + nvl(extraFilterJson);
+
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] bytes = md.digest(text.getBytes(StandardCharsets.UTF_8));
             StringBuilder sb = new StringBuilder(bytes.length * 2);
@@ -32,5 +54,41 @@ public class DiagnosisQueryHashService {
             throw new IllegalStateException("构建查询哈希失败", ex);
         }
     }
-}
 
+    private String normalizeCommon(String value) {
+        if (value == null) {
+            return null;
+        }
+        String text = value.trim();
+        if (text.isEmpty() || "0".equals(text)) {
+            return null;
+        }
+        return text;
+    }
+
+    private String normalizeStoreNo(String value) {
+        if (value == null) {
+            return null;
+        }
+        String text = value.trim();
+        if (text.isEmpty() || "0".equals(text) || "all".equalsIgnoreCase(text)) {
+            return null;
+        }
+        return text;
+    }
+
+    private String normalizeClassLevel(Integer value) {
+        if (value == null || value <= 0) {
+            return null;
+        }
+        return String.valueOf(value);
+    }
+
+    private String normalizeDate(LocalDate value) {
+        return value == null ? null : value.toString();
+    }
+
+    private String nvl(String value) {
+        return value == null ? "" : value;
+    }
+}

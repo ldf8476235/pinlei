@@ -8,6 +8,7 @@ import org.dromara.diagnosis.infrastructure.model.CategorySaleSkuRow;
 import org.dromara.diagnosis.infrastructure.model.CategorySkuMetricRow;
 import org.dromara.diagnosis.infrastructure.model.CategoryTreeQueryParam;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow;
+import org.dromara.diagnosis.infrastructure.model.StoreBaseRow;
 
 import java.util.List;
 
@@ -25,4 +26,6 @@ public interface CategoryTreeMapper {
     List<CategorySaleSkuRow> selectCategorySaleSku(@Param("param") CategoryTreeQueryParam param);
 
     List<DiagnosisDictRow> selectDictRowsByType(@Param("dictType") String dictType);
+
+    List<StoreBaseRow> selectStores(@Param("param") CategoryTreeQueryParam param);
 }

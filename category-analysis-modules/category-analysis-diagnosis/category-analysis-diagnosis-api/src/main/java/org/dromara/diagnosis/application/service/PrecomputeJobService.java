@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.service;
+package org.dromara.diagnosis.application.service;
 
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;
 import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;

@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.service.impl;
+package org.dromara.diagnosis.application.service.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;
@@ -127,7 +127,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, row.getJobId()));
 
         String dataVersion = "V" + System.currentTimeMillis();
-        batchRunner.launch(row.getJobId(), window.getWindowId(), window.getPeriodStart(), window.getPeriodEnd(), dataVersion);
+        batchRunner.launch(row.getJobId(), window.getWindowId(), window.getPeriodStart(), window.getPeriodEnd(), dataVersion, row.getRequestJson());
         return getJob(row.getJobId());
     }
 
@@ -236,7 +236,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         DiagnosisPrecomputeWindowRow firstPending = precomputeMapper.selectNextPendingWindow(DEFAULT_TENANT_ID, jobId);
         if (firstPending != null) {
             String dataVersion = "V" + System.currentTimeMillis();
-            batchRunner.launch(jobId, firstPending.getWindowId(), firstPending.getPeriodStart(), firstPending.getPeriodEnd(), dataVersion);
+            batchRunner.launch(jobId, firstPending.getWindowId(), firstPending.getPeriodStart(), firstPending.getPeriodEnd(), dataVersion, row.getRequestJson());
         }
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId));
     }

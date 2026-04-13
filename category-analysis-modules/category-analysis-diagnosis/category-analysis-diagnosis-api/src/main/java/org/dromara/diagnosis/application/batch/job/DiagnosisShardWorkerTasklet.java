@@ -1,7 +1,8 @@
-﻿package org.dromara.diagnosis.application.batch.job;
+package org.dromara.diagnosis.application.batch.job;
 
-import lombok.RequiredArgsConstructor;
+import cn.hutool.core.lang.Dict;
 import org.dromara.common.json.utils.JsonUtils;
+import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;
 import org.dromara.diagnosis.application.service.DiagnosisProgressCacheService;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisBatchSourceMapper;
@@ -52,15 +53,18 @@ public class DiagnosisShardWorkerTasklet implements Tasklet {
 
         String periodStartText = chunkContext.getStepContext().getStepExecution().getJobParameters().getString("periodStart");
         String periodEndText = chunkContext.getStepContext().getStepExecution().getJobParameters().getString("periodEnd");
+        String requestJson = chunkContext.getStepContext().getStepExecution().getJobParameters().getString("requestJson");
         LocalDate periodStart = LocalDate.parse(periodStartText);
         LocalDate periodEnd = LocalDate.parse(periodEndText);
 
-        Long startId = chunkContext.getStepContext().getStepExecutionContext().getLong("startId");
-        Long endId = chunkContext.getStepContext().getStepExecutionContext().getLong("endId");
+        Map<String, Object> stepExecutionContext = chunkContext.getStepContext().getStepExecutionContext();
+        Long startId = toLong(stepExecutionContext.get("startId"));
+        Long endId = toLong(stepExecutionContext.get("endId"));
 
         DiagnosisSourceShardParam param = new DiagnosisSourceShardParam();
         param.setPeriodStart(periodStart);
         param.setPeriodEnd(periodEnd);
+        fillFilterParam(param, requestJson);
         if (startId != null && endId != null && startId > 0 && endId > 0) {
             param.setStartId(startId);
             param.setEndId(endId);
@@ -104,5 +108,41 @@ public class DiagnosisShardWorkerTasklet implements Tasklet {
         }
 
         return RepeatStatus.FINISHED;
+    }
+
+    private Long toLong(Object value) {
+        if (value == null) {
+            return null;
+        }
+        if (value instanceof Number number) {
+            return number.longValue();
+        }
+        try {
+            return Long.parseLong(String.valueOf(value));
+        } catch (NumberFormatException ex) {
+            return null;
+        }
+    }
+
+    private void fillFilterParam(DiagnosisSourceShardParam param, String requestJson) {
+        Dict map = JsonUtils.parseMap(requestJson);
+        if (map == null) {
+            return;
+        }
+        param.setClassLevel(map.getInt("classLevel"));
+        param.setClassNo(trim(map.getStr("classNo")));
+        param.setDeptId(trim(map.getStr("deptId")));
+        param.setRetailTypeId(trim(map.getStr("retailTypeId")));
+        param.setBusinessCircleId(trim(map.getStr("businessCircleId")));
+        param.setDeptGroupId(trim(map.getStr("deptGroupId")));
+        param.setStoreNo(trim(map.getStr("storeNo")));
+    }
+
+    private String trim(String value) {
+        if (value == null) {
+            return null;
+        }
+        String v = value.trim();
+        return v.isEmpty() ? null : v;
     }
 }

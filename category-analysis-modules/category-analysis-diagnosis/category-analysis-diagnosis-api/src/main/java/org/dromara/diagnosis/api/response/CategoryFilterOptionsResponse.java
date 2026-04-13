@@ -14,6 +14,7 @@ public class CategoryFilterOptionsResponse {
 
     private List<DictOptionResponse> categoryRoles;
 
+    private List<DictOptionResponse> skuAbnormal;
+
     private List<DictDetailResponse> classSalesStatusNo;
 }
-

@@ -18,8 +18,12 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -62,7 +66,7 @@ public class DiagnosisSessionService {
             jobRequest.setWindowTypes(request.getCompareStart() == null ? "MONTH" : "YOY");
             jobRequest.setForceRebuild(Boolean.FALSE);
             jobRequest.setPriority(5);
-            jobRequest.setRequestJson(request.getExtraFilterJson());
+            jobRequest.setRequestJson(buildRequestJson(request));
             triggeredJobId = precomputeJobService.createJob(jobRequest).getJobId();
             source = "TRIGGERED";
 
@@ -80,8 +84,7 @@ public class DiagnosisSessionService {
         cacheModel.setSessionId(sessionId);
         cacheModel.setQueryHash(queryHash);
         cacheModel.setDataVersion(overview == null ? null : overview.getDataVersion());
-        RedisUtils.setCacheObject(sessionKey(sessionId), JsonUtils.toJsonString(cacheModel),
-            Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes())));
+        persistSession(sessionId, cacheModel);
 
         DiagnosisSessionCreateResponse response = new DiagnosisSessionCreateResponse();
         response.setSessionId(sessionId);
@@ -96,26 +99,94 @@ public class DiagnosisSessionService {
 
     public DiagnosisOverviewResponse getOverview(String sessionId) {
         DiagnosisSessionCacheModel session = getSession(sessionId);
-        DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, session.getQueryHash());
+        DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
         if (overview == null) {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话对应结果不存在，请先触发预计算");
         }
+
         DiagnosisOverviewResponse response = new DiagnosisOverviewResponse();
-        response.setSessionId(sessionId);
-        response.setDataVersion(overview.getDataVersion());
-        response.setCacheHit(Boolean.TRUE);
-        response.setOverview(overview);
+        response.setClassNo(overview.getClassNo());
+        response.setClassName(overview.getClassName());
+
+        response.setCurrentClassSku(overview.getMetricTotalSku());
+        response.setCompareClassSku(null);
+        response.setComparativeGrowthRate(calcGrowthPercent(toBigDecimal(response.getCurrentClassSku()), toBigDecimal(response.getCompareClassSku())));
+
+        response.setCurrentSales(nvl(overview.getMetricTotalSales()));
+        response.setCompareSales(overview.getMetricCompareSales());
+        response.setComparativeSales(calcGrowthPercent(response.getCurrentSales(), response.getCompareSales()));
+
+        response.setCurrentGross(nvl(overview.getMetricTotalProfit()));
+        response.setCompareGross(overview.getMetricCompareGross());
+        response.setComparativeGross(calcGrowthPercent(response.getCurrentGross(), response.getCompareGross()));
+
+        response.setCurrentGrossRate(overview.getMetricProfitMargin());
+        response.setCompareGrossRate(calcMarginPercent(response.getCompareGross(), response.getCompareSales()));
+        response.setComparativeGrossRate(calcDiff(response.getCurrentGrossRate(), response.getCompareGrossRate()));
+
+        response.setCurrentSaleQuantity(overview.getMetricSaleQuantity());
+        response.setCompareSaleQuantity(overview.getMetricCompareSaleQuantity());
+        response.setComparativeSaleQuantity(calcGrowthPercent(response.getCurrentSaleQuantity(), response.getCompareSaleQuantity()));
+
+        response.setCurrentSalesCost(overview.getMetricSalesCost());
+        response.setCompareSalesCost(overview.getMetricCompareSalesCost());
+
+        response.setCurrentCustomerCount(overview.getMetricCustomerCount());
+        response.setCompareCustomerCount(overview.getMetricCompareCustomerCount());
+        response.setComparativeCustomerCount(calcGrowthPercent(response.getCurrentCustomerCount(), response.getCompareCustomerCount()));
+
+        response.setCurrentCustomerCountTotal(overview.getMetricCustomerCountTotal());
+        response.setCompareCustomerCountTotal(overview.getMetricCompareCustomerCountTotal());
+
+        response.setCurrentCustomerPrice(overview.getMetricCustomerPrice());
+        response.setCompareCustomerPrice(safeDivide(response.getCompareSales(), response.getCompareCustomerCount()));
+        response.setComparativeCustomerPrice(calcGrowthPercent(response.getCurrentCustomerPrice(), response.getCompareCustomerPrice()));
+
+        response.setCurrentCustomerAvgQuantity(overview.getMetricCustomerAvgQuantity());
+        response.setCompareCustomerAvgQuantity(safeDivide(response.getCompareSaleQuantity(), response.getCompareCustomerCount()));
+        response.setComparativeCustomerAvgQuantity(calcGrowthPercent(response.getCurrentCustomerAvgQuantity(), response.getCompareCustomerAvgQuantity()));
+
+        response.setCurrentPieceAvgPrice(overview.getMetricPieceAvgPrice());
+        response.setComparePieceAvgPrice(safeDivide(response.getCompareSales(), response.getCompareSaleQuantity()));
+        response.setComparativePieceAvgPrice(calcGrowthPercent(response.getCurrentPieceAvgPrice(), response.getComparePieceAvgPrice()));
+
+        response.setCurrentAvgInventory(overview.getMetricAvgInventory());
+        response.setCompareAvgInventory(overview.getMetricCompareAvgInventory());
+        response.setComparativeAvgInventory(calcGrowthPercent(response.getCurrentAvgInventory(), response.getCompareAvgInventory()));
+
+        response.setCurrentInventorySales(overview.getMetricInventorySalesRatio());
+        response.setCompareInventorySales(overview.getMetricCompareInventorySalesRatio());
+        response.setComparativeInventorySales(calcGrowthPercent(response.getCurrentInventorySales(), response.getCompareInventorySales()));
+
+        response.setCurrentTurnoverDays(overview.getMetricInventoryTurnoverDays());
+        response.setCompareTurnoverDays(overview.getMetricCompareInventoryTurnoverDays());
+        response.setComparativeTurnoverDays(calcGrowthPercent(response.getCurrentTurnoverDays(), response.getCompareTurnoverDays()));
+
+        response.setCurrentPenetrateRate(overview.getMetricPenetrateRate());
+        response.setComparePenetrateRate(overview.getMetricComparePenetrateRate());
+        response.setComparativePenetrateRate(calcDiff(response.getCurrentPenetrateRate(), response.getComparePenetrateRate()));
+
+        response.setCurrentTurnoverRate(overview.getMetricSalesRate());
+        response.setCompareTurnoverRate(null);
+        response.setComparativeTurnoverRate(calcGrowthPercent(response.getCurrentTurnoverRate(), response.getCompareTurnoverRate()));
+
         return response;
     }
 
     public DiagnosisTrendsResponse getTrends(String sessionId, String metricCode) {
         DiagnosisSessionCacheModel session = getSession(sessionId);
-        DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, session.getQueryHash());
-        List<DiagnosisTrendSnapshotRow> trends = snapshotMapper.selectLatestTrendsByQuery(TENANT_ID, session.getQueryHash(), metricCode);
+        DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
+        if (overview == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话对应结果不存在，请先触发预计算");
+        }
+
+        List<DiagnosisTrendSnapshotRow> trends = snapshotMapper.selectTrendsByQueryAndVersion(
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), metricCode);
+
         DiagnosisTrendsResponse response = new DiagnosisTrendsResponse();
         response.setSessionId(sessionId);
         response.setMetricCode(metricCode);
-        response.setDataVersion(overview == null ? session.getDataVersion() : overview.getDataVersion());
+        response.setDataVersion(session.getDataVersion());
         response.setCacheHit(Boolean.TRUE);
         response.setTrends(trends);
         return response;
@@ -133,6 +204,29 @@ public class DiagnosisSessionService {
         return model;
     }
 
+    private DiagnosisOverviewSnapshotRow resolveOverviewSnapshot(String sessionId, DiagnosisSessionCacheModel session) {
+        if (hasText(session.getDataVersion())) {
+            return snapshotMapper.selectOverviewByQueryAndVersion(
+                TENANT_ID, session.getQueryHash(), session.getDataVersion());
+        }
+
+        DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, session.getQueryHash());
+        if (overview == null) {
+            return null;
+        }
+
+        if (hasText(overview.getDataVersion())) {
+            session.setDataVersion(overview.getDataVersion());
+            persistSession(sessionId, session);
+        }
+        return overview;
+    }
+
+    private void persistSession(String sessionId, DiagnosisSessionCacheModel session) {
+        RedisUtils.setCacheObject(sessionKey(sessionId), JsonUtils.toJsonString(session),
+            Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes())));
+    }
+
     private void sleepOneSecond() {
         try {
             Thread.sleep(1000L);
@@ -144,5 +238,61 @@ public class DiagnosisSessionService {
     private String sessionKey(String sessionId) {
         return keyPrefixProperties.getResultQuery() + ":session:" + sessionId;
     }
-}
 
+    private boolean hasText(String value) {
+        return value != null && !value.trim().isEmpty();
+    }
+
+    private BigDecimal nvl(BigDecimal value) {
+        return value == null ? BigDecimal.ZERO : value;
+    }
+
+    private BigDecimal calcGrowthPercent(BigDecimal current, BigDecimal compare) {
+        if (current == null || compare == null || compare.compareTo(BigDecimal.ZERO) == 0) {
+            return null;
+        }
+        return current.subtract(compare)
+            .multiply(new BigDecimal("100"))
+            .divide(compare, 4, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal calcMarginPercent(BigDecimal gross, BigDecimal sales) {
+        if (gross == null || sales == null || sales.compareTo(BigDecimal.ZERO) == 0) {
+            return null;
+        }
+        return gross.multiply(new BigDecimal("100"))
+            .divide(sales, 4, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal calcDiff(BigDecimal current, BigDecimal compare) {
+        if (current == null || compare == null) {
+            return null;
+        }
+        return current.subtract(compare);
+    }
+
+    private BigDecimal toBigDecimal(Integer value) {
+        return value == null ? null : BigDecimal.valueOf(value);
+    }
+
+    private BigDecimal safeDivide(BigDecimal dividend, BigDecimal divisor) {
+        if (dividend == null || divisor == null || divisor.compareTo(BigDecimal.ZERO) == 0) {
+            return null;
+        }
+        return dividend.divide(divisor, 6, RoundingMode.HALF_UP);
+    }
+
+    private String buildRequestJson(DiagnosisSessionCreateRequest request) {
+        Map<String, Object> payload = new LinkedHashMap<>();
+        payload.put("classLevel", request.getClassLevel());
+        payload.put("classNo", request.getClassNo());
+        payload.put("className", request.getClassName());
+        payload.put("deptId", request.getDeptId());
+        payload.put("retailTypeId", request.getRetailTypeId());
+        payload.put("businessCircleId", request.getBusinessCircleId());
+        payload.put("deptGroupId", request.getDeptGroupId());
+        payload.put("storeNo", request.getStoreNo());
+        payload.put("extraFilterJson", request.getExtraFilterJson());
+        return JsonUtils.toJsonString(payload);
+    }
+}

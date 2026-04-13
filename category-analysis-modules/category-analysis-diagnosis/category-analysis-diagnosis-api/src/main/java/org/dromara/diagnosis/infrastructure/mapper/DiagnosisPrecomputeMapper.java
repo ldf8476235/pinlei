@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.infrastructure.mapper;
+package org.dromara.diagnosis.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import org.apache.ibatis.annotations.Mapper;

@@ -30,9 +30,30 @@
                 metric_total_sales = #{row.metricTotalSales},
                 metric_total_profit = #{row.metricTotalProfit},
                 metric_profit_margin = #{row.metricProfitMargin},
+                metric_sale_quantity = #{row.metricSaleQuantity},
+                metric_sales_cost = #{row.metricSalesCost},
+                metric_customer_count = #{row.metricCustomerCount},
+                metric_customer_count_total = #{row.metricCustomerCountTotal},
+                metric_customer_price = #{row.metricCustomerPrice},
+                metric_customer_avg_quantity = #{row.metricCustomerAvgQuantity},
+                metric_piece_avg_price = #{row.metricPieceAvgPrice},
+                metric_avg_inventory = #{row.metricAvgInventory},
+                metric_inventory_sales_ratio = #{row.metricInventorySalesRatio},
+                metric_inventory_turnover_days = #{row.metricInventoryTurnoverDays},
+                metric_penetrate_rate = #{row.metricPenetrateRate},
                 metric_total_sku = #{row.metricTotalSku},
                 metric_active_sku = #{row.metricActiveSku},
                 metric_sales_rate = #{row.metricSalesRate},
+                metric_compare_sales = #{row.metricCompareSales},
+                metric_compare_gross = #{row.metricCompareGross},
+                metric_compare_sale_quantity = #{row.metricCompareSaleQuantity},
+                metric_compare_sales_cost = #{row.metricCompareSalesCost},
+                metric_compare_customer_count = #{row.metricCompareCustomerCount},
+                metric_compare_customer_count_total = #{row.metricCompareCustomerCountTotal},
+                metric_compare_avg_inventory = #{row.metricCompareAvgInventory},
+                metric_compare_inventory_sales_ratio = #{row.metricCompareInventorySalesRatio},
+                metric_compare_inventory_turnover_days = #{row.metricCompareInventoryTurnoverDays},
+                metric_compare_penetrate_rate = #{row.metricComparePenetrateRate},
                 snapshot_time = COALESCE(#{row.snapshotTime}, SYSUTCDATETIME()),
                 update_time = SYSUTCDATETIME()
         WHEN NOT MATCHED THEN
@@ -42,7 +63,16 @@
                 retail_type_id, dept_id, business_circle_id, dept_group_id, store_no,
                 period_start, period_end, compare_start, compare_end,
                 metric_total_sales, metric_total_profit, metric_profit_margin,
+                metric_sale_quantity, metric_sales_cost,
+                metric_customer_count, metric_customer_count_total,
+                metric_customer_price, metric_customer_avg_quantity, metric_piece_avg_price,
+                metric_avg_inventory, metric_inventory_sales_ratio, metric_inventory_turnover_days, metric_penetrate_rate,
                 metric_total_sku, metric_active_sku, metric_sales_rate,
+                metric_compare_sales, metric_compare_gross,
+                metric_compare_sale_quantity, metric_compare_sales_cost,
+                metric_compare_customer_count, metric_compare_customer_count_total,
+                metric_compare_avg_inventory, metric_compare_inventory_sales_ratio,
+                metric_compare_inventory_turnover_days, metric_compare_penetrate_rate,
                 data_version, snapshot_time
             )
             VALUES
@@ -51,7 +81,16 @@
                 #{row.retailTypeId}, #{row.deptId}, #{row.businessCircleId}, #{row.deptGroupId}, #{row.storeNo},
                 #{row.periodStart}, #{row.periodEnd}, #{row.compareStart}, #{row.compareEnd},
                 #{row.metricTotalSales}, #{row.metricTotalProfit}, #{row.metricProfitMargin},
+                #{row.metricSaleQuantity}, #{row.metricSalesCost},
+                #{row.metricCustomerCount}, #{row.metricCustomerCountTotal},
+                #{row.metricCustomerPrice}, #{row.metricCustomerAvgQuantity}, #{row.metricPieceAvgPrice},
+                #{row.metricAvgInventory}, #{row.metricInventorySalesRatio}, #{row.metricInventoryTurnoverDays}, #{row.metricPenetrateRate},
                 #{row.metricTotalSku}, #{row.metricActiveSku}, #{row.metricSalesRate},
+                #{row.metricCompareSales}, #{row.metricCompareGross},
+                #{row.metricCompareSaleQuantity}, #{row.metricCompareSalesCost},
+                #{row.metricCompareCustomerCount}, #{row.metricCompareCustomerCountTotal},
+                #{row.metricCompareAvgInventory}, #{row.metricCompareInventorySalesRatio},
+                #{row.metricCompareInventoryTurnoverDays}, #{row.metricComparePenetrateRate},
                 #{row.dataVersion}, COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
             );
     </insert>
@@ -76,9 +115,30 @@
             metric_total_sales AS metricTotalSales,
             metric_total_profit AS metricTotalProfit,
             metric_profit_margin AS metricProfitMargin,
+            metric_sale_quantity AS metricSaleQuantity,
+            metric_sales_cost AS metricSalesCost,
+            metric_customer_count AS metricCustomerCount,
+            metric_customer_count_total AS metricCustomerCountTotal,
+            metric_customer_price AS metricCustomerPrice,
+            metric_customer_avg_quantity AS metricCustomerAvgQuantity,
+            metric_piece_avg_price AS metricPieceAvgPrice,
+            metric_avg_inventory AS metricAvgInventory,
+            metric_inventory_sales_ratio AS metricInventorySalesRatio,
+            metric_inventory_turnover_days AS metricInventoryTurnoverDays,
+            metric_penetrate_rate AS metricPenetrateRate,
             metric_total_sku AS metricTotalSku,
             metric_active_sku AS metricActiveSku,
             metric_sales_rate AS metricSalesRate,
+            metric_compare_sales AS metricCompareSales,
+            metric_compare_gross AS metricCompareGross,
+            metric_compare_sale_quantity AS metricCompareSaleQuantity,
+            metric_compare_sales_cost AS metricCompareSalesCost,
+            metric_compare_customer_count AS metricCompareCustomerCount,
+            metric_compare_customer_count_total AS metricCompareCustomerCountTotal,
+            metric_compare_avg_inventory AS metricCompareAvgInventory,
+            metric_compare_inventory_sales_ratio AS metricCompareInventorySalesRatio,
+            metric_compare_inventory_turnover_days AS metricCompareInventoryTurnoverDays,
+            metric_compare_penetrate_rate AS metricComparePenetrateRate,
             data_version AS dataVersion,
             snapshot_time AS snapshotTime,
             create_time AS createTime,
@@ -86,6 +146,61 @@
         FROM diag_result_overview
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
+        ORDER BY snapshot_time DESC, id DESC
+    </select>
+
+    <select id="selectOverviewByQueryAndVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow">
+        SELECT TOP 1
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            class_level AS classLevel,
+            class_no AS classNo,
+            class_name AS className,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            metric_total_sales AS metricTotalSales,
+            metric_total_profit AS metricTotalProfit,
+            metric_profit_margin AS metricProfitMargin,
+            metric_sale_quantity AS metricSaleQuantity,
+            metric_sales_cost AS metricSalesCost,
+            metric_customer_count AS metricCustomerCount,
+            metric_customer_count_total AS metricCustomerCountTotal,
+            metric_customer_price AS metricCustomerPrice,
+            metric_customer_avg_quantity AS metricCustomerAvgQuantity,
+            metric_piece_avg_price AS metricPieceAvgPrice,
+            metric_avg_inventory AS metricAvgInventory,
+            metric_inventory_sales_ratio AS metricInventorySalesRatio,
+            metric_inventory_turnover_days AS metricInventoryTurnoverDays,
+            metric_penetrate_rate AS metricPenetrateRate,
+            metric_total_sku AS metricTotalSku,
+            metric_active_sku AS metricActiveSku,
+            metric_sales_rate AS metricSalesRate,
+            metric_compare_sales AS metricCompareSales,
+            metric_compare_gross AS metricCompareGross,
+            metric_compare_sale_quantity AS metricCompareSaleQuantity,
+            metric_compare_sales_cost AS metricCompareSalesCost,
+            metric_compare_customer_count AS metricCompareCustomerCount,
+            metric_compare_customer_count_total AS metricCompareCustomerCountTotal,
+            metric_compare_avg_inventory AS metricCompareAvgInventory,
+            metric_compare_inventory_sales_ratio AS metricCompareInventorySalesRatio,
+            metric_compare_inventory_turnover_days AS metricCompareInventoryTurnoverDays,
+            metric_compare_penetrate_rate AS metricComparePenetrateRate,
+            data_version AS dataVersion,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_overview
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
         ORDER BY snapshot_time DESC, id DESC
     </select>
 
@@ -139,6 +254,31 @@
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
           AND data_version = (SELECT data_version FROM latest_version)
+          <if test="metricCode != null and metricCode != ''">
+              AND metric_code = #{metricCode}
+          </if>
+        ORDER BY point_date ASC, id ASC
+    </select>
+
+    <select id="selectTrendsByQueryAndVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            metric_code AS metricCode,
+            point_date AS pointDate,
+            current_value AS currentValue,
+            compare_value AS compareValue,
+            growth_rate AS growthRate,
+            period_label AS periodLabel,
+            data_version AS dataVersion,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_trends
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
           <if test="metricCode != null and metricCode != ''">
               AND metric_code = #{metricCode}
           </if>
