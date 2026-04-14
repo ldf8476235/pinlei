@@ -17,7 +17,7 @@
             #{row.tenantId}, #{row.jobCode}, #{row.moduleCode}, #{row.statusCode}, #{row.priority},
             #{row.requestJson}, #{row.requestHash}, #{row.readRangeType}, #{row.readStart}, #{row.readEnd}, #{row.windowTypes},
             #{row.forceRebuild}, #{row.maxRetry}, #{row.retryCount}, #{row.progressPercent}, #{row.currentStage}, #{row.totalWindows}, #{row.doneWindows},
-            #{row.rowsRead}, #{row.rowsWritten}, #{row.submittedBy}, ISNULL(#{row.submittedTime}, SYSUTCDATETIME())
+            #{row.rowsRead}, #{row.rowsWritten}, #{row.submittedBy}, ISNULL(#{row.submittedTime,jdbcType=TIMESTAMP}, SYSUTCDATETIME())
         )
     </insert>
 
@@ -39,8 +39,8 @@
         SET status_code = #{row.statusCode},
             current_stage = #{row.currentStage},
             retry_count = COALESCE(#{row.retryCount}, retry_count),
-            started_time = COALESCE(#{row.startedTime}, started_time),
-            finished_time = COALESCE(#{row.finishedTime}, finished_time),
+            started_time = COALESCE(#{row.startedTime,jdbcType=TIMESTAMP}, started_time),
+            finished_time = COALESCE(#{row.finishedTime,jdbcType=TIMESTAMP}, finished_time),
             error_message = #{row.errorMessage},
             update_time = SYSUTCDATETIME()
         WHERE tenant_id = #{row.tenantId}
@@ -165,9 +165,9 @@
         VALUES
         (
             #{row.tenantId}, #{row.jobId}, #{row.windowKey}, #{row.windowType},
-            #{row.periodStart}, #{row.periodEnd}, #{row.compareStart}, #{row.compareEnd},
+            #{row.periodStart,jdbcType=DATE}, #{row.periodEnd,jdbcType=DATE}, #{row.compareStart,jdbcType=DATE}, #{row.compareEnd,jdbcType=DATE},
             #{row.statusCode}, #{row.progressPercent}, #{row.currentStage}, #{row.dataVersion}, #{row.retryCount},
-            #{row.rowsRead}, #{row.rowsWritten}, #{row.startedTime}, #{row.finishedTime}, #{row.errorMessage}
+            #{row.rowsRead}, #{row.rowsWritten}, #{row.startedTime,jdbcType=TIMESTAMP}, #{row.finishedTime,jdbcType=TIMESTAMP}, #{row.errorMessage}
         )
     </insert>
 
@@ -180,8 +180,8 @@
             retry_count = COALESCE(#{row.retryCount}, retry_count),
             rows_read = #{row.rowsRead},
             rows_written = #{row.rowsWritten},
-            started_time = COALESCE(#{row.startedTime}, started_time),
-            finished_time = COALESCE(#{row.finishedTime}, finished_time),
+            started_time = COALESCE(#{row.startedTime,jdbcType=TIMESTAMP}, started_time),
+            finished_time = COALESCE(#{row.finishedTime,jdbcType=TIMESTAMP}, finished_time),
             error_message = #{row.errorMessage},
             update_time = SYSUTCDATETIME()
         WHERE tenant_id = #{row.tenantId}
@@ -283,7 +283,7 @@
         )
         VALUES
         (
-            #{row.tenantId}, #{row.jobId}, #{row.windowId}, COALESCE(#{row.eventTime}, SYSUTCDATETIME()),
+            #{row.tenantId}, #{row.jobId}, #{row.windowId}, COALESCE(#{row.eventTime,jdbcType=TIMESTAMP}, SYSUTCDATETIME()),
             #{row.eventLevel}, #{row.eventStage}, #{row.eventMessage}, #{row.payloadJson}
         )
     </insert>

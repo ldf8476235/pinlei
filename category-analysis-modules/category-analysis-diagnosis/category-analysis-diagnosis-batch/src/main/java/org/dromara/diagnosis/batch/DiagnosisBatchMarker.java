@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.batch;
+package org.dromara.diagnosis.batch;
 
 /**
  * Diagnosis batch marker.

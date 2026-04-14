@@ -1,0 +1,84 @@
+地址:http://localhost/dev-api/api/v1/diagnosis/sessions
+请求：{
+  "storeNo": "0000",
+  "classLevel": 1,
+  "classNo": "004",
+  "periodStart": "2025-04-01",
+  "periodEnd": "2025-04-30",
+  "compareStart": "2024-04-01",
+  "compareEnd": "2024-04-30",
+  "triggerIfMissing": true,
+  "waitSeconds": 0
+}
+返回：{
+    "success": true,
+    "code": "0",
+    "message": "OK",
+    "data": {
+        "sessionId": "S-1b4a7cbb63b7439bb8c0a9649d3ae19b",
+        "queryHash": "2b31d8f0b82c9da0e90d7ce836451f99",
+        "dataVersion": null,
+        "cacheHit": false,
+        "ready": false,
+        "triggeredJobId": 1,
+        "source": "TRIGGERED"
+    },
+    "requestId": "db7d682e1782483c9e6fb0131c67166f",
+    "timestamp": "2026-04-14 16:52:52"
+}
+
+地址：http://localhost/dev-api/api/v1/diagnosis/overview?sessionId=S-1b4a7cbb63b7439bb8c0a9649d3ae19b
+返回：{
+    "success": false,
+    "code": "DIAG-400",
+    "message": "no diagnosis snapshot found for current query; trigger precompute first",
+    "data": null,
+    "requestId": "554f8533-83b1-41bb-84ca-6bfa6fa51bdf",
+    "timestamp": "2026-04-14 16:55:55"
+}
+
+
+地址：http://localhost/dev-api/api/v1/precompute/jobs/1
+返回：{
+    "success": true,
+    "code": "0",
+    "message": "OK",
+    "data": {
+        "jobId": 1,
+        "jobCode": "JOB-7551dfbcf73240b0a6e083c8737db7a6",
+        "status": "PENDING",
+        "priority": 5,
+        "module": "DIAGNOSIS",
+        "readRangeType": "CUSTOM",
+        "readStart": "2025-04-01",
+        "readEnd": "2025-04-30",
+        "windowTypes": "YOY",
+        "maxRetry": 1,
+        "retryCount": 0,
+        "progressPercent": "0.00",
+        "currentStage": "INIT",
+        "totalWindows": 0,
+        "doneWindows": 0,
+        "rowsRead": 0,
+        "rowsWritten": 0,
+        "errorMessage": null,
+        "submittedTime": "2026-04-14 16:48:13",
+        "startedTime": null,
+        "finishedTime": null,
+        "windows": []
+    },
+    "requestId": "47a59639821f442ca59015e1fd55887f",
+    "timestamp": "2026-04-14 17:19:39"
+}
+
+请求：http://localhost/dev-api/api/v1/precompute/jobs/1/windows
+返回：{
+    "success": true,
+    "code": "0",
+    "message": "OK",
+    "data": [],
+    "requestId": "9963863bbf3d438f838b878960237815",
+    "timestamp": "2026-04-14 17:20:00"
+}
+
+

@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.cache.config;
+package org.dromara.diagnosis.cache.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;

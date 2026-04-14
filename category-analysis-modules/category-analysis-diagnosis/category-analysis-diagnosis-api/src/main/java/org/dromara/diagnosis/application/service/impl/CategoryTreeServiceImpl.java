@@ -2,13 +2,17 @@ package org.dromara.diagnosis.application.service.impl;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.dromara.diagnosis.api.request.CategoryNodeConfigUpdateRequest;
 import org.dromara.diagnosis.api.request.CategoryTreeQueryRequest;
 import org.dromara.diagnosis.api.response.CategoryClassTreeNodeResponse;
 import org.dromara.diagnosis.api.response.CategoryFilterOptionsResponse;
+import org.dromara.diagnosis.api.response.CategoryNodeConfigUpdateResponse;
 import org.dromara.diagnosis.api.response.DictDetailResponse;
 import org.dromara.diagnosis.api.response.DictOptionResponse;
 import org.dromara.diagnosis.api.response.CategoryTreeNodeResponse;
 import org.dromara.diagnosis.application.service.CategoryTreeService;
+import org.dromara.diagnosis.common.exception.DiagnosisBizException;
+import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
 import org.dromara.diagnosis.infrastructure.mapper.CategoryTreeMapper;
 import org.dromara.diagnosis.infrastructure.model.CategoryHierarchyRow;
 import org.dromara.diagnosis.infrastructure.model.CategorySaleSkuRow;
@@ -29,7 +33,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 /**
- * 品类树服务实现.
+ * Category tree service implementation.
  */
 @Service
 @RequiredArgsConstructor
@@ -42,6 +46,8 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
     private static final String DICT_TYPE_CATEGORY_ROLE = "class_role_type";
 
     private static final String DICT_TYPE_CLASS_SALES_STATUS_NO = "class_sales_status_no";
+
+    private static final int SUGGEST_SKU_MAX = 999999;
 
     private final CategoryTreeMapper categoryTreeMapper;
 
@@ -113,13 +119,65 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         response.setClassSalesStatusNo(toDictDetails(salesStatusRows));
         return response;
     }
+    @Override
+    public CategoryNodeConfigUpdateResponse updateNodeConfig(CategoryNodeConfigUpdateRequest request) {
+        if (request == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "request is required");
+        }
+
+        String storeNo = trim(request.getStoreNo());
+        String classNo = trim(request.getClassNo());
+        String roleNo = trim(request.getRoleNo());
+        Integer suggestSaleSku = request.getSuggestSaleSku();
+
+        if (!notBlank(storeNo)) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "storeNo is required");
+        }
+        if (!notBlank(classNo)) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "classNo is required");
+        }
+        if (!notBlank(roleNo)) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "roleNo is required");
+        }
+        if (suggestSaleSku == null || suggestSaleSku < 0 || suggestSaleSku > SUGGEST_SKU_MAX) {
+            throw new DiagnosisBizException(
+                DiagnosisErrorCode.INVALID_ARGUMENT,
+                "suggestSaleSku must be an integer between 0 and " + SUGGEST_SKU_MAX
+            );
+        }
+
+        Integer classCnt = categoryTreeMapper.countClassByClassNo(classNo);
+        if (classCnt == null || classCnt <= 0) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "classNo does not exist");
+        }
+
+        List<DiagnosisDictRow> roleRows = categoryTreeMapper.selectDictRowsByType(DICT_TYPE_CATEGORY_ROLE);
+        Map<String, String> roleMap = roleRows.stream()
+            .filter(Objects::nonNull)
+            .filter(it -> notBlank(it.getDictValue()))
+            .collect(Collectors.toMap(it -> trim(it.getDictValue()), it -> trim(it.getDictLabel()), (a, b) -> a));
+        if (!roleMap.containsKey(roleNo)) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "roleNo is not in dictionary");
+        }
+
+        categoryTreeMapper.upsertCategoryNodeConfig(storeNo, classNo, roleNo, suggestSaleSku);
+
+        CategorySkuMetricRow row = categoryTreeMapper.selectCategoryNodeConfig(storeNo, classNo);
+        CategoryNodeConfigUpdateResponse response = new CategoryNodeConfigUpdateResponse();
+        response.setStoreNo(storeNo);
+        response.setClassNo(classNo);
+        response.setRoleNo(row == null || !notBlank(row.getRoleNo()) ? roleNo : trim(row.getRoleNo()));
+        response.setSuggestSaleSku(row == null ? suggestSaleSku : nvl(row.getSuggestSaleSku()));
+        response.setRoleType(roleMap.getOrDefault(response.getRoleNo(), toRoleType(response.getRoleNo())));
+        return response;
+    }
 
     private List<DictOptionResponse> buildFixedCategoryLevels() {
         return List.of(
-            dictOption("一级品类", "1"),
-            dictOption("二级品类", "2"),
-            dictOption("三级品类", "3"),
-            dictOption("四级品类", "4")
+            dictOption("\u4e00\u7ea7\u54c1\u7c7b", "1"),
+            dictOption("\u4e8c\u7ea7\u54c1\u7c7b", "2"),
+            dictOption("\u4e09\u7ea7\u54c1\u7c7b", "3"),
+            dictOption("\u56db\u7ea7\u54c1\u7c7b", "4")
         );
     }
 
@@ -132,10 +190,10 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
 
     private List<DictOptionResponse> buildSkuAbnormalOptions() {
         return List.of(
-            dictOption("全部", "0"),
-            dictOption("实际数比系统建议少", "1"),
-            dictOption("实际数比系统建议多", "2"),
-            dictOption("实际数与预设标准不一致", "3")
+            dictOption("\u5168\u90e8", "0"),
+            dictOption("\u5b9e\u9645\u6570\u6bd4\u7cfb\u7edf\u5efa\u8bae\u5c11", "1"),
+            dictOption("\u5b9e\u9645\u6570\u6bd4\u7cfb\u7edf\u5efa\u8bae\u591a", "2"),
+            dictOption("\u5b9e\u9645\u6570\u4e0e\u9884\u8bbe\u6807\u51c6\u4e0d\u4e00\u81f4", "3")
         );
     }
 
@@ -152,7 +210,7 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         Map<String, MutableNode> nodeMap = new HashMap<>();
         MutableNode root = new MutableNode();
         root.setClassNo(ROOT_CLASS_NO);
-        root.setClassName("全部");
+        root.setClassName("\u5168\u90e8");
         root.setParentClassNo(ROOT_PARENT_CLASS_NO);
         root.setClassLevel(0);
         nodeMap.put(ROOT_CLASS_NO, root);
@@ -393,8 +451,8 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         response.setLevel(classNo);
         response.setFlevel(notBlank(node.getParentClassNo()) ? node.getParentClassNo() : ROOT_PARENT_CLASS_NO);
         response.setLevelFlag(classLevel);
-        response.setClassName(ROOT_CLASS_NO.equals(classNo) ? "全部" : classNo + nvlString(className));
-        response.setLabelName(ROOT_CLASS_NO.equals(classNo) ? "全部" : nvlString(className));
+        response.setClassName(ROOT_CLASS_NO.equals(classNo) ? "\u5168\u90e8" : classNo + nvlString(className));
+        response.setLabelName(ROOT_CLASS_NO.equals(classNo) ? "\u5168\u90e8" : nvlString(className));
         response.setStateFlag(0);
         response.setSku(ROOT_CLASS_NO.equals(classNo) ? null : node.getSaleSku());
         response.setUpdateFlag(null);
@@ -575,12 +633,12 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
             return "";
         }
         return switch (roleNo.trim()) {
-            case "0" -> "全部";
-            case "1" -> "明星品类";
-            case "2" -> "幼童品类";
-            case "3" -> "结构品类";
-            case "4" -> "金牛品类";
-            case "5" -> "战略品类";
+            case "0" -> "\u5168\u90e8";
+            case "1" -> "\u660e\u661f\u54c1\u7c7b";
+            case "2" -> "\u95ee\u9898\u54c1\u7c7b";
+            case "3" -> "\u7ed3\u6784\u54c1\u7c7b";
+            case "4" -> "\u91d1\u725b\u54c1\u7c7b";
+            case "5" -> "\u6218\u7565\u54c1\u7c7b";
             default -> "";
         };
     }

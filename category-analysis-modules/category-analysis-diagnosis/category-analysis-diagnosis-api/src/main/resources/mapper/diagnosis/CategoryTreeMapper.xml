@@ -122,6 +122,97 @@
         GROUP BY class_no
     </select>
 
+    <select id="countClassByClassNo" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM base_class b
+        WHERE (
+            b.one_class_no = #{classNo}
+            OR b.two_class_no = #{classNo}
+            OR b.three_class_no = #{classNo}
+            OR b.four_class_no = #{classNo}
+            OR b.five_class_no = #{classNo}
+        )
+    </select>
+
+    <select id="countStoreByStoreNo" resultType="java.lang.Integer">
+        SELECT COUNT(1)
+        FROM base_department
+        WHERE store_no = #{storeNo}
+    </select>
+
+    <update id="upsertCategoryNodeConfig">
+        IF EXISTS (
+            SELECT 1
+            FROM base_class_sku
+            WHERE store_no = #{storeNo}
+              AND class_no = #{classNo}
+        )
+        BEGIN
+            UPDATE base_class_sku
+            SET class_role = #{roleNo},
+                class_sku = CAST(#{suggestSaleSku} AS NVARCHAR(40)),
+                updatetime = GETDATE()
+            WHERE store_no = #{storeNo}
+              AND class_no = #{classNo};
+        END
+        ELSE
+        BEGIN
+            INSERT INTO base_class_sku (
+                store_no, store_name,
+                store_org_no, store_org_name,
+                store_format_no, store_format_name,
+                business_circle_no, business_circle_name,
+                store_group_no, store_group_name,
+                class_no, class_name, class_sku, class_role, updatetime
+            )
+            SELECT
+                d.store_no,
+                ISNULL(d.store_name, ''),
+                d.preorgcode,
+                d.preorgname,
+                d.store_format_no,
+                d.store_format_name,
+                d.business_circle_no,
+                d.business_circle_name,
+                d.store_group_no,
+                d.store_group_name,
+                #{classNo},
+                cls.class_name,
+                CAST(#{suggestSaleSku} AS NVARCHAR(40)),
+                #{roleNo},
+                GETDATE()
+            FROM base_department d
+            CROSS APPLY (
+                SELECT TOP 1 class_name
+                FROM (
+                    SELECT one_class_name AS class_name FROM base_class WHERE one_class_no = #{classNo}
+                    UNION ALL
+                    SELECT two_class_name AS class_name FROM base_class WHERE two_class_no = #{classNo}
+                    UNION ALL
+                    SELECT three_class_name AS class_name FROM base_class WHERE three_class_no = #{classNo}
+                    UNION ALL
+                    SELECT four_class_name AS class_name FROM base_class WHERE four_class_no = #{classNo}
+                    UNION ALL
+                    SELECT five_class_name AS class_name FROM base_class WHERE five_class_no = #{classNo}
+                ) t
+                WHERE class_name IS NOT NULL AND LTRIM(RTRIM(class_name)) &lt;&gt; ''
+            ) cls
+            WHERE d.store_no = #{storeNo};
+        END
+    </update>
+
+    <select id="selectCategoryNodeConfig" resultType="org.dromara.diagnosis.infrastructure.model.CategorySkuMetricRow">
+        SELECT
+            class_no AS classNo,
+            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(class_sku)), '')), 0)) AS INT) AS suggestSaleSku,
+            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(class_sku)), '')), 0)) AS INT) AS sysSuggestSaleSku,
+            MAX(LTRIM(RTRIM(class_role))) AS roleNo
+        FROM base_class_sku
+        WHERE store_no = #{storeNo}
+          AND class_no = #{classNo}
+        GROUP BY class_no
+    </select>
+
     <select id="selectDictRowsByType" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow">
         SELECT
             d.dict_code AS dictCode,

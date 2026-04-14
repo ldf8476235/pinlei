@@ -1,8 +1,8 @@
 package org.dromara.diagnosis.application.service;
 
 import lombok.RequiredArgsConstructor;
-import org.dromara.common.json.utils.JsonUtils;
-import org.dromara.common.redis.utils.RedisUtils;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendPointResponse;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
@@ -11,7 +11,6 @@ import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
 import org.dromara.diagnosis.api.response.DiagnosisTrendsResponse;
 import org.dromara.diagnosis.application.config.DiagnosisCacheProperties;
-import org.dromara.diagnosis.application.config.DiagnosisRedisKeyPrefixProperties;
 import org.dromara.diagnosis.application.model.DiagnosisSessionCacheModel;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
@@ -32,13 +31,14 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * 诊断会话服务.
+ * 闁荤姴娲ら敃銉╁蓟閸ャ劌顕辨慨妯虹－濡牓鏌￠崼婵埿㈠┑?
  */
 @Service
 @RequiredArgsConstructor
 public class DiagnosisSessionService {
 
     private static final String TENANT_ID = "000000";
+    private static final ObjectMapper LOCAL_JSON_MAPPER = new ObjectMapper();
 
     private final DiagnosisSnapshotMapper snapshotMapper;
 
@@ -50,7 +50,7 @@ public class DiagnosisSessionService {
 
     private final DiagnosisCacheProperties cacheProperties;
 
-    private final DiagnosisRedisKeyPrefixProperties keyPrefixProperties;
+    private final DiagnosisSessionCacheStore sessionCacheStore;
 
     public DiagnosisSessionCreateResponse createSession(DiagnosisSessionCreateRequest request) {
         String queryHash = queryHashService.buildQueryHash(request);
@@ -91,7 +91,7 @@ public class DiagnosisSessionService {
         cacheModel.setSessionId(sessionId);
         cacheModel.setQueryHash(queryHash);
         cacheModel.setDataVersion(overview == null ? null : overview.getDataVersion());
-        persistSession(sessionId, cacheModel);
+        sessionCacheStore.save(sessionId, cacheModel, sessionTtl());
 
         DiagnosisSessionCreateResponse response = new DiagnosisSessionCreateResponse();
         response.setSessionId(sessionId);
@@ -108,7 +108,7 @@ public class DiagnosisSessionService {
         DiagnosisSessionCacheModel session = getSession(sessionId);
         DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
         if (overview == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话对应结果不存在，请先触发预计算");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "no diagnosis snapshot found for current query; trigger precompute first");
         }
 
         DiagnosisOverviewResponse response = new DiagnosisOverviewResponse();
@@ -184,7 +184,7 @@ public class DiagnosisSessionService {
         DiagnosisSessionCacheModel session = getSession(sessionId);
         DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
         if (overview == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话对应结果不存在，请先触发预计算");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "no diagnosis snapshot found for current query; trigger precompute first");
         }
 
         List<DiagnosisTrendSnapshotRow> trends = snapshotMapper.selectTrendsByQueryAndVersion(
@@ -203,7 +203,7 @@ public class DiagnosisSessionService {
         DiagnosisSessionCacheModel session = getSession(sessionId);
         DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
         if (overview == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话对应结果不存在，请先触发预计算");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "no diagnosis snapshot found for current query; trigger precompute first");
         }
 
         List<DiagnosisCategoryPerformanceTrendRow> rows = categoryPerformanceTrendMapper.selectByVersion(
@@ -220,13 +220,12 @@ public class DiagnosisSessionService {
     }
 
     private DiagnosisSessionCacheModel getSession(String sessionId) {
-        String text = RedisUtils.getCacheObject(sessionKey(sessionId));
-        if (text == null || text.isBlank()) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话不存在或已过期");
+        DiagnosisSessionCacheModel model = sessionCacheStore.get(sessionId);
+        if (model == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "session not found or expired");
         }
-        DiagnosisSessionCacheModel model = JsonUtils.parseObject(text, DiagnosisSessionCacheModel.class);
-        if (model == null || model.getQueryHash() == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "会话数据损坏");
+        if (model.getQueryHash() == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "session payload corrupted");
         }
         return model;
     }
@@ -244,14 +243,9 @@ public class DiagnosisSessionService {
 
         if (hasText(overview.getDataVersion())) {
             session.setDataVersion(overview.getDataVersion());
-            persistSession(sessionId, session);
+            sessionCacheStore.save(sessionId, session, sessionTtl());
         }
         return overview;
-    }
-
-    private void persistSession(String sessionId, DiagnosisSessionCacheModel session) {
-        RedisUtils.setCacheObject(sessionKey(sessionId), JsonUtils.toJsonString(session),
-            Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes())));
     }
 
     private void sleepOneSecond() {
@@ -262,8 +256,8 @@ public class DiagnosisSessionService {
         }
     }
 
-    private String sessionKey(String sessionId) {
-        return keyPrefixProperties.getResultQuery() + ":session:" + sessionId;
+    private Duration sessionTtl() {
+        return Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes()));
     }
 
     private boolean hasText(String value) {
@@ -320,7 +314,11 @@ public class DiagnosisSessionService {
         payload.put("deptGroupId", request.getDeptGroupId());
         payload.put("storeNo", request.getStoreNo());
         payload.put("extraFilterJson", request.getExtraFilterJson());
-        return JsonUtils.toJsonString(payload);
+        try {
+            return LOCAL_JSON_MAPPER.writeValueAsString(payload);
+        } catch (JsonProcessingException e) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "failed to serialize request payload");
+        }
     }
 
     private List<String> extractDates(List<DiagnosisCategoryPerformanceTrendRow> rows, String periodFlag) {

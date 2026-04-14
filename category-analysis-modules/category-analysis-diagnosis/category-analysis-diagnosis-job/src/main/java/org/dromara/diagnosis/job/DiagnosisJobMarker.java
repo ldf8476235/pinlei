@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.job;
+package org.dromara.diagnosis.job;
 
 /**
  * Diagnosis job marker.

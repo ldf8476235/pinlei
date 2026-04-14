@@ -1,0 +1,37 @@
+请求地址：/api/salesStoreClass/sonClassSalesPer
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "classNo": "00401",
+            "className": "个人护理",
+            "classLevel": null,
+            "parentClassNo": null,
+            "sales": 3271824.13,
+            "salesPer": 43.1300,
+            "dataDate": null
+        },
+        {
+            "classNo": "00402",
+            "className": "清洁用品",
+            "classLevel": null,
+            "parentClassNo": null,
+            "sales": 1701164.81,
+            "salesPer": 22.4300,
+            "dataDate": null
+        },
+        {
+            "classNo": "00403",
+            "className": "卫生用品",
+            "classLevel": null,
+            "parentClassNo": null,
+            "sales": 2612293.97,
+            "salesPer": 34.4400,
+            "dataDate": null
+        }
+    ],
+    "timestamp": 1776161484150
+}

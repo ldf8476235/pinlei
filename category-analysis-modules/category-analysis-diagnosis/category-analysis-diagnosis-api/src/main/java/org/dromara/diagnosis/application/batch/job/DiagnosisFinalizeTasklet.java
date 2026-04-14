@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.application.batch.job;
+package org.dromara.diagnosis.application.batch.job;
 
 import cn.hutool.core.lang.Dict;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-﻿package org.dromara.diagnosis.cache.constant;
+package org.dromara.diagnosis.cache.constant;
 
 /**
  * Redis key patterns used by diagnosis module.

@@ -1,0 +1,1276 @@
+请求地址：/api/salesStoreClass/sonClassSalesTrendChart
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+返回：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "legend": [
+            "00401个人护理",
+            "00402清洁用品",
+            "00403卫生用品"
+        ],
+        "lineDate": [
+            {
+                "dataDate": "2024/11/27",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 33551.99
+            },
+            {
+                "dataDate": "2024/11/28",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 34346.36
+            },
+            {
+                "dataDate": "2024/11/29",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 41298.88
+            },
+            {
+                "dataDate": "2024/11/30",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 54121.68
+            },
+            {
+                "dataDate": "2024/12/01",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 62759.99
+            },
+            {
+                "dataDate": "2024/12/02",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 42599.15
+            },
+            {
+                "dataDate": "2024/12/03",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 41118.92
+            },
+            {
+                "dataDate": "2024/12/04",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 47496.60
+            },
+            {
+                "dataDate": "2024/12/05",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 43491.93
+            },
+            {
+                "dataDate": "2024/12/06",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 54554.95
+            },
+            {
+                "dataDate": "2024/12/07",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 66544.12
+            },
+            {
+                "dataDate": "2024/12/08",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 65347.89
+            },
+            {
+                "dataDate": "2024/11/27",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 19438.06
+            },
+            {
+                "dataDate": "2024/11/28",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 17561.88
+            },
+            {
+                "dataDate": "2024/11/29",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 25552.54
+            },
+            {
+                "dataDate": "2024/11/30",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 30901.79
+            },
+            {
+                "dataDate": "2024/12/01",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 32672.25
+            },
+            {
+                "dataDate": "2024/12/02",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 20179.73
+            },
+            {
+                "dataDate": "2024/12/03",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 21521.28
+            },
+            {
+                "dataDate": "2024/12/04",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 17360.67
+            },
+            {
+                "dataDate": "2024/12/05",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 16540.78
+            },
+            {
+                "dataDate": "2024/12/06",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 21069.68
+            },
+            {
+                "dataDate": "2024/12/07",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 24157.82
+            },
+            {
+                "dataDate": "2024/12/08",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 29677.84
+            },
+            {
+                "dataDate": "2024/11/27",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 24426.23
+            },
+            {
+                "dataDate": "2024/11/28",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 30225.44
+            },
+            {
+                "dataDate": "2024/11/29",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 34910.39
+            },
+            {
+                "dataDate": "2024/11/30",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 47153.53
+            },
+            {
+                "dataDate": "2024/12/01",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 40889.47
+            },
+            {
+                "dataDate": "2024/12/02",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 28339.65
+            },
+            {
+                "dataDate": "2024/12/03",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 29679.09
+            },
+            {
+                "dataDate": "2024/12/04",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 23623.25
+            },
+            {
+                "dataDate": "2024/12/05",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 27154.44
+            },
+            {
+                "dataDate": "2024/12/06",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 34829.22
+            },
+            {
+                "dataDate": "2024/12/07",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 37892.19
+            },
+            {
+                "dataDate": "2024/12/08",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 45732.66
+            },
+            {
+                "dataDate": "2024/10/27",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 60916.77
+            },
+            {
+                "dataDate": "2024/10/28",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 44610.25
+            },
+            {
+                "dataDate": "2024/10/29",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 42286.91
+            },
+            {
+                "dataDate": "2024/10/30",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 37564.96
+            },
+            {
+                "dataDate": "2024/10/31",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 39306.71
+            },
+            {
+                "dataDate": "2024/11/01",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 33097.30
+            },
+            {
+                "dataDate": "2024/11/02",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 55970.40
+            },
+            {
+                "dataDate": "2024/11/03",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 55581.28
+            },
+            {
+                "dataDate": "2024/11/04",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 34777.75
+            },
+            {
+                "dataDate": "2024/11/05",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 36643.78
+            },
+            {
+                "dataDate": "2024/11/06",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 33320.97
+            },
+            {
+                "dataDate": "2024/11/07",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 36555.21
+            },
+            {
+                "dataDate": "2024/11/08",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 36003.24
+            },
+            {
+                "dataDate": "2024/11/09",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 46580.83
+            },
+            {
+                "dataDate": "2024/11/10",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 53521.36
+            },
+            {
+                "dataDate": "2024/11/12",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 36075.56
+            },
+            {
+                "dataDate": "2024/11/13",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 64789.80
+            },
+            {
+                "dataDate": "2024/11/14",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 27660.44
+            },
+            {
+                "dataDate": "2024/11/15",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 33604.37
+            },
+            {
+                "dataDate": "2024/11/16",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 51974.57
+            },
+            {
+                "dataDate": "2024/11/17",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 54601.92
+            },
+            {
+                "dataDate": "2024/11/18",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 32386.42
+            },
+            {
+                "dataDate": "2024/11/19",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 38966.48
+            },
+            {
+                "dataDate": "2024/11/20",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 31034.54
+            },
+            {
+                "dataDate": "2024/11/21",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 34614.77
+            },
+            {
+                "dataDate": "2024/11/22",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 43112.64
+            },
+            {
+                "dataDate": "2024/11/23",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 47409.84
+            },
+            {
+                "dataDate": "2024/11/24",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 45852.99
+            },
+            {
+                "dataDate": "2024/11/25",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 26045.87
+            },
+            {
+                "dataDate": "2024/11/26",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 34182.37
+            },
+            {
+                "dataDate": "2024/10/27",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 31771.36
+            },
+            {
+                "dataDate": "2024/10/28",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 33580.04
+            },
+            {
+                "dataDate": "2024/10/29",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 24583.75
+            },
+            {
+                "dataDate": "2024/10/30",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 20630.22
+            },
+            {
+                "dataDate": "2024/10/31",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 24403.08
+            },
+            {
+                "dataDate": "2024/11/01",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 18460.28
+            },
+            {
+                "dataDate": "2024/11/02",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 25528.29
+            },
+            {
+                "dataDate": "2024/11/03",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 26740.09
+            },
+            {
+                "dataDate": "2024/11/04",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 17103.72
+            },
+            {
+                "dataDate": "2024/11/05",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 16100.50
+            },
+            {
+                "dataDate": "2024/11/06",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 21429.11
+            },
+            {
+                "dataDate": "2024/11/07",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 20160.24
+            },
+            {
+                "dataDate": "2024/11/08",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 22775.76
+            },
+            {
+                "dataDate": "2024/11/09",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 28698.58
+            },
+            {
+                "dataDate": "2024/11/10",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 29780.65
+            },
+            {
+                "dataDate": "2024/11/12",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 18936.35
+            },
+            {
+                "dataDate": "2024/11/13",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 35725.40
+            },
+            {
+                "dataDate": "2024/11/14",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 16483.50
+            },
+            {
+                "dataDate": "2024/11/15",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 18988.77
+            },
+            {
+                "dataDate": "2024/11/16",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 26208.73
+            },
+            {
+                "dataDate": "2024/11/17",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 29547.42
+            },
+            {
+                "dataDate": "2024/11/18",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 18496.91
+            },
+            {
+                "dataDate": "2024/11/19",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 20129.68
+            },
+            {
+                "dataDate": "2024/11/20",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 17326.09
+            },
+            {
+                "dataDate": "2024/11/21",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 18112.67
+            },
+            {
+                "dataDate": "2024/11/22",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 22890.59
+            },
+            {
+                "dataDate": "2024/11/23",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 26814.23
+            },
+            {
+                "dataDate": "2024/11/24",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 27881.40
+            },
+            {
+                "dataDate": "2024/11/25",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 15837.78
+            },
+            {
+                "dataDate": "2024/11/26",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 19574.93
+            },
+            {
+                "dataDate": "2024/10/27",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 66878.12
+            },
+            {
+                "dataDate": "2024/10/28",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 73634.97
+            },
+            {
+                "dataDate": "2024/10/29",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 49124.06
+            },
+            {
+                "dataDate": "2024/10/30",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 36228.08
+            },
+            {
+                "dataDate": "2024/10/31",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 43430.22
+            },
+            {
+                "dataDate": "2024/11/01",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 26210.33
+            },
+            {
+                "dataDate": "2024/11/02",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 42952.84
+            },
+            {
+                "dataDate": "2024/11/03",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 42655.13
+            },
+            {
+                "dataDate": "2024/11/04",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 25010.41
+            },
+            {
+                "dataDate": "2024/11/05",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 30595.99
+            },
+            {
+                "dataDate": "2024/11/06",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 28880.81
+            },
+            {
+                "dataDate": "2024/11/07",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 28929.37
+            },
+            {
+                "dataDate": "2024/11/08",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 28226.05
+            },
+            {
+                "dataDate": "2024/11/09",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 38070.02
+            },
+            {
+                "dataDate": "2024/11/10",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 43108.05
+            },
+            {
+                "dataDate": "2024/11/12",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 28734.81
+            },
+            {
+                "dataDate": "2024/11/13",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 49147.14
+            },
+            {
+                "dataDate": "2024/11/14",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 23753.40
+            },
+            {
+                "dataDate": "2024/11/15",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 30021.93
+            },
+            {
+                "dataDate": "2024/11/16",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 42574.53
+            },
+            {
+                "dataDate": "2024/11/17",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 39231.42
+            },
+            {
+                "dataDate": "2024/11/18",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 24831.06
+            },
+            {
+                "dataDate": "2024/11/19",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 33483.61
+            },
+            {
+                "dataDate": "2024/11/20",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 29855.24
+            },
+            {
+                "dataDate": "2024/11/21",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 24336.21
+            },
+            {
+                "dataDate": "2024/11/22",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 40913.56
+            },
+            {
+                "dataDate": "2024/11/23",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 40295.21
+            },
+            {
+                "dataDate": "2024/11/24",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 45695.71
+            },
+            {
+                "dataDate": "2024/11/25",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 26950.73
+            },
+            {
+                "dataDate": "2024/11/26",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 31550.74
+            },
+            {
+                "dataDate": "2024/10/01",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 84763.82
+            },
+            {
+                "dataDate": "2024/10/02",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 81709.32
+            },
+            {
+                "dataDate": "2024/10/03",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 81799.54
+            },
+            {
+                "dataDate": "2024/10/04",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 76967.19
+            },
+            {
+                "dataDate": "2024/10/05",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 80772.70
+            },
+            {
+                "dataDate": "2024/10/06",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 85519.37
+            },
+            {
+                "dataDate": "2024/10/07",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 73806.05
+            },
+            {
+                "dataDate": "2024/10/08",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 35210.53
+            },
+            {
+                "dataDate": "2024/10/09",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 57937.12
+            },
+            {
+                "dataDate": "2024/10/10",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 48077.10
+            },
+            {
+                "dataDate": "2024/10/11",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 55663.44
+            },
+            {
+                "dataDate": "2024/10/12",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 53946.07
+            },
+            {
+                "dataDate": "2024/10/13",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 68684.15
+            },
+            {
+                "dataDate": "2024/10/14",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 43047.91
+            },
+            {
+                "dataDate": "2024/10/15",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 42042.26
+            },
+            {
+                "dataDate": "2024/10/16",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 45265.17
+            },
+            {
+                "dataDate": "2024/10/19",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 75252.10
+            },
+            {
+                "dataDate": "2024/10/20",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 67062.68
+            },
+            {
+                "dataDate": "2024/10/21",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 44105.30
+            },
+            {
+                "dataDate": "2024/10/22",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 42852.89
+            },
+            {
+                "dataDate": "2024/10/23",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 43237.88
+            },
+            {
+                "dataDate": "2024/10/24",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 39642.56
+            },
+            {
+                "dataDate": "2024/10/25",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 50866.06
+            },
+            {
+                "dataDate": "2024/10/26",
+                "classNo": "00401",
+                "className": "个人护理",
+                "sales": 57310.16
+            },
+            {
+                "dataDate": "2024/10/01",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 46122.08
+            },
+            {
+                "dataDate": "2024/10/02",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 40528.42
+            },
+            {
+                "dataDate": "2024/10/03",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 41716.17
+            },
+            {
+                "dataDate": "2024/10/04",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 42691.86
+            },
+            {
+                "dataDate": "2024/10/05",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 46708.85
+            },
+            {
+                "dataDate": "2024/10/06",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 44152.64
+            },
+            {
+                "dataDate": "2024/10/07",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 43739.75
+            },
+            {
+                "dataDate": "2024/10/08",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 24962.63
+            },
+            {
+                "dataDate": "2024/10/09",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 23859.35
+            },
+            {
+                "dataDate": "2024/10/10",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 23297.64
+            },
+            {
+                "dataDate": "2024/10/11",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 21376.33
+            },
+            {
+                "dataDate": "2024/10/12",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 23871.22
+            },
+            {
+                "dataDate": "2024/10/13",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 29136.20
+            },
+            {
+                "dataDate": "2024/10/14",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 20715.46
+            },
+            {
+                "dataDate": "2024/10/15",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 22016.17
+            },
+            {
+                "dataDate": "2024/10/16",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 21970.99
+            },
+            {
+                "dataDate": "2024/10/19",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 30962.24
+            },
+            {
+                "dataDate": "2024/10/20",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 28698.01
+            },
+            {
+                "dataDate": "2024/10/21",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 23243.65
+            },
+            {
+                "dataDate": "2024/10/22",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 21118.99
+            },
+            {
+                "dataDate": "2024/10/23",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 22639.41
+            },
+            {
+                "dataDate": "2024/10/24",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 22438.09
+            },
+            {
+                "dataDate": "2024/10/25",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 29239.22
+            },
+            {
+                "dataDate": "2024/10/26",
+                "classNo": "00402",
+                "className": "清洁用品",
+                "sales": 34625.00
+            },
+            {
+                "dataDate": "2024/10/01",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 62465.43
+            },
+            {
+                "dataDate": "2024/10/02",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 66257.15
+            },
+            {
+                "dataDate": "2024/10/03",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 63074.61
+            },
+            {
+                "dataDate": "2024/10/04",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 60747.03
+            },
+            {
+                "dataDate": "2024/10/05",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 59377.96
+            },
+            {
+                "dataDate": "2024/10/06",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 53712.49
+            },
+            {
+                "dataDate": "2024/10/07",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 59633.97
+            },
+            {
+                "dataDate": "2024/10/08",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 26718.87
+            },
+            {
+                "dataDate": "2024/10/09",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 31605.98
+            },
+            {
+                "dataDate": "2024/10/10",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 32839.43
+            },
+            {
+                "dataDate": "2024/10/11",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 36917.24
+            },
+            {
+                "dataDate": "2024/10/12",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 37050.47
+            },
+            {
+                "dataDate": "2024/10/13",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 40530.15
+            },
+            {
+                "dataDate": "2024/10/14",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 30372.93
+            },
+            {
+                "dataDate": "2024/10/15",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 30408.55
+            },
+            {
+                "dataDate": "2024/10/16",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 29877.55
+            },
+            {
+                "dataDate": "2024/10/19",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 47319.60
+            },
+            {
+                "dataDate": "2024/10/20",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 45530.56
+            },
+            {
+                "dataDate": "2024/10/21",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 40546.36
+            },
+            {
+                "dataDate": "2024/10/22",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 33956.57
+            },
+            {
+                "dataDate": "2024/10/23",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 39427.30
+            },
+            {
+                "dataDate": "2024/10/24",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 39598.87
+            },
+            {
+                "dataDate": "2024/10/25",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 58056.51
+            },
+            {
+                "dataDate": "2024/10/26",
+                "classNo": "00403",
+                "className": "卫生用品",
+                "sales": 66103.08
+            }
+        ],
+        "xdata": [
+            "2024/10/01",
+            "2024/10/02",
+            "2024/10/03",
+            "2024/10/04",
+            "2024/10/05",
+            "2024/10/06",
+            "2024/10/07",
+            "2024/10/08",
+            "2024/10/09",
+            "2024/10/10",
+            "2024/10/11",
+            "2024/10/12",
+            "2024/10/13",
+            "2024/10/14",
+            "2024/10/15",
+            "2024/10/16",
+            "2024/10/17",
+            "2024/10/18",
+            "2024/10/19",
+            "2024/10/20",
+            "2024/10/21",
+            "2024/10/22",
+            "2024/10/23",
+            "2024/10/24",
+            "2024/10/25",
+            "2024/10/26",
+            "2024/10/27",
+            "2024/10/28",
+            "2024/10/29",
+            "2024/10/30",
+            "2024/10/31",
+            "2024/11/01",
+            "2024/11/02",
+            "2024/11/03",
+            "2024/11/04",
+            "2024/11/05",
+            "2024/11/06",
+            "2024/11/07",
+            "2024/11/08",
+            "2024/11/09",
+            "2024/11/10",
+            "2024/11/11",
+            "2024/11/12",
+            "2024/11/13",
+            "2024/11/14",
+            "2024/11/15",
+            "2024/11/16",
+            "2024/11/17",
+            "2024/11/18",
+            "2024/11/19",
+            "2024/11/20",
+            "2024/11/21",
+            "2024/11/22",
+            "2024/11/23",
+            "2024/11/24",
+            "2024/11/25",
+            "2024/11/26",
+            "2024/11/27",
+            "2024/11/28",
+            "2024/11/29",
+            "2024/11/30",
+            "2024/12/01",
+            "2024/12/02",
+            "2024/12/03",
+            "2024/12/04",
+            "2024/12/05",
+            "2024/12/06",
+            "2024/12/07",
+            "2024/12/08"
+        ]
+    },
+    "timestamp": 1776161484271
+}

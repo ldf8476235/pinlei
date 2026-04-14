@@ -2,13 +2,14 @@ package org.dromara.diagnosis.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.request.CategoryClassTreeRequest;
+import org.dromara.diagnosis.api.request.CategoryNodeConfigUpdateRequest;
 import org.dromara.diagnosis.api.response.CategoryClassTreeResponse;
 import org.dromara.diagnosis.api.response.CategoryFilterOptionsResponse;
 import org.dromara.diagnosis.api.request.CategoryTreeQueryRequest;
+import org.dromara.diagnosis.api.response.CategoryNodeConfigUpdateResponse;
 import org.dromara.diagnosis.api.response.CategoryTreeNodeResponse;
 import org.dromara.diagnosis.api.response.CategoryTreeResponse;
 import org.dromara.diagnosis.application.service.CategoryTreeService;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,10 +34,6 @@ public class CategoryTreeController {
         return CategoryTreeResponse.ok(categoryTreeService.queryTree(request));
     }
 
-    @GetMapping("/tree")
-    public CategoryTreeResponse<List<CategoryTreeNodeResponse>> queryTreeByGet() {
-        return CategoryTreeResponse.ok(categoryTreeService.queryTree(null));
-    }
 
     @PostMapping("/filter-options")
     public CategoryTreeResponse<CategoryFilterOptionsResponse> queryFilterOptions() {
@@ -48,5 +45,10 @@ public class CategoryTreeController {
         CategoryClassTreeResponse response = new CategoryClassTreeResponse();
         response.setContent(categoryTreeService.queryClassTree(request == null ? null : request.getLevel()));
         return response;
+    }
+
+    @PostMapping("/node-config/update")
+    public CategoryTreeResponse<CategoryNodeConfigUpdateResponse> updateNodeConfig(@RequestBody CategoryNodeConfigUpdateRequest request) {
+        return CategoryTreeResponse.ok(categoryTreeService.updateNodeConfig(request));
     }
 }

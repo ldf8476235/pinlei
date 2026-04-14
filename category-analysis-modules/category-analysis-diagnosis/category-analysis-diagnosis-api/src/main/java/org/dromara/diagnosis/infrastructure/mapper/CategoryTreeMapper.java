@@ -25,6 +25,18 @@ public interface CategoryTreeMapper {
 
     List<CategorySaleSkuRow> selectCategorySaleSku(@Param("param") CategoryTreeQueryParam param);
 
+    Integer countClassByClassNo(@Param("classNo") String classNo);
+
+    Integer countStoreByStoreNo(@Param("storeNo") String storeNo);
+
+    int upsertCategoryNodeConfig(@Param("storeNo") String storeNo,
+                                 @Param("classNo") String classNo,
+                                 @Param("roleNo") String roleNo,
+                                 @Param("suggestSaleSku") Integer suggestSaleSku);
+
+    CategorySkuMetricRow selectCategoryNodeConfig(@Param("storeNo") String storeNo,
+                                                  @Param("classNo") String classNo);
+
     List<DiagnosisDictRow> selectDictRowsByType(@Param("dictType") String dictType);
 
     List<StoreBaseRow> selectStores(@Param("param") CategoryTreeQueryParam param);
