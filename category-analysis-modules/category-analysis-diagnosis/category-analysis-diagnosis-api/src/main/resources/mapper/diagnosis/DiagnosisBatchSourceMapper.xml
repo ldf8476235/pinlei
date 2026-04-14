@@ -257,6 +257,202 @@
         </if>
     </sql>
 
+    <sql id="requireDirectSubclassSales">
+        <choose>
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND one_class_no = #{param.classNo}
+                AND two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND two_class_no = #{param.classNo}
+                AND three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND three_class_no = #{param.classNo}
+                AND four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND four_class_no = #{param.classNo}
+                AND five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
+            </when>
+            <otherwise>
+                AND 1 = 0
+            </otherwise>
+        </choose>
+    </sql>
+
+    <sql id="requireDirectSubclassStock">
+        <choose>
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND one_class_no = #{param.classNo}
+                AND two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND two_class_no = #{param.classNo}
+                AND three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND three_class_no = #{param.classNo}
+                AND four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND four_class_no = #{param.classNo}
+                AND five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
+            </when>
+            <otherwise>
+                AND 1 = 0
+            </otherwise>
+        </choose>
+    </sql>
+
+    <sql id="requireDirectSubclassSh7">
+        <choose>
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND one_class_no = #{param.classNo}
+                AND two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND two_class_no = #{param.classNo}
+                AND three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND three_class_no = #{param.classNo}
+                AND four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND four_class_no = #{param.classNo}
+                AND five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
+            </when>
+            <otherwise>
+                AND 1 = 0
+            </otherwise>
+        </choose>
+    </sql>
+
+    <sql id="requireDirectSubclassDeptProducts">
+        <choose>
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND p.one_class_no = #{param.classNo}
+                AND p.two_class_no IS NOT NULL AND LTRIM(RTRIM(p.two_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND p.two_class_no = #{param.classNo}
+                AND p.three_class_no IS NOT NULL AND LTRIM(RTRIM(p.three_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND p.three_class_no = #{param.classNo}
+                AND p.four_class_no IS NOT NULL AND LTRIM(RTRIM(p.four_class_no)) &lt;&gt; ''
+            </when>
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+                AND p.four_class_no = #{param.classNo}
+                AND p.five_class_no IS NOT NULL AND LTRIM(RTRIM(p.five_class_no)) &lt;&gt; ''
+            </when>
+            <otherwise>
+                AND 1 = 0
+            </otherwise>
+        </choose>
+    </sql>
+
+    <sql id="directSubclassSelectSales">
+        <choose>
+            <when test="param.classLevel == 1">
+                2 AS subClassLevel,
+                two_class_no AS subClassNo,
+                two_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 2">
+                3 AS subClassLevel,
+                three_class_no AS subClassNo,
+                three_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 3">
+                4 AS subClassLevel,
+                four_class_no AS subClassNo,
+                four_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 4">
+                5 AS subClassLevel,
+                five_class_no AS subClassNo,
+                five_class_name AS subClassName
+            </when>
+        </choose>
+    </sql>
+
+    <sql id="directSubclassSelectStock">
+        <choose>
+            <when test="param.classLevel == 1">
+                2 AS subClassLevel,
+                two_class_no AS subClassNo,
+                two_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 2">
+                3 AS subClassLevel,
+                three_class_no AS subClassNo,
+                three_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 3">
+                4 AS subClassLevel,
+                four_class_no AS subClassNo,
+                four_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 4">
+                5 AS subClassLevel,
+                five_class_no AS subClassNo,
+                five_class_name AS subClassName
+            </when>
+        </choose>
+    </sql>
+
+    <sql id="directSubclassSelectSh7">
+        <choose>
+            <when test="param.classLevel == 1">
+                2 AS subClassLevel,
+                two_class_no AS subClassNo,
+                two_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 2">
+                3 AS subClassLevel,
+                three_class_no AS subClassNo,
+                three_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 3">
+                4 AS subClassLevel,
+                four_class_no AS subClassNo,
+                four_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 4">
+                5 AS subClassLevel,
+                five_class_no AS subClassNo,
+                five_class_name AS subClassName
+            </when>
+        </choose>
+    </sql>
+
+    <sql id="directSubclassSelectDeptProducts">
+        <choose>
+            <when test="param.classLevel == 1">
+                2 AS subClassLevel,
+                p.two_class_no AS subClassNo,
+                p.two_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 2">
+                3 AS subClassLevel,
+                p.three_class_no AS subClassNo,
+                p.three_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 3">
+                4 AS subClassLevel,
+                p.four_class_no AS subClassNo,
+                p.four_class_name AS subClassName
+            </when>
+            <when test="param.classLevel == 4">
+                5 AS subClassLevel,
+                p.five_class_no AS subClassNo,
+                p.five_class_name AS subClassName
+            </when>
+        </choose>
+    </sql>
+
     <select id="selectIdRange" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceIdRangeRow">
         SELECT
             MIN(CAST(id AS BIGINT)) AS minId,
@@ -372,6 +568,131 @@
           <include refid="storeFilterStock"/>
         GROUP BY stock_date
         ORDER BY stock_date ASC
+    </select>
+
+    <select id="aggregateSubclassContribution" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSubclassContributionAggRow">
+        WITH sales_agg AS (
+            SELECT
+                <include refid="directSubclassSelectSales"/>,
+                ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales,
+                ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS totalGross,
+                ISNULL(SUM(CAST(sale_quantity AS DECIMAL(20, 6))), 0) AS totalSaleQuantity,
+                ISNULL(SUM(CAST(sale_cost AS DECIMAL(20, 6))), 0) AS totalSaleCost,
+                CAST(COUNT(DISTINCT CASE WHEN sales &gt; 0 THEN product_no ELSE NULL END) AS INT) AS activeSku
+            FROM fact_sales_day
+            <include refid="baseWhere"/>
+            <include refid="requireDirectSubclassSales"/>
+            GROUP BY
+            <choose>
+                <when test="param.classLevel == 1">two_class_no, two_class_name</when>
+                <when test="param.classLevel == 2">three_class_no, three_class_name</when>
+                <when test="param.classLevel == 3">four_class_no, four_class_name</when>
+                <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+            </choose>
+        ),
+        customer_agg AS (
+            SELECT
+                <include refid="directSubclassSelectSh7"/>,
+                COUNT(DISTINCT sale_no) AS totalCustomerCount
+            FROM sh7_saleplu
+            WHERE CAST(xsdate AS DATE) &gt;= #{param.periodStart}
+              AND CAST(xsdate AS DATE) &lt;= #{param.periodEnd}
+              <include refid="storeFilterSh7"/>
+              <include refid="requireDirectSubclassSh7"/>
+            GROUP BY
+            <choose>
+                <when test="param.classLevel == 1">two_class_no, two_class_name</when>
+                <when test="param.classLevel == 2">three_class_no, three_class_name</when>
+                <when test="param.classLevel == 3">four_class_no, four_class_name</when>
+                <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+            </choose>
+        ),
+        inventory_daily AS (
+            SELECT
+                stock_date,
+                <include refid="directSubclassSelectStock"/>,
+                ISNULL(SUM(CAST(stock_sale_money AS DECIMAL(20, 6))), 0) AS dayStockSaleMoney
+            FROM fact_stock_day
+            WHERE stock_date &gt;= #{param.periodStart}
+              AND stock_date &lt;= #{param.periodEnd}
+              <include refid="storeFilterStock"/>
+              <include refid="requireDirectSubclassStock"/>
+            GROUP BY stock_date,
+            <choose>
+                <when test="param.classLevel == 1">two_class_no, two_class_name</when>
+                <when test="param.classLevel == 2">three_class_no, three_class_name</when>
+                <when test="param.classLevel == 3">four_class_no, four_class_name</when>
+                <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+            </choose>
+        ),
+        inventory_agg AS (
+            SELECT
+                subClassLevel,
+                subClassNo,
+                MAX(subClassName) AS subClassName,
+                ISNULL(AVG(CAST(dayStockSaleMoney AS DECIMAL(20, 6))), 0) AS avgInventory
+            FROM inventory_daily
+            GROUP BY subClassLevel, subClassNo
+        ),
+        sku_agg AS (
+            SELECT
+                <include refid="directSubclassSelectDeptProducts"/>,
+                CAST(COUNT(DISTINCT p.product_no) AS INT) AS totalSku
+            FROM base_dept_products p
+            WHERE p.product_no IS NOT NULL
+              AND LTRIM(RTRIM(p.product_no)) &lt;&gt; ''
+              <include refid="storeFilterDeptProducts"/>
+              <include refid="requireDirectSubclassDeptProducts"/>
+              AND ISNULL(LTRIM(RTRIM(p.status_name)), '') NOT IN (N'停用', N'作废', N'下架', N'无效')
+            GROUP BY
+            <choose>
+                <when test="param.classLevel == 1">p.two_class_no, p.two_class_name</when>
+                <when test="param.classLevel == 2">p.three_class_no, p.three_class_name</when>
+                <when test="param.classLevel == 3">p.four_class_no, p.four_class_name</when>
+                <when test="param.classLevel == 4">p.five_class_no, p.five_class_name</when>
+            </choose>
+        )
+        SELECT
+            s.subClassLevel,
+            s.subClassNo,
+            s.subClassName,
+            s.totalSales,
+            s.totalGross,
+            s.totalSaleQuantity,
+            s.totalSaleCost,
+            ISNULL(c.totalCustomerCount, 0) AS totalCustomerCount,
+            ISNULL(i.avgInventory, 0) AS avgInventory,
+            ISNULL(k.totalSku, 0) AS totalSku,
+            ISNULL(s.activeSku, 0) AS activeSku
+        FROM sales_agg s
+        LEFT JOIN customer_agg c
+          ON c.subClassLevel = s.subClassLevel
+         AND c.subClassNo = s.subClassNo
+        LEFT JOIN inventory_agg i
+          ON i.subClassLevel = s.subClassLevel
+         AND i.subClassNo = s.subClassNo
+        LEFT JOIN sku_agg k
+          ON k.subClassLevel = s.subClassLevel
+         AND k.subClassNo = s.subClassNo
+        ORDER BY s.subClassNo ASC
+    </select>
+
+    <select id="aggregateSubclassDailySales" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSubclassDailyTrendAggRow">
+        SELECT
+            <include refid="directSubclassSelectSales"/>,
+            sale_date AS pointDate,
+            ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales
+        FROM fact_sales_day
+        <include refid="baseWhere"/>
+        <include refid="requireDirectSubclassSales"/>
+        GROUP BY sale_date,
+        <choose>
+            <when test="param.classLevel == 1">two_class_no, two_class_name</when>
+            <when test="param.classLevel == 2">three_class_no, three_class_name</when>
+            <when test="param.classLevel == 3">four_class_no, four_class_name</when>
+            <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+        </choose>
+        ORDER BY pointDate ASC, subClassNo ASC
     </select>
 
 </mapper>

@@ -3,13 +3,19 @@ package org.dromara.diagnosis.api.controller;
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
 import org.dromara.diagnosis.api.request.LegacyCategoryTrendChangesRequest;
+import org.dromara.diagnosis.api.request.LegacySubclassContributionListRequest;
+import org.dromara.diagnosis.api.request.LegacySubclassContributionRequest;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendPointResponse;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
 import org.dromara.diagnosis.api.response.LegacyCategoryTrendChangesLineResponse;
 import org.dromara.diagnosis.api.response.LegacyCategoryTrendChangesResultResponse;
 import org.dromara.diagnosis.api.response.LegacyNodeResponse;
+import org.dromara.diagnosis.api.response.LegacySubclassSalesListResponse;
+import org.dromara.diagnosis.api.response.LegacySubclassSalesPerResponse;
+import org.dromara.diagnosis.api.response.LegacySubclassSalesTrendResponse;
 import org.dromara.diagnosis.application.service.DiagnosisSessionService;
+import org.dromara.diagnosis.application.service.SubClassContributionService;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,13 +23,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 旧版销售品类接口兼容层.
- */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/salesStoreClass")
@@ -32,11 +36,12 @@ public class LegacySalesStoreClassController {
     private static final DateTimeFormatter LEGACY_DATE_FORMAT = DateTimeFormatter.ofPattern("yyyy/MM/dd");
 
     private final DiagnosisSessionService diagnosisSessionService;
+    private final SubClassContributionService subClassContributionService;
 
     @PostMapping("/trendChanges")
     public LegacyNodeResponse<LegacyCategoryTrendChangesResultResponse> trendChanges(@RequestBody LegacyCategoryTrendChangesRequest request) {
         if (request == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "请求不能为空");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "request must not be null");
         }
 
         DiagnosisSessionCreateRequest sessionRequest = new DiagnosisSessionCreateRequest();
@@ -56,7 +61,7 @@ public class LegacySalesStoreClassController {
 
         DiagnosisSessionCreateResponse session = diagnosisSessionService.createSession(sessionRequest);
         if (!Boolean.TRUE.equals(session.getReady())) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.DATA_PREPARING, "趋势结果准备中，请稍后重试");
+            throw new DiagnosisBizException(DiagnosisErrorCode.DATA_PREPARING, "trend changes snapshot is preparing");
         }
 
         DiagnosisCategoryPerformanceTrendResponse trendResponse = diagnosisSessionService.getTrendChanges(session.getSessionId());
@@ -67,6 +72,57 @@ public class LegacySalesStoreClassController {
         result.setXdata(formatDates(trendResponse.getXdata()));
         result.setXdataDB(formatDates(trendResponse.getXdataDB()));
         return LegacyNodeResponse.ok(result);
+    }
+
+    @PostMapping("/sonClassSalesPer")
+    public LegacyNodeResponse<List<LegacySubclassSalesPerResponse>> sonClassSalesPer(@RequestBody LegacySubclassContributionRequest request) {
+        DiagnosisSessionCreateResponse session = createLegacySession(request);
+        return LegacyNodeResponse.ok(subClassContributionService.getSalesPer(session.getSessionId()));
+    }
+
+    @PostMapping("/sonClassSalesTrendChart")
+    public LegacyNodeResponse<LegacySubclassSalesTrendResponse> sonClassSalesTrendChart(@RequestBody LegacySubclassContributionRequest request) {
+        DiagnosisSessionCreateResponse session = createLegacySession(request);
+        return LegacyNodeResponse.ok(subClassContributionService.getTrendChart(session.getSessionId()));
+    }
+
+    @PostMapping("/sonClassSalesList")
+    public LegacyNodeResponse<LegacySubclassSalesListResponse> sonClassSalesList(@RequestBody LegacySubclassContributionListRequest request) {
+        DiagnosisSessionCreateResponse session = createLegacySession(request);
+        return LegacyNodeResponse.ok(subClassContributionService.getSalesList(
+            session.getSessionId(),
+            request.getPage(),
+            request.getSize(),
+            request.getOrder(),
+            request.getOrderType()
+        ));
+    }
+
+    private DiagnosisSessionCreateResponse createLegacySession(LegacySubclassContributionRequest request) {
+        if (request == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "request must not be null");
+        }
+
+        DiagnosisSessionCreateRequest sessionRequest = new DiagnosisSessionCreateRequest();
+        sessionRequest.setDeptId(normalizeLegacyValue(request.getDeptId()));
+        sessionRequest.setRetailTypeId(normalizeLegacyValue(request.getRetailTypeId()));
+        sessionRequest.setBusinessCircleId(normalizeLegacyValue(request.getBusinessCircleId()));
+        sessionRequest.setDeptGroupId(normalizeLegacyValue(request.getDeptGroupId()));
+        sessionRequest.setStoreNo(normalizeLegacyValue(request.getStoreNo()));
+        sessionRequest.setClassLevel(request.getClassLevel());
+        sessionRequest.setClassNo(normalizeLegacyValue(request.getClassNo()));
+        sessionRequest.setPeriodStart(request.getCurrentStartDate());
+        sessionRequest.setPeriodEnd(request.getCurrentEndDate());
+        sessionRequest.setCompareStart(request.getCompareStartDate());
+        sessionRequest.setCompareEnd(request.getCompareEndDate());
+        sessionRequest.setTriggerIfMissing(Boolean.TRUE);
+        sessionRequest.setWaitSeconds(30);
+
+        DiagnosisSessionCreateResponse session = diagnosisSessionService.createSession(sessionRequest);
+        if (!Boolean.TRUE.equals(session.getReady())) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.DATA_PREPARING, "subclass contribution snapshot is preparing");
+        }
+        return session;
     }
 
     private List<LegacyCategoryTrendChangesLineResponse> mapLegacyLines(List<DiagnosisCategoryPerformanceTrendPointResponse> points) {
@@ -112,7 +168,7 @@ public class LegacySalesStoreClassController {
         if (date == null || date.isBlank()) {
             return date;
         }
-        return LEGACY_DATE_FORMAT.format(java.time.LocalDate.parse(date));
+        return LEGACY_DATE_FORMAT.format(LocalDate.parse(date));
     }
 
     private String normalizeLegacyValue(String value) {

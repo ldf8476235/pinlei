@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisSubclassContributionMapper">
+
+    <delete id="deleteContributionByVersion">
+        DELETE FROM diag_result_subclass_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertContribution">
+        INSERT INTO diag_result_subclass_contribution
+        (
+            tenant_id, query_hash, data_version,
+            parent_class_level, parent_class_no, sub_class_level, sub_class_no, sub_class_name,
+            retail_type_id, dept_id, business_circle_id, dept_group_id, store_no,
+            period_start, period_end, compare_start, compare_end,
+            current_sales, current_sales_per, current_gross, current_gross_per, current_gross_rate,
+            current_sale_quantity, current_customer_count, current_customer_price,
+            current_avg_inventory, current_turnover_rate, current_turnover_days, current_gmroi, current_sale_cost,
+            current_total_sku, current_active_sku,
+            compare_sales, compare_sales_per, compare_sales_add_rate,
+            compare_gross, compare_gross_per, compare_gross_add_rate, compare_gross_rate,
+            compare_sale_quantity, compare_sale_quantity_add_rate,
+            compare_customer_count, compare_customer_price, compare_customer_price_add_rate,
+            snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion},
+                #{row.parentClassLevel}, #{row.parentClassNo}, #{row.subClassLevel}, #{row.subClassNo}, #{row.subClassName},
+                #{row.retailTypeId}, #{row.deptId}, #{row.businessCircleId}, #{row.deptGroupId}, #{row.storeNo},
+                #{row.periodStart}, #{row.periodEnd}, #{row.compareStart}, #{row.compareEnd},
+                #{row.currentSales}, #{row.currentSalesPer}, #{row.currentGross}, #{row.currentGrossPer}, #{row.currentGrossRate},
+                #{row.currentSaleQuantity}, #{row.currentCustomerCount}, #{row.currentCustomerPrice},
+                #{row.currentAvgInventory}, #{row.currentTurnoverRate}, #{row.currentTurnoverDays}, #{row.currentGmroi}, #{row.currentSaleCost},
+                #{row.currentTotalSku}, #{row.currentActiveSku},
+                #{row.compareSales}, #{row.compareSalesPer}, #{row.compareSalesAddRate},
+                #{row.compareGross}, #{row.compareGrossPer}, #{row.compareGrossAddRate}, #{row.compareGrossRate},
+                #{row.compareSaleQuantity}, #{row.compareSaleQuantityAddRate},
+                #{row.compareCustomerCount}, #{row.compareCustomerPrice}, #{row.compareCustomerPriceAddRate},
+                COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectContributionByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSubclassContributionRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            parent_class_level AS parentClassLevel,
+            parent_class_no AS parentClassNo,
+            sub_class_level AS subClassLevel,
+            sub_class_no AS subClassNo,
+            sub_class_name AS subClassName,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            current_sales AS currentSales,
+            current_sales_per AS currentSalesPer,
+            current_gross AS currentGross,
+            current_gross_per AS currentGrossPer,
+            current_gross_rate AS currentGrossRate,
+            current_sale_quantity AS currentSaleQuantity,
+            current_customer_count AS currentCustomerCount,
+            current_customer_price AS currentCustomerPrice,
+            current_avg_inventory AS currentAvgInventory,
+            current_turnover_rate AS currentTurnoverRate,
+            current_turnover_days AS currentTurnoverDays,
+            current_gmroi AS currentGmroi,
+            current_sale_cost AS currentSaleCost,
+            current_total_sku AS currentTotalSku,
+            current_active_sku AS currentActiveSku,
+            compare_sales AS compareSales,
+            compare_sales_per AS compareSalesPer,
+            compare_sales_add_rate AS compareSalesAddRate,
+            compare_gross AS compareGross,
+            compare_gross_per AS compareGrossPer,
+            compare_gross_add_rate AS compareGrossAddRate,
+            compare_gross_rate AS compareGrossRate,
+            compare_sale_quantity AS compareSaleQuantity,
+            compare_sale_quantity_add_rate AS compareSaleQuantityAddRate,
+            compare_customer_count AS compareCustomerCount,
+            compare_customer_price AS compareCustomerPrice,
+            compare_customer_price_add_rate AS compareCustomerPriceAddRate,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_subclass_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY current_sales DESC, sub_class_no ASC, id ASC
+    </select>
+
+    <select id="selectContributionPageByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSubclassContributionRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            parent_class_level AS parentClassLevel,
+            parent_class_no AS parentClassNo,
+            sub_class_level AS subClassLevel,
+            sub_class_no AS subClassNo,
+            sub_class_name AS subClassName,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            current_sales AS currentSales,
+            current_sales_per AS currentSalesPer,
+            current_gross AS currentGross,
+            current_gross_per AS currentGrossPer,
+            current_gross_rate AS currentGrossRate,
+            current_sale_quantity AS currentSaleQuantity,
+            current_customer_count AS currentCustomerCount,
+            current_customer_price AS currentCustomerPrice,
+            current_avg_inventory AS currentAvgInventory,
+            current_turnover_rate AS currentTurnoverRate,
+            current_turnover_days AS currentTurnoverDays,
+            current_gmroi AS currentGmroi,
+            current_sale_cost AS currentSaleCost,
+            current_total_sku AS currentTotalSku,
+            current_active_sku AS currentActiveSku,
+            compare_sales AS compareSales,
+            compare_sales_per AS compareSalesPer,
+            compare_sales_add_rate AS compareSalesAddRate,
+            compare_gross AS compareGross,
+            compare_gross_per AS compareGrossPer,
+            compare_gross_add_rate AS compareGrossAddRate,
+            compare_gross_rate AS compareGrossRate,
+            compare_sale_quantity AS compareSaleQuantity,
+            compare_sale_quantity_add_rate AS compareSaleQuantityAddRate,
+            compare_customer_count AS compareCustomerCount,
+            compare_customer_price AS compareCustomerPrice,
+            compare_customer_price_add_rate AS compareCustomerPriceAddRate,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_subclass_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY ${orderBy} ${orderType}, sub_class_no ASC, id ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+    </select>
+
+    <select id="countContributionByVersion" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_result_subclass_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <delete id="deleteTrendByVersion">
+        DELETE FROM diag_result_subclass_trend
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertTrend">
+        INSERT INTO diag_result_subclass_trend
+        (
+            tenant_id, query_hash, data_version,
+            parent_class_level, parent_class_no, sub_class_level, sub_class_no, sub_class_name,
+            retail_type_id, dept_id, business_circle_id, dept_group_id, store_no,
+            point_index, point_date, sales, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion},
+                #{row.parentClassLevel}, #{row.parentClassNo}, #{row.subClassLevel}, #{row.subClassNo}, #{row.subClassName},
+                #{row.retailTypeId}, #{row.deptId}, #{row.businessCircleId}, #{row.deptGroupId}, #{row.storeNo},
+                #{row.pointIndex}, #{row.pointDate}, #{row.sales},
+                COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectTrendByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSubclassTrendRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            parent_class_level AS parentClassLevel,
+            parent_class_no AS parentClassNo,
+            sub_class_level AS subClassLevel,
+            sub_class_no AS subClassNo,
+            sub_class_name AS subClassName,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            point_index AS pointIndex,
+            point_date AS pointDate,
+            sales,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_subclass_trend
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY point_index ASC, point_date ASC, sub_class_no ASC, id ASC
+    </select>
+
+</mapper>

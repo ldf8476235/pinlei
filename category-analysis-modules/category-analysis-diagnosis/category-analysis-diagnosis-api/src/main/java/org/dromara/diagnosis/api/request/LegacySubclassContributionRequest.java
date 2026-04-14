@@ -4,11 +4,8 @@ import lombok.Data;
 
 import java.time.LocalDate;
 
-/**
- * Legacy request for `/salesStoreClass/trendChanges`.
- */
 @Data
-public class LegacyCategoryTrendChangesRequest {
+public class LegacySubclassContributionRequest {
 
     private String deptId;
     private String retailTypeId;
@@ -21,5 +18,4 @@ public class LegacyCategoryTrendChangesRequest {
     private LocalDate currentEndDate;
     private LocalDate compareStartDate;
     private LocalDate compareEndDate;
-    private String tabType;
 }

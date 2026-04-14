@@ -5,59 +5,53 @@ import lombok.Data;
 import java.time.LocalDate;
 
 /**
- * 诊断会话创建请求.
+ * Request payload for creating a diagnosis session.
  */
 @Data
 public class DiagnosisSessionCreateRequest {
 
     private Integer classLevel;
-
     private String classNo;
-
     private String className;
 
     /**
-     * 组织ID（兼容旧接口 deptId）.
+     * Organization id, compatible with legacy field `deptId`.
      */
     private String deptId;
 
     /**
-     * 业态ID（兼容旧接口 retailTypeId）.
+     * Retail type id, compatible with legacy field `retailTypeId`.
      */
     private String retailTypeId;
 
     /**
-     * 商圈ID（兼容旧接口 businessCircleId）.
+     * Business circle id, compatible with legacy field `businessCircleId`.
      */
     private String businessCircleId;
 
     /**
-     * 店组ID（兼容旧接口 deptGroupId）.
+     * Department group id, compatible with legacy field `deptGroupId`.
      */
     private String deptGroupId;
 
     /**
-     * 门店编码（兼容旧接口 storeNo；0 表示全部）.
+     * Store number, compatible with legacy field `storeNo`. Empty means all stores.
      */
     private String storeNo;
 
     private LocalDate periodStart;
-
     private LocalDate periodEnd;
-
     private LocalDate compareStart;
-
     private LocalDate compareEnd;
-
     private String extraFilterJson;
 
     /**
-     * 结果缺失时是否自动触发预计算，默认 true.
+     * Whether to trigger precompute automatically when snapshot is missing.
      */
     private Boolean triggerIfMissing;
 
     /**
-     * 触发预计算后等待秒数，默认 0（不等待）.
+     * Wait seconds after triggering precompute. Zero means no waiting.
      */
     private Integer waitSeconds;
 }

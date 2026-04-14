@@ -3,19 +3,15 @@ package org.dromara.diagnosis.api.response;
 import lombok.Data;
 
 /**
- * 与旧 Node 接口兼容的通用响应.
+ * Generic response wrapper compatible with legacy Node-style APIs.
  */
 @Data
 public class LegacyNodeResponse<T> {
 
     private boolean success;
-
     private String message;
-
     private int code;
-
     private T result;
-
     private long timestamp;
 
     public static <T> LegacyNodeResponse<T> ok(T result) {
