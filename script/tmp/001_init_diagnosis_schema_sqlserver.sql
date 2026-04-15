@@ -10,6 +10,7 @@
 -- 1) diag_precompute_job
 -- 2) diag_precompute_window
 -- 3) diag_precompute_event
+-- 3.1) diag_result_publish_version
 -- 4) diag_result_overview
 -- 5) diag_result_trends
 -- 6) diag_result_role_distribution
@@ -47,6 +48,8 @@ BEGIN
         done_windows     INT           NOT NULL DEFAULT 0,
         rows_read        BIGINT        NOT NULL DEFAULT 0,
         rows_written     BIGINT        NOT NULL DEFAULT 0,
+        orchestrator_status NVARCHAR(32)  NOT NULL DEFAULT N'PENDING',
+        module_progress_json NVARCHAR(MAX) NULL,
         submitted_by     BIGINT        NULL,
         submitted_time   DATETIME2(0)  NOT NULL DEFAULT SYSUTCDATETIME(),
         started_time     DATETIME2(0)  NULL,
@@ -174,6 +177,49 @@ IF NOT EXISTS (
 BEGIN
     CREATE INDEX ix_diag_precompute_event_job_time
         ON dbo.diag_precompute_event(tenant_id, job_id, event_time DESC);
+END
+GO
+
+-- =========================
+-- 3.1 结果版本发布表
+-- =========================
+IF OBJECT_ID(N'dbo.diag_result_publish_version', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.diag_result_publish_version
+    (
+        id                 BIGINT IDENTITY(1,1) PRIMARY KEY,
+        tenant_id          NVARCHAR(20)  NOT NULL DEFAULT N'000000',
+        query_hash         NVARCHAR(64)  NOT NULL,
+        data_version       NVARCHAR(64)  NOT NULL,
+        publish_status     NVARCHAR(32)  NOT NULL,
+        job_id             BIGINT        NULL,
+        error_summary      NVARCHAR(1000) NULL,
+        published_time     DATETIME2(0)  NULL,
+        create_time        DATETIME2(0)  NOT NULL DEFAULT SYSUTCDATETIME(),
+        update_time        DATETIME2(0)  NOT NULL DEFAULT SYSUTCDATETIME()
+    );
+END
+GO
+
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE name = N'ux_diag_result_publish_ver'
+      AND object_id = OBJECT_ID(N'dbo.diag_result_publish_version')
+)
+BEGIN
+    CREATE UNIQUE INDEX ux_diag_result_publish_ver
+        ON dbo.diag_result_publish_version(tenant_id, query_hash, data_version);
+END
+GO
+
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE name = N'ix_diag_result_publish_query_status'
+      AND object_id = OBJECT_ID(N'dbo.diag_result_publish_version')
+)
+BEGIN
+    CREATE INDEX ix_diag_result_publish_query_status
+        ON dbo.diag_result_publish_version(tenant_id, query_hash, publish_status, update_time DESC);
 END
 GO
 

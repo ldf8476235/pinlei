@@ -1,0 +1,54 @@
+请求地址（ABC定义设置查询）：/api/classDoctorAbc/queryAbcNowParams
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "abcType": "sales",
+            "abcTypeName": "销售额ABC",
+            "salesPer": null,
+            "grossPer": null,
+            "salesQuantityPer": null,
+            "crate": 10,
+            "arate": 50,
+            "brate": 40,
+            "askuRate": 10,
+            "bskuRate": 30,
+            "cskuRate": 60
+        },
+        {
+            "abcType": "gross",
+            "abcTypeName": "毛利额ABC",
+            "salesPer": null,
+            "grossPer": null,
+            "salesQuantityPer": null,
+            "crate": 10,
+            "arate": 50,
+            "brate": 40,
+            "askuRate": 10,
+            "bskuRate": 30,
+            "cskuRate": 60
+        },
+        {
+            "abcType": "contribution",
+            "abcTypeName": "综合业绩ABC",
+            "salesPer": 0.40,
+            "grossPer": 0.30,
+            "salesQuantityPer": 0.30,
+            "crate": 10,
+            "arate": 50,
+            "brate": 40,
+            "askuRate": 10,
+            "bskuRate": 30,
+            "cskuRate": 60
+        }
+    ],
+    "timestamp": 1776237368882
+}
+
+
+请求地址（更新ABC定义，当点击会触发重新计算）：/api/classDoctorAbc/updateAbcParams
+请求参数：{"id":118,"abcList":[{"abcType":"sales","abcTypeName":"销售额ABC","salesPer":"","grossPer":"","salesQuantityPer":"","crate":"10.00","arate":"50.00","brate":"40.00","askuRate":"10.00","bskuRate":"30.00","cskuRate":"60.00"},{"abcType":"gross","abcTypeName":"毛利额ABC","salesPer":"","grossPer":"","salesQuantityPer":"","crate":"10.00","arate":"50.00","brate":"40.00","askuRate":"10.00","bskuRate":"30.00","cskuRate":"60.00"},{"abcType":"contribution","abcTypeName":"综合业绩ABC","salesPer":"0.40","grossPer":"0.30","salesQuantityPer":"0.30","crate":"10.00","arate":"50.00","brate":"40.00","askuRate":"10.00","bskuRate":"30.00","cskuRate":"60.00"}]}
+返回参数：{"success":true,"message":"","code":200,"result":null,"timestamp":1776237480481}

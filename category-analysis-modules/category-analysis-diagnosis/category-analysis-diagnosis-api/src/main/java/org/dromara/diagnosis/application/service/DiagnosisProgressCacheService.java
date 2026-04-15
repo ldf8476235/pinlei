@@ -44,6 +44,8 @@ public class DiagnosisProgressCacheService {
         response.setTotalWindow(row.getTotalWindows());
         response.setRowsRead(row.getRowsRead());
         response.setRowsWritten(row.getRowsWritten());
+        response.setOrchestratorStatus(row.getOrchestratorStatus());
+        response.setModuleProgressJson(row.getModuleProgressJson());
         save(response);
     }
 
@@ -69,4 +71,3 @@ public class DiagnosisProgressCacheService {
         return keyPrefixProperties.getJobProgress() + ":" + jobId;
     }
 }
-

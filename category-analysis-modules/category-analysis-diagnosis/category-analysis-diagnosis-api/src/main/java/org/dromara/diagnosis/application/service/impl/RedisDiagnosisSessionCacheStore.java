@@ -19,6 +19,9 @@ public class RedisDiagnosisSessionCacheStore implements DiagnosisSessionCacheSto
     @Override
     public void save(String sessionId, DiagnosisSessionCacheModel session, Duration ttl) {
         RedisUtils.setCacheObject(sessionKey(sessionId), JsonUtils.toJsonString(session), ttl);
+        if (session != null && session.getQueryHash() != null && !session.getQueryHash().isBlank()) {
+            RedisUtils.setCacheObject(queryHashKey(session.getQueryHash()), JsonUtils.toJsonString(session), ttl);
+        }
     }
 
     @Override
@@ -30,8 +33,23 @@ public class RedisDiagnosisSessionCacheStore implements DiagnosisSessionCacheSto
         return JsonUtils.parseObject(text, DiagnosisSessionCacheModel.class);
     }
 
+    @Override
+    public DiagnosisSessionCacheModel getByQueryHash(String queryHash) {
+        if (queryHash == null || queryHash.isBlank()) {
+            return null;
+        }
+        String text = RedisUtils.getCacheObject(queryHashKey(queryHash));
+        if (text == null || text.isBlank()) {
+            return null;
+        }
+        return JsonUtils.parseObject(text, DiagnosisSessionCacheModel.class);
+    }
+
     private String sessionKey(String sessionId) {
         return keyPrefixProperties.getResultQuery() + ":session:" + sessionId;
     }
-}
 
+    private String queryHashKey(String queryHash) {
+        return keyPrefixProperties.getResultQuery() + ":query-hash:" + queryHash;
+    }
+}

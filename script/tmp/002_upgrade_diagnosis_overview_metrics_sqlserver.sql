@@ -10,6 +10,67 @@ SET QUOTED_IDENTIFIER ON;
 GO
 
 -- =========================
+-- 0. precompute job orchestrator 扩展
+-- =========================
+IF COL_LENGTH('dbo.diag_precompute_job', 'orchestrator_status') IS NULL
+BEGIN
+    ALTER TABLE dbo.diag_precompute_job
+        ADD orchestrator_status NVARCHAR(32) NOT NULL
+            CONSTRAINT DF_diag_precompute_job_orchestrator_status DEFAULT (N'PENDING');
+END
+GO
+
+IF COL_LENGTH('dbo.diag_precompute_job', 'module_progress_json') IS NULL
+BEGIN
+    ALTER TABLE dbo.diag_precompute_job
+        ADD module_progress_json NVARCHAR(MAX) NULL;
+END
+GO
+
+-- =========================
+-- 0.1 result publish version
+-- =========================
+IF OBJECT_ID(N'dbo.diag_result_publish_version', N'U') IS NULL
+BEGIN
+    CREATE TABLE dbo.diag_result_publish_version
+    (
+        id                 BIGINT IDENTITY(1,1) PRIMARY KEY,
+        tenant_id          NVARCHAR(20)  NOT NULL DEFAULT N'000000',
+        query_hash         NVARCHAR(64)  NOT NULL,
+        data_version       NVARCHAR(64)  NOT NULL,
+        publish_status     NVARCHAR(32)  NOT NULL,
+        job_id             BIGINT        NULL,
+        error_summary      NVARCHAR(1000) NULL,
+        published_time     DATETIME2(0)  NULL,
+        create_time        DATETIME2(0)  NOT NULL DEFAULT SYSUTCDATETIME(),
+        update_time        DATETIME2(0)  NOT NULL DEFAULT SYSUTCDATETIME()
+    );
+END
+GO
+
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE name = N'ux_diag_result_publish_ver'
+      AND object_id = OBJECT_ID(N'dbo.diag_result_publish_version')
+)
+BEGIN
+    CREATE UNIQUE INDEX ux_diag_result_publish_ver
+        ON dbo.diag_result_publish_version(tenant_id, query_hash, data_version);
+END
+GO
+
+IF NOT EXISTS (
+    SELECT 1 FROM sys.indexes
+    WHERE name = N'ix_diag_result_publish_query_status'
+      AND object_id = OBJECT_ID(N'dbo.diag_result_publish_version')
+)
+BEGIN
+    CREATE INDEX ix_diag_result_publish_query_status
+        ON dbo.diag_result_publish_version(tenant_id, query_hash, publish_status, update_time DESC);
+END
+GO
+
+-- =========================
 -- A. overview 补充业务字段
 -- =========================
 IF COL_LENGTH('dbo.diag_result_overview', 'store_scope') IS NULL
@@ -242,3 +303,4 @@ GO
 
 PRINT N'[OK] diagnosis overview metrics upgrade done';
 GO
+

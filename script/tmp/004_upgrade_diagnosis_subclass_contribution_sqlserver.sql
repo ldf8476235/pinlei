@@ -64,6 +64,24 @@ BEGIN
 END
 GO
 
+IF OBJECT_ID(N'dbo.diag_result_subclass_contribution', N'U') IS NOT NULL
+BEGIN
+    IF COL_LENGTH(N'dbo.diag_result_subclass_contribution', N'current_customer_count') IS NULL
+    BEGIN
+        ALTER TABLE dbo.diag_result_subclass_contribution
+            ADD current_customer_count DECIMAL(20,2) NOT NULL
+                CONSTRAINT DF_diag_result_subclass_contrib_curr_cust_cnt DEFAULT 0 WITH VALUES;
+    END
+
+    IF COL_LENGTH(N'dbo.diag_result_subclass_contribution', N'compare_customer_count') IS NULL
+    BEGIN
+        ALTER TABLE dbo.diag_result_subclass_contribution
+            ADD compare_customer_count DECIMAL(20,2) NOT NULL
+                CONSTRAINT DF_diag_result_subclass_contrib_cmp_cust_cnt DEFAULT 0 WITH VALUES;
+    END
+END
+GO
+
 IF OBJECT_ID(N'dbo.diag_result_subclass_trend', N'U') IS NULL
 BEGIN
     CREATE TABLE dbo.diag_result_subclass_trend

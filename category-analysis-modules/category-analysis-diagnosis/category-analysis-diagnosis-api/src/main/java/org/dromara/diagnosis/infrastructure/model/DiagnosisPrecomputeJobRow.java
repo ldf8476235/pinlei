@@ -54,6 +54,10 @@ public class DiagnosisPrecomputeJobRow {
 
     private Long rowsWritten;
 
+    private String orchestratorStatus;
+
+    private String moduleProgressJson;
+
     private Long submittedBy;
 
     private LocalDateTime submittedTime;

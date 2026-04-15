@@ -1,0 +1,49 @@
+请求地址：/api/classDoctorAbc/queryAbcType
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "abcType": "sales",
+            "abcTypeName": "销售额ABC",
+            "salesPer": null,
+            "grossPer": null,
+            "salesQuantityPer": null,
+            "crate": 10,
+            "arate": 50,
+            "brate": 40,
+            "askuRate": 10,
+            "bskuRate": 30,
+            "cskuRate": 60
+        },
+        {
+            "abcType": "gross",
+            "abcTypeName": "毛利额ABC",
+            "salesPer": null,
+            "grossPer": null,
+            "salesQuantityPer": null,
+            "crate": 10,
+            "arate": 50,
+            "brate": 40,
+            "askuRate": 10,
+            "bskuRate": 30,
+            "cskuRate": 60
+        },
+        {
+            "abcType": "contribution",
+            "abcTypeName": "综合业绩ABC",
+            "salesPer": 0.4,
+            "grossPer": 0.3,
+            "salesQuantityPer": 0.3,
+            "crate": 10,
+            "arate": 50,
+            "brate": 40,
+            "askuRate": 10,
+            "bskuRate": 30,
+            "cskuRate": 60
+        }
+    ],
+    "timestamp": 1776235981415
+}

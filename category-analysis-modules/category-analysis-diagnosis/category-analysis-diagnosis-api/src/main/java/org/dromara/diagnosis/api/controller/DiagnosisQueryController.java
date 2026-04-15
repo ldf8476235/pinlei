@@ -5,6 +5,7 @@ import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendRespo
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
 import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
+import org.dromara.diagnosis.api.response.DiagnosisSessionStatusResponse;
 import org.dromara.diagnosis.api.response.DiagnosisTrendsResponse;
 import org.dromara.diagnosis.application.service.DiagnosisSessionService;
 import org.dromara.diagnosis.common.model.DiagnosisApiResponse;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -33,6 +35,11 @@ public class DiagnosisQueryController {
     public DiagnosisApiResponse<DiagnosisSessionCreateResponse> createSession(@RequestBody DiagnosisSessionCreateRequest request) {
         DiagnosisSessionCreateRequest actual = request == null ? new DiagnosisSessionCreateRequest() : request;
         return DiagnosisApiResponse.ok(diagnosisSessionService.createSession(actual), nextRequestId());
+    }
+
+    @GetMapping("/sessions/{sessionId}/status")
+    public DiagnosisApiResponse<DiagnosisSessionStatusResponse> getSessionStatus(@PathVariable("sessionId") String sessionId) {
+        return DiagnosisApiResponse.ok(diagnosisSessionService.getSessionStatus(sessionId), nextRequestId());
     }
 
     @GetMapping("/overview")

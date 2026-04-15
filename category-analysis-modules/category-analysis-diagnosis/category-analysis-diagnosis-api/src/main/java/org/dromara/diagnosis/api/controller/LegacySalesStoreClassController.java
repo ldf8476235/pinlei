@@ -1,13 +1,12 @@
 package org.dromara.diagnosis.api.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
 import org.dromara.diagnosis.api.request.LegacyCategoryTrendChangesRequest;
 import org.dromara.diagnosis.api.request.LegacySubclassContributionListRequest;
 import org.dromara.diagnosis.api.request.LegacySubclassContributionRequest;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendPointResponse;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
-import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
+import org.dromara.diagnosis.api.response.DiagnosisSessionStatusResponse;
 import org.dromara.diagnosis.api.response.LegacyCategoryTrendChangesLineResponse;
 import org.dromara.diagnosis.api.response.LegacyCategoryTrendChangesResultResponse;
 import org.dromara.diagnosis.api.response.LegacyNodeResponse;
@@ -43,28 +42,15 @@ public class LegacySalesStoreClassController {
         if (request == null) {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "request must not be null");
         }
-
-        DiagnosisSessionCreateRequest sessionRequest = new DiagnosisSessionCreateRequest();
-        sessionRequest.setDeptId(normalizeLegacyValue(request.getDeptId()));
-        sessionRequest.setRetailTypeId(normalizeLegacyValue(request.getRetailTypeId()));
-        sessionRequest.setBusinessCircleId(normalizeLegacyValue(request.getBusinessCircleId()));
-        sessionRequest.setDeptGroupId(normalizeLegacyValue(request.getDeptGroupId()));
-        sessionRequest.setStoreNo(normalizeLegacyValue(request.getStoreNo()));
-        sessionRequest.setClassLevel(request.getClassLevel());
-        sessionRequest.setClassNo(normalizeLegacyValue(request.getClassNo()));
-        sessionRequest.setPeriodStart(request.getCurrentStartDate());
-        sessionRequest.setPeriodEnd(request.getCurrentEndDate());
-        sessionRequest.setCompareStart(request.getCompareStartDate());
-        sessionRequest.setCompareEnd(request.getCompareEndDate());
-        sessionRequest.setTriggerIfMissing(Boolean.TRUE);
-        sessionRequest.setWaitSeconds(30);
-
-        DiagnosisSessionCreateResponse session = diagnosisSessionService.createSession(sessionRequest);
-        if (!Boolean.TRUE.equals(session.getReady())) {
+        if (request.getSessionId() == null || request.getSessionId().isBlank()) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "sessionId is required");
+        }
+        DiagnosisSessionStatusResponse status = diagnosisSessionService.getSessionStatus(request.getSessionId());
+        if (!Boolean.TRUE.equals(status.getReady())) {
             throw new DiagnosisBizException(DiagnosisErrorCode.DATA_PREPARING, "trend changes snapshot is preparing");
         }
 
-        DiagnosisCategoryPerformanceTrendResponse trendResponse = diagnosisSessionService.getTrendChanges(session.getSessionId());
+        DiagnosisCategoryPerformanceTrendResponse trendResponse = diagnosisSessionService.getTrendChanges(request.getSessionId());
         LegacyCategoryTrendChangesResultResponse result = new LegacyCategoryTrendChangesResultResponse();
         result.setFlag(Boolean.FALSE);
         result.setLineDate(mapLegacyLines(trendResponse.getLineDate()));
@@ -76,21 +62,21 @@ public class LegacySalesStoreClassController {
 
     @PostMapping("/sonClassSalesPer")
     public LegacyNodeResponse<List<LegacySubclassSalesPerResponse>> sonClassSalesPer(@RequestBody LegacySubclassContributionRequest request) {
-        DiagnosisSessionCreateResponse session = createLegacySession(request);
-        return LegacyNodeResponse.ok(subClassContributionService.getSalesPer(session.getSessionId()));
+        String sessionId = resolveLegacySessionId(request, "subclass contribution snapshot is preparing");
+        return LegacyNodeResponse.ok(subClassContributionService.getSalesPer(sessionId));
     }
 
     @PostMapping("/sonClassSalesTrendChart")
     public LegacyNodeResponse<LegacySubclassSalesTrendResponse> sonClassSalesTrendChart(@RequestBody LegacySubclassContributionRequest request) {
-        DiagnosisSessionCreateResponse session = createLegacySession(request);
-        return LegacyNodeResponse.ok(subClassContributionService.getTrendChart(session.getSessionId()));
+        String sessionId = resolveLegacySessionId(request, "subclass contribution snapshot is preparing");
+        return LegacyNodeResponse.ok(subClassContributionService.getTrendChart(sessionId));
     }
 
     @PostMapping("/sonClassSalesList")
     public LegacyNodeResponse<LegacySubclassSalesListResponse> sonClassSalesList(@RequestBody LegacySubclassContributionListRequest request) {
-        DiagnosisSessionCreateResponse session = createLegacySession(request);
+        String sessionId = resolveLegacySessionId(request, "subclass contribution snapshot is preparing");
         return LegacyNodeResponse.ok(subClassContributionService.getSalesList(
-            session.getSessionId(),
+            sessionId,
             request.getPage(),
             request.getSize(),
             request.getOrder(),
@@ -98,31 +84,18 @@ public class LegacySalesStoreClassController {
         ));
     }
 
-    private DiagnosisSessionCreateResponse createLegacySession(LegacySubclassContributionRequest request) {
+    private String resolveLegacySessionId(LegacySubclassContributionRequest request, String preparingMessage) {
         if (request == null) {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "request must not be null");
         }
-
-        DiagnosisSessionCreateRequest sessionRequest = new DiagnosisSessionCreateRequest();
-        sessionRequest.setDeptId(normalizeLegacyValue(request.getDeptId()));
-        sessionRequest.setRetailTypeId(normalizeLegacyValue(request.getRetailTypeId()));
-        sessionRequest.setBusinessCircleId(normalizeLegacyValue(request.getBusinessCircleId()));
-        sessionRequest.setDeptGroupId(normalizeLegacyValue(request.getDeptGroupId()));
-        sessionRequest.setStoreNo(normalizeLegacyValue(request.getStoreNo()));
-        sessionRequest.setClassLevel(request.getClassLevel());
-        sessionRequest.setClassNo(normalizeLegacyValue(request.getClassNo()));
-        sessionRequest.setPeriodStart(request.getCurrentStartDate());
-        sessionRequest.setPeriodEnd(request.getCurrentEndDate());
-        sessionRequest.setCompareStart(request.getCompareStartDate());
-        sessionRequest.setCompareEnd(request.getCompareEndDate());
-        sessionRequest.setTriggerIfMissing(Boolean.TRUE);
-        sessionRequest.setWaitSeconds(30);
-
-        DiagnosisSessionCreateResponse session = diagnosisSessionService.createSession(sessionRequest);
-        if (!Boolean.TRUE.equals(session.getReady())) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.DATA_PREPARING, "subclass contribution snapshot is preparing");
+        if (request.getSessionId() == null || request.getSessionId().isBlank()) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "sessionId is required");
         }
-        return session;
+        DiagnosisSessionStatusResponse status = diagnosisSessionService.getSessionStatus(request.getSessionId());
+        if (!Boolean.TRUE.equals(status.getReady())) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.DATA_PREPARING, preparingMessage);
+        }
+        return request.getSessionId();
     }
 
     private List<LegacyCategoryTrendChangesLineResponse> mapLegacyLines(List<DiagnosisCategoryPerformanceTrendPointResponse> points) {
@@ -169,16 +142,5 @@ public class LegacySalesStoreClassController {
             return date;
         }
         return LEGACY_DATE_FORMAT.format(LocalDate.parse(date));
-    }
-
-    private String normalizeLegacyValue(String value) {
-        if (value == null) {
-            return null;
-        }
-        String trimmed = value.trim();
-        if (trimmed.isEmpty() || "0".equals(trimmed) || "all".equalsIgnoreCase(trimmed)) {
-            return null;
-        }
-        return trimmed;
     }
 }

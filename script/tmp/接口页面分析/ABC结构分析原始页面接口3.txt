@@ -1,0 +1,30 @@
+请求地址：/api/classDoctorAbc/queryAbcMatrix
+请求参数1（销售额abc）：{"id":118,"abcType":"sales"}
+请求参数2（毛利额abc）：{"id":118,"abcType":"gross"}
+请求参数3（综合业绩）：{"id":118,"abcType":"contribution"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "aaNum": 175,
+        "abNum": 45,
+        "acNum": 44,
+        "anNum": 10,
+        "atNum": 274,
+        "baNum": 92,
+        "bbNum": 1026,
+        "bcNum": 398,
+        "bnNum": 111,
+        "btNum": 1627,
+        "caNum": 29,
+        "cbNum": 392,
+        "ccNum": 2072,
+        "cnNum": 341,
+        "ctNum": 2834,
+        "abcType": null,
+        "abcTypeDb": null,
+        "num": null
+    },
+    "timestamp": 1776235981486
+}

@@ -47,6 +47,10 @@ public class PrecomputeJobResponse {
 
     private Long rowsWritten;
 
+    private String orchestratorStatus;
+
+    private String moduleProgressJson;
+
     private String errorMessage;
 
     private LocalDateTime submittedTime;

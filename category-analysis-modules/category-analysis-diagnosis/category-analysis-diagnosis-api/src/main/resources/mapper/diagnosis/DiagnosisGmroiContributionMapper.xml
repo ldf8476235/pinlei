@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisGmroiContributionMapper">
+
+    <delete id="deleteByVersion">
+        DELETE FROM diag_result_gmroi_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertSku">
+        INSERT INTO diag_result_gmroi_sku
+        (
+            tenant_id, query_hash, data_version, product_no, product_name,
+            product_status, product_status_no, store_num, current_gross_role, compare_gross_role,
+            current_gmroi_role, compare_gmroi_role,
+            sale_quantity, sale_quantity_psd, sales, sales_per, sales_psd,
+            gross, gross_per, gross_psd, gross_rate, stock_quantity, stock_sales_rate,
+            turnover_rate, turnover_days, contribution_rate, gmroi, sales_rate,
+            activity, first_sale_date, new_product, key_product, seasonable_flag, seasonable_flag_name,
+            seasonable_start_date, seasonable_end_date, class_no, class_name, class_level,
+            product_barcode, brand_name, spec, in_price, sales_price,
+            product_vendor_no, product_vendor_name, product_vendor_no_name, promotion_flag,
+            compare_sales, compare_gross, compare_turnover_rate, compare_gross_rate, compare_gmroi
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.productNo}, #{row.productName},
+                #{row.productStatus}, #{row.productStatusNo}, #{row.storeNum}, #{row.currentGrossRole}, #{row.compareGrossRole},
+                #{row.currentGmroiRole}, #{row.compareGmroiRole},
+                #{row.saleQuantity}, #{row.saleQuantityPsd}, #{row.sales}, #{row.salesPer}, #{row.salesPsd},
+                #{row.gross}, #{row.grossPer}, #{row.grossPsd}, #{row.grossRate}, #{row.stockQuantity}, #{row.stockSalesRate},
+                #{row.turnoverRate}, #{row.turnoverDays}, #{row.contributionRate}, #{row.gmroi}, #{row.salesRate},
+                #{row.activity}, #{row.firstSaleDate}, #{row.newProduct}, #{row.keyProduct}, #{row.seasonableFlag}, #{row.seasonableFlagName},
+                #{row.seasonableStartDate}, #{row.seasonableEndDate}, #{row.classNo}, #{row.className}, #{row.classLevel},
+                #{row.productBarcode}, #{row.brandName}, #{row.spec}, #{row.inPrice}, #{row.salesPrice},
+                #{row.productVendorNo}, #{row.productVendorName}, #{row.productVendorNoName}, #{row.promotionFlag},
+                #{row.compareSales}, #{row.compareGross}, #{row.compareTurnoverRate}, #{row.compareGrossRate}, #{row.compareGmroi}
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectQuadrantList" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisGmroiSkuRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            product_no AS productNo, product_name AS productName, product_status AS productStatus, product_status_no AS productStatusNo,
+            store_num AS storeNum, current_gross_role AS currentGrossRole, compare_gross_role AS compareGrossRole,
+            current_gmroi_role AS currentGmroiRole, compare_gmroi_role AS compareGmroiRole,
+            sale_quantity AS saleQuantity, sale_quantity_psd AS saleQuantityPsd, sales, sales_per AS salesPer, sales_psd AS salesPsd,
+            gross, gross_per AS grossPer, gross_psd AS grossPsd, gross_rate AS grossRate, stock_quantity AS stockQuantity,
+            stock_sales_rate AS stockSalesRate, turnover_rate AS turnoverRate, turnover_days AS turnoverDays,
+            contribution_rate AS contributionRate, gmroi, sales_rate AS salesRate, activity, first_sale_date AS firstSaleDate,
+            new_product AS newProduct, key_product AS keyProduct, seasonable_flag AS seasonableFlag, seasonable_flag_name AS seasonableFlagName,
+            seasonable_start_date AS seasonableStartDate, seasonable_end_date AS seasonableEndDate,
+            class_no AS classNo, class_name AS className, class_level AS classLevel, product_barcode AS productBarcode, brand_name AS brandName,
+            spec, in_price AS inPrice, sales_price AS salesPrice, product_vendor_no AS productVendorNo, product_vendor_name AS productVendorName,
+            product_vendor_no_name AS productVendorNoName, promotion_flag AS promotionFlag, compare_sales AS compareSales,
+            compare_gross AS compareGross, compare_turnover_rate AS compareTurnoverRate, compare_gross_rate AS compareGrossRate, compare_gmroi AS compareGmroi
+        FROM diag_result_gmroi_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY sales DESC, product_no ASC
+    </select>
+
+    <select id="aggregateSkuNum" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisGmroiSkuNumAggRow">
+        SELECT
+            SUM(CASE WHEN gmroi &lt;= 1 THEN 1 ELSE 0 END) AS sku1,
+            SUM(CASE WHEN gmroi &gt; 1 AND gmroi &lt;= 2 THEN 1 ELSE 0 END) AS sku2,
+            SUM(CASE WHEN gmroi &gt; 2 AND gmroi &lt;= 3 THEN 1 ELSE 0 END) AS sku3,
+            SUM(CASE WHEN gmroi &gt; 3 THEN 1 ELSE 0 END) AS sku4,
+            ISNULL(SUM(CASE WHEN gmroi &lt;= 1 THEN 1 ELSE 0 END) / NULLIF(CAST(COUNT(1) AS DECIMAL(20, 6)), 0), 0) AS skuPer1,
+            ISNULL(SUM(CASE WHEN gmroi &gt; 1 AND gmroi &lt;= 2 THEN 1 ELSE 0 END) / NULLIF(CAST(COUNT(1) AS DECIMAL(20, 6)), 0), 0) AS skuPer2,
+            ISNULL(SUM(CASE WHEN gmroi &gt; 2 AND gmroi &lt;= 3 THEN 1 ELSE 0 END) / NULLIF(CAST(COUNT(1) AS DECIMAL(20, 6)), 0), 0) AS skuPer3,
+            ISNULL(SUM(CASE WHEN gmroi &gt; 3 THEN 1 ELSE 0 END) / NULLIF(CAST(COUNT(1) AS DECIMAL(20, 6)), 0), 0) AS skuPer4
+        FROM diag_result_gmroi_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <select id="aggregateSkuPer" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisGmroiSkuPerAggRow">
+        SELECT
+            ISNULL(100 * SUM(CASE WHEN current_gmroi_role = '1' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS currentSkuPer1,
+            ISNULL(100 * SUM(CASE WHEN current_gmroi_role = '2' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS currentSkuPer2,
+            ISNULL(100 * SUM(CASE WHEN current_gmroi_role = '3' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS currentSkuPer3,
+            ISNULL(100 * SUM(CASE WHEN current_gmroi_role = '4' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS currentSkuPer4,
+            SUM(CASE WHEN current_gmroi_role = '3' THEN 1 ELSE 0 END) AS currentSku3,
+            ISNULL(100 * SUM(CASE WHEN compare_gmroi_role = '1' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS compareSkuPer1,
+            ISNULL(100 * SUM(CASE WHEN compare_gmroi_role = '2' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS compareSkuPer2,
+            ISNULL(100 * SUM(CASE WHEN compare_gmroi_role = '3' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS compareSkuPer3,
+            ISNULL(100 * SUM(CASE WHEN compare_gmroi_role = '4' THEN 1 ELSE 0 END) / NULLIF(COUNT(1), 0), 0) AS compareSkuPer4
+        FROM diag_result_gmroi_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <select id="countSkuChangeFromSuccess" resultType="java.lang.Integer">
+        SELECT SUM(CASE WHEN compare_gmroi_role = '1' AND current_gmroi_role = #{currentRole} THEN 1 ELSE 0 END)
+        FROM diag_result_gmroi_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <sql id="skuFilter">
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        <if test="currentGmroi != null and currentGmroi != '' and currentGmroi != '0'">
+            AND current_gmroi_role = #{currentGmroi}
+        </if>
+        <if test="compareGmroi != null and compareGmroi != '' and compareGmroi != '0'">
+            AND compare_gmroi_role = #{compareGmroi}
+        </if>
+        <if test="promotion != null and promotion != '' and promotion != '0'">
+            <choose>
+                <when test="promotion == '1'">
+                    AND promotion_flag = '1'
+                </when>
+                <when test="promotion == '2'">
+                    AND (promotion_flag IS NULL OR promotion_flag = '0')
+                </when>
+            </choose>
+        </if>
+        <if test="statusList != null and statusList.size() > 0">
+            AND product_status_no IN
+            <foreach collection="statusList" item="st" open="(" close=")" separator=",">
+                #{st}
+            </foreach>
+        </if>
+        <if test="gmroiList != null and gmroiList.size() > 0 and !gmroiList.contains('0')">
+            AND (
+            <foreach collection="gmroiList" item="seg" separator=" OR ">
+                <choose>
+                    <when test="seg == '1'">gmroi &lt;= 1</when>
+                    <when test="seg == '2'">gmroi &gt; 1 AND gmroi &lt;= 2</when>
+                    <when test="seg == '3'">gmroi &gt; 2 AND gmroi &lt;= 3</when>
+                    <when test="seg == '4'">gmroi &gt; 3</when>
+                    <otherwise>1 = 0</otherwise>
+                </choose>
+            </foreach>
+            )
+        </if>
+    </sql>
+
+    <select id="countSku" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_result_gmroi_sku
+        <include refid="skuFilter"/>
+    </select>
+
+    <select id="selectSkuPage" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisGmroiSkuRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            product_no AS productNo, product_name AS productName, product_status AS productStatus, product_status_no AS productStatusNo,
+            store_num AS storeNum, current_gross_role AS currentGrossRole, compare_gross_role AS compareGrossRole,
+            current_gmroi_role AS currentGmroiRole, compare_gmroi_role AS compareGmroiRole,
+            sale_quantity AS saleQuantity, sale_quantity_psd AS saleQuantityPsd, sales, sales_per AS salesPer, sales_psd AS salesPsd,
+            gross, gross_per AS grossPer, gross_psd AS grossPsd, gross_rate AS grossRate, stock_quantity AS stockQuantity,
+            stock_sales_rate AS stockSalesRate, turnover_rate AS turnoverRate, turnover_days AS turnoverDays,
+            contribution_rate AS contributionRate, gmroi, sales_rate AS salesRate, activity, first_sale_date AS firstSaleDate,
+            new_product AS newProduct, key_product AS keyProduct, seasonable_flag AS seasonableFlag, seasonable_flag_name AS seasonableFlagName,
+            seasonable_start_date AS seasonableStartDate, seasonable_end_date AS seasonableEndDate,
+            class_no AS classNo, class_name AS className, class_level AS classLevel, product_barcode AS productBarcode, brand_name AS brandName,
+            spec, in_price AS inPrice, sales_price AS salesPrice, product_vendor_no AS productVendorNo, product_vendor_name AS productVendorName,
+            product_vendor_no_name AS productVendorNoName, promotion_flag AS promotionFlag, compare_sales AS compareSales,
+            compare_gross AS compareGross, compare_turnover_rate AS compareTurnoverRate, compare_gross_rate AS compareGrossRate, compare_gmroi AS compareGmroi
+        FROM diag_result_gmroi_sku
+        <include refid="skuFilter"/>
+        ORDER BY ${orderBy} ${orderType}, product_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+    </select>
+
+</mapper>
+

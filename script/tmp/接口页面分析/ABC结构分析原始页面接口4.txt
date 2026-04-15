@@ -1,0 +1,60 @@
+请求地址：/api/classDoctorAbc/queryAbcDetails
+请求参数1（销售额abc）：{"id":118,"abcType":"sales"}
+请求参数2（毛利额abc）：{"id":118,"abcType":"gross"}
+请求参数3（综合业绩）：{"id":118,"abcType":"contribution"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "abcType": "B",
+            "setSalesPer": 40,
+            "setSales": 3034113.16,
+            "setSkuPer": 30,
+            "setSku": 1421,
+            "currentSku": 1627,
+            "currentSkuPer": 34.36,
+            "stockQuantity": 249261.45,
+            "stockQuantityPer": 52.02,
+            "activitySku": 0,
+            "compareSku": 1549,
+            "compareSkuPer": 29.71,
+            "changeSku": 78,
+            "currentSales": 3037797.17
+        },
+        {
+            "abcType": "C",
+            "setSalesPer": 10,
+            "setSales": 758528.29,
+            "setSkuPer": 60,
+            "setSku": 2841,
+            "currentSku": 2834,
+            "currentSkuPer": 59.85,
+            "stockQuantity": 98936.96,
+            "stockQuantityPer": 20.65,
+            "activitySku": 0,
+            "compareSku": 3363,
+            "compareSkuPer": 64.51,
+            "changeSku": -529,
+            "currentSales": 749610.32
+        },
+        {
+            "abcType": "A",
+            "setSalesPer": 50,
+            "setSales": 3792641.46,
+            "setSkuPer": 10,
+            "setSku": 474,
+            "currentSku": 274,
+            "currentSkuPer": 5.79,
+            "stockQuantity": 130988.90,
+            "stockQuantityPer": 27.34,
+            "activitySku": 0,
+            "compareSku": 301,
+            "compareSkuPer": 5.77,
+            "changeSku": -27,
+            "currentSales": 3797875.42
+        }
+    ],
+    "timestamp": 1776235981443
+}

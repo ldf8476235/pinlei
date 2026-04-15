@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisCustomerAnalysisMapper">
+
+    <delete id="deleteContributionByVersion">
+        DELETE FROM diag_result_customer_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertContribution">
+        INSERT INTO diag_result_customer_contribution
+        (
+            tenant_id, query_hash, data_version,
+            gender, age_bucket_code, age_bucket_name, age_start, age_end, age_order,
+            retail_type_id, dept_id, business_circle_id, dept_group_id, store_no,
+            period_start, period_end, compare_start, compare_end,
+            current_sales, current_customer_count, current_customer_price, current_unit_price, current_count_ave, current_sale_quantity,
+            compare_sales, compare_customer_count, compare_customer_price, compare_unit_price, compare_count_ave, compare_sale_quantity,
+            sales_growth, customer_growth, customer_price_growth, unit_price_growth, count_ave_growth, sale_quantity_growth,
+            snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion},
+                #{row.gender}, #{row.ageBucketCode}, #{row.ageBucketName}, #{row.ageStart}, #{row.ageEnd}, #{row.ageOrder},
+                #{row.retailTypeId}, #{row.deptId}, #{row.businessCircleId}, #{row.deptGroupId}, #{row.storeNo},
+                #{row.periodStart}, #{row.periodEnd}, #{row.compareStart}, #{row.compareEnd},
+                #{row.currentSales}, #{row.currentCustomerCount}, #{row.currentCustomerPrice}, #{row.currentUnitPrice}, #{row.currentCountAve}, #{row.currentSaleQuantity},
+                #{row.compareSales}, #{row.compareCustomerCount}, #{row.compareCustomerPrice}, #{row.compareUnitPrice}, #{row.compareCountAve}, #{row.compareSaleQuantity},
+                #{row.salesGrowth}, #{row.customerGrowth}, #{row.customerPriceGrowth}, #{row.unitPriceGrowth}, #{row.countAveGrowth}, #{row.saleQuantityGrowth},
+                COALESCE(#{row.snapshotTime}, SYSUTCDATETIME())
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectContributionByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisCustomerContributionRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            gender,
+            age_bucket_code AS ageBucketCode,
+            age_bucket_name AS ageBucketName,
+            age_start AS ageStart,
+            age_end AS ageEnd,
+            age_order AS ageOrder,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            current_sales AS currentSales,
+            current_customer_count AS currentCustomerCount,
+            current_customer_price AS currentCustomerPrice,
+            current_unit_price AS currentUnitPrice,
+            current_count_ave AS currentCountAve,
+            current_sale_quantity AS currentSaleQuantity,
+            compare_sales AS compareSales,
+            compare_customer_count AS compareCustomerCount,
+            compare_customer_price AS compareCustomerPrice,
+            compare_unit_price AS compareUnitPrice,
+            compare_count_ave AS compareCountAve,
+            compare_sale_quantity AS compareSaleQuantity,
+            sales_growth AS salesGrowth,
+            customer_growth AS customerGrowth,
+            customer_price_growth AS customerPriceGrowth,
+            unit_price_growth AS unitPriceGrowth,
+            count_ave_growth AS countAveGrowth,
+            sale_quantity_growth AS saleQuantityGrowth,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_customer_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY age_order ASC, gender ASC, id ASC
+    </select>
+
+    <select id="selectContributionPageByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisCustomerContributionRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            gender,
+            age_bucket_code AS ageBucketCode,
+            age_bucket_name AS ageBucketName,
+            age_start AS ageStart,
+            age_end AS ageEnd,
+            age_order AS ageOrder,
+            retail_type_id AS retailTypeId,
+            dept_id AS deptId,
+            business_circle_id AS businessCircleId,
+            dept_group_id AS deptGroupId,
+            store_no AS storeNo,
+            period_start AS periodStart,
+            period_end AS periodEnd,
+            compare_start AS compareStart,
+            compare_end AS compareEnd,
+            current_sales AS currentSales,
+            current_customer_count AS currentCustomerCount,
+            current_customer_price AS currentCustomerPrice,
+            current_unit_price AS currentUnitPrice,
+            current_count_ave AS currentCountAve,
+            current_sale_quantity AS currentSaleQuantity,
+            compare_sales AS compareSales,
+            compare_customer_count AS compareCustomerCount,
+            compare_customer_price AS compareCustomerPrice,
+            compare_unit_price AS compareUnitPrice,
+            compare_count_ave AS compareCountAve,
+            compare_sale_quantity AS compareSaleQuantity,
+            sales_growth AS salesGrowth,
+            customer_growth AS customerGrowth,
+            customer_price_growth AS customerPriceGrowth,
+            unit_price_growth AS unitPriceGrowth,
+            count_ave_growth AS countAveGrowth,
+            sale_quantity_growth AS saleQuantityGrowth,
+            snapshot_time AS snapshotTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_customer_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY ${orderBy} ${orderType}, age_order ASC, id ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+    </select>
+
+    <select id="countContributionByVersion" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_result_customer_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <sql id="customerSummaryAgg">
+        SELECT
+            age_bucket_code,
+            MAX(age_bucket_name) AS age_bucket_name,
+            MAX(age_start) AS age_start,
+            MAX(age_end) AS age_end,
+            MIN(age_order) AS age_order,
+            SUM(current_sales) AS current_sales,
+            SUM(current_customer_count) AS current_customer_count,
+            SUM(current_sale_quantity) AS current_sale_quantity,
+            SUM(compare_sales) AS compare_sales,
+            SUM(compare_customer_count) AS compare_customer_count,
+            SUM(compare_sale_quantity) AS compare_sale_quantity,
+            SUM(CASE WHEN gender = 1 THEN current_sales ELSE 0 END) AS current_man_sales,
+            SUM(CASE WHEN gender = 1 THEN current_customer_count ELSE 0 END) AS current_man_customer_count,
+            SUM(CASE WHEN gender = 1 THEN current_sale_quantity ELSE 0 END) AS current_man_sale_quantity,
+            SUM(CASE WHEN gender = 2 THEN current_sales ELSE 0 END) AS current_woman_sales,
+            SUM(CASE WHEN gender = 2 THEN current_customer_count ELSE 0 END) AS current_woman_customer_count,
+            SUM(CASE WHEN gender = 2 THEN current_sale_quantity ELSE 0 END) AS current_woman_sale_quantity,
+            SUM(CASE WHEN gender = 3 THEN current_sales ELSE 0 END) AS current_unknown_sales,
+            SUM(CASE WHEN gender = 3 THEN current_customer_count ELSE 0 END) AS current_unknown_customer_count,
+            SUM(CASE WHEN gender = 3 THEN current_sale_quantity ELSE 0 END) AS current_unknown_sale_quantity
+        FROM diag_result_customer_contribution
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        GROUP BY age_bucket_code
+    </sql>
+
+    <sql id="customerSummarySelectColumns">
+        age_bucket_code AS ageCode,
+        age_bucket_name AS ageName,
+        age_start AS ageStart,
+        age_end AS ageEnd,
+        age_order AS ageOrder,
+        CAST(current_sales AS DECIMAL(20,2)) AS currentSales,
+        CAST(current_customer_count AS DECIMAL(20,2)) AS currentCustomerCount,
+        CAST(CASE WHEN current_customer_count = 0 THEN 0 ELSE current_sales / current_customer_count END AS DECIMAL(20,2)) AS currentCustomerPrice,
+        CAST(CASE WHEN current_sale_quantity = 0 THEN 0 ELSE current_sales / current_sale_quantity END AS DECIMAL(20,2)) AS currentUnitPrice,
+        CAST(CASE WHEN current_customer_count = 0 THEN 0 ELSE current_sale_quantity / current_customer_count END AS DECIMAL(20,2)) AS currentCountAve,
+        CAST(current_sale_quantity AS DECIMAL(20,2)) AS currentSaleQuantity,
+        CAST(compare_sales AS DECIMAL(20,2)) AS compareSales,
+        CAST(compare_customer_count AS DECIMAL(20,2)) AS compareCustomerCount,
+        CAST(CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sales / compare_customer_count END AS DECIMAL(20,2)) AS compareCustomerPrice,
+        CAST(CASE WHEN compare_sale_quantity = 0 THEN 0 ELSE compare_sales / compare_sale_quantity END AS DECIMAL(20,2)) AS compareUnitPrice,
+        CAST(CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sale_quantity / compare_customer_count END AS DECIMAL(20,2)) AS compareCountAve,
+        CAST(compare_sale_quantity AS DECIMAL(20,2)) AS compareSaleQuantity,
+        CAST(CASE WHEN compare_sales = 0 THEN 0 ELSE (current_sales - compare_sales) * 100.0 / compare_sales END AS DECIMAL(12,2)) AS salesGrowth,
+        CAST(CASE WHEN compare_customer_count = 0 THEN 0 ELSE (current_customer_count - compare_customer_count) * 100.0 / compare_customer_count END AS DECIMAL(12,2)) AS customerGrowth,
+        CAST(
+            CASE WHEN (CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sales / compare_customer_count END) = 0 THEN 0
+                 ELSE ((CASE WHEN current_customer_count = 0 THEN 0 ELSE current_sales / current_customer_count END)
+                     - (CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sales / compare_customer_count END)) * 100.0
+                     / (CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sales / compare_customer_count END)
+            END AS DECIMAL(12,2)) AS customerPriceGrowth,
+        CAST(
+            CASE WHEN (CASE WHEN compare_sale_quantity = 0 THEN 0 ELSE compare_sales / compare_sale_quantity END) = 0 THEN 0
+                 ELSE ((CASE WHEN current_sale_quantity = 0 THEN 0 ELSE current_sales / current_sale_quantity END)
+                     - (CASE WHEN compare_sale_quantity = 0 THEN 0 ELSE compare_sales / compare_sale_quantity END)) * 100.0
+                     / (CASE WHEN compare_sale_quantity = 0 THEN 0 ELSE compare_sales / compare_sale_quantity END)
+            END AS DECIMAL(12,2)) AS unitPriceGrowth,
+        CAST(
+            CASE WHEN (CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sale_quantity / compare_customer_count END) = 0 THEN 0
+                 ELSE ((CASE WHEN current_customer_count = 0 THEN 0 ELSE current_sale_quantity / current_customer_count END)
+                     - (CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sale_quantity / compare_customer_count END)) * 100.0
+                     / (CASE WHEN compare_customer_count = 0 THEN 0 ELSE compare_sale_quantity / compare_customer_count END)
+            END AS DECIMAL(12,2)) AS countAveGrowth,
+        CAST(CASE WHEN compare_sale_quantity = 0 THEN 0 ELSE (current_sale_quantity - compare_sale_quantity) * 100.0 / compare_sale_quantity END AS DECIMAL(12,2)) AS saleQuantityGrowth,
+        CAST(current_man_sales AS DECIMAL(20,2)) AS currentManSales,
+        CAST(current_man_customer_count AS DECIMAL(20,2)) AS currentManCustomerCount,
+        CAST(CASE WHEN current_man_customer_count = 0 THEN 0 ELSE current_man_sales / current_man_customer_count END AS DECIMAL(20,2)) AS currentManCustomerPrice,
+        CAST(CASE WHEN current_man_sale_quantity = 0 THEN 0 ELSE current_man_sales / current_man_sale_quantity END AS DECIMAL(20,2)) AS currentManUnitPrice,
+        CAST(CASE WHEN current_man_customer_count = 0 THEN 0 ELSE current_man_sale_quantity / current_man_customer_count END AS DECIMAL(20,2)) AS currentManCountAve,
+        CAST(current_woman_sales AS DECIMAL(20,2)) AS currentWomanSales,
+        CAST(current_woman_customer_count AS DECIMAL(20,2)) AS currentWomanCustomerCount,
+        CAST(CASE WHEN current_woman_customer_count = 0 THEN 0 ELSE current_woman_sales / current_woman_customer_count END AS DECIMAL(20,2)) AS currentWomanCustomerPrice,
+        CAST(CASE WHEN current_woman_sale_quantity = 0 THEN 0 ELSE current_woman_sales / current_woman_sale_quantity END AS DECIMAL(20,2)) AS currentWomanUnitPrice,
+        CAST(CASE WHEN current_woman_customer_count = 0 THEN 0 ELSE current_woman_sale_quantity / current_woman_customer_count END AS DECIMAL(20,2)) AS currentWomanCountAve,
+        CAST(current_unknown_sales AS DECIMAL(20,2)) AS currentUnknownSales,
+        CAST(current_unknown_customer_count AS DECIMAL(20,2)) AS currentUnknownCustomerCount,
+        CAST(CASE WHEN current_unknown_customer_count = 0 THEN 0 ELSE current_unknown_sales / current_unknown_customer_count END AS DECIMAL(20,2)) AS currentUnknownCustomerPrice,
+        CAST(CASE WHEN current_unknown_sale_quantity = 0 THEN 0 ELSE current_unknown_sales / current_unknown_sale_quantity END AS DECIMAL(20,2)) AS currentUnknownUnitPrice,
+        CAST(CASE WHEN current_unknown_customer_count = 0 THEN 0 ELSE current_unknown_sale_quantity / current_unknown_customer_count END AS DECIMAL(20,2)) AS currentUnknownCountAve
+    </sql>
+
+    <select id="selectSummaryTotalByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisCustomerAgeSummaryRow">
+        WITH agg AS (
+            SELECT
+                'ALL' AS age_bucket_code,
+                N'全部' AS age_bucket_name,
+                0 AS age_start,
+                0 AS age_end,
+                0 AS age_order,
+                SUM(current_sales) AS current_sales,
+                SUM(current_customer_count) AS current_customer_count,
+                SUM(current_sale_quantity) AS current_sale_quantity,
+                SUM(compare_sales) AS compare_sales,
+                SUM(compare_customer_count) AS compare_customer_count,
+                SUM(compare_sale_quantity) AS compare_sale_quantity,
+                SUM(CASE WHEN gender = 1 THEN current_sales ELSE 0 END) AS current_man_sales,
+                SUM(CASE WHEN gender = 1 THEN current_customer_count ELSE 0 END) AS current_man_customer_count,
+                SUM(CASE WHEN gender = 1 THEN current_sale_quantity ELSE 0 END) AS current_man_sale_quantity,
+                SUM(CASE WHEN gender = 2 THEN current_sales ELSE 0 END) AS current_woman_sales,
+                SUM(CASE WHEN gender = 2 THEN current_customer_count ELSE 0 END) AS current_woman_customer_count,
+                SUM(CASE WHEN gender = 2 THEN current_sale_quantity ELSE 0 END) AS current_woman_sale_quantity,
+                SUM(CASE WHEN gender = 3 THEN current_sales ELSE 0 END) AS current_unknown_sales,
+                SUM(CASE WHEN gender = 3 THEN current_customer_count ELSE 0 END) AS current_unknown_customer_count,
+                SUM(CASE WHEN gender = 3 THEN current_sale_quantity ELSE 0 END) AS current_unknown_sale_quantity
+            FROM diag_result_customer_contribution
+            WHERE tenant_id = #{tenantId}
+              AND query_hash = #{queryHash}
+              AND data_version = #{dataVersion}
+        )
+        SELECT <include refid="customerSummarySelectColumns"/>
+        FROM agg
+    </select>
+
+    <select id="selectSummaryPageByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisCustomerAgeSummaryRow">
+        WITH agg AS (
+            <include refid="customerSummaryAgg"/>
+        )
+        SELECT <include refid="customerSummarySelectColumns"/>
+        FROM agg
+        ORDER BY ${orderBy} ${orderType}, age_order ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+    </select>
+
+    <select id="countSummaryByVersion" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM (
+            SELECT age_bucket_code
+            FROM diag_result_customer_contribution
+            WHERE tenant_id = #{tenantId}
+              AND query_hash = #{queryHash}
+              AND data_version = #{dataVersion}
+            GROUP BY age_bucket_code
+        ) t
+    </select>
+
+</mapper>

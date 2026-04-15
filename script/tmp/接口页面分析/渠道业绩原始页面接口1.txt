@@ -1,0 +1,21 @@
+接口：/api/classDoctorChannel/queryChannelSalesPie
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+返回参数：
+{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "name": "线上-线上美团外卖",
+            "value": 2302875.36,
+            "per": 28.57
+        },
+        {
+            "name": "线下",
+            "value": 5757188.38,
+            "per": 71.43
+        }
+    ],
+    "timestamp": 1776218801525
+}

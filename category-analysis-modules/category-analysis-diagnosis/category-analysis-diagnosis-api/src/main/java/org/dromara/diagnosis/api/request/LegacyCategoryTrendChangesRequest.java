@@ -10,6 +10,8 @@ import java.time.LocalDate;
 @Data
 public class LegacyCategoryTrendChangesRequest {
 
+    private String sessionId;
+
     private String deptId;
     private String retailTypeId;
     private String businessCircleId;

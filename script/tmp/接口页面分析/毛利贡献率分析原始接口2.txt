@@ -1,0 +1,41 @@
+请求地址：/api/classDoctorGross/queryGrossSalesPer
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "currentSalesPer_1": 32.94,
+        "currentSalesPer_2": 44.69,
+        "currentSalesPer_3": 5.91,
+        "currentSalesPer_4": 16.46,
+        "compareSalesPer_1": 39.54,
+        "compareSalesPer_2": 41.56,
+        "compareSalesPer_3": 6.36,
+        "compareSalesPer_4": 12.53
+    },
+    "timestamp": 1776238990331
+}
+
+返回参数解析：
+字段说明（四象限销售额占比）
+currentSalesPer_1：本期领跑商品销售额占比
+currentSalesPer_2：本期吸客商品销售额占比
+currentSalesPer_3：本期问题商品销售额占比
+currentSalesPer_4：本期利润商品销售额占比
+
+compareSalesPer_1：对比期领跑商品销售额占比
+compareSalesPer_2：对比期吸客商品销售额占比
+compareSalesPer_3：对比期问题商品销售额占比
+compareSalesPer_4：对比期利润商品销售额占比
+
+计算公式：
+占比 = 对应类别销售额 / 总销售额 * 100
+
+四象限分类规则：
+1 = 领跑商品：销售额排名前20% 且 增长率 >= 平均增长率
+2 = 吸客商品：复购率高、引流能力强
+3 = 问题商品：滞销、周转慢、负毛利、长期无销售
+4 = 利润商品：毛利率高、毛利贡献高
+
+分类优先级：问题商品 > 领跑商品 > 吸客商品 > 利润商品

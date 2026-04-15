@@ -1,6 +1,7 @@
 package org.dromara.diagnosis.application.service.impl;
 
 import lombok.RequiredArgsConstructor;
+import org.dromara.common.json.utils.JsonUtils;
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;
 import org.dromara.diagnosis.api.response.PrecomputeEventResponse;
 import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;
@@ -22,12 +23,14 @@ import org.springframework.util.StringUtils;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
- * 预计算任务服务实现.
+ * 棰勮绠椾换鍔℃湇鍔″疄鐜?
  */
 @Service
 @RequiredArgsConstructor
@@ -86,6 +89,8 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         row.setDoneWindows(0);
         row.setRowsRead(0L);
         row.setRowsWritten(0L);
+        row.setOrchestratorStatus(STATUS_PENDING);
+        row.setModuleProgressJson(initModuleProgressJson());
         row.setSubmittedBy(request.getSubmitterId());
         row.setSubmittedTime(LocalDateTime.now());
 
@@ -101,7 +106,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, ex.getMessage());
         }
         if (windows.isEmpty()) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "未生成任何预计算窗口");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "鏈敓鎴愪换浣曢璁＄畻绐楀彛");
         }
         DiagnosisPrecomputeWindowRow window = windows.get(0);
 
@@ -114,6 +119,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         progress.setDoneWindows(0);
         progress.setRowsRead(0L);
         progress.setRowsWritten(0L);
+        progress.setModuleProgressJson(initModuleProgressJson());
         precomputeMapper.updateJobProgress(progress);
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, row.getJobId()));
 
@@ -122,6 +128,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         status.setJobId(row.getJobId());
         status.setStatusCode(STATUS_RUNNING);
         status.setCurrentStage("INIT");
+        status.setOrchestratorStatus(STATUS_RUNNING);
         status.setStartedTime(LocalDateTime.now());
         precomputeMapper.updateJobStatus(status);
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, row.getJobId()));
@@ -135,7 +142,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
     public PrecomputeJobResponse getJob(Long jobId) {
         DiagnosisPrecomputeJobRow row = precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId);
         if (row == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "预计算任务不存在");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "棰勮绠椾换鍔′笉瀛樺湪");
         }
         PrecomputeJobResponse response = toJobResponse(row);
         response.setWindows(getJobWindows(jobId));
@@ -151,7 +158,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
 
         DiagnosisPrecomputeJobRow row = precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId);
         if (row == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "预计算任务不存在");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "棰勮绠椾换鍔′笉瀛樺湪");
         }
         PrecomputeJobProgressResponse response = toProgressResponse(row);
         progressCacheService.save(response);
@@ -168,7 +175,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
     public List<PrecomputeEventResponse> getJobEvents(Long jobId, Integer limit) {
         DiagnosisPrecomputeJobRow row = precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId);
         if (row == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "预计算任务不存在");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "棰勮绠椾换鍔′笉瀛樺湪");
         }
         int safeLimit = limit == null ? 200 : Math.max(1, Math.min(limit, 1000));
         List<DiagnosisPrecomputeEventRow> rows = precomputeMapper.selectRecentEventsByJobId(DEFAULT_TENANT_ID, jobId, safeLimit);
@@ -179,15 +186,16 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
     public void stopJob(Long jobId) {
         DiagnosisPrecomputeJobRow row = precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId);
         if (row == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "预计算任务不存在");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "棰勮绠椾换鍔′笉瀛樺湪");
         }
         DiagnosisPrecomputeJobRow update = new DiagnosisPrecomputeJobRow();
         update.setTenantId(DEFAULT_TENANT_ID);
         update.setJobId(jobId);
         update.setStatusCode(STATUS_STOPPED);
         update.setCurrentStage("STOPPED");
+        update.setOrchestratorStatus(STATUS_STOPPED);
         update.setFinishedTime(LocalDateTime.now());
-        update.setErrorMessage("任务已人工停止");
+        update.setErrorMessage("job stopped by user");
         precomputeMapper.updateJobStatus(update);
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId));
     }
@@ -196,12 +204,12 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
     public void retryJob(Long jobId) {
         DiagnosisPrecomputeJobRow row = precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId);
         if (row == null) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "预计算任务不存在");
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "棰勮绠椾换鍔′笉瀛樺湪");
         }
         int currentRetry = row.getRetryCount() == null ? 0 : row.getRetryCount();
         int maxRetry = row.getMaxRetry() == null ? 1 : row.getMaxRetry();
         if (currentRetry >= maxRetry) {
-            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "已达到最大重试次数: " + maxRetry);
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "宸茶揪鍒版渶澶ч噸璇曟鏁? " + maxRetry);
         }
 
         DiagnosisPrecomputeJobRow update = new DiagnosisPrecomputeJobRow();
@@ -209,10 +217,12 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         update.setJobId(jobId);
         update.setStatusCode(STATUS_RETRYING);
         update.setCurrentStage("INIT");
+        update.setOrchestratorStatus(STATUS_RETRYING);
         update.setRetryCount(currentRetry + 1);
         update.setStartedTime(null);
         update.setFinishedTime(null);
         update.setErrorMessage(null);
+        update.setModuleProgressJson(initModuleProgressJson());
         precomputeMapper.updateJobStatus(update);
 
         List<DiagnosisPrecomputeWindowRow> windows = precomputeMapper.selectWindowsByJobId(DEFAULT_TENANT_ID, jobId);
@@ -260,6 +270,8 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         response.setDoneWindows(row.getDoneWindows());
         response.setRowsRead(row.getRowsRead());
         response.setRowsWritten(row.getRowsWritten());
+        response.setOrchestratorStatus(row.getOrchestratorStatus());
+        response.setModuleProgressJson(row.getModuleProgressJson());
         response.setErrorMessage(row.getErrorMessage());
         response.setSubmittedTime(row.getSubmittedTime());
         response.setStartedTime(row.getStartedTime());
@@ -299,6 +311,8 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         response.setTotalWindow(row.getTotalWindows());
         response.setRowsRead(row.getRowsRead());
         response.setRowsWritten(row.getRowsWritten());
+        response.setOrchestratorStatus(row.getOrchestratorStatus());
+        response.setModuleProgressJson(row.getModuleProgressJson());
         return response;
     }
 
@@ -314,4 +328,24 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         response.setPayloadJson(row.getPayloadJson());
         return response;
     }
+
+    private String initModuleProgressJson() {
+        Map<String, Object> modules = new LinkedHashMap<>();
+        modules.put("overview", moduleProgress("PENDING"));
+        modules.put("subclass", moduleProgress("PENDING"));
+        modules.put("channel", moduleProgress("PENDING"));
+        modules.put("vip", moduleProgress("PENDING"));
+        modules.put("abc", moduleProgress("PENDING"));
+        return JsonUtils.toJsonString(modules);
+    }
+
+    private Map<String, Object> moduleProgress(String status) {
+        Map<String, Object> item = new LinkedHashMap<>();
+        item.put("status", status);
+        item.put("done", 0);
+        item.put("total", 1);
+        item.put("error", null);
+        return item;
+    }
 }
+

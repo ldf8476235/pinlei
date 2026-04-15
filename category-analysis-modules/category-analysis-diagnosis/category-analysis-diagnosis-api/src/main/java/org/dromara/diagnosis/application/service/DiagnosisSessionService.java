@@ -9,15 +9,21 @@ import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;
 import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
+import org.dromara.diagnosis.api.response.DiagnosisSessionStatusResponse;
 import org.dromara.diagnosis.api.response.DiagnosisTrendsResponse;
+import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;
+import org.dromara.diagnosis.api.response.PrecomputeJobResponse;
 import org.dromara.diagnosis.application.config.DiagnosisCacheProperties;
 import org.dromara.diagnosis.application.model.DiagnosisSessionCacheModel;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategoryPerformanceTrendMapper;
+import org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisCategoryPerformanceTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +54,8 @@ public class DiagnosisSessionService {
 
     private final PrecomputeJobService precomputeJobService;
 
+    private final DiagnosisPrecomputeMapper precomputeMapper;
+
     private final DiagnosisCacheProperties cacheProperties;
 
     private final DiagnosisSessionCacheStore sessionCacheStore;
@@ -55,8 +63,15 @@ public class DiagnosisSessionService {
     public DiagnosisSessionCreateResponse createSession(DiagnosisSessionCreateRequest request) {
         String queryHash = queryHashService.buildQueryHash(request);
         DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, queryHash);
+
+        DiagnosisSessionCacheModel existing = sessionCacheStore.getByQueryHash(queryHash);
+        if (overview == null && existing != null && hasText(existing.getSessionId()) && existing.getJobId() != null) {
+            return buildResponseFromExistingSession(existing);
+        }
+
         String sessionId = "S-" + UUID.randomUUID().toString().replace("-", "");
         Long triggeredJobId = null;
+        PrecomputeJobResponse triggeredJob = null;
         String source = "SNAPSHOT_HIT";
 
         boolean triggerIfMissing = request.getTriggerIfMissing() == null || Boolean.TRUE.equals(request.getTriggerIfMissing());
@@ -74,7 +89,8 @@ public class DiagnosisSessionService {
             jobRequest.setForceRebuild(Boolean.FALSE);
             jobRequest.setPriority(5);
             jobRequest.setRequestJson(buildRequestJson(request));
-            triggeredJobId = precomputeJobService.createJob(jobRequest).getJobId();
+            triggeredJob = precomputeJobService.createJob(jobRequest);
+            triggeredJobId = triggeredJob.getJobId();
             source = "TRIGGERED";
 
             for (int i = 0; i < waitSeconds; i++) {
@@ -86,11 +102,15 @@ public class DiagnosisSessionService {
                 }
             }
         }
+        if (overview == null && !triggerIfMissing) {
+            source = "MISS_NO_TRIGGER";
+        }
 
         DiagnosisSessionCacheModel cacheModel = new DiagnosisSessionCacheModel();
         cacheModel.setSessionId(sessionId);
         cacheModel.setQueryHash(queryHash);
         cacheModel.setDataVersion(overview == null ? null : overview.getDataVersion());
+        cacheModel.setJobId(triggeredJobId);
         sessionCacheStore.save(sessionId, cacheModel, sessionTtl());
 
         DiagnosisSessionCreateResponse response = new DiagnosisSessionCreateResponse();
@@ -100,7 +120,77 @@ public class DiagnosisSessionService {
         response.setCacheHit(overview != null);
         response.setReady(overview != null);
         response.setTriggeredJobId(triggeredJobId);
+        response.setStatus(overview != null ? "SUCCESS" : (triggeredJob == null ? "PENDING" : triggeredJob.getStatus()));
+        response.setOrchestratorStatus(overview != null
+            ? "SUCCESS"
+            : (triggeredJob == null ? "PENDING" : (hasText(triggeredJob.getOrchestratorStatus())
+                ? triggeredJob.getOrchestratorStatus()
+                : triggeredJob.getStatus())));
         response.setSource(source);
+        return response;
+    }
+
+    private DiagnosisSessionCreateResponse buildResponseFromExistingSession(DiagnosisSessionCacheModel existing) {
+        DiagnosisSessionCreateResponse response = new DiagnosisSessionCreateResponse();
+        response.setSessionId(existing.getSessionId());
+        response.setQueryHash(existing.getQueryHash());
+        response.setDataVersion(existing.getDataVersion());
+        response.setCacheHit(Boolean.FALSE);
+        response.setReady(Boolean.FALSE);
+        response.setTriggeredJobId(existing.getJobId());
+        response.setSource("REUSED_ACTIVE_SESSION");
+        try {
+            PrecomputeJobProgressResponse progress = precomputeJobService.getJobProgress(existing.getJobId());
+            response.setStatus(progress.getStatus());
+            response.setOrchestratorStatus(hasText(progress.getOrchestratorStatus())
+                ? progress.getOrchestratorStatus()
+                : progress.getStatus());
+        } catch (Exception ex) {
+            response.setStatus("RUNNING");
+            response.setOrchestratorStatus("RUNNING");
+        }
+        return response;
+    }
+
+    public DiagnosisSessionStatusResponse getSessionStatus(String sessionId) {
+        DiagnosisSessionCacheModel session = getSession(sessionId);
+        DiagnosisOverviewSnapshotRow overview;
+        try {
+            overview = resolveOverviewSnapshot(sessionId, session);
+        } catch (DiagnosisBizException ex) {
+            overview = null;
+        }
+
+        DiagnosisSessionStatusResponse response = new DiagnosisSessionStatusResponse();
+        response.setSessionId(sessionId);
+        response.setQueryHash(session.getQueryHash());
+        response.setDataVersion(session.getDataVersion());
+        response.setJobId(session.getJobId());
+
+        if (overview != null && hasText(overview.getDataVersion())) {
+            response.setReady(Boolean.TRUE);
+            response.setStatus("SUCCESS");
+            response.setOrchestratorStatus("SUCCESS");
+            response.setProgressPercent(new BigDecimal("100"));
+            response.setCurrentStage("DONE");
+            return response;
+        }
+        if (session.getJobId() == null) {
+            response.setReady(Boolean.FALSE);
+            response.setStatus("PENDING");
+            response.setOrchestratorStatus("PENDING");
+            response.setProgressPercent(BigDecimal.ZERO);
+            response.setCurrentStage("WAIT_PRECOMPUTE");
+            return response;
+        }
+
+        PrecomputeJobProgressResponse progress = precomputeJobService.getJobProgress(session.getJobId());
+        response.setReady(Boolean.FALSE);
+        response.setStatus(progress.getStatus());
+        response.setOrchestratorStatus(progress.getOrchestratorStatus());
+        response.setProgressPercent(progress.getProgressPercent());
+        response.setCurrentStage(progress.getCurrentStage());
+        response.setModuleProgressJson(progress.getModuleProgressJson());
         return response;
     }
 
@@ -232,8 +322,38 @@ public class DiagnosisSessionService {
 
     private DiagnosisOverviewSnapshotRow resolveOverviewSnapshot(String sessionId, DiagnosisSessionCacheModel session) {
         if (hasText(session.getDataVersion())) {
-            return snapshotMapper.selectOverviewByQueryAndVersion(
+            DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectOverviewByQueryAndVersion(
                 TENANT_ID, session.getQueryHash(), session.getDataVersion());
+            if (overview != null) {
+                return overview;
+            }
+        }
+
+        if (session.getJobId() != null) {
+            DiagnosisPrecomputeJobRow job = precomputeMapper.selectJobById(TENANT_ID, session.getJobId());
+            if (job == null || !"SUCCESS".equalsIgnoreCase(job.getStatusCode())) {
+                return null;
+            }
+            List<DiagnosisPrecomputeWindowRow> windows = precomputeMapper.selectWindowsByJobId(TENANT_ID, session.getJobId());
+            String dataVersion = null;
+            if (windows != null) {
+                for (DiagnosisPrecomputeWindowRow window : windows) {
+                    if (window != null && hasText(window.getDataVersion())) {
+                        dataVersion = window.getDataVersion();
+                    }
+                }
+            }
+            if (!hasText(dataVersion)) {
+                return null;
+            }
+            DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectOverviewByQueryAndVersion(
+                TENANT_ID, session.getQueryHash(), dataVersion);
+            if (overview == null) {
+                return null;
+            }
+            session.setDataVersion(dataVersion);
+            sessionCacheStore.save(sessionId, session, sessionTtl());
+            return overview;
         }
 
         DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, session.getQueryHash());

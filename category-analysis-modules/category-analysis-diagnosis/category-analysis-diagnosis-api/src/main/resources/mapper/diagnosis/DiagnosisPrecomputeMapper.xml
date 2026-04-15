@@ -10,14 +10,15 @@
             tenant_id, job_code, module_code, status_code, priority,
             request_json, request_hash, read_range_type, read_start, read_end, window_types,
             force_rebuild, max_retry, retry_count, progress_percent, current_stage, total_windows, done_windows,
-            rows_read, rows_written, submitted_by, submitted_time
+            rows_read, rows_written, orchestrator_status, module_progress_json, submitted_by, submitted_time
         )
         VALUES
         (
             #{row.tenantId}, #{row.jobCode}, #{row.moduleCode}, #{row.statusCode}, #{row.priority},
             #{row.requestJson}, #{row.requestHash}, #{row.readRangeType}, #{row.readStart}, #{row.readEnd}, #{row.windowTypes},
             #{row.forceRebuild}, #{row.maxRetry}, #{row.retryCount}, #{row.progressPercent}, #{row.currentStage}, #{row.totalWindows}, #{row.doneWindows},
-            #{row.rowsRead}, #{row.rowsWritten}, #{row.submittedBy}, ISNULL(#{row.submittedTime,jdbcType=TIMESTAMP}, SYSUTCDATETIME())
+            #{row.rowsRead}, #{row.rowsWritten}, #{row.orchestratorStatus}, #{row.moduleProgressJson},
+            #{row.submittedBy}, ISNULL(#{row.submittedTime,jdbcType=TIMESTAMP}, SYSUTCDATETIME())
         )
     </insert>
 
@@ -29,6 +30,7 @@
             done_windows = #{row.doneWindows},
             rows_read = #{row.rowsRead},
             rows_written = #{row.rowsWritten},
+            module_progress_json = COALESCE(#{row.moduleProgressJson}, module_progress_json),
             update_time = SYSUTCDATETIME()
         WHERE tenant_id = #{row.tenantId}
           AND job_id = #{row.jobId}
@@ -42,6 +44,8 @@
             started_time = COALESCE(#{row.startedTime,jdbcType=TIMESTAMP}, started_time),
             finished_time = COALESCE(#{row.finishedTime,jdbcType=TIMESTAMP}, finished_time),
             error_message = #{row.errorMessage},
+            orchestrator_status = COALESCE(#{row.orchestratorStatus}, orchestrator_status),
+            module_progress_json = COALESCE(#{row.moduleProgressJson}, module_progress_json),
             update_time = SYSUTCDATETIME()
         WHERE tenant_id = #{row.tenantId}
           AND job_id = #{row.jobId}
@@ -70,6 +74,8 @@
             done_windows AS doneWindows,
             rows_read AS rowsRead,
             rows_written AS rowsWritten,
+            orchestrator_status AS orchestratorStatus,
+            module_progress_json AS moduleProgressJson,
             submitted_by AS submittedBy,
             submitted_time AS submittedTime,
             started_time AS startedTime,
@@ -105,6 +111,8 @@
             done_windows AS doneWindows,
             rows_read AS rowsRead,
             rows_written AS rowsWritten,
+            orchestrator_status AS orchestratorStatus,
+            module_progress_json AS moduleProgressJson,
             submitted_by AS submittedBy,
             submitted_time AS submittedTime,
             started_time AS startedTime,
@@ -140,6 +148,8 @@
             done_windows AS doneWindows,
             rows_read AS rowsRead,
             rows_written AS rowsWritten,
+            orchestrator_status AS orchestratorStatus,
+            module_progress_json AS moduleProgressJson,
             submitted_by AS submittedBy,
             submitted_time AS submittedTime,
             started_time AS startedTime,
@@ -151,6 +161,44 @@
         WHERE tenant_id = #{tenantId}
           AND request_hash = #{requestHash}
           AND status_code IN ('PENDING', 'RUNNING', 'RETRYING')
+        ORDER BY submitted_time DESC, job_id DESC
+    </select>
+
+    <select id="selectLatestJobByRequestHash" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow">
+        SELECT TOP 1
+            job_id AS jobId,
+            tenant_id AS tenantId,
+            job_code AS jobCode,
+            module_code AS moduleCode,
+            status_code AS statusCode,
+            priority,
+            request_json AS requestJson,
+            request_hash AS requestHash,
+            read_range_type AS readRangeType,
+            read_start AS readStart,
+            read_end AS readEnd,
+            window_types AS windowTypes,
+            force_rebuild AS forceRebuild,
+            max_retry AS maxRetry,
+            retry_count AS retryCount,
+            progress_percent AS progressPercent,
+            current_stage AS currentStage,
+            total_windows AS totalWindows,
+            done_windows AS doneWindows,
+            rows_read AS rowsRead,
+            rows_written AS rowsWritten,
+            orchestrator_status AS orchestratorStatus,
+            module_progress_json AS moduleProgressJson,
+            submitted_by AS submittedBy,
+            submitted_time AS submittedTime,
+            started_time AS startedTime,
+            finished_time AS finishedTime,
+            error_message AS errorMessage,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_precompute_job
+        WHERE tenant_id = #{tenantId}
+          AND request_hash = #{requestHash}
         ORDER BY submitted_time DESC, job_id DESC
     </select>
 

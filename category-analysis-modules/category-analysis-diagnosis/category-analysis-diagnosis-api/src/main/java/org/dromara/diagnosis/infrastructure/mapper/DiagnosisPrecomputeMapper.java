@@ -31,6 +31,9 @@ public interface DiagnosisPrecomputeMapper {
     DiagnosisPrecomputeJobRow selectLatestActiveJobByRequestHash(@Param("tenantId") String tenantId,
                                                                  @Param("requestHash") String requestHash);
 
+    DiagnosisPrecomputeJobRow selectLatestJobByRequestHash(@Param("tenantId") String tenantId,
+                                                           @Param("requestHash") String requestHash);
+
     int insertWindow(@Param("row") DiagnosisPrecomputeWindowRow row);
 
     int updateWindowStatus(@Param("row") DiagnosisPrecomputeWindowRow row);

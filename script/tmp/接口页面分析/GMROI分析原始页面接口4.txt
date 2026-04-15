@@ -1,0 +1,21 @@
+请求地址：/api/classDoctorGmroi/queryGmroiSkuChange
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "sku_2": 137,
+        "sku_3": 71,
+        "sku_4": 81,
+        "gmroiType": null,
+        "num": null
+    },
+    "timestamp": 1776239717603
+}
+
+接口字段说明（四象限异动变化SKU数统计）
+sku_2：对比期为成功商品，本期变为沉睡商品的SKU数量
+sku_3：对比期为成功商品，本期变为问题商品的SKU数量
+sku_4：对比期为成功商品，本期变为吸客商品的SKU数量
+gmroiType/num：预留扩展字段，当前无业务含义

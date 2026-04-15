@@ -695,4 +695,208 @@
         ORDER BY pointDate ASC, subClassNo ASC
     </select>
 
+    <select id="aggregateChannelContribution" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceChannelContributionAggRow">
+        WITH sales_agg AS (
+            SELECT
+                sale_channel AS saleChannel,
+                CASE WHEN sale_channel = 1 THEN NULL ELSE NULLIF(LTRIM(RTRIM(online_type)), '') END AS onlineType,
+                MAX(NULLIF(LTRIM(RTRIM(online_name)), '')) AS onlineName,
+                ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales,
+                ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS totalGross
+            FROM fact_sales_day
+            WHERE sale_date &gt;= #{param.periodStart}
+              AND sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+            GROUP BY sale_channel,
+                CASE WHEN sale_channel = 1 THEN NULL ELSE NULLIF(LTRIM(RTRIM(online_type)), '') END
+        ),
+        customer_agg AS (
+            SELECT
+                sale_channel AS saleChannel,
+                CASE WHEN sale_channel = 1 THEN NULL ELSE NULLIF(LTRIM(RTRIM(online_type)), '') END AS onlineType,
+                MAX(NULLIF(LTRIM(RTRIM(online_name)), '')) AS onlineName,
+                COUNT(DISTINCT sale_no) AS totalCustomerCount
+            FROM sh7_saleplu
+            WHERE CAST(xsdate AS DATE) &gt;= #{param.periodStart}
+              AND CAST(xsdate AS DATE) &lt;= #{param.periodEnd}
+              <include refid="classFilterSh7"/>
+              <include refid="storeFilterSh7"/>
+            GROUP BY sale_channel,
+                CASE WHEN sale_channel = 1 THEN NULL ELSE NULLIF(LTRIM(RTRIM(online_type)), '') END
+        )
+        SELECT
+            COALESCE(s.saleChannel, c.saleChannel) AS saleChannel,
+            COALESCE(s.onlineType, c.onlineType) AS onlineType,
+            COALESCE(s.onlineName, c.onlineName) AS onlineName,
+            ISNULL(s.totalSales, 0) AS totalSales,
+            ISNULL(s.totalGross, 0) AS totalGross,
+            ISNULL(CAST(c.totalCustomerCount AS DECIMAL(20, 2)), 0) AS totalCustomerCount
+        FROM sales_agg s
+        FULL OUTER JOIN customer_agg c
+          ON c.saleChannel = s.saleChannel
+         AND ISNULL(c.onlineType, '') = ISNULL(s.onlineType, '')
+        ORDER BY COALESCE(s.saleChannel, c.saleChannel), COALESCE(s.onlineType, c.onlineType)
+    </select>
+
+    <select id="aggregateChannelDailySales" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceChannelDailyTrendAggRow">
+        SELECT
+            sale_date AS pointDate,
+            sale_channel AS saleChannel,
+            CASE WHEN sale_channel = 1 THEN NULL ELSE NULLIF(LTRIM(RTRIM(online_type)), '') END AS onlineType,
+            MAX(NULLIF(LTRIM(RTRIM(online_name)), '')) AS onlineName,
+            ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales
+        FROM fact_sales_day
+        WHERE sale_date &gt;= #{param.periodStart}
+          AND sale_date &lt;= #{param.periodEnd}
+          <include refid="classFilterSales"/>
+          <include refid="storeFilterSales"/>
+        GROUP BY sale_date, sale_channel,
+            CASE WHEN sale_channel = 1 THEN NULL ELSE NULLIF(LTRIM(RTRIM(online_type)), '') END
+        ORDER BY pointDate ASC, saleChannel ASC, onlineType ASC
+    </select>
+
+    <select id="aggregateVipByGenderAndAge" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceVipGenderAgeAggRow">
+        WITH base_data AS (
+            SELECT
+                CASE
+                    WHEN v.gender IN (1, 2) THEN v.gender
+                    ELSE 3
+                END AS gender,
+                CASE
+                    WHEN v.birthday IS NOT NULL THEN
+                        DATEDIFF(YEAR, v.birthday, #{referenceDate})
+                        - CASE
+                            WHEN DATEFROMPARTS(YEAR(#{referenceDate}), MONTH(v.birthday), DAY(v.birthday)) &gt; #{referenceDate} THEN 1
+                            ELSE 0
+                          END
+                    WHEN v.age IS NOT NULL THEN CAST(v.age AS INT)
+                    ELSE NULL
+                END AS ageValue,
+                sh7_saleplu.sale_no AS saleNo,
+                CAST(sh7_saleplu.act_money AS DECIMAL(20, 6)) AS actMoney,
+                CAST(sh7_saleplu.sale_quantity AS DECIMAL(20, 6)) AS saleQuantity
+            FROM sh7_saleplu
+            LEFT JOIN vip_base_info v
+              ON v.card_no = sh7_saleplu.card_no
+            WHERE CAST(sh7_saleplu.xsdate AS DATE) &gt;= #{param.periodStart}
+              AND CAST(sh7_saleplu.xsdate AS DATE) &lt;= #{param.periodEnd}
+              <include refid="classFilterSh7"/>
+              <include refid="storeFilterSh7"/>
+        )
+        SELECT
+            gender,
+            ageValue,
+            ISNULL(SUM(actMoney), 0) AS totalSales,
+            ISNULL(SUM(saleQuantity), 0) AS totalSaleQuantity,
+            ISNULL(CAST(COUNT(DISTINCT saleNo) AS DECIMAL(20, 2)), 0) AS totalCustomerCount
+        FROM base_data
+        GROUP BY gender, ageValue
+        ORDER BY gender ASC, ageValue ASC
+    </select>
+
+    <select id="aggregateAbcProductMetrics" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductAggRow">
+        SELECT
+            product_no AS productNo,
+            MAX(product_barcode) AS productBarcode,
+            MAX(product_name) AS productName,
+            COUNT(DISTINCT CASE WHEN sales &gt; 0 THEN store_no ELSE NULL END) AS storeNum,
+            ISNULL(SUM(CAST(sale_quantity AS DECIMAL(20, 6))), 0) AS saleQuantity,
+            ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS sales,
+            ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS gross,
+            ISNULL(SUM(CAST(sale_cost AS DECIMAL(20, 6))), 0) AS saleCost,
+            CASE WHEN MAX(CASE WHEN ISNULL(LTRIM(RTRIM(cx_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN 1 ELSE 0 END) = 1
+                 THEN '1' ELSE '0' END AS promotionFlag,
+            MIN(sale_date) AS firstSaleDate
+        FROM fact_sales_day
+        WHERE sale_date &gt;= #{param.periodStart}
+          AND sale_date &lt;= #{param.periodEnd}
+          <include refid="classFilterSales"/>
+          <include refid="storeFilterSales"/>
+        GROUP BY product_no
+    </select>
+
+    <select id="aggregateAbcProductStock" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductStockRow">
+        SELECT
+            product_no AS productNo,
+            ISNULL(SUM(CAST(stock_quantity AS DECIMAL(20, 6))), 0) AS stockQuantity,
+            ISNULL(SUM(CAST(stock_sale_money AS DECIMAL(20, 6))), 0) AS stockSaleMoney
+        FROM fact_stock_day
+        WHERE stock_date = #{stockDate}
+          <include refid="classFilterStock"/>
+          <include refid="storeFilterStock"/>
+        GROUP BY product_no
+    </select>
+
+    <select id="selectAbcProductMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductMetaRow">
+        SELECT
+            p.product_no AS productNo,
+            MAX(p.product_barcode) AS productBarcode,
+            MAX(p.product_name) AS productName,
+            MAX(p.status_name) AS productStatus,
+            CAST(MAX(CAST(ISNULL(p.status_no, 0) AS INT)) AS NVARCHAR(20)) AS productStatusNo,
+            MAX(p.product_brand) AS brandName,
+            MAX(p.product_spec) AS spec,
+            ISNULL(MAX(CAST(p.product_taxin_inprice AS DECIMAL(20, 6))), 0) AS inPrice,
+            ISNULL(MAX(CAST(p.product_saleprice AS DECIMAL(20, 6))), 0) AS salesPrice,
+            MAX(p.seasonable_flag) AS seasonableFlag,
+            CASE WHEN MAX(CASE WHEN ISNULL(LTRIM(RTRIM(p.seasonable_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN 1 ELSE 0 END) = 1
+                THEN N'是' ELSE N'否' END AS seasonableFlagName,
+            MAX(CAST(p.seasonable_start_date AS DATE)) AS seasonableStartDate,
+            MAX(CAST(p.seasonable_end_date AS DATE)) AS seasonableEndDate,
+            MAX(CAST(p.first_order_date AS DATE)) AS firstSaleDate,
+            <choose>
+                <when test="param.classLevel == 1">
+                    MAX(p.one_class_no) AS classNo,
+                    MAX(p.one_class_name) AS className,
+                    1 AS classLevel
+                </when>
+                <when test="param.classLevel == 2">
+                    MAX(p.two_class_no) AS classNo,
+                    MAX(p.two_class_name) AS className,
+                    2 AS classLevel
+                </when>
+                <when test="param.classLevel == 3">
+                    MAX(p.three_class_no) AS classNo,
+                    MAX(p.three_class_name) AS className,
+                    3 AS classLevel
+                </when>
+                <when test="param.classLevel == 4">
+                    MAX(p.four_class_no) AS classNo,
+                    MAX(p.four_class_name) AS className,
+                    4 AS classLevel
+                </when>
+                <otherwise>
+                    MAX(p.one_class_no) AS classNo,
+                    MAX(p.one_class_name) AS className,
+                    1 AS classLevel
+                </otherwise>
+            </choose>
+        FROM base_dept_products p
+        WHERE 1 = 1
+          <include refid="classFilterDeptProducts"/>
+          <include refid="storeFilterDeptProducts"/>
+        GROUP BY p.product_no
+    </select>
+
+    <select id="selectOnlineChannelDictRows" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow">
+        SELECT
+            d.dict_code AS dictCode,
+            t.dict_id AS dictId,
+            d.dict_sort AS dictSort,
+            d.dict_label AS dictLabel,
+            d.dict_value AS dictValue,
+            CONVERT(VARCHAR(19), d.create_time, 120) AS createTime
+        FROM sys_dict_data d
+                 LEFT JOIN sys_dict_type t
+                           ON t.dict_type = d.dict_type
+                               AND t.tenant_id = d.tenant_id
+        WHERE d.tenant_id = N'000000'
+          AND d.dict_type IN
+        <foreach collection="dictTypes" item="dictType" open="(" close=")" separator=",">
+            #{dictType}
+        </foreach>
+        ORDER BY d.dict_type ASC, d.dict_sort ASC, d.dict_code ASC
+    </select>
+
 </mapper>

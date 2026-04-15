@@ -7,6 +7,8 @@ import java.time.LocalDate;
 @Data
 public class LegacySubclassContributionRequest {
 
+    private String sessionId;
+
     private String deptId;
     private String retailTypeId;
     private String businessCircleId;

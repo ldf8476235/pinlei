@@ -21,7 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * 预计算任务执行监听器.
+ * 濡澘瀚鍝ョ不濡炵偓宕查柛鏂哄墲婢х晫鎮板畝鈧ú鍐触椤掆偓濞?
  */
 @Component
 @RequiredArgsConstructor
@@ -42,6 +42,7 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
         row.setJobId(jobId);
         row.setStatusCode("RUNNING");
         row.setCurrentStage("READ");
+        row.setOrchestratorStatus("RUNNING");
         row.setStartedTime(LocalDateTime.now());
         precomputeMapper.updateJobStatus(row);
 
@@ -69,7 +70,7 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
         event.setWindowId(windowId);
         event.setEventLevel("INFO");
         event.setEventStage("START");
-        event.setEventMessage("窗口任务开始执行");
+        event.setEventMessage("棰勮绠椾换鍔″凡鍚姩");
         event.setPayloadJson(JsonUtils.toJsonString(payload));
         precomputeMapper.insertEvent(event);
     }
@@ -92,6 +93,7 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
             if (nextWindow != null) {
                 row.setStatusCode("RUNNING");
                 row.setCurrentStage("DISPATCH_NEXT");
+                row.setOrchestratorStatus("RUNNING");
                 precomputeMapper.updateJobStatus(row);
 
                 DiagnosisPrecomputeBatchRunner batchRunner = batchRunnerProvider.getIfAvailable();
@@ -112,7 +114,7 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
                 event.setWindowId(nextWindow.getWindowId());
                 event.setEventLevel("INFO");
                 event.setEventStage("DISPATCH_NEXT");
-                event.setEventMessage("窗口完成，自动派发下一个窗口");
+                event.setEventMessage("绐楀彛澶勭悊瀹屾垚锛屽凡娲惧彂涓嬩竴绐楀彛浠诲姟");
                 event.setPayloadJson(JsonUtils.toJsonString(payload));
                 precomputeMapper.insertEvent(event);
 
@@ -124,6 +126,7 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
             }
             row.setStatusCode("SUCCESS");
             row.setCurrentStage("DONE");
+            row.setOrchestratorStatus("SUCCESS");
             row.setFinishedTime(LocalDateTime.now());
 
             Map<String, Object> payload = new LinkedHashMap<>();
@@ -138,14 +141,20 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
             event.setWindowId(windowId);
             event.setEventLevel("INFO");
             event.setEventStage("DONE");
-            event.setEventMessage("任务全部窗口执行完成");
+            event.setEventMessage("预计算任务全部窗口处理完成");
             event.setPayloadJson(JsonUtils.toJsonString(payload));
             precomputeMapper.insertEvent(event);
         } else {
+            String keepOrchestrator = latestStatus == null ? null : latestStatus.getOrchestratorStatus();
             row.setStatusCode("FAILED");
             row.setCurrentStage("FAILED");
+            if ("PARTIAL_SUCCESS".equalsIgnoreCase(keepOrchestrator)) {
+                row.setOrchestratorStatus("PARTIAL_SUCCESS");
+            } else {
+                row.setOrchestratorStatus("FAILED");
+            }
             row.setFinishedTime(LocalDateTime.now());
-            row.setErrorMessage(jobExecution.getAllFailureExceptions().isEmpty() ? "任务失败" : jobExecution.getAllFailureExceptions().get(0).getMessage());
+            row.setErrorMessage(jobExecution.getAllFailureExceptions().isEmpty() ? "濞寸姾顕ф慨鐔稿緞鏉堫偉袝" : jobExecution.getAllFailureExceptions().get(0).getMessage());
 
             Map<String, Object> payload = new LinkedHashMap<>();
             payload.put("jobId", jobId);
@@ -171,3 +180,4 @@ public class DiagnosisPrecomputeJobListener implements JobExecutionListener {
         }
     }
 }
+

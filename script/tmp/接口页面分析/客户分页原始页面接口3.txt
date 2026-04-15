@@ -1,0 +1,153 @@
+接口地址：/api/classDoctorVip/queryVipSalesRadar
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "gender": 1,
+            "ageStart": null,
+            "ageEnd": null,
+            "sales": 800752.74,
+            "customerCount": 42439.00,
+            "customerPrice": 18.868323,
+            "unitPrice": 15.425282,
+            "countAve": 1.223208,
+            "saleQuantity": 51911.71
+        },
+        {
+            "gender": 1,
+            "ageStart": null,
+            "ageEnd": 20,
+            "sales": 183061.69,
+            "customerCount": 9828.00,
+            "customerPrice": 18.626546,
+            "unitPrice": 15.504321,
+            "countAve": 1.201378,
+            "saleQuantity": 11807.14
+        },
+        {
+            "gender": 1,
+            "ageStart": 21,
+            "ageEnd": 30,
+            "sales": 2544.86,
+            "customerCount": 124.00,
+            "customerPrice": 20.523065,
+            "unitPrice": 17.376989,
+            "countAve": 1.181048,
+            "saleQuantity": 146.45
+        },
+        {
+            "gender": 1,
+            "ageStart": 31,
+            "ageEnd": 40,
+            "sales": 5949.24,
+            "customerCount": 377.00,
+            "customerPrice": 15.780477,
+            "unitPrice": 14.109762,
+            "countAve": 1.118408,
+            "saleQuantity": 421.64
+        },
+        {
+            "gender": 1,
+            "ageStart": 41,
+            "ageEnd": 50,
+            "sales": 7324.56,
+            "customerCount": 409.00,
+            "customerPrice": 17.908460,
+            "unitPrice": 15.546132,
+            "countAve": 1.151956,
+            "saleQuantity": 471.15
+        },
+        {
+            "gender": 1,
+            "ageStart": 51,
+            "ageEnd": 60,
+            "sales": 4281.52,
+            "customerCount": 260.00,
+            "customerPrice": 16.467385,
+            "unitPrice": 15.411684,
+            "countAve": 1.068500,
+            "saleQuantity": 277.81
+        },
+        {
+            "gender": 1,
+            "ageStart": 61,
+            "ageEnd": null,
+            "sales": 2904.72,
+            "customerCount": 171.00,
+            "customerPrice": 16.986667,
+            "unitPrice": 15.884939,
+            "countAve": 1.069357,
+            "saleQuantity": 182.86
+        },
+        {
+            "gender": 2,
+            "ageStart": null,
+            "ageEnd": 20,
+            "sales": 92395.07,
+            "customerCount": 4865.00,
+            "customerPrice": 18.991792,
+            "unitPrice": 15.570034,
+            "countAve": 1.219766,
+            "saleQuantity": 5934.16
+        },
+        {
+            "gender": 2,
+            "ageStart": 21,
+            "ageEnd": 30,
+            "sales": 3951.52,
+            "customerCount": 236.00,
+            "customerPrice": 16.743729,
+            "unitPrice": 14.748330,
+            "countAve": 1.135297,
+            "saleQuantity": 267.93
+        },
+        {
+            "gender": 2,
+            "ageStart": 31,
+            "ageEnd": 40,
+            "sales": 21463.45,
+            "customerCount": 1064.00,
+            "customerPrice": 20.172415,
+            "unitPrice": 16.249972,
+            "countAve": 1.241382,
+            "saleQuantity": 1320.83
+        },
+        {
+            "gender": 2,
+            "ageStart": 41,
+            "ageEnd": 50,
+            "sales": 20386.82,
+            "customerCount": 1060.00,
+            "customerPrice": 19.232849,
+            "unitPrice": 16.563877,
+            "countAve": 1.161132,
+            "saleQuantity": 1230.80
+        },
+        {
+            "gender": 2,
+            "ageStart": 51,
+            "ageEnd": 60,
+            "sales": 8772.71,
+            "customerCount": 493.00,
+            "customerPrice": 17.794544,
+            "unitPrice": 16.303425,
+            "countAve": 1.091460,
+            "saleQuantity": 538.09
+        },
+        {
+            "gender": 2,
+            "ageStart": 61,
+            "ageEnd": null,
+            "sales": 3302.45,
+            "customerCount": 188.00,
+            "customerPrice": 17.566223,
+            "unitPrice": 15.618113,
+            "countAve": 1.124734,
+            "saleQuantity": 211.45
+        }
+    ],
+    "timestamp": 1776221295627
+}

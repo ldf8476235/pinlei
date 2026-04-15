@@ -1,0 +1,69 @@
+请求接口：/api/classDoctorVip/queryVipAgeList
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "id": 1,
+            "orderNumber": 1,
+            "ageStart": null,
+            "ageEnd": 20,
+            "author": null,
+            "modifier": null,
+            "createTime": null,
+            "updateTime": "2021-10-22 11:21:06"
+        },
+        {
+            "id": 2,
+            "orderNumber": 2,
+            "ageStart": 21,
+            "ageEnd": 30,
+            "author": null,
+            "modifier": null,
+            "createTime": null,
+            "updateTime": "2021-10-22 11:21:06"
+        },
+        {
+            "id": 3,
+            "orderNumber": 3,
+            "ageStart": 31,
+            "ageEnd": 40,
+            "author": null,
+            "modifier": null,
+            "createTime": null,
+            "updateTime": "2021-10-22 11:21:06"
+        },
+        {
+            "id": 4,
+            "orderNumber": 4,
+            "ageStart": 41,
+            "ageEnd": 50,
+            "author": null,
+            "modifier": null,
+            "createTime": null,
+            "updateTime": "2021-10-22 11:21:06"
+        },
+        {
+            "id": 5,
+            "orderNumber": 5,
+            "ageStart": 51,
+            "ageEnd": 60,
+            "author": null,
+            "modifier": null,
+            "createTime": null,
+            "updateTime": "2021-10-22 11:21:06"
+        },
+        {
+            "id": 6,
+            "orderNumber": 6,
+            "ageStart": 61,
+            "ageEnd": null,
+            "author": null,
+            "modifier": null,
+            "createTime": null,
+            "updateTime": "2021-10-22 11:21:06"
+        }
+    ],
+    "timestamp": 1776221295539
+}

@@ -1,0 +1,679 @@
+请求接口：/api/classDoctorChannel/queryChannelSalesLine
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+返回参数：
+{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "lineDate": [
+            {
+                "dataDate": null,
+                "saleChannel": 2,
+                "onlineType": "201",
+                "onlineName": "线上自动贩卖机",
+                "sales": null
+            },
+            {
+                "dataDate": "2024/11/26",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 34123.22
+            },
+            {
+                "dataDate": "2024/11/25",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 27533.75
+            },
+            {
+                "dataDate": "2024/11/24",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 47772.04
+            },
+            {
+                "dataDate": "2024/11/23",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 45807.71
+            },
+            {
+                "dataDate": "2024/11/22",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 42766.72
+            },
+            {
+                "dataDate": "2024/11/21",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 30825.46
+            },
+            {
+                "dataDate": "2024/11/20",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 31286.35
+            },
+            {
+                "dataDate": "2024/11/19",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 37031.91
+            },
+            {
+                "dataDate": "2024/11/18",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 30285.76
+            },
+            {
+                "dataDate": "2024/11/17",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 49352.30
+            },
+            {
+                "dataDate": "2024/11/16",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 48303.13
+            },
+            {
+                "dataDate": "2024/11/15",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 33046.03
+            },
+            {
+                "dataDate": "2024/11/14",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 27158.94
+            },
+            {
+                "dataDate": "2024/11/13",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 59864.94
+            },
+            {
+                "dataDate": "2024/11/12",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 33498.69
+            },
+            {
+                "dataDate": "2024/11/10",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 50564.02
+            },
+            {
+                "dataDate": "2024/11/09",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 45339.77
+            },
+            {
+                "dataDate": "2024/11/08",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 34802.02
+            },
+            {
+                "dataDate": "2024/11/07",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 34257.93
+            },
+            {
+                "dataDate": "2024/11/06",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 33452.36
+            },
+            {
+                "dataDate": "2024/11/05",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 33336.11
+            },
+            {
+                "dataDate": "2024/11/04",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 30756.75
+            },
+            {
+                "dataDate": "2024/11/03",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 49990.60
+            },
+            {
+                "dataDate": "2024/11/02",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 49780.61
+            },
+            {
+                "dataDate": "2024/11/01",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 31107.16
+            },
+            {
+                "dataDate": "2024/10/31",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 42856.00
+            },
+            {
+                "dataDate": "2024/10/30",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 37769.30
+            },
+            {
+                "dataDate": "2024/10/29",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 46397.89
+            },
+            {
+                "dataDate": "2024/10/28",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 60730.10
+            },
+            {
+                "dataDate": "2024/10/27",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 63826.50
+            },
+            {
+                "dataDate": "2024/12/08",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 56303.36
+            },
+            {
+                "dataDate": "2024/12/07",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 51437.65
+            },
+            {
+                "dataDate": "2024/12/06",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 44181.54
+            },
+            {
+                "dataDate": "2024/12/05",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 34874.86
+            },
+            {
+                "dataDate": "2024/12/04",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 35392.21
+            },
+            {
+                "dataDate": "2024/12/03",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 36927.72
+            },
+            {
+                "dataDate": "2024/12/02",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 36447.41
+            },
+            {
+                "dataDate": "2024/12/01",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 54528.68
+            },
+            {
+                "dataDate": "2024/11/30",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 52870.80
+            },
+            {
+                "dataDate": "2024/11/29",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 40704.72
+            },
+            {
+                "dataDate": "2024/11/28",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 32853.47
+            },
+            {
+                "dataDate": "2024/11/27",
+                "saleChannel": 2,
+                "onlineType": "205",
+                "onlineName": "线上美团外卖",
+                "sales": 30966.51
+            },
+            {
+                "dataDate": "2024/11/26",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 85308.04
+            },
+            {
+                "dataDate": "2024/11/25",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 68834.38
+            },
+            {
+                "dataDate": "2024/11/24",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 119430.10
+            },
+            {
+                "dataDate": "2024/11/23",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 114519.28
+            },
+            {
+                "dataDate": "2024/11/22",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 106916.79
+            },
+            {
+                "dataDate": "2024/11/21",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 77063.65
+            },
+            {
+                "dataDate": "2024/11/20",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 78215.87
+            },
+            {
+                "dataDate": "2024/11/19",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 92579.77
+            },
+            {
+                "dataDate": "2024/11/18",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 75714.39
+            },
+            {
+                "dataDate": "2024/11/17",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 123380.76
+            },
+            {
+                "dataDate": "2024/11/16",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 120757.83
+            },
+            {
+                "dataDate": "2024/11/15",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 82615.07
+            },
+            {
+                "dataDate": "2024/11/14",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 67897.34
+            },
+            {
+                "dataDate": "2024/11/13",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 149662.34
+            },
+            {
+                "dataDate": "2024/11/12",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 83746.72
+            },
+            {
+                "dataDate": "2024/11/10",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 126410.06
+            },
+            {
+                "dataDate": "2024/11/09",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 113349.43
+            },
+            {
+                "dataDate": "2024/11/08",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 87005.05
+            },
+            {
+                "dataDate": "2024/11/07",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 85644.82
+            },
+            {
+                "dataDate": "2024/11/06",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 83630.89
+            },
+            {
+                "dataDate": "2024/11/05",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 83340.27
+            },
+            {
+                "dataDate": "2024/11/04",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 76891.88
+            },
+            {
+                "dataDate": "2024/11/03",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 124976.50
+            },
+            {
+                "dataDate": "2024/11/02",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 124451.53
+            },
+            {
+                "dataDate": "2024/11/01",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 77767.91
+            },
+            {
+                "dataDate": "2024/10/31",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 107140.01
+            },
+            {
+                "dataDate": "2024/10/30",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 94423.26
+            },
+            {
+                "dataDate": "2024/10/29",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 115994.72
+            },
+            {
+                "dataDate": "2024/10/28",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 151825.26
+            },
+            {
+                "dataDate": "2024/10/27",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 159566.25
+            },
+            {
+                "dataDate": "2024/12/08",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 140758.39
+            },
+            {
+                "dataDate": "2024/12/07",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 128594.13
+            },
+            {
+                "dataDate": "2024/12/06",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 110453.85
+            },
+            {
+                "dataDate": "2024/12/05",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 87187.15
+            },
+            {
+                "dataDate": "2024/12/04",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 88480.52
+            },
+            {
+                "dataDate": "2024/12/03",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 92319.29
+            },
+            {
+                "dataDate": "2024/12/02",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 91118.53
+            },
+            {
+                "dataDate": "2024/12/01",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 136321.71
+            },
+            {
+                "dataDate": "2024/11/30",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 132177.00
+            },
+            {
+                "dataDate": "2024/11/29",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 101761.81
+            },
+            {
+                "dataDate": "2024/11/28",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 82133.68
+            },
+            {
+                "dataDate": "2024/11/27",
+                "saleChannel": 1,
+                "onlineType": null,
+                "onlineName": null,
+                "sales": 77416.28
+            }
+        ],
+        "xdata": [
+            "2024/10/01",
+            "2024/10/02",
+            "2024/10/03",
+            "2024/10/04",
+            "2024/10/05",
+            "2024/10/06",
+            "2024/10/07",
+            "2024/10/08",
+            "2024/10/09",
+            "2024/10/10",
+            "2024/10/11",
+            "2024/10/12",
+            "2024/10/13",
+            "2024/10/14",
+            "2024/10/15",
+            "2024/10/16",
+            "2024/10/17",
+            "2024/10/18",
+            "2024/10/19",
+            "2024/10/20",
+            "2024/10/21",
+            "2024/10/22",
+            "2024/10/23",
+            "2024/10/24",
+            "2024/10/25",
+            "2024/10/26",
+            "2024/10/27",
+            "2024/10/28",
+            "2024/10/29",
+            "2024/10/30",
+            "2024/10/31",
+            "2024/11/01",
+            "2024/11/02",
+            "2024/11/03",
+            "2024/11/04",
+            "2024/11/05",
+            "2024/11/06",
+            "2024/11/07",
+            "2024/11/08",
+            "2024/11/09",
+            "2024/11/10",
+            "2024/11/11",
+            "2024/11/12",
+            "2024/11/13",
+            "2024/11/14",
+            "2024/11/15",
+            "2024/11/16",
+            "2024/11/17",
+            "2024/11/18",
+            "2024/11/19",
+            "2024/11/20",
+            "2024/11/21",
+            "2024/11/22",
+            "2024/11/23",
+            "2024/11/24",
+            "2024/11/25",
+            "2024/11/26",
+            "2024/11/27",
+            "2024/11/28",
+            "2024/11/29",
+            "2024/11/30",
+            "2024/12/01",
+            "2024/12/02",
+            "2024/12/03",
+            "2024/12/04",
+            "2024/12/05",
+            "2024/12/06",
+            "2024/12/07",
+            "2024/12/08"
+        ]
+    },
+    "timestamp": 1776218801510
+}

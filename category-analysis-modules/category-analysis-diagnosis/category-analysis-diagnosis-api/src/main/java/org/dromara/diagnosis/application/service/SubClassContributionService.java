@@ -10,9 +10,12 @@ import org.dromara.diagnosis.application.config.DiagnosisCacheProperties;
 import org.dromara.diagnosis.application.model.DiagnosisSessionCacheModel;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
+import org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSubclassContributionMapper;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSubclassContributionRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSubclassTrendRow;
 import org.springframework.stereotype.Service;
@@ -36,6 +39,7 @@ public class SubClassContributionService {
     private final DiagnosisSessionCacheStore sessionCacheStore;
     private final DiagnosisCacheProperties cacheProperties;
     private final DiagnosisSubclassContributionMapper subclassContributionMapper;
+    private final DiagnosisPrecomputeMapper precomputeMapper;
 
     public List<LegacySubclassSalesPerResponse> getSalesPer(String sessionId) {
         DiagnosisSessionCacheModel session = getSession(sessionId);
@@ -135,6 +139,7 @@ public class SubClassContributionService {
             item.setCurrentGrossPer(row.getCurrentGrossPer());
             item.setCurrentGrossRate(row.getCurrentGrossRate());
             item.setCurrentSaleQuantity(row.getCurrentSaleQuantity());
+            item.setCurrentCustomerCount(row.getCurrentCustomerCount());
             item.setCurrentCustomerPrice(row.getCurrentCustomerPrice());
             item.setCompareSales(row.getCompareSales());
             item.setCompareSalesPer(row.getCompareSalesPer());
@@ -145,6 +150,7 @@ public class SubClassContributionService {
             item.setCompareGrossRate(row.getCompareGrossRate());
             item.setCompareSaleQuantity(row.getCompareSaleQuantity());
             item.setCompareSaleQuantityAddRate(row.getCompareSaleQuantityAddRate());
+            item.setCompareCustomerCount(row.getCompareCustomerCount());
             item.setCompareCustomerPrice(row.getCompareCustomerPrice());
             item.setCompareCustomerPriceAddRate(row.getCompareCustomerPriceAddRate());
             item.setCurrentTurnoverRate(row.getCurrentTurnoverRate());
@@ -181,6 +187,10 @@ public class SubClassContributionService {
                 return overview;
             }
         }
+        DiagnosisOverviewSnapshotRow byJobBinding = resolveBoundJobSnapshot(sessionId, session);
+        if (byJobBinding != null) {
+            return byJobBinding;
+        }
 
         DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, session.getQueryHash());
         if (overview == null) {
@@ -191,6 +201,41 @@ public class SubClassContributionService {
             session.setDataVersion(overview.getDataVersion());
             sessionCacheStore.save(sessionId, session, Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes())));
         }
+        return overview;
+    }
+
+    private DiagnosisOverviewSnapshotRow resolveBoundJobSnapshot(String sessionId, DiagnosisSessionCacheModel session) {
+        if (session.getJobId() == null) {
+            return null;
+        }
+        DiagnosisPrecomputeJobRow job = precomputeMapper.selectJobById(TENANT_ID, session.getJobId());
+        if (job == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "bound precompute job not found");
+        }
+        if (!"SUCCESS".equalsIgnoreCase(job.getStatusCode())) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT,
+                "session result not ready, precompute job status: " + job.getStatusCode());
+        }
+        List<DiagnosisPrecomputeWindowRow> windows = precomputeMapper.selectWindowsByJobId(TENANT_ID, session.getJobId());
+        String dataVersion = null;
+        if (windows != null) {
+            for (DiagnosisPrecomputeWindowRow window : windows) {
+                if (window != null && window.getDataVersion() != null && !window.getDataVersion().isBlank()) {
+                    dataVersion = window.getDataVersion();
+                }
+            }
+        }
+        if (dataVersion == null || dataVersion.isBlank()) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "bound precompute job has no data version");
+        }
+        DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectOverviewByQueryAndVersion(
+            TENANT_ID, session.getQueryHash(), dataVersion);
+        if (overview == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT,
+                "bound precompute result not published, please retry later");
+        }
+        session.setDataVersion(dataVersion);
+        sessionCacheStore.save(sessionId, session, Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes())));
         return overview;
     }
 

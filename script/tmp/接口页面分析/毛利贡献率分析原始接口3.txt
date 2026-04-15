@@ -1,0 +1,38 @@
+请求地址：/api/classDoctorGross/queryGrossSkuPer
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "currentSkuPer_1": 13.66,
+        "currentSkuPer_2": 8.57,
+        "currentSkuPer_3": 24.35,
+        "currentSku_3": 1153,
+        "currentSkuPer_4": 53.41,
+        "compareSkuPer_1": 13.27,
+        "compareSkuPer_2": 9.98,
+        "compareSkuPer_3": 34.20,
+        "compareSkuPer_4": 42.55
+    },
+    "timestamp": 1776238990322
+}
+返回参数解释：
+接口返回的所有 %，
+1. currentSkuPer_1 = 13.66
+含义：本期领跑商品占比= 本期领跑商品 SKU 数 / 本期总 SKU 数
+2. currentSkuPer_2 = 8.57
+含义：本期吸客商品占比
+3. currentSkuPer_3 = 24.35
+含义：本期问题商品占比
+4. currentSkuPer_4 = 53.41
+含义：本期利润商品占比
+5. compareSkuPer_1 = 13.27
+含义：对比期领跑商品占比
+6. compareSkuPer_2 = 9.98
+含义：对比期吸客商品占比
+7. compareSkuPer_3 = 34.20
+含义：对比期问题商品占比
+8. compareSkuPer_4 = 42.55
+含义：对比期利润商品占比
+9.currentSku_3 问题商品(低销售低毛利率)1,153个

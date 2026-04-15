@@ -1,0 +1,45 @@
+请求地址：/api/classDoctorGmroi/queryGmroiSkuPer
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "currentSkuPer_1": 38.86,
+        "currentSkuPer_2": 28.22,
+        "currentSkuPer_3": 22.85,
+        "currentSku_3": 1082,
+        "currentSkuPer_4": 10.07,
+        "compareSkuPer_1": 38.54,
+        "compareSkuPer_2": 17.28,
+        "compareSkuPer_3": 25.32,
+        "compareSkuPer_4": 18.86
+    },
+    "timestamp": 1776239717591
+}
+
+返回参数解析：
+接口字段说明（四象限SKU占比变化统计）
+currentSkuPer_1：本期成功商品SKU占比（%，已×100，保留2位小数）
+currentSkuPer_2：本期沉睡商品SKU占比（%）
+currentSkuPer_3：本期问题商品SKU占比（%）
+currentSku_3：本期问题商品SKU数量（整数）
+currentSkuPer_4：本期吸客商品SKU占比（%）
+
+compareSkuPer_1：对比期成功商品SKU占比（%）
+compareSkuPer_2：对比期沉睡商品SKU占比（%）
+compareSkuPer_3：对比期问题商品SKU占比（%）
+compareSkuPer_4：对比期吸客商品SKU占比（%）
+
+1. 先对本期、对比期的所有SKU按四象限规则分类：
+   - 成功商品：高销高毛/高GMROI，核心盈利品
+   - 沉睡商品：长期无动销/低周转，待激活品
+   - 问题商品：低销低毛/负毛利/高库存，待淘汰品
+   - 吸客商品：高销低毛，引流款
+2. 计算各分类SKU占比：
+   占比 = 该分类SKU数量 / 总SKU数量 × 100
+3. 精度规则：
+   - 占比：保留2位小数，已×100返回，前端直接加%展示
+   - 数量：整数（0位小数）
+   - 空值/无数据：统一返回0
+4. 对比期为0时，增长率统一返回0

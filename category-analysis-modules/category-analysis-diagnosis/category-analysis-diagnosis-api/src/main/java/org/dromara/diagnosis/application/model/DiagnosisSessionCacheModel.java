@@ -13,5 +13,6 @@ public class DiagnosisSessionCacheModel {
     private String queryHash;
 
     private String dataVersion;
-}
 
+    private Long jobId;
+}

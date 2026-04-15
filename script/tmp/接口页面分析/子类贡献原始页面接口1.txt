@@ -37,25 +37,3 @@
 }
 
 
-对一下字段 
-
-currentSales是 本期销售额
-currentSalesPer 本期占比
-currentGross 本期毛利额
-currentGrossPer 也是占比2
-compareGrossRate 本期毛利率
-currentSaleQuantity 本期客数
-currentCustomerPrice  本期客单价
-
-compareSales 对比销售额
-compareSalesPer 对比占比
-compareSalesAddRate 对比增长
-compareGross 对比毛利额
-compareGrossPer 对比占比2
-compareGrossAddRate 对比增长
-compareGrossRate 对比毛利率
-compareSaleQuantity 对比客数
-compareSaleQuantityAddRate 对比增长2
-currentTurnoverRate 本期库存周转率
-currentTurnoverDays 本期库存周转天数
-gmroi 本期GMROI

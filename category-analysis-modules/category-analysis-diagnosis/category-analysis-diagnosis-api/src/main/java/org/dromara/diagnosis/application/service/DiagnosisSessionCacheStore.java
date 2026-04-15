@@ -12,5 +12,6 @@ public interface DiagnosisSessionCacheStore {
     void save(String sessionId, DiagnosisSessionCacheModel session, Duration ttl);
 
     DiagnosisSessionCacheModel get(String sessionId);
-}
 
+    DiagnosisSessionCacheModel getByQueryHash(String queryHash);
+}

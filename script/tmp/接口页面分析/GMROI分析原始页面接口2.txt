@@ -1,0 +1,44 @@
+请求地址：/api/classDoctorGmroi/queryGmroiSkuNum
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "sku_1": 4686,
+        "sku_2": 22,
+        "sku_3": 10,
+        "sku_4": 17,
+        "skuPer_1": 0.9897,
+        "skuPer_2": 0.0046,
+        "skuPer_3": 0.0021,
+        "skuPer_4": 0.0036
+    },
+    "timestamp": 1776239717695
+}
+
+返回参数解析：
+接口字段说明（本期GMROI区间SKU数统计）
+sku_1：GMROI ≤ 1 的SKU数量
+sku_2：1 < GMROI ≤ 2 的SKU数量
+sku_3：2 < GMROI ≤ 3 的SKU数量
+sku_4：GMROI > 3 的SKU数量
+
+skuPer_1：GMROI ≤ 1 的SKU占比（小数形式，0.9897 = 98.97%）
+skuPer_2：1 < GMROI ≤ 2 的SKU占比（0.0046 = 0.46%）
+skuPer_3：2 < GMROI ≤ 3 的SKU占比（0.0021 = 0.21%）
+skuPer_4：GMROI > 3 的SKU占比（0.0036 = 0.36%）
+
+GMROI计算公式：GMROI = 毛利额 / 平均库存成本
+
+1. 先计算每个SKU的GMROI：GMROI = 本期毛利额 / 期末库存成本（fact_stock_day.stock_cost）
+2. 按区间分组统计SKU数量：
+   - 区间1：GMROI ≤ 1 → sku_1
+   - 区间2：1 < GMROI ≤ 2 → sku_2
+   - 区间3：2 < GMROI ≤ 3 → sku_3
+   - 区间4：GMROI > 3 → sku_4
+3. 计算SKU占比：skuPer_x = sku_x / 总SKU数
+4. 精度规则：
+   - 数量sku_x：整数（0位小数）
+   - 占比skuPer_x：保留4位小数，返回小数形式（不乘100），前端展示时×100加%
+   - 空值/无数据：统一返回0

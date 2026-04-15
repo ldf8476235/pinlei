@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisAbcStructureMapper">
+
+    <select id="selectParamConfig" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisAbcParamConfigRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            abc_type AS abcType,
+            abc_type_name AS abcTypeName,
+            sales_per AS salesPer,
+            gross_per AS grossPer,
+            sale_quantity_per AS saleQuantityPer,
+            a_rate AS aRate,
+            b_rate AS bRate,
+            c_rate AS cRate,
+            a_sku_rate AS aSkuRate,
+            b_sku_rate AS bSkuRate,
+            c_sku_rate AS cSkuRate
+        FROM diag_abc_param_config
+        WHERE tenant_id = #{tenantId}
+        ORDER BY id ASC
+    </select>
+
+    <update id="upsertParamConfig">
+        MERGE INTO diag_abc_param_config AS target
+        USING (
+            SELECT
+                #{row.tenantId} AS tenant_id,
+                #{row.abcType} AS abc_type
+        ) AS source
+        ON target.tenant_id = source.tenant_id
+           AND target.abc_type = source.abc_type
+        WHEN MATCHED THEN
+            UPDATE SET
+                abc_type_name = #{row.abcTypeName},
+                sales_per = #{row.salesPer},
+                gross_per = #{row.grossPer},
+                sale_quantity_per = #{row.saleQuantityPer},
+                a_rate = #{row.aRate},
+                b_rate = #{row.bRate},
+                c_rate = #{row.cRate},
+                a_sku_rate = #{row.aSkuRate},
+                b_sku_rate = #{row.bSkuRate},
+                c_sku_rate = #{row.cSkuRate},
+                update_time = SYSUTCDATETIME()
+        WHEN NOT MATCHED THEN
+            INSERT
+            (
+                tenant_id, abc_type, abc_type_name,
+                sales_per, gross_per, sale_quantity_per,
+                a_rate, b_rate, c_rate,
+                a_sku_rate, b_sku_rate, c_sku_rate,
+                create_time, update_time
+            )
+            VALUES
+            (
+                #{row.tenantId}, #{row.abcType}, #{row.abcTypeName},
+                #{row.salesPer}, #{row.grossPer}, #{row.saleQuantityPer},
+                #{row.aRate}, #{row.bRate}, #{row.cRate},
+                #{row.aSkuRate}, #{row.bSkuRate}, #{row.cSkuRate},
+                SYSUTCDATETIME(), SYSUTCDATETIME()
+            );
+    </update>
+
+    <delete id="deleteByVersion">
+        DELETE FROM diag_result_abc_params
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+
+        DELETE FROM diag_result_abc_bucket
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+
+        DELETE FROM diag_result_abc_matrix
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+
+        DELETE FROM diag_result_abc_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+    </delete>
+
+    <insert id="batchInsertParamSnapshot">
+        INSERT INTO diag_result_abc_params
+        (
+            tenant_id, query_hash, data_version, abc_type, abc_type_name,
+            sales_per, gross_per, sale_quantity_per,
+            a_rate, b_rate, c_rate, a_sku_rate, b_sku_rate, c_sku_rate
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.abcType}, #{row.abcTypeName},
+                #{row.salesPer}, #{row.grossPer}, #{row.saleQuantityPer},
+                #{row.aRate}, #{row.bRate}, #{row.cRate},
+                #{row.aSkuRate}, #{row.bSkuRate}, #{row.cSkuRate}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="batchInsertBucket">
+        INSERT INTO diag_result_abc_bucket
+        (
+            tenant_id, query_hash, data_version, abc_type, bucket,
+            current_sales_per, current_sku_per, compare_sales_per, compare_sku_per,
+            set_sales_per, set_sku_per, current_sku, compare_sku, change_sku,
+            current_sales, stock_quantity, stock_quantity_per
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.abcType}, #{row.bucket},
+                #{row.currentSalesPer}, #{row.currentSkuPer}, #{row.compareSalesPer}, #{row.compareSkuPer},
+                #{row.setSalesPer}, #{row.setSkuPer}, #{row.currentSku}, #{row.compareSku}, #{row.changeSku},
+                #{row.currentSales}, #{row.stockQuantity}, #{row.stockQuantityPer}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="insertMatrix">
+        INSERT INTO diag_result_abc_matrix
+        (
+            tenant_id, query_hash, data_version, abc_type,
+            aa_num, ab_num, ac_num, an_num, at_num,
+            ba_num, bb_num, bc_num, bn_num, bt_num,
+            ca_num, cb_num, cc_num, cn_num, ct_num
+        )
+        VALUES
+        (
+            #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.abcType},
+            #{row.aaNum}, #{row.abNum}, #{row.acNum}, #{row.anNum}, #{row.atNum},
+            #{row.baNum}, #{row.bbNum}, #{row.bcNum}, #{row.bnNum}, #{row.btNum},
+            #{row.caNum}, #{row.cbNum}, #{row.ccNum}, #{row.cnNum}, #{row.ctNum}
+        )
+    </insert>
+
+    <insert id="batchInsertSku">
+        INSERT INTO diag_result_abc_sku
+        (
+            tenant_id, query_hash, data_version, abc_type, product_no, product_name,
+            product_status, product_status_no, store_num, current_abc, compare_abc,
+            contribution, contribution_per, sale_quantity, sale_quantity_psd,
+            sales, sales_per, sales_psd, gross, gross_per, gross_psd, gross_rate,
+            stock_quantity, turnover_rate, turnover_days, stock_sales_rate, contribution_rate, gmroi, sales_rate,
+            activity, first_sale_date, new_product, key_product, seasonable_flag, seasonable_flag_name,
+            seasonable_start_date, seasonable_end_date, class_no, class_name, class_level,
+            product_barcode, brand_name, spec, in_price, sales_price,
+            product_vendor_no, product_vendor_name, product_vendor_no_name, promotion_flag
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.abcType}, #{row.productNo}, #{row.productName},
+                #{row.productStatus}, #{row.productStatusNo}, #{row.storeNum}, #{row.currentAbc}, #{row.compareAbc},
+                #{row.contribution}, #{row.contributionPer}, #{row.saleQuantity}, #{row.saleQuantityPsd},
+                #{row.sales}, #{row.salesPer}, #{row.salesPsd}, #{row.gross}, #{row.grossPer}, #{row.grossPsd}, #{row.grossRate},
+                #{row.stockQuantity}, #{row.turnoverRate}, #{row.turnoverDays}, #{row.stockSalesRate}, #{row.contributionRate}, #{row.gmroi}, #{row.salesRate},
+                #{row.activity}, #{row.firstSaleDate}, #{row.newProduct}, #{row.keyProduct}, #{row.seasonableFlag}, #{row.seasonableFlagName},
+                #{row.seasonableStartDate}, #{row.seasonableEndDate}, #{row.classNo}, #{row.className}, #{row.classLevel},
+                #{row.productBarcode}, #{row.brandName}, #{row.spec}, #{row.inPrice}, #{row.salesPrice},
+                #{row.productVendorNo}, #{row.productVendorName}, #{row.productVendorNoName}, #{row.promotionFlag}
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectParamSnapshot" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisAbcParamSnapshotRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            abc_type AS abcType, abc_type_name AS abcTypeName,
+            sales_per AS salesPer, gross_per AS grossPer, sale_quantity_per AS saleQuantityPer,
+            a_rate AS aRate, b_rate AS bRate, c_rate AS cRate,
+            a_sku_rate AS aSkuRate, b_sku_rate AS bSkuRate, c_sku_rate AS cSkuRate
+        FROM diag_result_abc_params
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY id ASC
+    </select>
+
+    <select id="selectBucket" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisAbcBucketRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion, abc_type AS abcType,
+            bucket, current_sales_per AS currentSalesPer, current_sku_per AS currentSkuPer,
+            compare_sales_per AS compareSalesPer, compare_sku_per AS compareSkuPer,
+            set_sales_per AS setSalesPer, set_sku_per AS setSkuPer,
+            current_sku AS currentSku, compare_sku AS compareSku, change_sku AS changeSku,
+            current_sales AS currentSales, stock_quantity AS stockQuantity, stock_quantity_per AS stockQuantityPer
+        FROM diag_result_abc_bucket
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          AND abc_type = #{abcType}
+        ORDER BY CASE bucket WHEN 'A' THEN 1 WHEN 'B' THEN 2 WHEN 'C' THEN 3 ELSE 9 END
+    </select>
+
+    <select id="selectMatrix" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisAbcMatrixRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion, abc_type AS abcType,
+            aa_num AS aaNum, ab_num AS abNum, ac_num AS acNum, an_num AS anNum, at_num AS atNum,
+            ba_num AS baNum, bb_num AS bbNum, bc_num AS bcNum, bn_num AS bnNum, bt_num AS btNum,
+            ca_num AS caNum, cb_num AS cbNum, cc_num AS ccNum, cn_num AS cnNum, ct_num AS ctNum
+        FROM diag_result_abc_matrix
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          AND abc_type = #{abcType}
+    </select>
+
+    <sql id="skuFilter">
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          AND abc_type = #{abcType}
+        <if test="currentAbc != null and currentAbc != '' and currentAbc != '0'">
+            AND current_abc = #{currentAbc}
+        </if>
+        <if test="compareAbc != null and compareAbc != '' and compareAbc != '0'">
+            AND compare_abc = #{compareAbc}
+        </if>
+        <if test="promotion != null and promotion != '' and promotion != '0'">
+            <choose>
+                <when test="promotion == '1'">
+                    AND promotion_flag = '1'
+                </when>
+                <when test="promotion == '2'">
+                    AND (promotion_flag IS NULL OR promotion_flag = '0')
+                </when>
+            </choose>
+        </if>
+        <if test="statusList != null and statusList.size() > 0">
+            AND product_status_no IN
+            <foreach collection="statusList" item="st" open="(" close=")" separator=",">
+                #{st}
+            </foreach>
+        </if>
+    </sql>
+
+    <select id="countSku" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_result_abc_sku
+        <include refid="skuFilter"/>
+    </select>
+
+    <select id="selectSkuPage" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisAbcSkuRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion, abc_type AS abcType,
+            product_no AS productNo, product_name AS productName, product_status AS productStatus, product_status_no AS productStatusNo,
+            store_num AS storeNum, current_abc AS currentAbc, compare_abc AS compareAbc,
+            contribution, contribution_per AS contributionPer, sale_quantity AS saleQuantity, sale_quantity_psd AS saleQuantityPsd,
+            sales, sales_per AS salesPer, sales_psd AS salesPsd, gross, gross_per AS grossPer, gross_psd AS grossPsd,
+            gross_rate AS grossRate, stock_quantity AS stockQuantity, turnover_rate AS turnoverRate, turnover_days AS turnoverDays,
+            stock_sales_rate AS stockSalesRate, contribution_rate AS contributionRate, gmroi, sales_rate AS salesRate,
+            activity, first_sale_date AS firstSaleDate, new_product AS newProduct, key_product AS keyProduct,
+            seasonable_flag AS seasonableFlag, seasonable_flag_name AS seasonableFlagName,
+            seasonable_start_date AS seasonableStartDate, seasonable_end_date AS seasonableEndDate,
+            class_no AS classNo, class_name AS className, class_level AS classLevel,
+            product_barcode AS productBarcode, brand_name AS brandName, spec, in_price AS inPrice, sales_price AS salesPrice,
+            product_vendor_no AS productVendorNo, product_vendor_name AS productVendorName, product_vendor_no_name AS productVendorNoName,
+            promotion_flag AS promotionFlag
+        FROM diag_result_abc_sku
+        <include refid="skuFilter"/>
+        ORDER BY ${orderBy} ${orderType}, product_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+    </select>
+
+</mapper>

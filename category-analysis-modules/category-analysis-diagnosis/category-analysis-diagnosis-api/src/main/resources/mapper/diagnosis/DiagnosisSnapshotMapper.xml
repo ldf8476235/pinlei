@@ -100,6 +100,14 @@
     </insert>
 
     <select id="selectLatestOverviewByQuery" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow">
+        WITH latest_published AS (
+            SELECT TOP 1 data_version
+            FROM diag_result_publish_version
+            WHERE tenant_id = #{tenantId}
+              AND query_hash = #{queryHash}
+              AND publish_status = 'PUBLISHED'
+            ORDER BY published_time DESC, update_time DESC, id DESC
+        )
         SELECT TOP 1
             id,
             tenant_id AS tenantId,
@@ -152,6 +160,7 @@
         FROM diag_result_overview
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
+          AND data_version = (SELECT data_version FROM latest_published)
         ORDER BY snapshot_time DESC, id DESC
     </select>
 
@@ -239,10 +248,11 @@
     <select id="selectLatestTrendsByQuery" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow">
         WITH latest_version AS (
             SELECT TOP 1 data_version
-            FROM diag_result_trends
+            FROM diag_result_publish_version
             WHERE tenant_id = #{tenantId}
               AND query_hash = #{queryHash}
-            ORDER BY snapshot_time DESC, id DESC
+              AND publish_status = 'PUBLISHED'
+            ORDER BY published_time DESC, update_time DESC, id DESC
         )
         SELECT
             id,

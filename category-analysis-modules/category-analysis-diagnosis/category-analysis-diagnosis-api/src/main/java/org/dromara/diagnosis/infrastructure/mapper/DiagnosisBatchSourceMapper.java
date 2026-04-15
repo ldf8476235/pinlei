@@ -4,14 +4,22 @@ import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceDailyTrendRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceChannelContributionAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceChannelDailyTrendAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceIdRangeRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceOverviewAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceShardParam;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSubclassContributionAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSubclassDailyTrendAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceVipGenderAgeAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductStockRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductMetaRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -33,4 +41,13 @@ public interface DiagnosisBatchSourceMapper {
     List<DiagnosisSourceDailyTrendRow> aggregateDailyStockCosts(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceSubclassContributionAggRow> aggregateSubclassContribution(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceSubclassDailyTrendAggRow> aggregateSubclassDailySales(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceChannelContributionAggRow> aggregateChannelContribution(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceChannelDailyTrendAggRow> aggregateChannelDailySales(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceVipGenderAgeAggRow> aggregateVipByGenderAndAge(@Param("param") DiagnosisSourceShardParam param,
+                                                                       @Param("referenceDate") LocalDate referenceDate);
+    List<DiagnosisSourceAbcProductAggRow> aggregateAbcProductMetrics(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceAbcProductStockRow> aggregateAbcProductStock(@Param("param") DiagnosisSourceShardParam param,
+                                                                     @Param("stockDate") LocalDate stockDate);
+    List<DiagnosisSourceAbcProductMetaRow> selectAbcProductMeta(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisDictRow> selectOnlineChannelDictRows(@Param("dictTypes") List<String> dictTypes);
 }

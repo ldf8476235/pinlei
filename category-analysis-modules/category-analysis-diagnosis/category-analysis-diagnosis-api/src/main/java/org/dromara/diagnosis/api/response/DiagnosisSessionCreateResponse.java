@@ -20,6 +20,10 @@ public class DiagnosisSessionCreateResponse {
 
     private Long triggeredJobId;
 
+    private String status;
+
+    private String orchestratorStatus;
+
     /**
      * SNAPSHOT_HIT / TRIGGERED / WAIT_READY
      */

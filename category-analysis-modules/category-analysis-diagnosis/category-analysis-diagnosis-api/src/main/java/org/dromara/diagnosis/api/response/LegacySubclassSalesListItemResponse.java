@@ -17,6 +17,7 @@ public class LegacySubclassSalesListItemResponse {
     private BigDecimal currentGrossPer;
     private BigDecimal currentGrossRate;
     private BigDecimal currentSaleQuantity;
+    private BigDecimal currentCustomerCount;
     private BigDecimal currentCustomerPrice;
     private BigDecimal compareSales;
     private BigDecimal compareSalesPer;
@@ -27,6 +28,7 @@ public class LegacySubclassSalesListItemResponse {
     private BigDecimal compareGrossRate;
     private BigDecimal compareSaleQuantity;
     private BigDecimal compareSaleQuantityAddRate;
+    private BigDecimal compareCustomerCount;
     private BigDecimal compareCustomerPrice;
     private BigDecimal compareCustomerPriceAddRate;
     private BigDecimal currentTurnoverRate;

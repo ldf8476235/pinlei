@@ -1,0 +1,48 @@
+请求地址：/api/classDoctorAbc/queryAbcImage
+请求参数1（销售额abc）：{"id":118,"abcType":"sales"}   
+请求参数2（毛利额abc）：{"id":118,"abcType":"gross"}
+请求参数3（综合业绩）：{"id":118,"abcType":"contribution"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "abcType": "A",
+            "currentSalesPer": 50.07,
+            "currentSkuPer": 5.79,
+            "compareSalesPer": 50.14,
+            "compareSkuPer": 5.77,
+            "setSalesPer": 50,
+            "setSkuPer": 10,
+            "dateRange": null,
+            "sku": null,
+            "sales": null
+        },
+        {
+            "abcType": "B",
+            "currentSalesPer": 40.05,
+            "currentSkuPer": 34.36,
+            "compareSalesPer": 40.13,
+            "compareSkuPer": 29.71,
+            "setSalesPer": 40,
+            "setSkuPer": 30,
+            "dateRange": null,
+            "sku": null,
+            "sales": null
+        },
+        {
+            "abcType": "C",
+            "currentSalesPer": 9.88,
+            "currentSkuPer": 59.85,
+            "compareSalesPer": 9.73,
+            "compareSkuPer": 64.51,
+            "setSalesPer": 10,
+            "setSkuPer": 60,
+            "dateRange": null,
+            "sku": null,
+            "sales": null
+        }
+    ],
+    "timestamp": 1776235981456
+}

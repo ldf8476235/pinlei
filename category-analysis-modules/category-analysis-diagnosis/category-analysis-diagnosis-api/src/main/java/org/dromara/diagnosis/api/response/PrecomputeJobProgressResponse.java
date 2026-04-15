@@ -25,4 +25,8 @@ public class PrecomputeJobProgressResponse {
     private Long rowsRead;
 
     private Long rowsWritten;
+
+    private String orchestratorStatus;
+
+    private String moduleProgressJson;
 }

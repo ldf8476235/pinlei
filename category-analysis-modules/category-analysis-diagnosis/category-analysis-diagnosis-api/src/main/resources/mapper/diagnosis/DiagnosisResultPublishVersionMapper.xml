@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisResultPublishVersionMapper">
+
+    <insert id="upsert">
+        MERGE diag_result_publish_version AS t
+        USING (
+            SELECT
+                #{row.tenantId} AS tenant_id,
+                #{row.queryHash} AS query_hash,
+                #{row.dataVersion} AS data_version
+        ) AS s
+        ON (t.tenant_id = s.tenant_id AND t.query_hash = s.query_hash AND t.data_version = s.data_version)
+        WHEN MATCHED THEN
+            UPDATE SET
+                publish_status = #{row.publishStatus},
+                job_id = #{row.jobId},
+                error_summary = #{row.errorSummary},
+                published_time = COALESCE(#{row.publishedTime,jdbcType=TIMESTAMP}, t.published_time),
+                update_time = SYSUTCDATETIME()
+        WHEN NOT MATCHED THEN
+            INSERT
+            (
+                tenant_id, query_hash, data_version, publish_status,
+                job_id, error_summary, published_time
+            )
+            VALUES
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.publishStatus},
+                #{row.jobId}, #{row.errorSummary}, #{row.publishedTime,jdbcType=TIMESTAMP}
+            );
+    </insert>
+
+    <select id="selectLatestPublishedByQueryHash" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisResultPublishVersionRow">
+        SELECT TOP 1
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            data_version AS dataVersion,
+            publish_status AS publishStatus,
+            job_id AS jobId,
+            error_summary AS errorSummary,
+            published_time AS publishedTime,
+            create_time AS createTime,
+            update_time AS updateTime
+        FROM diag_result_publish_version
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND publish_status = 'PUBLISHED'
+        ORDER BY published_time DESC, update_time DESC, id DESC
+    </select>
+
+</mapper>
