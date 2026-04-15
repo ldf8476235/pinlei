@@ -1,0 +1,81 @@
+请求地址（获取价格区间设置）：/api/classDoctorPriceBand/queryPriceRangeNullList
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "priceBandMin": 0.0000,
+            "priceBandMax": 9.9000,
+            "sales": null
+        },
+        {
+            "priceBandMin": 9.9000,
+            "priceBandMax": 24.8100,
+            "sales": null
+        },
+        {
+            "priceBandMin": 24.8100,
+            "priceBandMax": 39.7200,
+            "sales": null
+        },
+        {
+            "priceBandMin": 39.7200,
+            "priceBandMax": 54.6300,
+            "sales": null
+        },
+        {
+            "priceBandMin": 54.6300,
+            "priceBandMax": 69.5400,
+            "sales": null
+        },
+        {
+            "priceBandMin": 69.5400,
+            "priceBandMax": 84.4500,
+            "sales": null
+        },
+        {
+            "priceBandMin": 84.4500,
+            "priceBandMax": 99.3600,
+            "sales": null
+        },
+        {
+            "priceBandMin": 99.3600,
+            "priceBandMax": 114.2700,
+            "sales": null
+        },
+        {
+            "priceBandMin": 114.2700,
+            "priceBandMax": 129.1800,
+            "sales": null
+        },
+        {
+            "priceBandMin": 129.1800,
+            "priceBandMax": 144.0900,
+            "sales": null
+        },
+        {
+            "priceBandMin": 144.0900,
+            "priceBandMax": 159.0000,
+            "sales": null
+        },
+        {
+            "priceBandMin": 159.0000,
+            "priceBandMax": 168.0000,
+            "sales": null
+        },
+        {
+            "priceBandMin": 168.0000,
+            "priceBandMax": null,
+            "sales": null
+        }
+    ],
+    "timestamp": 1776258892280
+}
+
+
+
+请求地址（这个接口调用会触发重新计算，只有价格带分析重新计算，其他的业务不会触发重新计算）：/api/classDoctorPriceBand/updatePriceRange
+请求参数：{"id":118,"priceRange":[{"priceBandMin":"0.00","priceBandMax":"9.90","sales":null},{"priceBandMin":"9.90","priceBandMax":"24.81","sales":null},{"priceBandMin":"24.81","priceBandMax":"39.72","sales":null},{"priceBandMin":"39.72","priceBandMax":"54.63","sales":null},{"priceBandMin":"54.63","priceBandMax":"69.54","sales":null},{"priceBandMin":"69.54","priceBandMax":"84.45","sales":null},{"priceBandMin":"84.45","priceBandMax":"99.36","sales":null},{"priceBandMin":"99.36","priceBandMax":"114.27","sales":null},{"priceBandMin":"114.27","priceBandMax":"129.18","sales":null},{"priceBandMin":"129.18","priceBandMax":"144.09","sales":null},{"priceBandMin":"144.09","priceBandMax":"159.00","sales":null},{"priceBandMin":"159.00","priceBandMax":"168.00","sales":null},{"priceBandMin":"168.00","priceBandMax":"null","sales":null}]}
+返回参数：{"success":true,"message":"","code":200,"result":null,"timestamp":1776259040774}

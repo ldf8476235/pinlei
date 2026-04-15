@@ -1,0 +1,1875 @@
+请求地址（在预计算时，就把这些数据查询出来，进行单独存储到一个json数据里）：/api/classDoctorBrand/queryBrandType
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "type": "1",
+            "brandNo": "花香5",
+            "brandName": "花香5"
+        },
+        {
+            "type": "1",
+            "brandNo": "欧莱雅",
+            "brandName": "欧莱雅"
+        },
+        {
+            "type": "1",
+            "brandNo": "隆力奇",
+            "brandName": "隆力奇"
+        },
+        {
+            "type": "1",
+            "brandNo": "兰亭",
+            "brandName": "兰亭"
+        },
+        {
+            "type": "1",
+            "brandNo": "蒂花之秀",
+            "brandName": "蒂花之秀"
+        },
+        {
+            "type": "1",
+            "brandNo": "安安金纯",
+            "brandName": "安安金纯"
+        },
+        {
+            "type": "1",
+            "brandNo": "海飞丝",
+            "brandName": "海飞丝"
+        },
+        {
+            "type": "1",
+            "brandNo": "力士",
+            "brandName": "力士"
+        },
+        {
+            "type": "1",
+            "brandNo": "飘柔",
+            "brandName": "飘柔"
+        },
+        {
+            "type": "1",
+            "brandNo": "清扬",
+            "brandName": "清扬"
+        },
+        {
+            "type": "1",
+            "brandNo": "沙宣",
+            "brandName": "沙宣"
+        },
+        {
+            "type": "1",
+            "brandNo": "滋源",
+            "brandName": "滋源"
+        },
+        {
+            "type": "1",
+            "brandNo": "迪彩",
+            "brandName": "迪彩"
+        },
+        {
+            "type": "1",
+            "brandNo": "阿道夫",
+            "brandName": "阿道夫"
+        },
+        {
+            "type": "1",
+            "brandNo": "b2v",
+            "brandName": "b2v"
+        },
+        {
+            "type": "1",
+            "brandNo": "nak",
+            "brandName": "nak"
+        },
+        {
+            "type": "1",
+            "brandNo": "章华",
+            "brandName": "章华"
+        },
+        {
+            "type": "1",
+            "brandNo": "三生花",
+            "brandName": "三生花"
+        },
+        {
+            "type": "1",
+            "brandNo": "满婷",
+            "brandName": "满婷"
+        },
+        {
+            "type": "1",
+            "brandNo": "伯纳乌",
+            "brandName": "伯纳乌"
+        },
+        {
+            "type": "1",
+            "brandNo": "花诗蔻",
+            "brandName": "花诗蔻"
+        },
+        {
+            "type": "1",
+            "brandNo": "养元青",
+            "brandName": "养元青"
+        },
+        {
+            "type": "1",
+            "brandNo": "无忧然",
+            "brandName": "无忧然"
+        },
+        {
+            "type": "1",
+            "brandNo": "诗裴丝",
+            "brandName": "诗裴丝"
+        },
+        {
+            "type": "1",
+            "brandNo": "舒蕾",
+            "brandName": "舒蕾"
+        },
+        {
+            "type": "1",
+            "brandNo": "优妮",
+            "brandName": "优妮"
+        },
+        {
+            "type": "1",
+            "brandNo": "章华汉草",
+            "brandName": "章华汉草"
+        },
+        {
+            "type": "1",
+            "brandNo": "KONO",
+            "brandName": "KONO"
+        },
+        {
+            "type": "1",
+            "brandNo": "三个魔发匠",
+            "brandName": "三个魔发匠"
+        },
+        {
+            "type": "1",
+            "brandNo": "美之侣",
+            "brandName": "美之侣"
+        },
+        {
+            "type": "1",
+            "brandNo": "半亩花田",
+            "brandName": "半亩花田"
+        },
+        {
+            "type": "1",
+            "brandNo": "蜂花",
+            "brandName": "蜂花"
+        },
+        {
+            "type": "1",
+            "brandNo": "温莎森林",
+            "brandName": "温莎森林"
+        },
+        {
+            "type": "1",
+            "brandNo": "卡夫",
+            "brandName": "卡夫"
+        },
+        {
+            "type": "3",
+            "brandNo": "卡夫",
+            "brandName": "卡夫"
+        },
+        {
+            "type": "1",
+            "brandNo": "柏缇",
+            "brandName": "柏缇"
+        },
+        {
+            "type": "3",
+            "brandNo": "柏缇",
+            "brandName": "柏缇"
+        },
+        {
+            "type": "1",
+            "brandNo": "吕",
+            "brandName": "吕"
+        },
+        {
+            "type": "1",
+            "brandNo": "植物语录",
+            "brandName": "植物语录"
+        },
+        {
+            "type": "3",
+            "brandNo": "植物语录",
+            "brandName": "植物语录"
+        },
+        {
+            "type": "1",
+            "brandNo": "金纺",
+            "brandName": "金纺"
+        },
+        {
+            "type": "1",
+            "brandNo": "无悠然",
+            "brandName": "无悠然"
+        },
+        {
+            "type": "3",
+            "brandNo": "无悠然",
+            "brandName": "无悠然"
+        },
+        {
+            "type": "1",
+            "brandNo": "绿色溪谷",
+            "brandName": "绿色溪谷"
+        },
+        {
+            "type": "3",
+            "brandNo": "绿色溪谷",
+            "brandName": "绿色溪谷"
+        },
+        {
+            "type": "1",
+            "brandNo": "美存",
+            "brandName": "美存"
+        },
+        {
+            "type": "3",
+            "brandNo": "美存",
+            "brandName": "美存"
+        },
+        {
+            "type": "1",
+            "brandNo": "潘婷",
+            "brandName": "潘婷"
+        },
+        {
+            "type": "1",
+            "brandNo": "多芬",
+            "brandName": "多芬"
+        },
+        {
+            "type": "1",
+            "brandNo": "卡蓝熊",
+            "brandName": "卡蓝熊"
+        },
+        {
+            "type": "1",
+            "brandNo": "丝蕴",
+            "brandName": "丝蕴"
+        },
+        {
+            "type": "1",
+            "brandNo": "自然堂",
+            "brandName": "自然堂"
+        },
+        {
+            "type": "1",
+            "brandNo": "锦瑟华年",
+            "brandName": "锦瑟华年"
+        },
+        {
+            "type": "1",
+            "brandNo": "施华蔻",
+            "brandName": "施华蔻"
+        },
+        {
+            "type": "1",
+            "brandNo": "蔻露薇",
+            "brandName": "蔻露薇"
+        },
+        {
+            "type": "1",
+            "brandNo": "夏士莲",
+            "brandName": "夏士莲"
+        },
+        {
+            "type": "1",
+            "brandNo": "韩束",
+            "brandName": "韩束"
+        },
+        {
+            "type": "1",
+            "brandNo": "资生堂",
+            "brandName": "资生堂"
+        },
+        {
+            "type": "1",
+            "brandNo": "高夫",
+            "brandName": "高夫"
+        },
+        {
+            "type": "1",
+            "brandNo": "阿迪达斯",
+            "brandName": "阿迪达斯"
+        },
+        {
+            "type": "1",
+            "brandNo": "霸王",
+            "brandName": "霸王"
+        },
+        {
+            "type": "1",
+            "brandNo": "海鸥",
+            "brandName": "海鸥"
+        },
+        {
+            "type": "1",
+            "brandNo": "青蛙王子",
+            "brandName": "青蛙王子"
+        },
+        {
+            "type": "1",
+            "brandNo": "郁美净",
+            "brandName": "郁美净"
+        },
+        {
+            "type": "1",
+            "brandNo": "小浣熊",
+            "brandName": "小浣熊"
+        },
+        {
+            "type": "1",
+            "brandNo": "红色小象",
+            "brandName": "红色小象"
+        },
+        {
+            "type": "1",
+            "brandNo": "强生",
+            "brandName": "强生"
+        },
+        {
+            "type": "1",
+            "brandNo": "宝宝金水",
+            "brandName": "宝宝金水"
+        },
+        {
+            "type": "1",
+            "brandNo": "哆啦A梦.添乐",
+            "brandName": "哆啦A梦.添乐"
+        },
+        {
+            "type": "1",
+            "brandNo": "哆啦A梦",
+            "brandName": "哆啦A梦"
+        },
+        {
+            "type": "1",
+            "brandNo": "史努比",
+            "brandName": "史努比"
+        },
+        {
+            "type": "1",
+            "brandNo": "小黄鸭B.Duck Baby",
+            "brandName": "小黄鸭B.Duck Baby"
+        },
+        {
+            "type": "1",
+            "brandNo": "B.Duck Baby",
+            "brandName": "B.Duck Baby"
+        },
+        {
+            "type": "1",
+            "brandNo": "孩儿面",
+            "brandName": "孩儿面"
+        },
+        {
+            "type": "1",
+            "brandNo": "迪士尼",
+            "brandName": "迪士尼"
+        },
+        {
+            "type": "1",
+            "brandNo": "花诗寇",
+            "brandName": "花诗寇"
+        },
+        {
+            "type": "1",
+            "brandNo": "韩泥坊",
+            "brandName": "韩泥坊"
+        },
+        {
+            "type": "1",
+            "brandNo": "名飘",
+            "brandName": "名飘"
+        },
+        {
+            "type": "1",
+            "brandNo": "安安",
+            "brandName": "安安"
+        },
+        {
+            "type": "1",
+            "brandNo": "茵雪",
+            "brandName": "茵雪"
+        },
+        {
+            "type": "1",
+            "brandNo": "猫皮",
+            "brandName": "猫皮"
+        },
+        {
+            "type": "1",
+            "brandNo": "依妍",
+            "brandName": "依妍"
+        },
+        {
+            "type": "1",
+            "brandNo": "美加净",
+            "brandName": "美加净"
+        },
+        {
+            "type": "1",
+            "brandNo": "温雅",
+            "brandName": "温雅"
+        },
+        {
+            "type": "3",
+            "brandNo": "温雅",
+            "brandName": "温雅"
+        },
+        {
+            "type": "1",
+            "brandNo": "彰彩本草",
+            "brandName": "彰彩本草"
+        },
+        {
+            "type": "3",
+            "brandNo": "彰彩本草",
+            "brandName": "彰彩本草"
+        },
+        {
+            "type": "1",
+            "brandNo": "美涛",
+            "brandName": "美涛"
+        },
+        {
+            "type": "1",
+            "brandNo": "杰士派",
+            "brandName": "杰士派"
+        },
+        {
+            "type": "1",
+            "brandNo": "馥珮",
+            "brandName": "馥珮"
+        },
+        {
+            "type": "1",
+            "brandNo": "冷酸灵",
+            "brandName": "冷酸灵"
+        },
+        {
+            "type": "1",
+            "brandNo": "舒客",
+            "brandName": "舒客"
+        },
+        {
+            "type": "1",
+            "brandNo": "高露洁",
+            "brandName": "高露洁"
+        },
+        {
+            "type": "1",
+            "brandNo": "好来",
+            "brandName": "好来"
+        },
+        {
+            "type": "1",
+            "brandNo": "佳洁士",
+            "brandName": "佳洁士"
+        },
+        {
+            "type": "1",
+            "brandNo": "中华",
+            "brandName": "中华"
+        },
+        {
+            "type": "1",
+            "brandNo": "纳美",
+            "brandName": "纳美"
+        },
+        {
+            "type": "1",
+            "brandNo": "舒适达",
+            "brandName": "舒适达"
+        },
+        {
+            "type": "1",
+            "brandNo": "纳爱斯",
+            "brandName": "纳爱斯"
+        },
+        {
+            "type": "1",
+            "brandNo": "两面针",
+            "brandName": "两面针"
+        },
+        {
+            "type": "1",
+            "brandNo": "金典牙医",
+            "brandName": "金典牙医"
+        },
+        {
+            "type": "1",
+            "brandNo": "六必治",
+            "brandName": "六必治"
+        },
+        {
+            "type": "1",
+            "brandNo": "狮王",
+            "brandName": "狮王"
+        },
+        {
+            "type": "1",
+            "brandNo": "云南三七",
+            "brandName": "云南三七"
+        },
+        {
+            "type": "1",
+            "brandNo": "口益清",
+            "brandName": "口益清"
+        },
+        {
+            "type": "1",
+            "brandNo": "云南白药",
+            "brandName": "云南白药"
+        },
+        {
+            "type": "1",
+            "brandNo": "弗利民博士",
+            "brandName": "弗利民博士"
+        },
+        {
+            "type": "1",
+            "brandNo": "上扬",
+            "brandName": "上扬"
+        },
+        {
+            "type": "1",
+            "brandNo": "冰泉",
+            "brandName": "冰泉"
+        },
+        {
+            "type": "1",
+            "brandNo": "参半",
+            "brandName": "参半"
+        },
+        {
+            "type": "1",
+            "brandNo": "立白",
+            "brandName": "立白"
+        },
+        {
+            "type": "1",
+            "brandNo": "诺巴顿农场",
+            "brandName": "诺巴顿农场"
+        },
+        {
+            "type": "1",
+            "brandNo": "青蛙",
+            "brandName": "青蛙"
+        },
+        {
+            "type": "1",
+            "brandNo": "fe金典",
+            "brandName": "fe金典"
+        },
+        {
+            "type": "1",
+            "brandNo": "幽螺莎星",
+            "brandName": "幽螺莎星"
+        },
+        {
+            "type": "1",
+            "brandNo": "伢牙乐",
+            "brandName": "伢牙乐"
+        },
+        {
+            "type": "1",
+            "brandNo": "蓝天",
+            "brandName": "蓝天"
+        },
+        {
+            "type": "1",
+            "brandNo": "可洁可净",
+            "brandName": "可洁可净"
+        },
+        {
+            "type": "1",
+            "brandNo": "今晨",
+            "brandName": "今晨"
+        },
+        {
+            "type": "1",
+            "brandNo": "樱之洁",
+            "brandName": "樱之洁"
+        },
+        {
+            "type": "1",
+            "brandNo": "刷牙大师",
+            "brandName": "刷牙大师"
+        },
+        {
+            "type": "1",
+            "brandNo": "冰清",
+            "brandName": "冰清"
+        },
+        {
+            "type": "1",
+            "brandNo": "小护士",
+            "brandName": "小护士"
+        },
+        {
+            "type": "1",
+            "brandNo": "牙博士",
+            "brandName": "牙博士"
+        },
+        {
+            "type": "3",
+            "brandNo": "牙博士",
+            "brandName": "牙博士"
+        },
+        {
+            "type": "1",
+            "brandNo": "欧乐B",
+            "brandName": "欧乐B"
+        },
+        {
+            "type": "1",
+            "brandNo": "健",
+            "brandName": "健"
+        },
+        {
+            "type": "1",
+            "brandNo": "简洁",
+            "brandName": "简洁"
+        },
+        {
+            "type": "1",
+            "brandNo": "果小虎",
+            "brandName": "果小虎"
+        },
+        {
+            "type": "1",
+            "brandNo": "李施德林",
+            "brandName": "李施德林"
+        },
+        {
+            "type": "1",
+            "brandNo": "波普",
+            "brandName": "波普"
+        },
+        {
+            "type": "1",
+            "brandNo": "喜得白",
+            "brandName": "喜得白"
+        },
+        {
+            "type": "1",
+            "brandNo": "六神",
+            "brandName": "六神"
+        },
+        {
+            "type": "1",
+            "brandNo": "舒肤佳",
+            "brandName": "舒肤佳"
+        },
+        {
+            "type": "1",
+            "brandNo": "OLAY",
+            "brandName": "OLAY"
+        },
+        {
+            "type": "1",
+            "brandNo": "井尚美",
+            "brandName": "井尚美"
+        },
+        {
+            "type": "1",
+            "brandNo": "蔻斯汀",
+            "brandName": "蔻斯汀"
+        },
+        {
+            "type": "1",
+            "brandNo": "哆啦小屋",
+            "brandName": "哆啦小屋"
+        },
+        {
+            "type": "1",
+            "brandNo": "玉兰油",
+            "brandName": "玉兰油"
+        },
+        {
+            "type": "1",
+            "brandNo": "曼秀雷敦",
+            "brandName": "曼秀雷敦"
+        },
+        {
+            "type": "1",
+            "brandNo": "百雀羚",
+            "brandName": "百雀羚"
+        },
+        {
+            "type": "1",
+            "brandNo": "大宝",
+            "brandName": "大宝"
+        },
+        {
+            "type": "1",
+            "brandNo": "妮维雅",
+            "brandName": "妮维雅"
+        },
+        {
+            "type": "1",
+            "brandNo": "旁氏",
+            "brandName": "旁氏"
+        },
+        {
+            "type": "1",
+            "brandNo": "相宜本草",
+            "brandName": "相宜本草"
+        },
+        {
+            "type": "1",
+            "brandNo": "欧诗漫",
+            "brandName": "欧诗漫"
+        },
+        {
+            "type": "1",
+            "brandNo": "春夏",
+            "brandName": "春夏"
+        },
+        {
+            "type": "1",
+            "brandNo": "菲诗小铺",
+            "brandName": "菲诗小铺"
+        },
+        {
+            "type": "1",
+            "brandNo": "韩后",
+            "brandName": "韩后"
+        },
+        {
+            "type": "1",
+            "brandNo": "春纪",
+            "brandName": "春纪"
+        },
+        {
+            "type": "1",
+            "brandNo": "丹姿",
+            "brandName": "丹姿"
+        },
+        {
+            "type": "1",
+            "brandNo": "丁家宜",
+            "brandName": "丁家宜"
+        },
+        {
+            "type": "3",
+            "brandNo": "丁家宜",
+            "brandName": "丁家宜"
+        },
+        {
+            "type": "1",
+            "brandNo": "百花萃",
+            "brandName": "百花萃"
+        },
+        {
+            "type": "1",
+            "brandNo": "春娟",
+            "brandName": "春娟"
+        },
+        {
+            "type": "3",
+            "brandNo": "春娟",
+            "brandName": "春娟"
+        },
+        {
+            "type": "1",
+            "brandNo": "滴露",
+            "brandName": "滴露"
+        },
+        {
+            "type": "1",
+            "brandNo": "上海",
+            "brandName": "上海"
+        },
+        {
+            "type": "1",
+            "brandNo": "罗兰",
+            "brandName": "罗兰"
+        },
+        {
+            "type": "1",
+            "brandNo": "红贝缇",
+            "brandName": "红贝缇"
+        },
+        {
+            "type": "1",
+            "brandNo": "缇舒",
+            "brandName": "缇舒"
+        },
+        {
+            "type": "1",
+            "brandNo": "奥莉菲",
+            "brandName": "奥莉菲"
+        },
+        {
+            "type": "1",
+            "brandNo": "泳芬",
+            "brandName": "泳芬"
+        },
+        {
+            "type": "1",
+            "brandNo": "韩宝莉",
+            "brandName": "韩宝莉"
+        },
+        {
+            "type": "1",
+            "brandNo": "润之素",
+            "brandName": "润之素"
+        },
+        {
+            "type": "1",
+            "brandNo": "泽芬",
+            "brandName": "泽芬"
+        },
+        {
+            "type": "1",
+            "brandNo": "相遇小皂",
+            "brandName": "相遇小皂"
+        },
+        {
+            "type": "1",
+            "brandNo": "哈罗小白",
+            "brandName": "哈罗小白"
+        },
+        {
+            "type": "1",
+            "brandNo": "爱的香园",
+            "brandName": "爱的香园"
+        },
+        {
+            "type": "1",
+            "brandNo": "悠选",
+            "brandName": "悠选"
+        },
+        {
+            "type": "1",
+            "brandNo": "时尚优家",
+            "brandName": "时尚优家"
+        },
+        {
+            "type": "3",
+            "brandNo": "时尚优家",
+            "brandName": "时尚优家"
+        },
+        {
+            "type": "1",
+            "brandNo": "蓝月亮",
+            "brandName": "蓝月亮"
+        },
+        {
+            "type": "1",
+            "brandNo": "威露士",
+            "brandName": "威露士"
+        },
+        {
+            "type": "1",
+            "brandNo": "青松",
+            "brandName": "青松"
+        },
+        {
+            "type": "1",
+            "brandNo": "超能",
+            "brandName": "超能"
+        },
+        {
+            "type": "1",
+            "brandNo": "白猫",
+            "brandName": "白猫"
+        },
+        {
+            "type": "1",
+            "brandNo": "ABC",
+            "brandName": "ABC"
+        },
+        {
+            "type": "1",
+            "brandNo": "悠宜",
+            "brandName": "悠宜"
+        },
+        {
+            "type": "1",
+            "brandNo": "姬芮",
+            "brandName": "姬芮"
+        },
+        {
+            "type": "3",
+            "brandNo": "姬芮",
+            "brandName": "姬芮"
+        },
+        {
+            "type": "1",
+            "brandNo": "逐本",
+            "brandName": "逐本"
+        },
+        {
+            "type": "1",
+            "brandNo": "碧柔",
+            "brandName": "碧柔"
+        },
+        {
+            "type": "1",
+            "brandNo": "柳丝木",
+            "brandName": "柳丝木"
+        },
+        {
+            "type": "3",
+            "brandNo": "柳丝木",
+            "brandName": "柳丝木"
+        },
+        {
+            "type": "1",
+            "brandNo": "上海女人",
+            "brandName": "上海女人"
+        },
+        {
+            "type": "1",
+            "brandNo": "安热沙",
+            "brandName": "安热沙"
+        },
+        {
+            "type": "3",
+            "brandNo": "安热沙",
+            "brandName": "安热沙"
+        },
+        {
+            "type": "1",
+            "brandNo": "蜜丝婷",
+            "brandName": "蜜丝婷"
+        },
+        {
+            "type": "3",
+            "brandNo": "蜜丝婷",
+            "brandName": "蜜丝婷"
+        },
+        {
+            "type": "1",
+            "brandNo": "浅草川",
+            "brandName": "浅草川"
+        },
+        {
+            "type": "1",
+            "brandNo": "宫灯",
+            "brandName": "宫灯"
+        },
+        {
+            "type": "1",
+            "brandNo": "友谊",
+            "brandName": "友谊"
+        },
+        {
+            "type": "1",
+            "brandNo": "启初",
+            "brandName": "启初"
+        },
+        {
+            "type": "1",
+            "brandNo": "温碧泉",
+            "brandName": "温碧泉"
+        },
+        {
+            "type": "1",
+            "brandNo": "贝爱亲",
+            "brandName": "贝爱亲"
+        },
+        {
+            "type": "1",
+            "brandNo": "泊美",
+            "brandName": "泊美"
+        },
+        {
+            "type": "1",
+            "brandNo": "子晞",
+            "brandName": "子晞"
+        },
+        {
+            "type": "1",
+            "brandNo": "奥诗琳",
+            "brandName": "奥诗琳"
+        },
+        {
+            "type": "1",
+            "brandNo": "玖美堂",
+            "brandName": "玖美堂"
+        },
+        {
+            "type": "1",
+            "brandNo": "雪玲妃",
+            "brandName": "雪玲妃"
+        },
+        {
+            "type": "1",
+            "brandNo": "馥佩",
+            "brandName": "馥佩"
+        },
+        {
+            "type": "1",
+            "brandNo": "同仁堂",
+            "brandName": "同仁堂"
+        },
+        {
+            "type": "3",
+            "brandNo": "同仁堂",
+            "brandName": "同仁堂"
+        },
+        {
+            "type": "1",
+            "brandNo": "艾芭薇",
+            "brandName": "艾芭薇"
+        },
+        {
+            "type": "1",
+            "brandNo": "完美",
+            "brandName": "完美"
+        },
+        {
+            "type": "3",
+            "brandNo": "完美",
+            "brandName": "完美"
+        },
+        {
+            "type": "1",
+            "brandNo": "花印",
+            "brandName": "花印"
+        },
+        {
+            "type": "1",
+            "brandNo": "纽西之谜",
+            "brandName": "纽西之谜"
+        },
+        {
+            "type": "1",
+            "brandNo": "香雪兰",
+            "brandName": "香雪兰"
+        },
+        {
+            "type": "1",
+            "brandNo": "自然乐园",
+            "brandName": "自然乐园"
+        },
+        {
+            "type": "1",
+            "brandNo": "厘雅",
+            "brandName": "厘雅"
+        },
+        {
+            "type": "1",
+            "brandNo": "C咖",
+            "brandName": "C咖"
+        },
+        {
+            "type": "1",
+            "brandNo": "paul Frank",
+            "brandName": "paul Frank"
+        },
+        {
+            "type": "1",
+            "brandNo": "爱得利",
+            "brandName": "爱得利"
+        },
+        {
+            "type": "1",
+            "brandNo": "丽尚",
+            "brandName": "丽尚"
+        },
+        {
+            "type": "1",
+            "brandNo": "超威",
+            "brandName": "超威"
+        },
+        {
+            "type": "1",
+            "brandNo": "李字",
+            "brandName": "李字"
+        },
+        {
+            "type": "1",
+            "brandNo": "薇婷",
+            "brandName": "薇婷"
+        },
+        {
+            "type": "1",
+            "brandNo": "熙婷",
+            "brandName": "熙婷"
+        },
+        {
+            "type": "1",
+            "brandNo": "莉丝婷",
+            "brandName": "莉丝婷"
+        },
+        {
+            "type": "3",
+            "brandNo": "莉丝婷",
+            "brandName": "莉丝婷"
+        },
+        {
+            "type": "1",
+            "brandNo": "金康泰",
+            "brandName": "金康泰"
+        },
+        {
+            "type": "1",
+            "brandNo": "欧米娃",
+            "brandName": "欧米娃"
+        },
+        {
+            "type": "1",
+            "brandNo": "小黄人",
+            "brandName": "小黄人"
+        },
+        {
+            "type": "1",
+            "brandNo": "加菲猫",
+            "brandName": "加菲猫"
+        },
+        {
+            "type": "1",
+            "brandNo": "草木若昔",
+            "brandName": "草木若昔"
+        },
+        {
+            "type": "1",
+            "brandNo": "名韩",
+            "brandName": "名韩"
+        },
+        {
+            "type": "3",
+            "brandNo": "名韩",
+            "brandName": "名韩"
+        },
+        {
+            "type": "1",
+            "brandNo": "丝妍",
+            "brandName": "丝妍"
+        },
+        {
+            "type": "1",
+            "brandNo": "利雅佳品",
+            "brandName": "利雅佳品"
+        },
+        {
+            "type": "1",
+            "brandNo": "格拉斯恋人",
+            "brandName": "格拉斯恋人"
+        },
+        {
+            "type": "1",
+            "brandNo": "理然",
+            "brandName": "理然"
+        },
+        {
+            "type": "1",
+            "brandNo": "阿迪",
+            "brandName": "阿迪"
+        },
+        {
+            "type": "1",
+            "brandNo": "吉列",
+            "brandName": "吉列"
+        },
+        {
+            "type": "1",
+            "brandNo": "雕牌",
+            "brandName": "雕牌"
+        },
+        {
+            "type": "1",
+            "brandNo": "碧浪",
+            "brandName": "碧浪"
+        },
+        {
+            "type": "1",
+            "brandNo": "汰渍",
+            "brandName": "汰渍"
+        },
+        {
+            "type": "1",
+            "brandNo": "好爸爸",
+            "brandName": "好爸爸"
+        },
+        {
+            "type": "1",
+            "brandNo": "奥妙",
+            "brandName": "奥妙"
+        },
+        {
+            "type": "1",
+            "brandNo": "声益",
+            "brandName": "声益"
+        },
+        {
+            "type": "1",
+            "brandNo": "邦宝露",
+            "brandName": "邦宝露"
+        },
+        {
+            "type": "1",
+            "brandNo": "新合悠选",
+            "brandName": "新合悠选"
+        },
+        {
+            "type": "1",
+            "brandNo": "蔬果园",
+            "brandName": "蔬果园"
+        },
+        {
+            "type": "1",
+            "brandNo": "温若沐森",
+            "brandName": "温若沐森"
+        },
+        {
+            "type": "1",
+            "brandNo": "活力28",
+            "brandName": "活力28"
+        },
+        {
+            "type": "1",
+            "brandNo": "帮小奇",
+            "brandName": "帮小奇"
+        },
+        {
+            "type": "3",
+            "brandNo": "帮小奇",
+            "brandName": "帮小奇"
+        },
+        {
+            "type": "1",
+            "brandNo": "水卫仕",
+            "brandName": "水卫仕"
+        },
+        {
+            "type": "3",
+            "brandNo": "水卫仕",
+            "brandName": "水卫仕"
+        },
+        {
+            "type": "1",
+            "brandNo": "洗衣郎",
+            "brandName": "洗衣郎"
+        },
+        {
+            "type": "1",
+            "brandNo": "妈咪奇选",
+            "brandName": "妈咪奇选"
+        },
+        {
+            "type": "1",
+            "brandNo": "可爱松鼠",
+            "brandName": "可爱松鼠"
+        },
+        {
+            "type": "1",
+            "brandNo": "碧澄",
+            "brandName": "碧澄"
+        },
+        {
+            "type": "1",
+            "brandNo": "家安",
+            "brandName": "家安"
+        },
+        {
+            "type": "1",
+            "brandNo": "贴心妈咪",
+            "brandName": "贴心妈咪"
+        },
+        {
+            "type": "1",
+            "brandNo": "皇冠大公鸡",
+            "brandName": "皇冠大公鸡"
+        },
+        {
+            "type": "1",
+            "brandNo": "奇强",
+            "brandName": "奇强"
+        },
+        {
+            "type": "1",
+            "brandNo": "威王",
+            "brandName": "威王"
+        },
+        {
+            "type": "1",
+            "brandNo": "当妮",
+            "brandName": "当妮"
+        },
+        {
+            "type": "1",
+            "brandNo": "妈妈壹选",
+            "brandName": "妈妈壹选"
+        },
+        {
+            "type": "1",
+            "brandNo": "金织",
+            "brandName": "金织"
+        },
+        {
+            "type": "1",
+            "brandNo": "梨渍",
+            "brandName": "梨渍"
+        },
+        {
+            "type": "1",
+            "brandNo": "妈咪优选",
+            "brandName": "妈咪优选"
+        },
+        {
+            "type": "1",
+            "brandNo": "克丝漫",
+            "brandName": "克丝漫"
+        },
+        {
+            "type": "1",
+            "brandNo": "蒂姆森",
+            "brandName": "蒂姆森"
+        },
+        {
+            "type": "3",
+            "brandNo": "蒂姆森",
+            "brandName": "蒂姆森"
+        },
+        {
+            "type": "1",
+            "brandNo": "雾小润",
+            "brandName": "雾小润"
+        },
+        {
+            "type": "1",
+            "brandNo": "雪豹",
+            "brandName": "雪豹"
+        },
+        {
+            "type": "1",
+            "brandNo": "威洁士",
+            "brandName": "威洁士"
+        },
+        {
+            "type": "1",
+            "brandNo": "兔之力",
+            "brandName": "兔之力"
+        },
+        {
+            "type": "1",
+            "brandNo": "纺优美",
+            "brandName": "纺优美"
+        },
+        {
+            "type": "1",
+            "brandNo": "涤尚",
+            "brandName": "涤尚"
+        },
+        {
+            "type": "1",
+            "brandNo": "帮洁",
+            "brandName": "帮洁"
+        },
+        {
+            "type": "1",
+            "brandNo": "威猛先生",
+            "brandName": "威猛先生"
+        },
+        {
+            "type": "1",
+            "brandNo": "妙管家",
+            "brandName": "妙管家"
+        },
+        {
+            "type": "1",
+            "brandNo": "蓝多霸",
+            "brandName": "蓝多霸"
+        },
+        {
+            "type": "1",
+            "brandNo": "爱特福",
+            "brandName": "爱特福"
+        },
+        {
+            "type": "1",
+            "brandNo": "捷力达",
+            "brandName": "捷力达"
+        },
+        {
+            "type": "1",
+            "brandNo": "丽洁丽净",
+            "brandName": "丽洁丽净"
+        },
+        {
+            "type": "1",
+            "brandNo": "康驻莱",
+            "brandName": "康驻莱"
+        },
+        {
+            "type": "1",
+            "brandNo": "优洁王",
+            "brandName": "优洁王"
+        },
+        {
+            "type": "1",
+            "brandNo": "辛光洁",
+            "brandName": "辛光洁"
+        },
+        {
+            "type": "1",
+            "brandNo": "亮净",
+            "brandName": "亮净"
+        },
+        {
+            "type": "1",
+            "brandNo": "花仙子",
+            "brandName": "花仙子"
+        },
+        {
+            "type": "1",
+            "brandNo": "绿劲",
+            "brandName": "绿劲"
+        },
+        {
+            "type": "1",
+            "brandNo": "得其利是",
+            "brandName": "得其利是"
+        },
+        {
+            "type": "1",
+            "brandNo": "洁劲",
+            "brandName": "洁劲"
+        },
+        {
+            "type": "1",
+            "brandNo": "田七",
+            "brandName": "田七"
+        },
+        {
+            "type": "1",
+            "brandNo": "浩聚",
+            "brandName": "浩聚"
+        },
+        {
+            "type": "1",
+            "brandNo": "金鸡",
+            "brandName": "金鸡"
+        },
+        {
+            "type": "1",
+            "brandNo": "红鸟",
+            "brandName": "红鸟"
+        },
+        {
+            "type": "1",
+            "brandNo": "碧丽珠",
+            "brandName": "碧丽珠"
+        },
+        {
+            "type": "1",
+            "brandNo": "芙事洁",
+            "brandName": "芙事洁"
+        },
+        {
+            "type": "3",
+            "brandNo": "芙事洁",
+            "brandName": "芙事洁"
+        },
+        {
+            "type": "1",
+            "brandNo": "追梦青年",
+            "brandName": "追梦青年"
+        },
+        {
+            "type": "1",
+            "brandNo": "闫氏",
+            "brandName": "闫氏"
+        },
+        {
+            "type": "1",
+            "brandNo": "宜家",
+            "brandName": "宜家"
+        },
+        {
+            "type": "1",
+            "brandNo": "晨露",
+            "brandName": "晨露"
+        },
+        {
+            "type": "1",
+            "brandNo": "西兰",
+            "brandName": "西兰"
+        },
+        {
+            "type": "1",
+            "brandNo": "半懒",
+            "brandName": "半懒"
+        },
+        {
+            "type": "1",
+            "brandNo": "枪手",
+            "brandName": "枪手"
+        },
+        {
+            "type": "1",
+            "brandNo": "天鹰",
+            "brandName": "天鹰"
+        },
+        {
+            "type": "1",
+            "brandNo": "威洁邦",
+            "brandName": "威洁邦"
+        },
+        {
+            "type": "3",
+            "brandNo": "威洁邦",
+            "brandName": "威洁邦"
+        },
+        {
+            "type": "1",
+            "brandNo": "清风",
+            "brandName": "清风"
+        },
+        {
+            "type": "1",
+            "brandNo": "美好时代",
+            "brandName": "美好时代"
+        },
+        {
+            "type": "1",
+            "brandNo": "猫王",
+            "brandName": "猫王"
+        },
+        {
+            "type": "1",
+            "brandNo": "心相印",
+            "brandName": "心相印"
+        },
+        {
+            "type": "1",
+            "brandNo": "顺清柔",
+            "brandName": "顺清柔"
+        },
+        {
+            "type": "1",
+            "brandNo": "哈里贝贝",
+            "brandName": "哈里贝贝"
+        },
+        {
+            "type": "1",
+            "brandNo": "维达",
+            "brandName": "维达"
+        },
+        {
+            "type": "1",
+            "brandNo": "梅笛",
+            "brandName": "梅笛"
+        },
+        {
+            "type": "1",
+            "brandNo": "柔影",
+            "brandName": "柔影"
+        },
+        {
+            "type": "1",
+            "brandNo": "洁柔",
+            "brandName": "洁柔"
+        },
+        {
+            "type": "1",
+            "brandNo": "舒影",
+            "brandName": "舒影"
+        },
+        {
+            "type": "1",
+            "brandNo": "金博士",
+            "brandName": "金博士"
+        },
+        {
+            "type": "1",
+            "brandNo": "圣花",
+            "brandName": "圣花"
+        },
+        {
+            "type": "1",
+            "brandNo": "全柔四季",
+            "brandName": "全柔四季"
+        },
+        {
+            "type": "1",
+            "brandNo": "萌力优",
+            "brandName": "萌力优"
+        },
+        {
+            "type": "1",
+            "brandNo": "幸福阳光",
+            "brandName": "幸福阳光"
+        },
+        {
+            "type": "1",
+            "brandNo": "优影",
+            "brandName": "优影"
+        },
+        {
+            "type": "1",
+            "brandNo": "斑布",
+            "brandName": "斑布"
+        },
+        {
+            "type": "1",
+            "brandNo": "丝飘",
+            "brandName": "丝飘"
+        },
+        {
+            "type": "1",
+            "brandNo": "屋狐优影",
+            "brandName": "屋狐优影"
+        },
+        {
+            "type": "1",
+            "brandNo": "得宝",
+            "brandName": "得宝"
+        },
+        {
+            "type": "1",
+            "brandNo": "奇莫",
+            "brandName": "奇莫"
+        },
+        {
+            "type": "1",
+            "brandNo": "慕莱",
+            "brandName": "慕莱"
+        },
+        {
+            "type": "1",
+            "brandNo": "尔木萄",
+            "brandName": "尔木萄"
+        },
+        {
+            "type": "3",
+            "brandNo": "尔木萄",
+            "brandName": "尔木萄"
+        },
+        {
+            "type": "1",
+            "brandNo": "海绵宝宝",
+            "brandName": "海绵宝宝"
+        },
+        {
+            "type": "1",
+            "brandNo": "依柚",
+            "brandName": "依柚"
+        },
+        {
+            "type": "1",
+            "brandNo": "大王",
+            "brandName": "大王"
+        },
+        {
+            "type": "1",
+            "brandNo": "优佳尔",
+            "brandName": "优佳尔"
+        },
+        {
+            "type": "1",
+            "brandNo": "珍爱",
+            "brandName": "珍爱"
+        },
+        {
+            "type": "1",
+            "brandNo": "佳尔",
+            "brandName": "佳尔"
+        },
+        {
+            "type": "1",
+            "brandNo": "好奇",
+            "brandName": "好奇"
+        },
+        {
+            "type": "1",
+            "brandNo": "优普爱",
+            "brandName": "优普爱"
+        },
+        {
+            "type": "1",
+            "brandNo": "百合",
+            "brandName": "百合"
+        },
+        {
+            "type": "1",
+            "brandNo": "哆呵",
+            "brandName": "哆呵"
+        },
+        {
+            "type": "1",
+            "brandNo": "G.DUCK小黄鸭",
+            "brandName": "G.DUCK小黄鸭"
+        },
+        {
+            "type": "1",
+            "brandNo": "橙除法",
+            "brandName": "橙除法"
+        },
+        {
+            "type": "1",
+            "brandNo": "永润",
+            "brandName": "永润"
+        },
+        {
+            "type": "1",
+            "brandNo": "七度空间",
+            "brandName": "七度空间"
+        },
+        {
+            "type": "1",
+            "brandNo": "安而乐",
+            "brandName": "安而乐"
+        },
+        {
+            "type": "1",
+            "brandNo": "柔柔",
+            "brandName": "柔柔"
+        },
+        {
+            "type": "1",
+            "brandNo": "倍舒特",
+            "brandName": "倍舒特"
+        },
+        {
+            "type": "1",
+            "brandNo": "护舒宝",
+            "brandName": "护舒宝"
+        },
+        {
+            "type": "1",
+            "brandNo": "苏菲",
+            "brandName": "苏菲"
+        },
+        {
+            "type": "1",
+            "brandNo": "护理佳",
+            "brandName": "护理佳"
+        },
+        {
+            "type": "1",
+            "brandNo": "高洁丝",
+            "brandName": "高洁丝"
+        },
+        {
+            "type": "1",
+            "brandNo": "淘淘氧棉",
+            "brandName": "淘淘氧棉"
+        },
+        {
+            "type": "1",
+            "brandNo": "未可",
+            "brandName": "未可"
+        },
+        {
+            "type": "1",
+            "brandNo": "自由点",
+            "brandName": "自由点"
+        },
+        {
+            "type": "1",
+            "brandNo": "纳可",
+            "brandName": "纳可"
+        },
+        {
+            "type": "1",
+            "brandNo": "云南白药菁羽",
+            "brandName": "云南白药菁羽"
+        },
+        {
+            "type": "1",
+            "brandNo": "由意",
+            "brandName": "由意"
+        },
+        {
+            "type": "1",
+            "brandNo": "丽邦",
+            "brandName": "丽邦"
+        },
+        {
+            "type": "1",
+            "brandNo": "安尔乐",
+            "brandName": "安尔乐"
+        },
+        {
+            "type": "3",
+            "brandNo": "安尔乐",
+            "brandName": "安尔乐"
+        },
+        {
+            "type": "1",
+            "brandNo": "安而康",
+            "brandName": "安而康"
+        },
+        {
+            "type": "1",
+            "brandNo": "丹碧丝",
+            "brandName": "丹碧丝"
+        },
+        {
+            "type": "1",
+            "brandNo": "亿舒康",
+            "brandName": "亿舒康"
+        },
+        {
+            "type": "1",
+            "brandNo": "老来福",
+            "brandName": "老来福"
+        },
+        {
+            "type": "1",
+            "brandNo": "可靠",
+            "brandName": "可靠"
+        },
+        {
+            "type": "1",
+            "brandNo": "佳吉多",
+            "brandName": "佳吉多"
+        },
+        {
+            "type": "1",
+            "brandNo": "安儿乐",
+            "brandName": "安儿乐"
+        },
+        {
+            "type": "1",
+            "brandNo": "帮宝适",
+            "brandName": "帮宝适"
+        },
+        {
+            "type": "1",
+            "brandNo": "淘淘酷",
+            "brandName": "淘淘酷"
+        },
+        {
+            "type": "1",
+            "brandNo": "康恩倍健",
+            "brandName": "康恩倍健"
+        },
+        {
+            "type": "1",
+            "brandNo": "杰士邦",
+            "brandName": "杰士邦"
+        },
+        {
+            "type": "1",
+            "brandNo": "第六感",
+            "brandName": "第六感"
+        },
+        {
+            "type": "1",
+            "brandNo": "花漾男女",
+            "brandName": "花漾男女"
+        }
+    ],
+    "timestamp": 1776260976635
+}

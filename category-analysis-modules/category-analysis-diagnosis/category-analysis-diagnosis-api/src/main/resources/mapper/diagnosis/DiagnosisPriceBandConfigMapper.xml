@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisPriceBandConfigMapper">
+
+    <select id="selectActiveConfig" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPriceBandConfigRow">
+        SELECT
+            id,
+            tenant_id AS tenantId,
+            query_hash AS queryHash,
+            sort_no AS sortNo,
+            price_band_min AS priceBandMin,
+            price_band_max AS priceBandMax,
+            is_open_ended AS isOpenEnded,
+            is_active AS isActive,
+            created_by AS createdBy,
+            created_time AS createdTime,
+            updated_by AS updatedBy,
+            updated_time AS updatedTime
+        FROM diag_price_band_config
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND is_active = '1'
+        ORDER BY sort_no ASC, id ASC
+    </select>
+
+    <delete id="deleteActiveConfig">
+        DELETE FROM diag_price_band_config
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND is_active = '1'
+    </delete>
+
+    <insert id="batchInsertConfig">
+        INSERT INTO diag_price_band_config
+        (
+            tenant_id, query_hash, sort_no, price_band_min, price_band_max,
+            is_open_ended, is_active, created_by, created_time, updated_by, updated_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.sortNo}, #{row.priceBandMin}, #{row.priceBandMax},
+                #{row.isOpenEnded}, #{row.isActive}, #{row.createdBy}, #{row.createdTime}, #{row.updatedBy}, #{row.updatedTime}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

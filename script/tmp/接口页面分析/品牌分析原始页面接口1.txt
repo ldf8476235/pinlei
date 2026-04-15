@@ -1,0 +1,18 @@
+接口地址：/api/classDoctorBrand/queryBrandSkuSum
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "totalNum": 346,
+        "newNum": 27,
+        "ownNum": 0
+    },
+    "timestamp": 1776260695533
+}
+
+返回参数解析：
+totalNum：品牌总数
+newNum：新销品牌
+ownNum：自有品牌

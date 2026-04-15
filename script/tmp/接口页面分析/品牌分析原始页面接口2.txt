@@ -1,0 +1,1745 @@
+请求地址：/api/classDoctorBrand/queryBrandSalesPer
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "productBrand": "G.DUCK小黄鸭",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "丽洁丽净",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "云南白药菁羽",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "亮净",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "今晨",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "厘雅",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "幽螺莎星",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "康驻莱",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "春纪",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "洗衣郎",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "浅草川",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "温碧泉",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "爱得利",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "猫皮",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "碧澄",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "纺优美",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "菲诗小铺",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "蓝天",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "诺巴顿农场",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "贝爱亲",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "邦宝露",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "金织",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "闫氏",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "香雪兰",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productBrand": "优洁王",
+            "sales": -796.21,
+            "salesPer": -0.01
+        },
+        {
+            "productBrand": "欧乐B",
+            "sales": -618.34,
+            "salesPer": -0.01
+        },
+        {
+            "productBrand": "简洁",
+            "sales": -251.46,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "子晞",
+            "sales": -175.20,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "半懒",
+            "sales": -143.17,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "雪玲妃",
+            "sales": -101.74,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "自然乐园",
+            "sales": -47.95,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "纽西之谜",
+            "sales": -3.38,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "可爱松鼠",
+            "sales": 0.11,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "青松",
+            "sales": 14.85,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "帮小奇",
+            "sales": 17.90,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "蔻露薇",
+            "sales": 20.64,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "卡蓝熊",
+            "sales": 20.90,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "威洁邦",
+            "sales": 23.53,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "资生堂",
+            "sales": 24.78,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "金康泰",
+            "sales": 26.14,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "paul Frank",
+            "sales": 27.82,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "涤尚",
+            "sales": 34.04,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "艾芭薇",
+            "sales": 34.88,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "安而乐",
+            "sales": 37.00,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "三个魔发匠",
+            "sales": 51.09,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "果小虎",
+            "sales": 54.04,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "莉丝婷",
+            "sales": 58.05,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "植物语录",
+            "sales": 58.65,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "薇婷",
+            "sales": 63.94,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "阿迪",
+            "sales": 64.25,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "蜜丝婷",
+            "sales": 71.76,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "健",
+            "sales": 80.56,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "得其利是",
+            "sales": 89.06,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "花仙子",
+            "sales": 93.96,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "蔻斯汀",
+            "sales": 94.12,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "欧米娃",
+            "sales": 97.55,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "茵雪",
+            "sales": 97.69,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "奥诗琳",
+            "sales": 100.52,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "丽尚",
+            "sales": 106.97,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "泳芬",
+            "sales": 119.45,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "逐本",
+            "sales": 122.36,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "锦瑟华年",
+            "sales": 122.50,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "OLAY",
+            "sales": 130.98,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "无悠然",
+            "sales": 142.78,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "姬芮",
+            "sales": 143.99,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "喜得白",
+            "sales": 145.69,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "碧丽珠",
+            "sales": 166.63,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "花印",
+            "sales": 174.21,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "丹碧丝",
+            "sales": 175.24,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "玖美堂",
+            "sales": 178.62,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "晨露",
+            "sales": 180.76,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "迪士尼",
+            "sales": 188.65,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "弗利民博士",
+            "sales": 212.96,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "浩聚",
+            "sales": 221.46,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "碧柔",
+            "sales": 233.91,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "蓝多霸",
+            "sales": 266.68,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "悠宜",
+            "sales": 280.14,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "花诗寇",
+            "sales": 280.82,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "淘淘酷",
+            "sales": 284.97,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "韩宝莉",
+            "sales": 301.71,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "全柔四季",
+            "sales": 309.78,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "奇莫",
+            "sales": 320.02,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "刷牙大师",
+            "sales": 321.34,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "克丝漫",
+            "sales": 329.11,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "柳丝木",
+            "sales": 346.77,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "完美",
+            "sales": 361.00,
+            "salesPer": 0.00
+        },
+        {
+            "productBrand": "哆呵",
+            "sales": 382.05,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "绿劲",
+            "sales": 395.25,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "温雅",
+            "sales": 424.87,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "C咖",
+            "sales": 429.91,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "小黄人",
+            "sales": 451.50,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "花漾男女",
+            "sales": 465.67,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "蒂姆森",
+            "sales": 483.03,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "安而康",
+            "sales": 495.20,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "梅笛",
+            "sales": 553.14,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "李施德林",
+            "sales": 555.59,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "杰士派",
+            "sales": 569.35,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "芙事洁",
+            "sales": 599.24,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "哆啦A梦",
+            "sales": 622.71,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "梨渍",
+            "sales": 638.12,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "妈咪奇选",
+            "sales": 670.76,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "威洁士",
+            "sales": 705.79,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "名韩",
+            "sales": 721.59,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "绿色溪谷",
+            "sales": 724.59,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "得宝",
+            "sales": 731.92,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "哈罗小白",
+            "sales": 739.10,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "美之侣",
+            "sales": 745.75,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "安热沙",
+            "sales": 747.98,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "安尔乐",
+            "sales": 775.02,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "波普",
+            "sales": 794.12,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "诗裴丝",
+            "sales": 835.85,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "旁氏",
+            "sales": 844.10,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "夏士莲",
+            "sales": 857.16,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "友谊",
+            "sales": 931.59,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "阿迪达斯",
+            "sales": 956.26,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "吕",
+            "sales": 975.52,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "丹姿",
+            "sales": 998.13,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "当妮",
+            "sales": 1011.04,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "屋狐优影",
+            "sales": 1045.27,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "温莎森林",
+            "sales": 1073.49,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "名飘",
+            "sales": 1107.15,
+            "salesPer": 0.01
+        },
+        {
+            "productBrand": "斑布",
+            "sales": 1181.29,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "泽芬",
+            "sales": 1192.02,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "参半",
+            "sales": 1224.73,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "加菲猫",
+            "sales": 1253.07,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "安安",
+            "sales": 1320.03,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "丝蕴",
+            "sales": 1335.25,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "伯纳乌",
+            "sales": 1343.11,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "爱特福",
+            "sales": 1376.40,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "同仁堂",
+            "sales": 1406.22,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "相遇小皂",
+            "sales": 1518.07,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "奇强",
+            "sales": 1525.82,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "哈里贝贝",
+            "sales": 1548.10,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "高夫",
+            "sales": 1565.53,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "罗兰",
+            "sales": 1631.85,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "百花萃",
+            "sales": 1635.48,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "B.Duck Baby",
+            "sales": 1664.89,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "海鸥",
+            "sales": 1674.45,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "彰彩本草",
+            "sales": 1718.09,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "圣花",
+            "sales": 1719.60,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "美涛",
+            "sales": 1755.47,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "天鹰",
+            "sales": 1807.71,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "格拉斯恋人",
+            "sales": 1851.70,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "红鸟",
+            "sales": 1860.41,
+            "salesPer": 0.02
+        },
+        {
+            "productBrand": "狮王",
+            "sales": 1902.83,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "康恩倍健",
+            "sales": 1923.87,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "李字",
+            "sales": 1963.38,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "依柚",
+            "sales": 2068.60,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "泊美",
+            "sales": 2143.08,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "爱的香园",
+            "sales": 2239.62,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "家安",
+            "sales": 2269.47,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "美存",
+            "sales": 2313.37,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "宜家",
+            "sales": 2423.12,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "优普爱",
+            "sales": 2426.75,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "井尚美",
+            "sales": 2511.01,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "哆啦小屋",
+            "sales": 2619.03,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "理然",
+            "sales": 2619.55,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "雾小润",
+            "sales": 2631.64,
+            "salesPer": 0.03
+        },
+        {
+            "productBrand": "妈咪优选",
+            "sales": 2712.18,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "第六感",
+            "sales": 2799.39,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "启初",
+            "sales": 2815.64,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "大王",
+            "sales": 2894.76,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "西兰",
+            "sales": 2898.87,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "猫王",
+            "sales": 2935.05,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "田七",
+            "sales": 2944.63,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "兰亭",
+            "sales": 3119.56,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "海绵宝宝",
+            "sales": 3298.98,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "杰士邦",
+            "sales": 3408.94,
+            "salesPer": 0.04
+        },
+        {
+            "productBrand": "馥佩",
+            "sales": 3495.07,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "卡夫",
+            "sales": 3538.07,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "奥莉菲",
+            "sales": 3665.92,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "上海女人",
+            "sales": 3684.78,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "nak",
+            "sales": 3694.64,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "缇舒",
+            "sales": 3742.39,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "妈妈壹选",
+            "sales": 3865.75,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "老来福",
+            "sales": 3878.96,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "润之素",
+            "sales": 3886.44,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "樱之洁",
+            "sales": 4052.59,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "尔木萄",
+            "sales": 4061.03,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "帮宝适",
+            "sales": 4068.65,
+            "salesPer": 0.05
+        },
+        {
+            "productBrand": "韩后",
+            "sales": 4213.57,
+            "salesPer": 0.06
+        },
+        {
+            "productBrand": "捷力达",
+            "sales": 4384.84,
+            "salesPer": 0.06
+        },
+        {
+            "productBrand": "温若沐森",
+            "sales": 4429.42,
+            "salesPer": 0.06
+        },
+        {
+            "productBrand": "辛光洁",
+            "sales": 4714.51,
+            "salesPer": 0.06
+        },
+        {
+            "productBrand": "熙婷",
+            "sales": 4719.07,
+            "salesPer": 0.06
+        },
+        {
+            "productBrand": "多芬",
+            "sales": 4872.06,
+            "salesPer": 0.06
+        },
+        {
+            "productBrand": "半亩花田",
+            "sales": 5040.45,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "施华蔻",
+            "sales": 5126.37,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "威猛先生",
+            "sales": 5255.11,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "云南三七",
+            "sales": 5368.33,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "追梦青年",
+            "sales": 5443.66,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "春夏",
+            "sales": 5493.48,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "金博士",
+            "sales": 5525.17,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "章华汉草",
+            "sales": 5548.38,
+            "salesPer": 0.07
+        },
+        {
+            "productBrand": "小护士",
+            "sales": 5935.85,
+            "salesPer": 0.08
+        },
+        {
+            "productBrand": "可洁可净",
+            "sales": 6150.25,
+            "salesPer": 0.08
+        },
+        {
+            "productBrand": "白猫",
+            "sales": 6256.75,
+            "salesPer": 0.08
+        },
+        {
+            "productBrand": "丁家宜",
+            "sales": 6384.45,
+            "salesPer": 0.08
+        },
+        {
+            "productBrand": "小黄鸭B.Duck Baby",
+            "sales": 6401.08,
+            "salesPer": 0.08
+        },
+        {
+            "productBrand": "贴心妈咪",
+            "sales": 6538.98,
+            "salesPer": 0.09
+        },
+        {
+            "productBrand": "金鸡",
+            "sales": 6634.03,
+            "salesPer": 0.09
+        },
+        {
+            "productBrand": "橙除法",
+            "sales": 6881.51,
+            "salesPer": 0.09
+        },
+        {
+            "productBrand": "养元青",
+            "sales": 7018.92,
+            "salesPer": 0.09
+        },
+        {
+            "productBrand": "花香5",
+            "sales": 7303.96,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "章华",
+            "sales": 7323.22,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "枪手",
+            "sales": 7346.99,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "丽邦",
+            "sales": 7392.23,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "KONO",
+            "sales": 7422.46,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "玉兰油",
+            "sales": 7681.63,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "可靠",
+            "sales": 7964.50,
+            "salesPer": 0.10
+        },
+        {
+            "productBrand": "欧诗漫",
+            "sales": 8219.12,
+            "salesPer": 0.11
+        },
+        {
+            "productBrand": "佳尔",
+            "sales": 8469.47,
+            "salesPer": 0.11
+        },
+        {
+            "productBrand": "好奇",
+            "sales": 8727.04,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "悠选",
+            "sales": 8821.87,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "上海",
+            "sales": 8860.48,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "优佳尔",
+            "sales": 8881.69,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "霸王",
+            "sales": 8932.18,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "佳吉多",
+            "sales": 8981.44,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "兔之力",
+            "sales": 9085.81,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "慕莱",
+            "sales": 9276.53,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "伢牙乐",
+            "sales": 9433.32,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "强生",
+            "sales": 9475.29,
+            "salesPer": 0.12
+        },
+        {
+            "productBrand": "威露士",
+            "sales": 9733.62,
+            "salesPer": 0.13
+        },
+        {
+            "productBrand": "满婷",
+            "sales": 9962.48,
+            "salesPer": 0.13
+        },
+        {
+            "productBrand": "滋源",
+            "sales": 10198.11,
+            "salesPer": 0.13
+        },
+        {
+            "productBrand": "水卫仕",
+            "sales": 10220.27,
+            "salesPer": 0.13
+        },
+        {
+            "productBrand": "雪豹",
+            "sales": 10512.59,
+            "salesPer": 0.14
+        },
+        {
+            "productBrand": "fe金典",
+            "sales": 10638.65,
+            "salesPer": 0.14
+        },
+        {
+            "productBrand": "安儿乐",
+            "sales": 10652.56,
+            "salesPer": 0.14
+        },
+        {
+            "productBrand": "b2v",
+            "sales": 11398.15,
+            "salesPer": 0.15
+        },
+        {
+            "productBrand": "红色小象",
+            "sales": 11951.49,
+            "salesPer": 0.16
+        },
+        {
+            "productBrand": "百合",
+            "sales": 12345.40,
+            "salesPer": 0.16
+        },
+        {
+            "productBrand": "冰清",
+            "sales": 12409.38,
+            "salesPer": 0.16
+        },
+        {
+            "productBrand": "曼秀雷敦",
+            "sales": 12581.98,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "青蛙王子",
+            "sales": 12651.49,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "未可",
+            "sales": 12799.63,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "滴露",
+            "sales": 12806.50,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "依妍",
+            "sales": 12828.92,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "汰渍",
+            "sales": 12882.23,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "哆啦A梦.添乐",
+            "sales": 12883.18,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "孩儿面",
+            "sales": 12945.97,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "由意",
+            "sales": 13022.85,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "舒适达",
+            "sales": 13181.47,
+            "salesPer": 0.17
+        },
+        {
+            "productBrand": "牙博士",
+            "sales": 13776.01,
+            "salesPer": 0.18
+        },
+        {
+            "productBrand": "蔬果园",
+            "sales": 13881.44,
+            "salesPer": 0.18
+        },
+        {
+            "productBrand": "上扬",
+            "sales": 14092.42,
+            "salesPer": 0.19
+        },
+        {
+            "productBrand": "青蛙",
+            "sales": 14123.61,
+            "salesPer": 0.19
+        },
+        {
+            "productBrand": "宫灯",
+            "sales": 14256.90,
+            "salesPer": 0.19
+        },
+        {
+            "productBrand": "金典牙医",
+            "sales": 14528.99,
+            "salesPer": 0.19
+        },
+        {
+            "productBrand": "吉列",
+            "sales": 14786.53,
+            "salesPer": 0.19
+        },
+        {
+            "productBrand": "史努比",
+            "sales": 15759.01,
+            "salesPer": 0.21
+        },
+        {
+            "productBrand": "花诗蔻",
+            "sales": 16187.27,
+            "salesPer": 0.21
+        },
+        {
+            "productBrand": "柏缇",
+            "sales": 16427.28,
+            "salesPer": 0.22
+        },
+        {
+            "productBrand": "皇冠大公鸡",
+            "sales": 16761.80,
+            "salesPer": 0.22
+        },
+        {
+            "productBrand": "红贝缇",
+            "sales": 16826.36,
+            "salesPer": 0.22
+        },
+        {
+            "productBrand": "亿舒康",
+            "sales": 17322.71,
+            "salesPer": 0.23
+        },
+        {
+            "productBrand": "宝宝金水",
+            "sales": 17494.98,
+            "salesPer": 0.23
+        },
+        {
+            "productBrand": "阿道夫",
+            "sales": 17497.92,
+            "salesPer": 0.23
+        },
+        {
+            "productBrand": "冰泉",
+            "sales": 18056.76,
+            "salesPer": 0.24
+        },
+        {
+            "productBrand": "郁美净",
+            "sales": 18409.83,
+            "salesPer": 0.24
+        },
+        {
+            "productBrand": "纳美",
+            "sales": 18715.67,
+            "salesPer": 0.25
+        },
+        {
+            "productBrand": "妙管家",
+            "sales": 19440.32,
+            "salesPer": 0.26
+        },
+        {
+            "productBrand": "永润",
+            "sales": 19559.74,
+            "salesPer": 0.26
+        },
+        {
+            "productBrand": "洁柔",
+            "sales": 19582.11,
+            "salesPer": 0.26
+        },
+        {
+            "productBrand": "利雅佳品",
+            "sales": 19626.38,
+            "salesPer": 0.26
+        },
+        {
+            "productBrand": "维达",
+            "sales": 20810.11,
+            "salesPer": 0.27
+        },
+        {
+            "productBrand": "无忧然",
+            "sales": 20929.12,
+            "salesPer": 0.28
+        },
+        {
+            "productBrand": "帮洁",
+            "sales": 21136.62,
+            "salesPer": 0.28
+        },
+        {
+            "productBrand": "奥妙",
+            "sales": 22113.56,
+            "salesPer": 0.29
+        },
+        {
+            "productBrand": "自由点",
+            "sales": 22963.69,
+            "salesPer": 0.30
+        },
+        {
+            "productBrand": "沙宣",
+            "sales": 23567.15,
+            "salesPer": 0.31
+        },
+        {
+            "productBrand": "蒂花之秀",
+            "sales": 24271.28,
+            "salesPer": 0.32
+        },
+        {
+            "productBrand": "两面针",
+            "sales": 25088.49,
+            "salesPer": 0.33
+        },
+        {
+            "productBrand": "口益清",
+            "sales": 25176.87,
+            "salesPer": 0.33
+        },
+        {
+            "productBrand": "自然堂",
+            "sales": 25365.99,
+            "salesPer": 0.33
+        },
+        {
+            "productBrand": "洁劲",
+            "sales": 25878.38,
+            "salesPer": 0.34
+        },
+        {
+            "productBrand": "高露洁",
+            "sales": 26133.44,
+            "salesPer": 0.34
+        },
+        {
+            "productBrand": "六神",
+            "sales": 27345.88,
+            "salesPer": 0.36
+        },
+        {
+            "productBrand": "金纺",
+            "sales": 27388.39,
+            "salesPer": 0.36
+        },
+        {
+            "productBrand": "声益",
+            "sales": 27523.62,
+            "salesPer": 0.36
+        },
+        {
+            "productBrand": "美加净",
+            "sales": 27947.16,
+            "salesPer": 0.37
+        },
+        {
+            "productBrand": "妮维雅",
+            "sales": 27999.06,
+            "salesPer": 0.37
+        },
+        {
+            "productBrand": "优影",
+            "sales": 29795.15,
+            "salesPer": 0.39
+        },
+        {
+            "productBrand": "三生花",
+            "sales": 30368.10,
+            "salesPer": 0.40
+        },
+        {
+            "productBrand": "珍爱",
+            "sales": 30642.76,
+            "salesPer": 0.40
+        },
+        {
+            "productBrand": "隆力奇",
+            "sales": 30716.76,
+            "salesPer": 0.40
+        },
+        {
+            "productBrand": "韩泥坊",
+            "sales": 31068.94,
+            "salesPer": 0.41
+        },
+        {
+            "productBrand": "ABC",
+            "sales": 31990.42,
+            "salesPer": 0.42
+        },
+        {
+            "productBrand": "威王",
+            "sales": 32327.95,
+            "salesPer": 0.43
+        },
+        {
+            "productBrand": "超威",
+            "sales": 32990.73,
+            "salesPer": 0.43
+        },
+        {
+            "productBrand": "纳爱斯",
+            "sales": 33720.12,
+            "salesPer": 0.44
+        },
+        {
+            "productBrand": "中华",
+            "sales": 35945.19,
+            "salesPer": 0.47
+        },
+        {
+            "productBrand": "美好时代",
+            "sales": 37591.27,
+            "salesPer": 0.50
+        },
+        {
+            "productBrand": "迪彩",
+            "sales": 38626.22,
+            "salesPer": 0.51
+        },
+        {
+            "productBrand": "护舒宝",
+            "sales": 39233.57,
+            "salesPer": 0.52
+        },
+        {
+            "productBrand": "春娟",
+            "sales": 39395.76,
+            "salesPer": 0.52
+        },
+        {
+            "productBrand": "幸福阳光",
+            "sales": 40344.52,
+            "salesPer": 0.53
+        },
+        {
+            "productBrand": "时尚优家",
+            "sales": 41136.82,
+            "salesPer": 0.54
+        },
+        {
+            "productBrand": "六必治",
+            "sales": 41551.27,
+            "salesPer": 0.55
+        },
+        {
+            "productBrand": "清扬",
+            "sales": 45769.51,
+            "salesPer": 0.60
+        },
+        {
+            "productBrand": "力士",
+            "sales": 48223.88,
+            "salesPer": 0.64
+        },
+        {
+            "productBrand": "淘淘氧棉",
+            "sales": 50017.58,
+            "salesPer": 0.66
+        },
+        {
+            "productBrand": "欧莱雅",
+            "sales": 50381.72,
+            "salesPer": 0.66
+        },
+        {
+            "productBrand": "舒蕾",
+            "sales": 50425.59,
+            "salesPer": 0.66
+        },
+        {
+            "productBrand": "小浣熊",
+            "sales": 50927.48,
+            "salesPer": 0.67
+        },
+        {
+            "productBrand": "佳洁士",
+            "sales": 52528.12,
+            "salesPer": 0.69
+        },
+        {
+            "productBrand": "倍舒特",
+            "sales": 53146.97,
+            "salesPer": 0.70
+        },
+        {
+            "productBrand": "馥珮",
+            "sales": 54283.62,
+            "salesPer": 0.72
+        },
+        {
+            "productBrand": "顺清柔",
+            "sales": 55220.44,
+            "salesPer": 0.73
+        },
+        {
+            "productBrand": "蜂花",
+            "sales": 56011.64,
+            "salesPer": 0.74
+        },
+        {
+            "productBrand": "无品牌",
+            "sales": 58948.07,
+            "salesPer": 0.78
+        },
+        {
+            "productBrand": "韩束",
+            "sales": 59113.45,
+            "salesPer": 0.78
+        },
+        {
+            "productBrand": "飘柔",
+            "sales": 64135.61,
+            "salesPer": 0.85
+        },
+        {
+            "productBrand": "舒客",
+            "sales": 66615.35,
+            "salesPer": 0.88
+        },
+        {
+            "productBrand": "纳可",
+            "sales": 67378.72,
+            "salesPer": 0.89
+        },
+        {
+            "productBrand": "丝妍",
+            "sales": 68790.17,
+            "salesPer": 0.91
+        },
+        {
+            "productBrand": "好来",
+            "sales": 70087.65,
+            "salesPer": 0.92
+        },
+        {
+            "productBrand": "潘婷",
+            "sales": 73686.42,
+            "salesPer": 0.97
+        },
+        {
+            "productBrand": "冷酸灵",
+            "sales": 74950.35,
+            "salesPer": 0.99
+        },
+        {
+            "productBrand": "护理佳",
+            "sales": 78596.41,
+            "salesPer": 1.04
+        },
+        {
+            "productBrand": "苏菲",
+            "sales": 79153.42,
+            "salesPer": 1.04
+        },
+        {
+            "productBrand": "蓝月亮",
+            "sales": 79210.77,
+            "salesPer": 1.04
+        },
+        {
+            "productBrand": "相宜本草",
+            "sales": 81045.68,
+            "salesPer": 1.07
+        },
+        {
+            "productBrand": "大宝",
+            "sales": 82994.19,
+            "salesPer": 1.09
+        },
+        {
+            "productBrand": "百雀羚",
+            "sales": 87179.74,
+            "salesPer": 1.15
+        },
+        {
+            "productBrand": "新合悠选",
+            "sales": 91326.61,
+            "salesPer": 1.20
+        },
+        {
+            "productBrand": "柔柔",
+            "sales": 96558.37,
+            "salesPer": 1.27
+        },
+        {
+            "productBrand": "好爸爸",
+            "sales": 98963.64,
+            "salesPer": 1.30
+        },
+        {
+            "productBrand": "高洁丝",
+            "sales": 99248.59,
+            "salesPer": 1.31
+        },
+        {
+            "productBrand": "海飞丝",
+            "sales": 104403.45,
+            "salesPer": 1.38
+        },
+        {
+            "productBrand": "柔影",
+            "sales": 107559.76,
+            "salesPer": 1.42
+        },
+        {
+            "productBrand": "活力28",
+            "sales": 107897.73,
+            "salesPer": 1.42
+        },
+        {
+            "productBrand": "碧浪",
+            "sales": 108437.75,
+            "salesPer": 1.43
+        },
+        {
+            "productBrand": "草木若昔",
+            "sales": 108597.63,
+            "salesPer": 1.43
+        },
+        {
+            "productBrand": "清风",
+            "sales": 134236.70,
+            "salesPer": 1.77
+        },
+        {
+            "productBrand": "舒肤佳",
+            "sales": 161940.09,
+            "salesPer": 2.13
+        },
+        {
+            "productBrand": "优妮",
+            "sales": 163233.51,
+            "salesPer": 2.15
+        },
+        {
+            "productBrand": "七度空间",
+            "sales": 165213.71,
+            "salesPer": 2.18
+        },
+        {
+            "productBrand": "雕牌",
+            "sales": 171505.24,
+            "salesPer": 2.26
+        },
+        {
+            "productBrand": "心相印",
+            "sales": 195184.91,
+            "salesPer": 2.57
+        },
+        {
+            "productBrand": "萌力优",
+            "sales": 197844.62,
+            "salesPer": 2.61
+        },
+        {
+            "productBrand": "云南白药",
+            "sales": 197860.78,
+            "salesPer": 2.61
+        },
+        {
+            "productBrand": "安安金纯",
+            "sales": 199000.30,
+            "salesPer": 2.62
+        },
+        {
+            "productBrand": "超能",
+            "sales": 200536.61,
+            "salesPer": 2.64
+        },
+        {
+            "productBrand": "丝飘",
+            "sales": 228070.92,
+            "salesPer": 3.01
+        },
+        {
+            "productBrand": "舒影",
+            "sales": 398332.46,
+            "salesPer": 5.25
+        },
+        {
+            "productBrand": "立白",
+            "sales": 494691.60,
+            "salesPer": 6.52
+        }
+    ],
+    "timestamp": 1776260695523
+}

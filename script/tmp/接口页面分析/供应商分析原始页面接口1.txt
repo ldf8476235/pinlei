@@ -1,0 +1,66 @@
+接口地址：/api/classDoctorVendor/queryVendorRanking
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","className":"004洗化部","startMonth":"2024-09-27","endMonth":"2024-12-08","type":"1","orderType":"desc","page":1,"size":10}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "ave": 3844.34,
+        "maxData": 108597.63,
+        "minData": -850.45,
+        "total": 77,
+        "list": [
+            {
+                "productVendorNo": "1090000733",
+                "productVendorName": "1090000733有限公司",
+                "data": 3246.71
+            },
+            {
+                "productVendorNo": "1030000016",
+                "productVendorName": "1030000016有限公司",
+                "data": 3577.93
+            },
+            {
+                "productVendorNo": "1090000636",
+                "productVendorName": "1090000636有限公司",
+                "data": 3651.42
+            },
+            {
+                "productVendorNo": "1090000537",
+                "productVendorName": "1090000537有限公司",
+                "data": 3893.28
+            },
+            {
+                "productVendorNo": "1090000575",
+                "productVendorName": "1090000575有限公司",
+                "data": 4003.90
+            },
+            {
+                "productVendorNo": "1080000350",
+                "productVendorName": "1080000350有限公司",
+                "data": 10321.77
+            },
+            {
+                "productVendorNo": "1090000604",
+                "productVendorName": "1090000604有限公司",
+                "data": 13943.61
+            },
+            {
+                "productVendorNo": "1090000076",
+                "productVendorName": "1090000076有限公司",
+                "data": 39594.98
+            },
+            {
+                "productVendorNo": "1090000694",
+                "productVendorName": "1090000694有限公司",
+                "data": 60919.21
+            },
+            {
+                "productVendorNo": "1090000746",
+                "productVendorName": "1090000746有限公司",
+                "data": 108597.63
+            }
+        ]
+    },
+    "timestamp": 1776257738041
+}

@@ -1,0 +1,262 @@
+请求接口：/api/classDoctorPriceBand/queryPriceRangeSalesList
+请求参数：{"id":118,"order":"priceBandMin","orderType":"asc"}
+请求参数解析：
+排序字段： sku,skuPer,saleQuantity,saleQuantityPer,saleQuantityUnit,sales,salesPer,activitySku,suggestSku,suggestSkuPer
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "list": [
+            {
+                "priceBandMin": 0.00,
+                "priceBandMax": 9.90,
+                "priceBand": "0.00-9.90",
+                "sku": 874,
+                "skuPer": 18.46,
+                "saleQuantity": 207886.29,
+                "saleQuantityPer": 42.53,
+                "saleQuantityUnit": 237.86,
+                "sales": 1365902.93,
+                "salesPer": 18.01,
+                "activitySku": 0,
+                "suggestSku": 2014,
+                "suggestSkuPer": 42.53,
+                "salePrice": 9.90
+            },
+            {
+                "priceBandMin": 9.90,
+                "priceBandMax": 24.81,
+                "priceBand": "9.90-24.81",
+                "sku": 1539,
+                "skuPer": 32.50,
+                "saleQuantity": 171599.60,
+                "saleQuantityPer": 35.10,
+                "saleQuantityUnit": 111.50,
+                "sales": 2228029.54,
+                "salesPer": 29.37,
+                "activitySku": 0,
+                "suggestSku": 1662,
+                "suggestSkuPer": 35.10,
+                "salePrice": 24.80
+            },
+            {
+                "priceBandMin": 24.81,
+                "priceBandMax": 39.72,
+                "priceBand": "24.81-39.72",
+                "sku": 903,
+                "skuPer": 19.07,
+                "saleQuantity": 57010.48,
+                "saleQuantityPer": 11.66,
+                "saleQuantityUnit": 63.13,
+                "sales": 1537487.32,
+                "salesPer": 20.27,
+                "activitySku": 0,
+                "suggestSku": 552,
+                "suggestSkuPer": 11.66,
+                "salePrice": 39.60
+            },
+            {
+                "priceBandMin": 39.72,
+                "priceBandMax": 54.63,
+                "priceBand": "39.72-54.63",
+                "sku": 499,
+                "skuPer": 10.54,
+                "saleQuantity": 35294.36,
+                "saleQuantityPer": 7.22,
+                "saleQuantityUnit": 70.73,
+                "sales": 1317328.57,
+                "salesPer": 17.37,
+                "activitySku": 0,
+                "suggestSku": 342,
+                "suggestSkuPer": 7.22,
+                "salePrice": 52.90
+            },
+            {
+                "priceBandMin": 54.63,
+                "priceBandMax": 69.54,
+                "priceBand": "54.63-69.54",
+                "sku": 258,
+                "skuPer": 5.45,
+                "saleQuantity": 5708.24,
+                "saleQuantityPer": 1.17,
+                "saleQuantityUnit": 22.12,
+                "sales": 252283.64,
+                "salesPer": 3.33,
+                "activitySku": 0,
+                "suggestSku": 55,
+                "suggestSkuPer": 1.16,
+                "salePrice": 69.00
+            },
+            {
+                "priceBandMin": 69.54,
+                "priceBandMax": 84.45,
+                "priceBand": "69.54-84.45",
+                "sku": 161,
+                "skuPer": 3.40,
+                "saleQuantity": 3269.97,
+                "saleQuantityPer": 0.67,
+                "saleQuantityUnit": 20.31,
+                "sales": 206743.23,
+                "salesPer": 2.73,
+                "activitySku": 0,
+                "suggestSku": 32,
+                "suggestSkuPer": 0.68,
+                "salePrice": 84.00
+            },
+            {
+                "priceBandMin": 84.45,
+                "priceBandMax": 99.36,
+                "priceBand": "84.45-99.36",
+                "sku": 206,
+                "skuPer": 4.35,
+                "saleQuantity": 4810.53,
+                "saleQuantityPer": 0.98,
+                "saleQuantityUnit": 23.35,
+                "sales": 315234.20,
+                "salesPer": 4.16,
+                "activitySku": 0,
+                "suggestSku": 47,
+                "suggestSkuPer": 0.99,
+                "salePrice": 99.00
+            },
+            {
+                "priceBandMin": 99.36,
+                "priceBandMax": 114.27,
+                "priceBand": "99.36-114.27",
+                "sku": 67,
+                "skuPer": 1.41,
+                "saleQuantity": 846.05,
+                "saleQuantityPer": 0.17,
+                "saleQuantityUnit": 12.63,
+                "sales": 73666.29,
+                "salesPer": 0.97,
+                "activitySku": 0,
+                "suggestSku": 8,
+                "suggestSkuPer": 0.17,
+                "salePrice": 110.00
+            },
+            {
+                "priceBandMin": 114.27,
+                "priceBandMax": 129.18,
+                "priceBand": "114.27-129.18",
+                "sku": 44,
+                "skuPer": 0.93,
+                "saleQuantity": 301.01,
+                "saleQuantityPer": 0.06,
+                "saleQuantityUnit": 6.84,
+                "sales": 23883.06,
+                "salesPer": 0.31,
+                "activitySku": 0,
+                "suggestSku": 3,
+                "suggestSkuPer": 0.06,
+                "salePrice": 129.00
+            },
+            {
+                "priceBandMin": 129.18,
+                "priceBandMax": 144.09,
+                "priceBand": "129.18-144.09",
+                "sku": 52,
+                "skuPer": 1.10,
+                "saleQuantity": 603.64,
+                "saleQuantityPer": 0.12,
+                "saleQuantityUnit": 11.61,
+                "sales": 47990.85,
+                "salesPer": 0.63,
+                "activitySku": 0,
+                "suggestSku": 6,
+                "suggestSkuPer": 0.13,
+                "salePrice": 142.80
+            },
+            {
+                "priceBandMin": 144.09,
+                "priceBandMax": 159.00,
+                "priceBand": "144.09-159.00",
+                "sku": 39,
+                "skuPer": 0.82,
+                "saleQuantity": 825.60,
+                "saleQuantityPer": 0.17,
+                "saleQuantityUnit": 21.17,
+                "sales": 124699.40,
+                "salesPer": 1.64,
+                "activitySku": 0,
+                "suggestSku": 8,
+                "suggestSkuPer": 0.17,
+                "salePrice": 159.00
+            },
+            {
+                "priceBandMin": 159.00,
+                "priceBandMax": 168.00,
+                "priceBand": "159.00-168.00",
+                "sku": 10,
+                "skuPer": 0.21,
+                "saleQuantity": 60.44,
+                "saleQuantityPer": 0.01,
+                "saleQuantityUnit": 6.04,
+                "sales": 6541.10,
+                "salesPer": 0.09,
+                "activitySku": 0,
+                "suggestSku": 0,
+                "suggestSkuPer": 0.00,
+                "salePrice": 168.00
+            },
+            {
+                "priceBandMin": 168.00,
+                "priceBandMax": 688.00,
+                "priceBand": "168.00-688.00",
+                "sku": 83,
+                "skuPer": 1.75,
+                "saleQuantity": 610.92,
+                "saleQuantityPer": 0.12,
+                "saleQuantityUnit": 7.36,
+                "sales": 85492.78,
+                "salesPer": 1.13,
+                "activitySku": 0,
+                "suggestSku": 6,
+                "suggestSkuPer": 0.13,
+                "salePrice": 688.00
+            },
+            {
+                "priceBandMin": null,
+                "priceBandMax": null,
+                "priceBand": "总计",
+                "sku": 4735,
+                "skuPer": 100,
+                "saleQuantity": 488827.13,
+                "saleQuantityPer": 100,
+                "saleQuantityUnit": 103.24,
+                "sales": 7585282.91,
+                "salesPer": 100,
+                "activitySku": 0,
+                "suggestSku": 4735,
+                "suggestSkuPer": 100,
+                "salePrice": null
+            }
+        ],
+        "summaryTwo": [
+            {
+                "priceBandMin": 9.90,
+                "priceBandMax": 24.81,
+                "sales": null
+            }
+        ],
+        "summaryThree": [
+            {
+                "priceBandMin": 69.54,
+                "priceBandMax": 84.45,
+                "sales": null
+            },
+            {
+                "priceBandMin": 114.27,
+                "priceBandMax": 129.18,
+                "sales": null
+            },
+            {
+                "priceBandMin": 159.00,
+                "priceBandMax": 168.00,
+                "sales": null
+            }
+        ]
+    },
+    "timestamp": 1776258194259
+}

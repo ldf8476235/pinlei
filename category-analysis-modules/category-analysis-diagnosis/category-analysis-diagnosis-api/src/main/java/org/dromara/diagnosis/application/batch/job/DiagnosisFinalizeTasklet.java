@@ -9,6 +9,7 @@ import org.dromara.diagnosis.application.batch.model.DiagnosisFinalizeContext;
 import org.dromara.diagnosis.application.batch.model.DiagnosisGmroiFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisGrossFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisOverviewFinalizeResult;
+import org.dromara.diagnosis.application.batch.model.DiagnosisPriceBandFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisSubclassFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisTrendFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisVipFinalizeResult;
@@ -19,6 +20,7 @@ import org.dromara.diagnosis.application.batch.service.DiagnosisFinalizeSupport;
 import org.dromara.diagnosis.application.batch.service.DiagnosisGmroiContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisGrossContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisOverviewFinalizeService;
+import org.dromara.diagnosis.application.batch.service.DiagnosisPriceBandFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisSubclassContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisTrendFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisVipAnalysisFinalizeService;
@@ -76,6 +78,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
     private final DiagnosisAbcStructureFinalizeService abcStructureFinalizeService;
     private final DiagnosisGrossContributionFinalizeService grossContributionFinalizeService;
     private final DiagnosisGmroiContributionFinalizeService gmroiContributionFinalizeService;
+    private final DiagnosisPriceBandFinalizeService priceBandFinalizeService;
     private final DiagnosisAsyncOrchestratorService asyncOrchestratorService;
 
     @Override
@@ -146,6 +149,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         AtomicReference<DiagnosisAbcFinalizeResult> abcResultRef = new AtomicReference<>();
         AtomicReference<DiagnosisGrossFinalizeResult> grossResultRef = new AtomicReference<>();
         AtomicReference<DiagnosisGmroiFinalizeResult> gmroiResultRef = new AtomicReference<>();
+        AtomicReference<DiagnosisPriceBandFinalizeResult> priceBandResultRef = new AtomicReference<>();
 
         Map<String, Supplier<Long>> moduleSuppliers = new LinkedHashMap<>();
         moduleSuppliers.put("overview", () -> {
@@ -185,6 +189,14 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
             DiagnosisGmroiFinalizeResult gmroiResult = gmroiContributionFinalizeService.finalizeGmroi(finalizeContext);
             gmroiResultRef.set(gmroiResult);
             return gmroiResult.getSkuRows();
+        });
+        moduleSuppliers.put("priceBand", () -> {
+            DiagnosisPriceBandFinalizeResult priceBandResult = priceBandFinalizeService.finalizePriceBand(finalizeContext);
+            priceBandResultRef.set(priceBandResult);
+            return priceBandResult.getRangeRows()
+                + priceBandResult.getLineRows()
+                + priceBandResult.getPointRows()
+                + priceBandResult.getSkuRows();
         });
 
         DiagnosisAsyncOrchestratorRequest orchestratorRequest = DiagnosisAsyncOrchestratorRequest.builder()
@@ -251,6 +263,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
             DiagnosisAbcFinalizeResult abcResult = abcResultRef.get();
             DiagnosisGrossFinalizeResult grossResult = grossResultRef.get();
             DiagnosisGmroiFinalizeResult gmroiResult = gmroiResultRef.get();
+            DiagnosisPriceBandFinalizeResult priceBandResult = priceBandResultRef.get();
 
             Long totalRows = batchSourceMapper.countRows(param);
             long windowRowsRead = totalRows == null ? 0L : totalRows;
@@ -282,6 +295,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                 abcResult,
                 grossResult,
                 gmroiResult,
+                priceBandResult,
                 windowRowsRead,
                 windowRowsWritten,
                 job
@@ -403,6 +417,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("abc", moduleNode(statusMap, errorMap, "abc"));
         payload.put("gross", moduleNode(statusMap, errorMap, "gross"));
         payload.put("gmroi", moduleNode(statusMap, errorMap, "gmroi"));
+        payload.put("priceBand", moduleNode(statusMap, errorMap, "priceBand"));
         return JsonUtils.toJsonString(payload);
     }
 
@@ -428,6 +443,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                                      DiagnosisAbcFinalizeResult abcResult,
                                      DiagnosisGrossFinalizeResult grossResult,
                                      DiagnosisGmroiFinalizeResult gmroiResult,
+                                     DiagnosisPriceBandFinalizeResult priceBandResult,
                                      long windowRowsRead,
                                      long windowRowsWritten,
                                      DiagnosisPrecomputeJobRow job) {
@@ -457,6 +473,10 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("abcSkuRows", abcResult == null ? 0L : abcResult.getSkuRows());
         payload.put("grossSkuRows", grossResult == null ? 0L : grossResult.getSkuRows());
         payload.put("gmroiSkuRows", gmroiResult == null ? 0L : gmroiResult.getSkuRows());
+        payload.put("priceBandRangeRows", priceBandResult == null ? 0L : priceBandResult.getRangeRows());
+        payload.put("priceBandLineRows", priceBandResult == null ? 0L : priceBandResult.getLineRows());
+        payload.put("priceBandPointRows", priceBandResult == null ? 0L : priceBandResult.getPointRows());
+        payload.put("priceBandSkuRows", priceBandResult == null ? 0L : priceBandResult.getSkuRows());
         payload.put("windowRowsRead", windowRowsRead);
         payload.put("windowRowsWritten", windowRowsWritten);
         payload.put("jobDoneWindows", job.getDoneWindows());

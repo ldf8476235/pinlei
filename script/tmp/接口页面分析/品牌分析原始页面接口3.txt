@@ -1,0 +1,59 @@
+请求地址：/api/classDoctorBrand/queryBrandSalesRanking
+请求参数：{"id":118,"type":"1","orderType":"desc","page":1,"size":10}
+请求参数解析：
+type: 1(销售额)，2（销售量），3（毛利额），4（毛利率）
+下面返回参数里的data就是根据这个type来的
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "ave": 21859.60,
+        "maxData": 494691.60,
+        "minData": -796.21,
+        "total": 347,
+        "list": [
+            {
+                "productBrand": "七度空间",
+                "data": 165213.71
+            },
+            {
+                "productBrand": "雕牌",
+                "data": 171505.24
+            },
+            {
+                "productBrand": "心相印",
+                "data": 195184.91
+            },
+            {
+                "productBrand": "萌力优",
+                "data": 197844.62
+            },
+            {
+                "productBrand": "云南白药",
+                "data": 197860.78
+            },
+            {
+                "productBrand": "安安金纯",
+                "data": 199000.30
+            },
+            {
+                "productBrand": "超能",
+                "data": 200536.61
+            },
+            {
+                "productBrand": "丝飘",
+                "data": 228070.92
+            },
+            {
+                "productBrand": "舒影",
+                "data": 398332.46
+            },
+            {
+                "productBrand": "立白",
+                "data": 494691.60
+            }
+        ]
+    },
+    "timestamp": 1776260695522
+}

@@ -1,0 +1,2323 @@
+请求接口：/api/classDoctorPriceBand/queryPriceBandDiagram
+请求参数：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "rangePerformanceList": [
+            {
+                "priceBandMin": 0.0000,
+                "priceBandMax": 9.9000,
+                "sku": 874,
+                "sales": 1365902.93,
+                "saleQuantity": 207886.29,
+                "priceBandAve": 4.95,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 9.9000,
+                "priceBandMax": 24.8100,
+                "sku": 1539,
+                "sales": 2228029.54,
+                "saleQuantity": 171599.60,
+                "priceBandAve": 17.36,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 24.8100,
+                "priceBandMax": 39.7200,
+                "sku": 903,
+                "sales": 1537487.32,
+                "saleQuantity": 57010.48,
+                "priceBandAve": 32.27,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 39.7200,
+                "priceBandMax": 54.6300,
+                "sku": 499,
+                "sales": 1317328.57,
+                "saleQuantity": 35294.36,
+                "priceBandAve": 47.18,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 54.6300,
+                "priceBandMax": 69.5400,
+                "sku": 258,
+                "sales": 252283.64,
+                "saleQuantity": 5708.24,
+                "priceBandAve": 62.09,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 69.5400,
+                "priceBandMax": 84.4500,
+                "sku": 161,
+                "sales": 206743.23,
+                "saleQuantity": 3269.97,
+                "priceBandAve": 77.00,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 84.4500,
+                "priceBandMax": 99.3600,
+                "sku": 206,
+                "sales": 315234.20,
+                "saleQuantity": 4810.53,
+                "priceBandAve": 91.91,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 99.3600,
+                "priceBandMax": 114.2700,
+                "sku": 67,
+                "sales": 73666.29,
+                "saleQuantity": 846.05,
+                "priceBandAve": 106.82,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 114.2700,
+                "priceBandMax": 129.1800,
+                "sku": 44,
+                "sales": 23883.06,
+                "saleQuantity": 301.01,
+                "priceBandAve": 121.73,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 129.1800,
+                "priceBandMax": 144.0900,
+                "sku": 52,
+                "sales": 47990.85,
+                "saleQuantity": 603.64,
+                "priceBandAve": 136.64,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 144.0900,
+                "priceBandMax": 159.0000,
+                "sku": 39,
+                "sales": 124699.40,
+                "saleQuantity": 825.60,
+                "priceBandAve": 151.55,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 159.0000,
+                "priceBandMax": 168.0000,
+                "sku": 10,
+                "sales": 6541.10,
+                "saleQuantity": 60.44,
+                "priceBandAve": 163.50,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 168.0000,
+                "priceBandMax": 688.00,
+                "sku": 83,
+                "sales": 85492.78,
+                "saleQuantity": 610.92,
+                "priceBandAve": 428.00,
+                "salePrice": null,
+                "minSalePrice": null,
+                "totalSales": null,
+                "waveType": null
+            }
+        ],
+        "linePerformanceList": [
+            {
+                "priceLine": 0.00,
+                "sku": 12,
+                "sales": 58948.07
+            },
+            {
+                "priceLine": 0.90,
+                "sku": 1,
+                "sales": 3215.61
+            },
+            {
+                "priceLine": 1.00,
+                "sku": 4,
+                "sales": 4294.34
+            },
+            {
+                "priceLine": 1.20,
+                "sku": 1,
+                "sales": 1402.40
+            },
+            {
+                "priceLine": 1.30,
+                "sku": 2,
+                "sales": 5693.15
+            },
+            {
+                "priceLine": 1.40,
+                "sku": 1,
+                "sales": 464.47
+            },
+            {
+                "priceLine": 1.50,
+                "sku": 2,
+                "sales": 1200.71
+            },
+            {
+                "priceLine": 1.80,
+                "sku": 1,
+                "sales": 633.77
+            },
+            {
+                "priceLine": 1.90,
+                "sku": 5,
+                "sales": 1403.26
+            },
+            {
+                "priceLine": 2.00,
+                "sku": 3,
+                "sales": 6073.57
+            },
+            {
+                "priceLine": 2.20,
+                "sku": 4,
+                "sales": 4153.69
+            },
+            {
+                "priceLine": 2.50,
+                "sku": 5,
+                "sales": 5840.78
+            },
+            {
+                "priceLine": 2.60,
+                "sku": 1,
+                "sales": 7982.94
+            },
+            {
+                "priceLine": 2.80,
+                "sku": 2,
+                "sales": 1927.36
+            },
+            {
+                "priceLine": 2.90,
+                "sku": 8,
+                "sales": 14955.56
+            },
+            {
+                "priceLine": 3.00,
+                "sku": 7,
+                "sales": 4599.98
+            },
+            {
+                "priceLine": 3.20,
+                "sku": 6,
+                "sales": 4109.09
+            },
+            {
+                "priceLine": 3.30,
+                "sku": 1,
+                "sales": 2808.61
+            },
+            {
+                "priceLine": 3.50,
+                "sku": 11,
+                "sales": 7109.04
+            },
+            {
+                "priceLine": 3.60,
+                "sku": 3,
+                "sales": 143.25
+            },
+            {
+                "priceLine": 3.70,
+                "sku": 1,
+                "sales": 135.02
+            },
+            {
+                "priceLine": 3.80,
+                "sku": 6,
+                "sales": 2689.82
+            },
+            {
+                "priceLine": 3.90,
+                "sku": 31,
+                "sales": 11713.51
+            },
+            {
+                "priceLine": 4.00,
+                "sku": 5,
+                "sales": 4781.42
+            },
+            {
+                "priceLine": 4.20,
+                "sku": 2,
+                "sales": 2472.28
+            },
+            {
+                "priceLine": 4.30,
+                "sku": 1,
+                "sales": 106.83
+            },
+            {
+                "priceLine": 4.50,
+                "sku": 25,
+                "sales": 37909.70
+            },
+            {
+                "priceLine": 4.70,
+                "sku": 1,
+                "sales": 2374.10
+            },
+            {
+                "priceLine": 4.80,
+                "sku": 9,
+                "sales": 6607.86
+            },
+            {
+                "priceLine": 4.90,
+                "sku": 26,
+                "sales": 18822.60
+            },
+            {
+                "priceLine": 5.00,
+                "sku": 12,
+                "sales": 8377.46
+            },
+            {
+                "priceLine": 5.20,
+                "sku": 4,
+                "sales": 4426.53
+            },
+            {
+                "priceLine": 5.40,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 5.50,
+                "sku": 12,
+                "sales": 20280.82
+            },
+            {
+                "priceLine": 5.60,
+                "sku": 2,
+                "sales": 3354.96
+            },
+            {
+                "priceLine": 5.70,
+                "sku": 7,
+                "sales": 2229.14
+            },
+            {
+                "priceLine": 5.80,
+                "sku": 14,
+                "sales": 31735.16
+            },
+            {
+                "priceLine": 5.90,
+                "sku": 35,
+                "sales": 36404.76
+            },
+            {
+                "priceLine": 6.00,
+                "sku": 12,
+                "sales": 16766.92
+            },
+            {
+                "priceLine": 6.10,
+                "sku": 1,
+                "sales": 1832.14
+            },
+            {
+                "priceLine": 6.50,
+                "sku": 14,
+                "sales": 40206.12
+            },
+            {
+                "priceLine": 6.60,
+                "sku": 1,
+                "sales": 13.64
+            },
+            {
+                "priceLine": 6.70,
+                "sku": 2,
+                "sales": 2797.02
+            },
+            {
+                "priceLine": 6.80,
+                "sku": 8,
+                "sales": 15715.86
+            },
+            {
+                "priceLine": 6.90,
+                "sku": 43,
+                "sales": 38899.83
+            },
+            {
+                "priceLine": 7.00,
+                "sku": 6,
+                "sales": 4295.57
+            },
+            {
+                "priceLine": 7.10,
+                "sku": 3,
+                "sales": 817.29
+            },
+            {
+                "priceLine": 7.30,
+                "sku": 1,
+                "sales": 2701.09
+            },
+            {
+                "priceLine": 7.50,
+                "sku": 12,
+                "sales": 23311.83
+            },
+            {
+                "priceLine": 7.80,
+                "sku": 18,
+                "sales": 15473.74
+            },
+            {
+                "priceLine": 7.90,
+                "sku": 60,
+                "sales": 136406.62
+            },
+            {
+                "priceLine": 8.00,
+                "sku": 3,
+                "sales": 625.64
+            },
+            {
+                "priceLine": 8.30,
+                "sku": 3,
+                "sales": 7610.40
+            },
+            {
+                "priceLine": 8.40,
+                "sku": 1,
+                "sales": 1745.43
+            },
+            {
+                "priceLine": 8.50,
+                "sku": 15,
+                "sales": 18024.83
+            },
+            {
+                "priceLine": 8.60,
+                "sku": 1,
+                "sales": 3381.96
+            },
+            {
+                "priceLine": 8.70,
+                "sku": 2,
+                "sales": 14994.57
+            },
+            {
+                "priceLine": 8.80,
+                "sku": 8,
+                "sales": 4455.06
+            },
+            {
+                "priceLine": 8.90,
+                "sku": 46,
+                "sales": 85068.78
+            },
+            {
+                "priceLine": 9.00,
+                "sku": 10,
+                "sales": 18151.08
+            },
+            {
+                "priceLine": 9.20,
+                "sku": 3,
+                "sales": 10213.99
+            },
+            {
+                "priceLine": 9.30,
+                "sku": 3,
+                "sales": 5226.04
+            },
+            {
+                "priceLine": 9.50,
+                "sku": 22,
+                "sales": 19281.54
+            },
+            {
+                "priceLine": 9.60,
+                "sku": 4,
+                "sales": 4507.93
+            },
+            {
+                "priceLine": 9.70,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 9.80,
+                "sku": 27,
+                "sales": 36264.95
+            },
+            {
+                "priceLine": 9.90,
+                "sku": 270,
+                "sales": 505731.44
+            },
+            {
+                "priceLine": 10.00,
+                "sku": 15,
+                "sales": 30774.31
+            },
+            {
+                "priceLine": 10.20,
+                "sku": 6,
+                "sales": 2012.96
+            },
+            {
+                "priceLine": 10.30,
+                "sku": 8,
+                "sales": 11037.40
+            },
+            {
+                "priceLine": 10.50,
+                "sku": 16,
+                "sales": 17762.09
+            },
+            {
+                "priceLine": 10.60,
+                "sku": 1,
+                "sales": 1288.06
+            },
+            {
+                "priceLine": 10.80,
+                "sku": 15,
+                "sales": 16943.22
+            },
+            {
+                "priceLine": 10.90,
+                "sku": 56,
+                "sales": 106759.94
+            },
+            {
+                "priceLine": 11.00,
+                "sku": 7,
+                "sales": 28469.88
+            },
+            {
+                "priceLine": 11.20,
+                "sku": 3,
+                "sales": 4602.44
+            },
+            {
+                "priceLine": 11.50,
+                "sku": 19,
+                "sales": 27388.39
+            },
+            {
+                "priceLine": 11.60,
+                "sku": 2,
+                "sales": 622.05
+            },
+            {
+                "priceLine": 11.80,
+                "sku": 7,
+                "sales": 14489.68
+            },
+            {
+                "priceLine": 11.90,
+                "sku": 49,
+                "sales": 69997.84
+            },
+            {
+                "priceLine": 12.00,
+                "sku": 12,
+                "sales": 23926.00
+            },
+            {
+                "priceLine": 12.20,
+                "sku": 2,
+                "sales": 1815.47
+            },
+            {
+                "priceLine": 12.40,
+                "sku": 2,
+                "sales": 292.01
+            },
+            {
+                "priceLine": 12.50,
+                "sku": 23,
+                "sales": 23549.93
+            },
+            {
+                "priceLine": 12.60,
+                "sku": 2,
+                "sales": 1099.47
+            },
+            {
+                "priceLine": 12.80,
+                "sku": 28,
+                "sales": 24300.34
+            },
+            {
+                "priceLine": 12.90,
+                "sku": 97,
+                "sales": 289713.10
+            },
+            {
+                "priceLine": 13.00,
+                "sku": 9,
+                "sales": 6084.17
+            },
+            {
+                "priceLine": 13.50,
+                "sku": 10,
+                "sales": 11462.23
+            },
+            {
+                "priceLine": 13.60,
+                "sku": 8,
+                "sales": 2067.24
+            },
+            {
+                "priceLine": 13.80,
+                "sku": 21,
+                "sales": 27169.01
+            },
+            {
+                "priceLine": 13.90,
+                "sku": 66,
+                "sales": 99332.53
+            },
+            {
+                "priceLine": 14.00,
+                "sku": 4,
+                "sales": 10172.05
+            },
+            {
+                "priceLine": 14.20,
+                "sku": 2,
+                "sales": 1938.63
+            },
+            {
+                "priceLine": 14.40,
+                "sku": 1,
+                "sales": 67.25
+            },
+            {
+                "priceLine": 14.50,
+                "sku": 29,
+                "sales": 41115.25
+            },
+            {
+                "priceLine": 14.80,
+                "sku": 24,
+                "sales": 37601.30
+            },
+            {
+                "priceLine": 14.90,
+                "sku": 55,
+                "sales": 82963.14
+            },
+            {
+                "priceLine": 15.00,
+                "sku": 20,
+                "sales": 33354.13
+            },
+            {
+                "priceLine": 15.30,
+                "sku": 3,
+                "sales": 4072.75
+            },
+            {
+                "priceLine": 15.40,
+                "sku": 1,
+                "sales": 247.04
+            },
+            {
+                "priceLine": 15.50,
+                "sku": 9,
+                "sales": 7195.65
+            },
+            {
+                "priceLine": 15.60,
+                "sku": 5,
+                "sales": 6530.23
+            },
+            {
+                "priceLine": 15.70,
+                "sku": 3,
+                "sales": -13.58
+            },
+            {
+                "priceLine": 15.80,
+                "sku": 33,
+                "sales": 43025.48
+            },
+            {
+                "priceLine": 15.90,
+                "sku": 87,
+                "sales": 122002.32
+            },
+            {
+                "priceLine": 16.00,
+                "sku": 5,
+                "sales": 3966.81
+            },
+            {
+                "priceLine": 16.50,
+                "sku": 8,
+                "sales": 4519.81
+            },
+            {
+                "priceLine": 16.60,
+                "sku": 3,
+                "sales": 212.96
+            },
+            {
+                "priceLine": 16.80,
+                "sku": 46,
+                "sales": 70569.14
+            },
+            {
+                "priceLine": 16.90,
+                "sku": 39,
+                "sales": 55017.19
+            },
+            {
+                "priceLine": 17.00,
+                "sku": 3,
+                "sales": 3151.06
+            },
+            {
+                "priceLine": 17.40,
+                "sku": 2,
+                "sales": 861.08
+            },
+            {
+                "priceLine": 17.50,
+                "sku": 8,
+                "sales": 4450.31
+            },
+            {
+                "priceLine": 17.80,
+                "sku": 16,
+                "sales": 8396.67
+            },
+            {
+                "priceLine": 17.90,
+                "sku": 44,
+                "sales": 69620.24
+            },
+            {
+                "priceLine": 18.00,
+                "sku": 12,
+                "sales": 19866.80
+            },
+            {
+                "priceLine": 18.50,
+                "sku": 11,
+                "sales": 24931.61
+            },
+            {
+                "priceLine": 18.60,
+                "sku": 4,
+                "sales": 1028.91
+            },
+            {
+                "priceLine": 18.80,
+                "sku": 13,
+                "sales": 20176.27
+            },
+            {
+                "priceLine": 18.90,
+                "sku": 45,
+                "sales": 63927.16
+            },
+            {
+                "priceLine": 19.00,
+                "sku": 7,
+                "sales": 5847.86
+            },
+            {
+                "priceLine": 19.50,
+                "sku": 9,
+                "sales": 12315.52
+            },
+            {
+                "priceLine": 19.60,
+                "sku": 6,
+                "sales": 4616.14
+            },
+            {
+                "priceLine": 19.70,
+                "sku": 1,
+                "sales": 232.23
+            },
+            {
+                "priceLine": 19.80,
+                "sku": 70,
+                "sales": 88709.02
+            },
+            {
+                "priceLine": 19.90,
+                "sku": 209,
+                "sales": 296312.00
+            },
+            {
+                "priceLine": 20.00,
+                "sku": 4,
+                "sales": 2265.20
+            },
+            {
+                "priceLine": 20.50,
+                "sku": 2,
+                "sales": 5100.83
+            },
+            {
+                "priceLine": 20.60,
+                "sku": 1,
+                "sales": 97.85
+            },
+            {
+                "priceLine": 20.80,
+                "sku": 13,
+                "sales": 9190.74
+            },
+            {
+                "priceLine": 20.90,
+                "sku": 7,
+                "sales": 10801.21
+            },
+            {
+                "priceLine": 21.00,
+                "sku": 10,
+                "sales": 4188.44
+            },
+            {
+                "priceLine": 21.30,
+                "sku": 1,
+                "sales": 589.43
+            },
+            {
+                "priceLine": 21.40,
+                "sku": 1,
+                "sales": 151.64
+            },
+            {
+                "priceLine": 21.50,
+                "sku": 10,
+                "sales": 5630.18
+            },
+            {
+                "priceLine": 21.80,
+                "sku": 14,
+                "sales": 8348.50
+            },
+            {
+                "priceLine": 21.90,
+                "sku": 37,
+                "sales": 35521.88
+            },
+            {
+                "priceLine": 22.00,
+                "sku": 3,
+                "sales": 6349.72
+            },
+            {
+                "priceLine": 22.40,
+                "sku": 1,
+                "sales": 408.64
+            },
+            {
+                "priceLine": 22.50,
+                "sku": 4,
+                "sales": 587.97
+            },
+            {
+                "priceLine": 22.60,
+                "sku": 1,
+                "sales": 384.91
+            },
+            {
+                "priceLine": 22.80,
+                "sku": 5,
+                "sales": 11585.25
+            },
+            {
+                "priceLine": 22.90,
+                "sku": 16,
+                "sales": 55976.89
+            },
+            {
+                "priceLine": 23.00,
+                "sku": 5,
+                "sales": 5019.18
+            },
+            {
+                "priceLine": 23.50,
+                "sku": 4,
+                "sales": 4138.06
+            },
+            {
+                "priceLine": 23.60,
+                "sku": 1,
+                "sales": 2306.45
+            },
+            {
+                "priceLine": 23.70,
+                "sku": 2,
+                "sales": 1537.69
+            },
+            {
+                "priceLine": 23.80,
+                "sku": 9,
+                "sales": 7766.36
+            },
+            {
+                "priceLine": 23.90,
+                "sku": 36,
+                "sales": 42094.13
+            },
+            {
+                "priceLine": 24.00,
+                "sku": 8,
+                "sales": 8094.80
+            },
+            {
+                "priceLine": 24.50,
+                "sku": 5,
+                "sales": 4008.85
+            },
+            {
+                "priceLine": 24.70,
+                "sku": 2,
+                "sales": 731.32
+            },
+            {
+                "priceLine": 24.80,
+                "sku": 16,
+                "sales": 3193.23
+            },
+            {
+                "priceLine": 24.90,
+                "sku": 35,
+                "sales": 28456.76
+            },
+            {
+                "priceLine": 25.00,
+                "sku": 22,
+                "sales": 22266.01
+            },
+            {
+                "priceLine": 25.40,
+                "sku": 2,
+                "sales": 179.98
+            },
+            {
+                "priceLine": 25.50,
+                "sku": 1,
+                "sales": 284.34
+            },
+            {
+                "priceLine": 25.80,
+                "sku": 14,
+                "sales": 23467.62
+            },
+            {
+                "priceLine": 25.90,
+                "sku": 34,
+                "sales": 35495.60
+            },
+            {
+                "priceLine": 26.00,
+                "sku": 21,
+                "sales": 12339.08
+            },
+            {
+                "priceLine": 26.50,
+                "sku": 2,
+                "sales": 1220.83
+            },
+            {
+                "priceLine": 26.60,
+                "sku": 1,
+                "sales": 607.45
+            },
+            {
+                "priceLine": 26.70,
+                "sku": 1,
+                "sales": 717.97
+            },
+            {
+                "priceLine": 26.80,
+                "sku": 17,
+                "sales": 8332.21
+            },
+            {
+                "priceLine": 26.90,
+                "sku": 30,
+                "sales": 42240.65
+            },
+            {
+                "priceLine": 27.00,
+                "sku": 5,
+                "sales": 5684.24
+            },
+            {
+                "priceLine": 27.50,
+                "sku": 1,
+                "sales": 178.07
+            },
+            {
+                "priceLine": 27.60,
+                "sku": 3,
+                "sales": 3826.06
+            },
+            {
+                "priceLine": 27.80,
+                "sku": 5,
+                "sales": 4521.59
+            },
+            {
+                "priceLine": 27.90,
+                "sku": 41,
+                "sales": 89541.56
+            },
+            {
+                "priceLine": 28.00,
+                "sku": 19,
+                "sales": 22730.94
+            },
+            {
+                "priceLine": 28.40,
+                "sku": 1,
+                "sales": 750.61
+            },
+            {
+                "priceLine": 28.50,
+                "sku": 3,
+                "sales": 2098.27
+            },
+            {
+                "priceLine": 28.60,
+                "sku": 2,
+                "sales": 4676.87
+            },
+            {
+                "priceLine": 28.80,
+                "sku": 10,
+                "sales": 3645.55
+            },
+            {
+                "priceLine": 28.90,
+                "sku": 12,
+                "sales": 34108.43
+            },
+            {
+                "priceLine": 29.00,
+                "sku": 46,
+                "sales": 42151.52
+            },
+            {
+                "priceLine": 29.40,
+                "sku": 1,
+                "sales": 16.28
+            },
+            {
+                "priceLine": 29.50,
+                "sku": 4,
+                "sales": 2145.09
+            },
+            {
+                "priceLine": 29.80,
+                "sku": 42,
+                "sales": 37315.37
+            },
+            {
+                "priceLine": 29.90,
+                "sku": 230,
+                "sales": 585777.34
+            },
+            {
+                "priceLine": 30.40,
+                "sku": 1,
+                "sales": 33.44
+            },
+            {
+                "priceLine": 30.90,
+                "sku": 5,
+                "sales": 3552.81
+            },
+            {
+                "priceLine": 31.00,
+                "sku": 1,
+                "sales": 10412.15
+            },
+            {
+                "priceLine": 31.90,
+                "sku": 3,
+                "sales": 2900.71
+            },
+            {
+                "priceLine": 32.00,
+                "sku": 6,
+                "sales": 1568.02
+            },
+            {
+                "priceLine": 32.50,
+                "sku": 6,
+                "sales": 998.43
+            },
+            {
+                "priceLine": 32.80,
+                "sku": 9,
+                "sales": 13157.32
+            },
+            {
+                "priceLine": 32.90,
+                "sku": 15,
+                "sales": 31276.69
+            },
+            {
+                "priceLine": 33.00,
+                "sku": 3,
+                "sales": 1016.36
+            },
+            {
+                "priceLine": 33.50,
+                "sku": 11,
+                "sales": 19610.47
+            },
+            {
+                "priceLine": 33.70,
+                "sku": 1,
+                "sales": 776.64
+            },
+            {
+                "priceLine": 33.80,
+                "sku": 2,
+                "sales": 283.61
+            },
+            {
+                "priceLine": 33.90,
+                "sku": 10,
+                "sales": 10344.42
+            },
+            {
+                "priceLine": 34.50,
+                "sku": 2,
+                "sales": -40.24
+            },
+            {
+                "priceLine": 34.80,
+                "sku": 1,
+                "sales": 3081.58
+            },
+            {
+                "priceLine": 34.90,
+                "sku": 22,
+                "sales": 78144.75
+            },
+            {
+                "priceLine": 35.00,
+                "sku": 9,
+                "sales": 7022.46
+            },
+            {
+                "priceLine": 35.50,
+                "sku": 3,
+                "sales": 8175.48
+            },
+            {
+                "priceLine": 35.80,
+                "sku": 5,
+                "sales": 2392.34
+            },
+            {
+                "priceLine": 35.90,
+                "sku": 21,
+                "sales": 133686.40
+            },
+            {
+                "priceLine": 36.00,
+                "sku": 10,
+                "sales": 12032.52
+            },
+            {
+                "priceLine": 36.50,
+                "sku": 1,
+                "sales": 759.23
+            },
+            {
+                "priceLine": 36.60,
+                "sku": 2,
+                "sales": 4655.34
+            },
+            {
+                "priceLine": 36.80,
+                "sku": 6,
+                "sales": 4534.35
+            },
+            {
+                "priceLine": 36.90,
+                "sku": 8,
+                "sales": 24597.38
+            },
+            {
+                "priceLine": 37.00,
+                "sku": 3,
+                "sales": 1021.72
+            },
+            {
+                "priceLine": 37.30,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 37.50,
+                "sku": 1,
+                "sales": 480.99
+            },
+            {
+                "priceLine": 37.80,
+                "sku": 2,
+                "sales": 340.01
+            },
+            {
+                "priceLine": 37.90,
+                "sku": 10,
+                "sales": 27556.81
+            },
+            {
+                "priceLine": 38.00,
+                "sku": 34,
+                "sales": 31237.20
+            },
+            {
+                "priceLine": 38.50,
+                "sku": 3,
+                "sales": 8805.30
+            },
+            {
+                "priceLine": 38.80,
+                "sku": 4,
+                "sales": 4501.61
+            },
+            {
+                "priceLine": 38.90,
+                "sku": 7,
+                "sales": 11726.85
+            },
+            {
+                "priceLine": 39.00,
+                "sku": 66,
+                "sales": 60611.00
+            },
+            {
+                "priceLine": 39.40,
+                "sku": 2,
+                "sales": 753.75
+            },
+            {
+                "priceLine": 39.50,
+                "sku": 1,
+                "sales": -29.75
+            },
+            {
+                "priceLine": 39.60,
+                "sku": 1,
+                "sales": 732.88
+            },
+            {
+                "priceLine": 39.80,
+                "sku": 27,
+                "sales": 28229.58
+            },
+            {
+                "priceLine": 39.90,
+                "sku": 112,
+                "sales": 341402.32
+            },
+            {
+                "priceLine": 41.00,
+                "sku": 3,
+                "sales": 6655.83
+            },
+            {
+                "priceLine": 41.40,
+                "sku": 2,
+                "sales": 363.06
+            },
+            {
+                "priceLine": 41.50,
+                "sku": 1,
+                "sales": 152.72
+            },
+            {
+                "priceLine": 41.90,
+                "sku": 1,
+                "sales": -10.90
+            },
+            {
+                "priceLine": 42.00,
+                "sku": 3,
+                "sales": 231.00
+            },
+            {
+                "priceLine": 42.50,
+                "sku": 1,
+                "sales": 835.75
+            },
+            {
+                "priceLine": 42.80,
+                "sku": 2,
+                "sales": 946.20
+            },
+            {
+                "priceLine": 42.90,
+                "sku": 9,
+                "sales": 14685.16
+            },
+            {
+                "priceLine": 43.00,
+                "sku": 8,
+                "sales": 7377.22
+            },
+            {
+                "priceLine": 43.80,
+                "sku": 1,
+                "sales": 218.93
+            },
+            {
+                "priceLine": 43.90,
+                "sku": 4,
+                "sales": 13188.51
+            },
+            {
+                "priceLine": 44.00,
+                "sku": 1,
+                "sales": 224.40
+            },
+            {
+                "priceLine": 44.50,
+                "sku": 2,
+                "sales": 339.63
+            },
+            {
+                "priceLine": 44.90,
+                "sku": 9,
+                "sales": 7279.05
+            },
+            {
+                "priceLine": 45.00,
+                "sku": 28,
+                "sales": 43342.30
+            },
+            {
+                "priceLine": 45.80,
+                "sku": 2,
+                "sales": 2790.47
+            },
+            {
+                "priceLine": 45.90,
+                "sku": 14,
+                "sales": 4722.15
+            },
+            {
+                "priceLine": 46.00,
+                "sku": 12,
+                "sales": 8448.34
+            },
+            {
+                "priceLine": 46.80,
+                "sku": 2,
+                "sales": 941.28
+            },
+            {
+                "priceLine": 46.90,
+                "sku": 6,
+                "sales": 3731.26
+            },
+            {
+                "priceLine": 47.00,
+                "sku": 2,
+                "sales": 1223.55
+            },
+            {
+                "priceLine": 47.70,
+                "sku": 2,
+                "sales": 1923.74
+            },
+            {
+                "priceLine": 47.90,
+                "sku": 1,
+                "sales": -1.51
+            },
+            {
+                "priceLine": 48.00,
+                "sku": 19,
+                "sales": 52936.11
+            },
+            {
+                "priceLine": 48.50,
+                "sku": 1,
+                "sales": 4687.96
+            },
+            {
+                "priceLine": 48.90,
+                "sku": 5,
+                "sales": 1473.12
+            },
+            {
+                "priceLine": 49.00,
+                "sku": 58,
+                "sales": 46239.90
+            },
+            {
+                "priceLine": 49.50,
+                "sku": 2,
+                "sales": 229019.68
+            },
+            {
+                "priceLine": 49.80,
+                "sku": 16,
+                "sales": 27722.01
+            },
+            {
+                "priceLine": 49.90,
+                "sku": 128,
+                "sales": 430286.71
+            },
+            {
+                "priceLine": 50.00,
+                "sku": 1,
+                "sales": 7719.25
+            },
+            {
+                "priceLine": 52.00,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 52.60,
+                "sku": 2,
+                "sales": 1041.58
+            },
+            {
+                "priceLine": 52.90,
+                "sku": 11,
+                "sales": 26962.21
+            },
+            {
+                "priceLine": 54.90,
+                "sku": 8,
+                "sales": 6315.34
+            },
+            {
+                "priceLine": 55.00,
+                "sku": 11,
+                "sales": 22737.89
+            },
+            {
+                "priceLine": 55.90,
+                "sku": 5,
+                "sales": 16030.32
+            },
+            {
+                "priceLine": 56.00,
+                "sku": 7,
+                "sales": 4282.29
+            },
+            {
+                "priceLine": 56.90,
+                "sku": 2,
+                "sales": 74.54
+            },
+            {
+                "priceLine": 57.00,
+                "sku": 1,
+                "sales": 402.99
+            },
+            {
+                "priceLine": 58.00,
+                "sku": 23,
+                "sales": 24502.79
+            },
+            {
+                "priceLine": 58.50,
+                "sku": 3,
+                "sales": 1783.43
+            },
+            {
+                "priceLine": 58.80,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 58.90,
+                "sku": 2,
+                "sales": null
+            },
+            {
+                "priceLine": 59.00,
+                "sku": 42,
+                "sales": 28220.76
+            },
+            {
+                "priceLine": 59.80,
+                "sku": 10,
+                "sales": 14423.17
+            },
+            {
+                "priceLine": 59.90,
+                "sku": 41,
+                "sales": 53741.69
+            },
+            {
+                "priceLine": 61.90,
+                "sku": 1,
+                "sales": 60.58
+            },
+            {
+                "priceLine": 62.80,
+                "sku": 1,
+                "sales": 89.80
+            },
+            {
+                "priceLine": 63.00,
+                "sku": 1,
+                "sales": 1391.43
+            },
+            {
+                "priceLine": 63.60,
+                "sku": 1,
+                "sales": 3239.42
+            },
+            {
+                "priceLine": 65.00,
+                "sku": 6,
+                "sales": 2116.05
+            },
+            {
+                "priceLine": 65.80,
+                "sku": 1,
+                "sales": 528.04
+            },
+            {
+                "priceLine": 65.90,
+                "sku": 5,
+                "sales": 13986.89
+            },
+            {
+                "priceLine": 66.00,
+                "sku": 5,
+                "sales": 13909.41
+            },
+            {
+                "priceLine": 67.90,
+                "sku": 1,
+                "sales": 335.77
+            },
+            {
+                "priceLine": 68.00,
+                "sku": 25,
+                "sales": 14812.21
+            },
+            {
+                "priceLine": 68.50,
+                "sku": 1,
+                "sales": 2379.06
+            },
+            {
+                "priceLine": 69.00,
+                "sku": 54,
+                "sales": 26919.77
+            },
+            {
+                "priceLine": 69.80,
+                "sku": 7,
+                "sales": 4536.84
+            },
+            {
+                "priceLine": 69.90,
+                "sku": 43,
+                "sales": 38017.77
+            },
+            {
+                "priceLine": 74.00,
+                "sku": 4,
+                "sales": 2809.78
+            },
+            {
+                "priceLine": 74.80,
+                "sku": 5,
+                "sales": 11340.29
+            },
+            {
+                "priceLine": 75.00,
+                "sku": 3,
+                "sales": 1382.60
+            },
+            {
+                "priceLine": 76.00,
+                "sku": 2,
+                "sales": 486.69
+            },
+            {
+                "priceLine": 76.40,
+                "sku": 1,
+                "sales": 85.57
+            },
+            {
+                "priceLine": 78.00,
+                "sku": 12,
+                "sales": 10330.88
+            },
+            {
+                "priceLine": 78.90,
+                "sku": 2,
+                "sales": 11959.06
+            },
+            {
+                "priceLine": 79.00,
+                "sku": 54,
+                "sales": 26221.94
+            },
+            {
+                "priceLine": 79.80,
+                "sku": 1,
+                "sales": 744.17
+            },
+            {
+                "priceLine": 79.90,
+                "sku": 24,
+                "sales": 98710.75
+            },
+            {
+                "priceLine": 82.90,
+                "sku": 2,
+                "sales": 116.89
+            },
+            {
+                "priceLine": 84.00,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 85.00,
+                "sku": 2,
+                "sales": 1093.44
+            },
+            {
+                "priceLine": 86.00,
+                "sku": 1,
+                "sales": 1097.61
+            },
+            {
+                "priceLine": 86.90,
+                "sku": 1,
+                "sales": 180.76
+            },
+            {
+                "priceLine": 87.00,
+                "sku": 2,
+                "sales": 543.10
+            },
+            {
+                "priceLine": 88.00,
+                "sku": 13,
+                "sales": 10403.82
+            },
+            {
+                "priceLine": 88.90,
+                "sku": 7,
+                "sales": 2630.23
+            },
+            {
+                "priceLine": 89.00,
+                "sku": 43,
+                "sales": 31205.88
+            },
+            {
+                "priceLine": 89.80,
+                "sku": 1,
+                "sales": 2509.79
+            },
+            {
+                "priceLine": 89.90,
+                "sku": 10,
+                "sales": 15686.84
+            },
+            {
+                "priceLine": 94.00,
+                "sku": 1,
+                "sales": 1144.92
+            },
+            {
+                "priceLine": 95.00,
+                "sku": 13,
+                "sales": 21462.23
+            },
+            {
+                "priceLine": 96.00,
+                "sku": 3,
+                "sales": 3843.73
+            },
+            {
+                "priceLine": 98.00,
+                "sku": 23,
+                "sales": 18537.83
+            },
+            {
+                "priceLine": 99.00,
+                "sku": 86,
+                "sales": 204894.02
+            },
+            {
+                "priceLine": 99.90,
+                "sku": 5,
+                "sales": 18348.16
+            },
+            {
+                "priceLine": 100.00,
+                "sku": 7,
+                "sales": 7969.52
+            },
+            {
+                "priceLine": 102.00,
+                "sku": 2,
+                "sales": 355.47
+            },
+            {
+                "priceLine": 105.00,
+                "sku": 5,
+                "sales": 5795.90
+            },
+            {
+                "priceLine": 105.90,
+                "sku": 1,
+                "sales": 129.94
+            },
+            {
+                "priceLine": 106.00,
+                "sku": 1,
+                "sales": 1548.20
+            },
+            {
+                "priceLine": 108.00,
+                "sku": 9,
+                "sales": 11844.32
+            },
+            {
+                "priceLine": 109.00,
+                "sku": 27,
+                "sales": 21303.72
+            },
+            {
+                "priceLine": 109.90,
+                "sku": 6,
+                "sales": 3658.02
+            },
+            {
+                "priceLine": 110.00,
+                "sku": 4,
+                "sales": 2713.04
+            },
+            {
+                "priceLine": 115.00,
+                "sku": 2,
+                "sales": 217.93
+            },
+            {
+                "priceLine": 116.00,
+                "sku": 2,
+                "sales": 713.31
+            },
+            {
+                "priceLine": 118.00,
+                "sku": 9,
+                "sales": 2946.74
+            },
+            {
+                "priceLine": 119.00,
+                "sku": 10,
+                "sales": 5219.21
+            },
+            {
+                "priceLine": 119.90,
+                "sku": 1,
+                "sales": 116.17
+            },
+            {
+                "priceLine": 120.00,
+                "sku": 1,
+                "sales": 195.70
+            },
+            {
+                "priceLine": 125.00,
+                "sku": 1,
+                "sales": 477.50
+            },
+            {
+                "priceLine": 128.00,
+                "sku": 13,
+                "sales": 11263.05
+            },
+            {
+                "priceLine": 129.00,
+                "sku": 5,
+                "sales": 2733.45
+            },
+            {
+                "priceLine": 129.90,
+                "sku": 3,
+                "sales": 3493.05
+            },
+            {
+                "priceLine": 130.00,
+                "sku": 7,
+                "sales": 2983.69
+            },
+            {
+                "priceLine": 137.00,
+                "sku": 1,
+                "sales": 256.19
+            },
+            {
+                "priceLine": 138.00,
+                "sku": 19,
+                "sales": 14176.25
+            },
+            {
+                "priceLine": 139.00,
+                "sku": 17,
+                "sales": 10750.12
+            },
+            {
+                "priceLine": 140.00,
+                "sku": 4,
+                "sales": 1485.96
+            },
+            {
+                "priceLine": 142.80,
+                "sku": 1,
+                "sales": 14845.59
+            },
+            {
+                "priceLine": 145.00,
+                "sku": 6,
+                "sales": 4102.45
+            },
+            {
+                "priceLine": 148.00,
+                "sku": 3,
+                "sales": 460.68
+            },
+            {
+                "priceLine": 149.00,
+                "sku": 13,
+                "sales": 1840.77
+            },
+            {
+                "priceLine": 150.00,
+                "sku": 5,
+                "sales": 1884.80
+            },
+            {
+                "priceLine": 158.00,
+                "sku": 4,
+                "sales": 5916.20
+            },
+            {
+                "priceLine": 159.00,
+                "sku": 8,
+                "sales": 110494.50
+            },
+            {
+                "priceLine": 160.00,
+                "sku": 3,
+                "sales": 2455.87
+            },
+            {
+                "priceLine": 165.00,
+                "sku": 1,
+                "sales": 1006.50
+            },
+            {
+                "priceLine": 168.00,
+                "sku": 6,
+                "sales": 3078.73
+            },
+            {
+                "priceLine": 169.00,
+                "sku": 6,
+                "sales": 2263.76
+            },
+            {
+                "priceLine": 178.00,
+                "sku": 1,
+                "sales": 231.40
+            },
+            {
+                "priceLine": 179.00,
+                "sku": 1,
+                "sales": 186.16
+            },
+            {
+                "priceLine": 180.00,
+                "sku": 2,
+                "sales": 237.60
+            },
+            {
+                "priceLine": 188.00,
+                "sku": 2,
+                "sales": 871.85
+            },
+            {
+                "priceLine": 189.00,
+                "sku": 2,
+                "sales": 2750.34
+            },
+            {
+                "priceLine": 198.00,
+                "sku": 9,
+                "sales": 25194.49
+            },
+            {
+                "priceLine": 199.00,
+                "sku": 10,
+                "sales": 4971.98
+            },
+            {
+                "priceLine": 208.00,
+                "sku": 1,
+                "sales": 270.40
+            },
+            {
+                "priceLine": 210.00,
+                "sku": 2,
+                "sales": 396.78
+            },
+            {
+                "priceLine": 218.00,
+                "sku": 2,
+                "sales": 372.12
+            },
+            {
+                "priceLine": 220.00,
+                "sku": 4,
+                "sales": 1550.78
+            },
+            {
+                "priceLine": 225.00,
+                "sku": 1,
+                "sales": 1800.27
+            },
+            {
+                "priceLine": 228.00,
+                "sku": 3,
+                "sales": 1593.45
+            },
+            {
+                "priceLine": 229.90,
+                "sku": 1,
+                "sales": 633.33
+            },
+            {
+                "priceLine": 230.00,
+                "sku": 1,
+                "sales": 289.38
+            },
+            {
+                "priceLine": 235.00,
+                "sku": 1,
+                "sales": 242.52
+            },
+            {
+                "priceLine": 238.00,
+                "sku": 1,
+                "sales": 145.18
+            },
+            {
+                "priceLine": 249.00,
+                "sku": 1,
+                "sales": 1380.39
+            },
+            {
+                "priceLine": 258.00,
+                "sku": 1,
+                "sales": 630.08
+            },
+            {
+                "priceLine": 259.00,
+                "sku": 2,
+                "sales": 1333.85
+            },
+            {
+                "priceLine": 260.00,
+                "sku": 1,
+                "sales": 182.16
+            },
+            {
+                "priceLine": 268.00,
+                "sku": 1,
+                "sales": 4416.96
+            },
+            {
+                "priceLine": 288.00,
+                "sku": 4,
+                "sales": 8815.63
+            },
+            {
+                "priceLine": 298.00,
+                "sku": 2,
+                "sales": 1343.82
+            },
+            {
+                "priceLine": 299.00,
+                "sku": 3,
+                "sales": 7221.69
+            },
+            {
+                "priceLine": 328.00,
+                "sku": 1,
+                "sales": 731.61
+            },
+            {
+                "priceLine": 329.00,
+                "sku": 1,
+                "sales": null
+            },
+            {
+                "priceLine": 359.00,
+                "sku": 1,
+                "sales": 1176.20
+            },
+            {
+                "priceLine": 388.00,
+                "sku": 1,
+                "sales": 473.36
+            },
+            {
+                "priceLine": 398.00,
+                "sku": 2,
+                "sales": 584.64
+            },
+            {
+                "priceLine": 399.00,
+                "sku": 2,
+                "sales": 220.78
+            },
+            {
+                "priceLine": 406.00,
+                "sku": 1,
+                "sales": 197.16
+            },
+            {
+                "priceLine": 416.00,
+                "sku": 1,
+                "sales": 577.70
+            },
+            {
+                "priceLine": 450.00,
+                "sku": 1,
+                "sales": 349.83
+            },
+            {
+                "priceLine": 458.00,
+                "sku": 1,
+                "sales": 1844.62
+            },
+            {
+                "priceLine": 498.00,
+                "sku": 2,
+                "sales": 1413.88
+            },
+            {
+                "priceLine": 499.00,
+                "sku": 1,
+                "sales": 890.59
+            },
+            {
+                "priceLine": 598.00,
+                "sku": 1,
+                "sales": 1551.81
+            },
+            {
+                "priceLine": 599.00,
+                "sku": 1,
+                "sales": 2658.43
+            },
+            {
+                "priceLine": 688.00,
+                "sku": 1,
+                "sales": 3495.80
+            }
+        ],
+        "priceRangeList": [
+            {
+                "priceBandMin": 0.0000,
+                "priceBandMax": 9.9000,
+                "sales": null
+            },
+            {
+                "priceBandMin": 9.9000,
+                "priceBandMax": 24.8100,
+                "sales": null
+            },
+            {
+                "priceBandMin": 24.8100,
+                "priceBandMax": 39.7200,
+                "sales": null
+            },
+            {
+                "priceBandMin": 39.7200,
+                "priceBandMax": 54.6300,
+                "sales": null
+            },
+            {
+                "priceBandMin": 54.6300,
+                "priceBandMax": 69.5400,
+                "sales": null
+            },
+            {
+                "priceBandMin": 69.5400,
+                "priceBandMax": 84.4500,
+                "sales": null
+            },
+            {
+                "priceBandMin": 84.4500,
+                "priceBandMax": 99.3600,
+                "sales": null
+            },
+            {
+                "priceBandMin": 99.3600,
+                "priceBandMax": 114.2700,
+                "sales": null
+            },
+            {
+                "priceBandMin": 114.2700,
+                "priceBandMax": 129.1800,
+                "sales": null
+            },
+            {
+                "priceBandMin": 129.1800,
+                "priceBandMax": 144.0900,
+                "sales": null
+            },
+            {
+                "priceBandMin": 144.0900,
+                "priceBandMax": 159.0000,
+                "sales": null
+            },
+            {
+                "priceBandMin": 159.0000,
+                "priceBandMax": 168.0000,
+                "sales": null
+            },
+            {
+                "priceBandMin": 168.0000,
+                "priceBandMax": 688.00,
+                "sales": null
+            }
+        ],
+        "priceMin": 0.00,
+        "priceMax": 688.00,
+        "priceLineNum": 385,
+        "pricePointList": [
+            {
+                "priceBandMin": 24.8100,
+                "priceBandMax": 39.7200,
+                "sku": 230,
+                "sales": 585777.34,
+                "saleQuantity": 20808.08,
+                "priceBandAve": null,
+                "salePrice": 29.90,
+                "minSalePrice": null,
+                "totalSales": 1537487.32,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 0.0000,
+                "priceBandMax": 9.9000,
+                "sku": 270,
+                "sales": 505731.44,
+                "saleQuantity": 52803.45,
+                "priceBandAve": null,
+                "salePrice": 9.90,
+                "minSalePrice": null,
+                "totalSales": 1365902.93,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 39.7200,
+                "priceBandMax": 54.6300,
+                "sku": 128,
+                "sales": 430286.71,
+                "saleQuantity": 10052.63,
+                "priceBandAve": null,
+                "salePrice": 49.90,
+                "minSalePrice": null,
+                "totalSales": 1317328.57,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 9.9000,
+                "priceBandMax": 24.8100,
+                "sku": 209,
+                "sales": 296312.00,
+                "saleQuantity": 15883.18,
+                "priceBandAve": null,
+                "salePrice": 19.90,
+                "minSalePrice": null,
+                "totalSales": 2228029.54,
+                "waveType": "1"
+            },
+            {
+                "priceBandMin": 84.4500,
+                "priceBandMax": 99.3600,
+                "sku": 86,
+                "sales": 204894.02,
+                "saleQuantity": 2899.99,
+                "priceBandAve": null,
+                "salePrice": 99.00,
+                "minSalePrice": null,
+                "totalSales": 315234.20,
+                "waveType": "1"
+            },
+            {
+                "priceBandMin": 144.0900,
+                "priceBandMax": 159.0000,
+                "sku": 8,
+                "sales": 110494.50,
+                "saleQuantity": 685.65,
+                "priceBandAve": null,
+                "salePrice": 159.00,
+                "minSalePrice": null,
+                "totalSales": 124699.40,
+                "waveType": "1"
+            },
+            {
+                "priceBandMin": 69.5400,
+                "priceBandMax": 84.4500,
+                "sku": 24,
+                "sales": 98710.75,
+                "saleQuantity": 1353.75,
+                "priceBandAve": null,
+                "salePrice": 79.90,
+                "minSalePrice": null,
+                "totalSales": 206743.23,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 54.6300,
+                "priceBandMax": 69.5400,
+                "sku": 41,
+                "sales": 53741.69,
+                "saleQuantity": 1098.42,
+                "priceBandAve": null,
+                "salePrice": 59.90,
+                "minSalePrice": null,
+                "totalSales": 252283.64,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 168.0000,
+                "priceBandMax": null,
+                "sku": 9,
+                "sales": 25194.49,
+                "saleQuantity": 222.04,
+                "priceBandAve": null,
+                "salePrice": 198.00,
+                "minSalePrice": null,
+                "totalSales": 85492.78,
+                "waveType": "1"
+            },
+            {
+                "priceBandMin": 99.3600,
+                "priceBandMax": 114.2700,
+                "sku": 27,
+                "sales": 21303.72,
+                "saleQuantity": 251.19,
+                "priceBandAve": null,
+                "salePrice": 109.00,
+                "minSalePrice": null,
+                "totalSales": 73666.29,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 129.1800,
+                "priceBandMax": 144.0900,
+                "sku": 1,
+                "sales": 14845.59,
+                "saleQuantity": 165.35,
+                "priceBandAve": null,
+                "salePrice": 142.80,
+                "minSalePrice": null,
+                "totalSales": 47990.85,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 114.2700,
+                "priceBandMax": 129.1800,
+                "sku": 13,
+                "sales": 11263.05,
+                "saleQuantity": 168.59,
+                "priceBandAve": null,
+                "salePrice": 128.00,
+                "minSalePrice": null,
+                "totalSales": 23883.06,
+                "waveType": null
+            },
+            {
+                "priceBandMin": 159.0000,
+                "priceBandMax": 168.0000,
+                "sku": 6,
+                "sales": 3078.73,
+                "saleQuantity": 29.38,
+                "priceBandAve": null,
+                "salePrice": 168.00,
+                "minSalePrice": null,
+                "totalSales": 6541.10,
+                "waveType": null
+            }
+        ]
+    },
+    "timestamp": 1776258194370
+}

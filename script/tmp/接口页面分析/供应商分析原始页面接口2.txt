@@ -1,0 +1,472 @@
+请求地址：/api/classDoctorVendor/queryVendorSalesPer
+请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","className":"004洗化部","startMonth":"2024-09-27","endMonth":"2024-12-08","type":"1"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "productVendorNo": "1030000001",
+            "productVendorName": "1030000001有限公司",
+            "sales": 1453277.60,
+            "salesPer": 0.18
+        },
+        {
+            "productVendorNo": "1030000006",
+            "productVendorName": "1030000006有限公司",
+            "sales": 560539.23,
+            "salesPer": 0.07
+        },
+        {
+            "productVendorNo": "1030000016",
+            "productVendorName": "1030000016有限公司",
+            "sales": 747786.43,
+            "salesPer": 0.09
+        },
+        {
+            "productVendorNo": "1030000023",
+            "productVendorName": "1030000023有限公司",
+            "sales": 32.50,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1030000024",
+            "productVendorName": "1030000024有限公司",
+            "sales": 412381.83,
+            "salesPer": 0.05
+        },
+        {
+            "productVendorNo": "1030000025",
+            "productVendorName": "1030000025有限公司",
+            "sales": 460506.58,
+            "salesPer": 0.06
+        },
+        {
+            "productVendorNo": "1030000026",
+            "productVendorName": "1030000026有限公司",
+            "sales": 343992.70,
+            "salesPer": 0.04
+        },
+        {
+            "productVendorNo": "1030000027",
+            "productVendorName": "1030000027有限公司",
+            "sales": 1881.26,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1030000038",
+            "productVendorName": "1030000038有限公司",
+            "sales": 83451.53,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1030000039",
+            "productVendorName": "1030000039有限公司",
+            "sales": 79848.23,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1030000044",
+            "productVendorName": "1030000044有限公司",
+            "sales": 20870.87,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1030000045",
+            "productVendorName": "1030000045有限公司",
+            "sales": 129269.70,
+            "salesPer": 0.02
+        },
+        {
+            "productVendorNo": "1030000046",
+            "productVendorName": "1030000046有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1031000000",
+            "productVendorName": "1031000000有限公司",
+            "sales": 2278.27,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000046",
+            "productVendorName": "1040000046有限公司",
+            "sales": -11.42,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000058",
+            "productVendorName": "1040000058有限公司",
+            "sales": 205679.08,
+            "salesPer": 0.03
+        },
+        {
+            "productVendorNo": "1040000063",
+            "productVendorName": "1040000063有限公司",
+            "sales": 2179.53,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000066",
+            "productVendorName": "1040000066有限公司",
+            "sales": 251.10,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000075",
+            "productVendorName": "1040000075有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1040000076",
+            "productVendorName": "1040000076有限公司",
+            "sales": 7027.32,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000078",
+            "productVendorName": "1040000078有限公司",
+            "sales": 41120.08,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1040000080",
+            "productVendorName": "1040000080有限公司",
+            "sales": 226279.18,
+            "salesPer": 0.03
+        },
+        {
+            "productVendorNo": "1040000086",
+            "productVendorName": "1040000086有限公司",
+            "sales": 34758.19,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000087",
+            "productVendorName": "1040000087有限公司",
+            "sales": 1241.59,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1080000027",
+            "productVendorName": "1080000027有限公司",
+            "sales": 358.46,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1080000080",
+            "productVendorName": "1080000080有限公司",
+            "sales": 711631.58,
+            "salesPer": 0.09
+        },
+        {
+            "productVendorNo": "1080000103",
+            "productVendorName": "1080000103有限公司",
+            "sales": 44841.45,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1080000262",
+            "productVendorName": "1080000262有限公司",
+            "sales": 96498.56,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1080000316",
+            "productVendorName": "1080000316有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1080000350",
+            "productVendorName": "1080000350有限公司",
+            "sales": 72252.36,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1080000393",
+            "productVendorName": "1080000393有限公司",
+            "sales": 264708.50,
+            "salesPer": 0.03
+        },
+        {
+            "productVendorNo": "1080000414",
+            "productVendorName": "1080000414有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1080000423",
+            "productVendorName": "1080000423有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1080000493",
+            "productVendorName": "1080000493有限公司",
+            "sales": 20662.18,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1080000508",
+            "productVendorName": "1080000508有限公司",
+            "sales": 340351.30,
+            "salesPer": 0.04
+        },
+        {
+            "productVendorNo": "1080000512",
+            "productVendorName": "1080000512有限公司",
+            "sales": 288052.93,
+            "salesPer": 0.04
+        },
+        {
+            "productVendorNo": "1080000516",
+            "productVendorName": "1080000516有限公司",
+            "sales": 20162.12,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000070",
+            "productVendorName": "1090000070有限公司",
+            "sales": 0.00,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000075",
+            "productVendorName": "1090000075有限公司",
+            "sales": 13170.80,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000076",
+            "productVendorName": "1090000076有限公司",
+            "sales": 633519.70,
+            "salesPer": 0.08
+        },
+        {
+            "productVendorNo": "1090000080",
+            "productVendorName": "1090000080有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000171",
+            "productVendorName": "1090000171有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000172",
+            "productVendorName": "1090000172有限公司",
+            "sales": 4711.75,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000232",
+            "productVendorName": "1090000232有限公司",
+            "sales": 40772.61,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1090000265",
+            "productVendorName": "1090000265有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000277",
+            "productVendorName": "1090000277有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000297",
+            "productVendorName": "1090000297有限公司",
+            "sales": 4297.68,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000352",
+            "productVendorName": "1090000352有限公司",
+            "sales": 1403.27,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000418",
+            "productVendorName": "1090000418有限公司",
+            "sales": 2156.68,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000450",
+            "productVendorName": "1090000450有限公司",
+            "sales": 2398.59,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000453",
+            "productVendorName": "1090000453有限公司",
+            "sales": 34.44,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000454",
+            "productVendorName": "1090000454有限公司",
+            "sales": 93.96,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000457",
+            "productVendorName": "1090000457有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000461",
+            "productVendorName": "1090000461有限公司",
+            "sales": 22.09,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000462",
+            "productVendorName": "1090000462有限公司",
+            "sales": 6860.05,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000525",
+            "productVendorName": "1090000525有限公司",
+            "sales": 20.90,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000537",
+            "productVendorName": "1090000537有限公司",
+            "sales": 42826.13,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1090000562",
+            "productVendorName": "1090000562有限公司",
+            "sales": 5681.58,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000575",
+            "productVendorName": "1090000575有限公司",
+            "sales": 92089.74,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1090000579",
+            "productVendorName": "1090000579有限公司",
+            "sales": 106.97,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000580",
+            "productVendorName": "1090000580有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000604",
+            "productVendorName": "1090000604有限公司",
+            "sales": 41830.83,
+            "salesPer": 0.01
+        },
+        {
+            "productVendorNo": "1090000614",
+            "productVendorName": "1090000614有限公司",
+            "sales": 18348.61,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000615",
+            "productVendorName": null,
+            "sales": 118.59,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000621",
+            "productVendorName": "1090000621有限公司",
+            "sales": 234.26,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000626",
+            "productVendorName": "1090000626有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000636",
+            "productVendorName": "1090000636有限公司",
+            "sales": 32862.75,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000638",
+            "productVendorName": "1090000638有限公司",
+            "sales": -850.45,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000640",
+            "productVendorName": "1090000640有限公司",
+            "sales": 0.11,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000658",
+            "productVendorName": "1090000658有限公司",
+            "sales": null,
+            "salesPer": null
+        },
+        {
+            "productVendorNo": "1090000673",
+            "productVendorName": "1090000673有限公司",
+            "sales": -573.75,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000694",
+            "productVendorName": "1090000694有限公司",
+            "sales": 243676.82,
+            "salesPer": 0.03
+        },
+        {
+            "productVendorNo": "1090000715",
+            "productVendorName": "1090000715有限公司",
+            "sales": 5499.15,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000719",
+            "productVendorName": "1090000719有限公司",
+            "sales": 5033.45,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000733",
+            "productVendorName": "1090000733有限公司",
+            "sales": 6493.42,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1040000008",
+            "productVendorName": "1040000008有限公司",
+            "sales": 1330.42,
+            "salesPer": 0.00
+        },
+        {
+            "productVendorNo": "1090000746",
+            "productVendorName": "1090000746有限公司",
+            "sales": 108597.63,
+            "salesPer": 0.01
+        }
+    ],
+    "timestamp": 1776257737572
+}

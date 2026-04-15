@@ -336,6 +336,9 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         modules.put("channel", moduleProgress("PENDING"));
         modules.put("vip", moduleProgress("PENDING"));
         modules.put("abc", moduleProgress("PENDING"));
+        modules.put("gross", moduleProgress("PENDING"));
+        modules.put("gmroi", moduleProgress("PENDING"));
+        modules.put("priceBand", moduleProgress("PENDING"));
         return JsonUtils.toJsonString(modules);
     }
 
