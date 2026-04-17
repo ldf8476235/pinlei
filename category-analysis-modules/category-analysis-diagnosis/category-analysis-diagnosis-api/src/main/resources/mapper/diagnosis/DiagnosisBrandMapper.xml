@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisBrandMapper">
+
+    <delete id="deleteByVersion">
+        DELETE FROM diag_result_brand_overview
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+
+        DELETE FROM diag_result_brand_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+
+        DELETE FROM diag_result_brand_json
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="insertOverview">
+        INSERT INTO diag_result_brand_overview
+        (
+            tenant_id, query_hash, data_version, total_num, new_num, own_num, snapshot_time
+        )
+        VALUES
+        (
+            #{tenantId}, #{queryHash}, #{dataVersion}, #{totalNum}, #{newNum}, #{ownNum}, #{snapshotTime}
+        )
+    </insert>
+
+    <insert id="batchInsertMetrics">
+        INSERT INTO diag_result_brand_metric
+        (
+            tenant_id, query_hash, data_version, brand_no, product_brand, brand_type, brand_type_name,
+            new_brand_type, new_brand_type_name, sku_count, compare_sku_count, sku_change, sku_inc, sku_per,
+            sale_quantity, compare_sale_quantity, sale_quantity_change, sale_quantity_inc, sale_quantity_per, sale_quantity_psd,
+            sales, compare_sales, sales_change, sales_inc, sales_per, sales_psd,
+            gross, compare_gross, gross_change, gross_inc, gross_per, gross_psd,
+            gross_rate, compare_gross_rate, gross_rate_inc, stock_quantity, compare_stock_quantity,
+            sales_cost, compare_sales_cost, turnover_rate, turnover_days, stock_sales_rate,
+            contribution_rate, gmroi, sales_rate, activity_sku, active_store_count, period_days, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.brandNo}, #{row.productBrand}, #{row.brandType}, #{row.brandTypeName},
+                #{row.newBrandType}, #{row.newBrandTypeName}, #{row.skuCount}, #{row.compareSkuCount}, #{row.skuChange}, #{row.skuInc}, #{row.skuPer},
+                #{row.saleQuantity}, #{row.compareSaleQuantity}, #{row.saleQuantityChange}, #{row.saleQuantityInc}, #{row.saleQuantityPer}, #{row.saleQuantityPsd},
+                #{row.sales}, #{row.compareSales}, #{row.salesChange}, #{row.salesInc}, #{row.salesPer}, #{row.salesPsd},
+                #{row.gross}, #{row.compareGross}, #{row.grossChange}, #{row.grossInc}, #{row.grossPer}, #{row.grossPsd},
+                #{row.grossRate}, #{row.compareGrossRate}, #{row.grossRateInc}, #{row.stockQuantity}, #{row.compareStockQuantity},
+                #{row.salesCost}, #{row.compareSalesCost}, #{row.turnoverRate}, #{row.turnoverDays}, #{row.stockSalesRate},
+                #{row.contributionRate}, #{row.gmroi}, #{row.salesRate}, #{row.activitySku}, #{row.activeStoreCount}, #{row.periodDays}, #{row.snapshotTime}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="batchInsertJson">
+        INSERT INTO diag_result_brand_json
+        (
+            tenant_id, query_hash, data_version, payload_code, payload_name, payload_json, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.payloadCode}, #{row.payloadName}, #{row.payloadJson}, #{row.snapshotTime}
+            )
+        </foreach>
+    </insert>
+
+    <sql id="brandMetricColumns">
+        id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+        brand_no AS brandNo, product_brand AS productBrand, brand_type AS brandType, brand_type_name AS brandTypeName,
+        new_brand_type AS newBrandType, new_brand_type_name AS newBrandTypeName,
+        sku_count AS skuCount, compare_sku_count AS compareSkuCount, sku_change AS skuChange, sku_inc AS skuInc, sku_per AS skuPer,
+        sale_quantity AS saleQuantity, compare_sale_quantity AS compareSaleQuantity, sale_quantity_change AS saleQuantityChange,
+        sale_quantity_inc AS saleQuantityInc, sale_quantity_per AS saleQuantityPer, sale_quantity_psd AS saleQuantityPsd,
+        sales, compare_sales AS compareSales, sales_change AS salesChange, sales_inc AS salesInc, sales_per AS salesPer, sales_psd AS salesPsd,
+        gross, compare_gross AS compareGross, gross_change AS grossChange, gross_inc AS grossInc, gross_per AS grossPer, gross_psd AS grossPsd,
+        gross_rate AS grossRate, compare_gross_rate AS compareGrossRate, gross_rate_inc AS grossRateInc,
+        stock_quantity AS stockQuantity, compare_stock_quantity AS compareStockQuantity,
+        sales_cost AS salesCost, compare_sales_cost AS compareSalesCost, turnover_rate AS turnoverRate, turnover_days AS turnoverDays,
+        stock_sales_rate AS stockSalesRate, contribution_rate AS contributionRate, gmroi, sales_rate AS salesRate,
+        activity_sku AS activitySku, active_store_count AS activeStoreCount, period_days AS periodDays,
+        snapshot_time AS snapshotTime, create_time AS createTime, update_time AS updateTime
+    </sql>
+
+    <sql id="brandMetricWhere">
+        tenant_id = #{tenantId}
+        AND query_hash = #{queryHash}
+        AND data_version = #{dataVersion}
+        <if test="brandTypeList != null and brandTypeList.size() > 0">
+            AND brand_type IN
+            <foreach collection="brandTypeList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="brandList != null and brandList.size() > 0">
+            AND brand_no IN
+            <foreach collection="brandList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="newBrandType != null and newBrandType != '' and newBrandType != '-1'">
+            AND new_brand_type = #{newBrandType}
+        </if>
+    </sql>
+
+    <select id="selectOverviewByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandOverviewRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            total_num AS totalNum, new_num AS newNum, own_num AS ownNum,
+            snapshot_time AS snapshotTime, create_time AS createTime, update_time AS updateTime
+        FROM diag_result_brand_overview
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <select id="selectRankingSummaryByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandRankingSummaryRow">
+        SELECT
+            AVG(CAST(${metricColumn} AS DECIMAL(18, 6))) AS ave,
+            MAX(${metricColumn}) AS maxData,
+            MIN(${metricColumn}) AS minData,
+            COUNT(1) AS total
+        FROM diag_result_brand_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <select id="selectRankingPageByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandRankingItemRow">
+        SELECT
+            brand_no AS brandNo,
+            product_brand AS productBrand,
+            ${metricColumn} AS data
+        FROM diag_result_brand_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY ${metricColumn} ${orderType}, brand_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    </select>
+
+    <select id="selectMetricsByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandMetricRow">
+        SELECT <include refid="brandMetricColumns"/>
+        FROM diag_result_brand_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY sales DESC, brand_no ASC
+    </select>
+
+    <select id="countMetricByVersion" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_result_brand_metric
+        WHERE <include refid="brandMetricWhere"/>
+    </select>
+
+    <select id="selectMetricPageByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandMetricRow">
+        SELECT <include refid="brandMetricColumns"/>
+        FROM diag_result_brand_metric
+        WHERE <include refid="brandMetricWhere"/>
+        ORDER BY ${orderBy} ${orderType}, brand_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    </select>
+
+    <select id="selectMetricByBrandNo" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandMetricRow">
+        SELECT <include refid="brandMetricColumns"/>
+        FROM diag_result_brand_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          AND brand_no = #{brandNo}
+    </select>
+
+    <select id="selectJsonByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandJsonRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            payload_code AS payloadCode, payload_name AS payloadName, payload_json AS payloadJson,
+            snapshot_time AS snapshotTime, create_time AS createTime, update_time AS updateTime
+        FROM diag_result_brand_json
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY payload_code ASC
+    </select>
+
+    <select id="selectJsonByCode" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisBrandJsonRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            payload_code AS payloadCode, payload_name AS payloadName, payload_json AS payloadJson,
+            snapshot_time AS snapshotTime, create_time AS createTime, update_time AS updateTime
+        FROM diag_result_brand_json
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          AND payload_code = #{payloadCode}
+    </select>
+
+</mapper>

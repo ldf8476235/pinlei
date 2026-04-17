@@ -2,11 +2,14 @@ package org.dromara.diagnosis.api.controller;
 
 import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
+import org.dromara.diagnosis.api.request.DiagnosisRecordQueryRequest;
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
+import org.dromara.diagnosis.api.response.DiagnosisRecordPageResponse;
 import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionStatusResponse;
 import org.dromara.diagnosis.api.response.DiagnosisTrendsResponse;
+import org.dromara.diagnosis.application.service.DiagnosisRecordService;
 import org.dromara.diagnosis.application.service.DiagnosisSessionService;
 import org.dromara.diagnosis.common.model.DiagnosisApiResponse;
 import org.springframework.validation.annotation.Validated;
@@ -30,6 +33,7 @@ import java.util.UUID;
 public class DiagnosisQueryController {
 
     private final DiagnosisSessionService diagnosisSessionService;
+    private final DiagnosisRecordService diagnosisRecordService;
 
     @PostMapping("/sessions")
     public DiagnosisApiResponse<DiagnosisSessionCreateResponse> createSession(@RequestBody DiagnosisSessionCreateRequest request) {
@@ -56,6 +60,11 @@ public class DiagnosisQueryController {
     @GetMapping("/trend-changes")
     public DiagnosisApiResponse<DiagnosisCategoryPerformanceTrendResponse> getTrendChanges(@RequestParam("sessionId") String sessionId) {
         return DiagnosisApiResponse.ok(diagnosisSessionService.getTrendChanges(sessionId), nextRequestId());
+    }
+
+    @PostMapping("/records")
+    public DiagnosisApiResponse<DiagnosisRecordPageResponse> queryRecords(@RequestBody(required = false) DiagnosisRecordQueryRequest request) {
+        return DiagnosisApiResponse.ok(diagnosisRecordService.queryRecords(request), nextRequestId());
     }
 
     private String nextRequestId() {

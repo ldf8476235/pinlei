@@ -1,0 +1,6005 @@
+请求地址：/api/classDoctorSpec/querySpecSalesPer
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "productSpec": "2瓶+1蚊香液加热器",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "10+2p",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "1008g",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "10g*10对",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "1280g",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "150ml+100ml+50g",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "150mm*2+245mm*2",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "155mm*28p",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "18g12+1ml12",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "1L+800g",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "2.26kg",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "2.58kg",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "200张*6包",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "20g*5片",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "20ml*2",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "25g*6瓶",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "290mm9P",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "2L*8",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "350g*2(J)",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "360g(J)",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "36ml",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "390张*6",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "3包",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "3支装(J)",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "3袋",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "405ml",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "425mm*3p+1p",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "5+1p",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "500ml*6",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "50g+100ml+150ml",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "50ml*2",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "50片",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "600ml(J)",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "650ml+400ml",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "660g+600g*2+500g",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "6g*10对",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "7021",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "75g*12卷",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "76P",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "ND01",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "袋",
+            "sales": null,
+            "salesPer": 0
+        },
+        {
+            "productSpec": "1支装(J)",
+            "sales": -783.70,
+            "salesPer": -0.01
+        },
+        {
+            "productSpec": "1500g",
+            "sales": -696.25,
+            "salesPer": -0.01
+        },
+        {
+            "productSpec": "278",
+            "sales": -325.99,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "五双圈",
+            "sales": -309.49,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "13p",
+            "sales": -164.71,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "42P",
+            "sales": -124.20,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1刀架1刀头",
+            "sales": -114.73,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "盒(J)",
+            "sales": -100.78,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200g*10",
+            "sales": -90.87,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "285cm*5p",
+            "sales": -78.73,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30ml*10p",
+            "sales": -47.95,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "M-L4片",
+            "sales": -47.92,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "248ml(J)",
+            "sales": -34.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "250g(J)",
+            "sales": -28.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2P(J)",
+            "sales": 1.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "26g",
+            "sales": 2.65,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30ml*7",
+            "sales": 2.86,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50抽(J)",
+            "sales": 6.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4.75kg*3",
+            "sales": 7.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "620ml",
+            "sales": 10.59,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "128g(J)",
+            "sales": 10.79,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "90抽*3包",
+            "sales": 10.89,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1*10*48",
+            "sales": 11.24,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "26g*5",
+            "sales": 11.55,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "400张*6",
+            "sales": 11.88,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "310g",
+            "sales": 12.56,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "271",
+            "sales": 12.81,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "YT8103",
+            "sales": 13.10,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "240mm(8+2)片",
+            "sales": 13.14,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4袋/包(J)",
+            "sales": 14.39,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200g*3(J)",
+            "sales": 14.85,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "245mm*5p",
+            "sales": 16.28,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "45ml*2+1器",
+            "sales": 16.28,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "360张*6包",
+            "sales": 17.60,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "202*2g",
+            "sales": 20.85,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "15片",
+            "sales": 21.56,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1L*2",
+            "sales": 22.29,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "5g",
+            "sales": 25.27,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "33g",
+            "sales": 25.80,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "6g*20",
+            "sales": 26.14,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30g*4",
+            "sales": 27.82,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40g+40g",
+            "sales": 27.86,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50ml*2+30g+牙刷",
+            "sales": 29.52,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "700ml+320ml",
+            "sales": 29.75,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1.5l3",
+            "sales": 30.25,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10g*（3+1）(J)",
+            "sales": 31.48,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10p+2p",
+            "sales": 31.65,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "（50+50）g",
+            "sales": 31.99,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "25g*5片/盒",
+            "sales": 33.60,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "503g(J)",
+            "sales": 34.50,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40ml*2+10ml",
+            "sales": 35.46,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2.8kg+200g",
+            "sales": 35.71,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4.6kg",
+            "sales": 39.02,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3.5g(J)",
+            "sales": 39.07,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "8+2p",
+            "sales": 40.06,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "25ml片*5",
+            "sales": 40.71,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "76抽*10包",
+            "sales": 42.62,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3.8g",
+            "sales": 44.25,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40单盘",
+            "sales": 45.23,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "32ml*5片",
+            "sales": 45.97,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40盘",
+            "sales": 48.13,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "400张",
+            "sales": 50.69,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "24cm*8p",
+            "sales": 51.42,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "120g+50g+10ml",
+            "sales": 51.45,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "60ml*2+80ml",
+            "sales": 51.80,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3刀头",
+            "sales": 54.78,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "700g(J)",
+            "sales": 55.08,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1*72",
+            "sales": 56.75,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "128ml(J)",
+            "sales": 57.60,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50g*60g",
+            "sales": 59.89,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "60片",
+            "sales": 60.96,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "120抽*3包",
+            "sales": 63.16,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "235g",
+            "sales": 63.63,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "165ml",
+            "sales": 63.92,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50ml+60ml+48P",
+            "sales": 64.90,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "两支",
+            "sales": 65.02,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "7g",
+            "sales": 65.08,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "36单盘",
+            "sales": 65.35,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "660g+600g",
+            "sales": 65.74,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40单圈",
+            "sales": 66.18,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "20ml+30g",
+            "sales": 66.68,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "136抽*3包",
+            "sales": 67.48,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "250ml(J)",
+            "sales": 67.48,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2.25kg",
+            "sales": 68.12,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3.8g*12",
+            "sales": 68.45,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200g(J)",
+            "sales": 68.91,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "180g+100g+30g+30g",
+            "sales": 71.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "48g",
+            "sales": 74.98,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "350g(J)",
+            "sales": 75.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "9g",
+            "sales": 78.04,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "75节*2层*2卷装",
+            "sales": 78.40,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10ml+30ml+30ml",
+            "sales": 78.66,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "45ml*3+1器/盒",
+            "sales": 79.51,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "M-L*10包+L*2包",
+            "sales": 79.65,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10ml(J)",
+            "sales": 82.93,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2.8L",
+            "sales": 85.57,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "260ml+25ml",
+            "sales": 87.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3.5kg+300g",
+            "sales": 87.95,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "130ml*48",
+            "sales": 88.40,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "188ml",
+            "sales": 89.25,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "0.8g",
+            "sales": 89.60,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "500(J)",
+            "sales": 89.72,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "80ml(J)",
+            "sales": 91.75,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "145ml",
+            "sales": 92.03,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "110抽*12包",
+            "sales": 93.14,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "45ml(J)",
+            "sales": 93.46,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "190mm*20p",
+            "sales": 94.77,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "120g+70ml+22ml",
+            "sales": 96.60,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100g+100ml",
+            "sales": 96.72,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "198ml",
+            "sales": 99.64,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "17ml(J)",
+            "sales": 100.53,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "360mm*4p",
+            "sales": 100.71,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4.26kg",
+            "sales": 100.97,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "525g",
+            "sales": 101.75,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2.18kg",
+            "sales": 102.08,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "360mm*15p",
+            "sales": 105.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4g*10",
+            "sales": 106.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "310ml",
+            "sales": 108.02,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "12g*42粒",
+            "sales": 111.48,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2支(J)",
+            "sales": 113.92,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "500g+200g",
+            "sales": 114.70,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "320g+80g",
+            "sales": 115.58,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "箱",
+            "sales": 115.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "35g+35g",
+            "sales": 115.94,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "瓶(J)",
+            "sales": 116.21,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10单盘",
+            "sales": 116.62,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2g",
+            "sales": 116.64,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "330ml(J)",
+            "sales": 117.16,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "46片",
+            "sales": 117.35,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "290ml",
+            "sales": 117.74,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1.5kg*2",
+            "sales": 120.15,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "7g*7",
+            "sales": 121.88,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1L*3",
+            "sales": 122.50,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "360ml(J)",
+            "sales": 124.07,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100ml+50g",
+            "sales": 124.98,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50g*2",
+            "sales": 125.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "160g+160g",
+            "sales": 125.68,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "18.5g",
+            "sales": 128.16,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "108g*4",
+            "sales": 128.20,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "140g(J)",
+            "sales": 128.24,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1刀头",
+            "sales": 128.98,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "150ml+50ml+30ml",
+            "sales": 129.94,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3kg+1.08kg+1.3kg+1kg",
+            "sales": 129.94,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "25g*3(J)",
+            "sales": 135.54,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100g*3袋",
+            "sales": 141.58,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "80ml*3",
+            "sales": 142.30,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4层*7张*12包",
+            "sales": 144.99,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "350g+130g",
+            "sales": 146.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30单盘",
+            "sales": 150.37,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "23p",
+            "sales": 150.87,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "190mm*25p",
+            "sales": 152.25,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "480ml+45ml",
+            "sales": 153.03,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30ml+30ml+12ml",
+            "sales": 155.73,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "120g*48",
+            "sales": 156.38,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "8ml(J)",
+            "sales": 158.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "3kg*2+1.008kg",
+            "sales": 160.53,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "15ml*8",
+            "sales": 163.53,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "26片",
+            "sales": 166.37,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "15g*5(J)",
+            "sales": 166.65,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50ml*3",
+            "sales": 167.65,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "105g*3",
+            "sales": 168.27,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "99ml(J)",
+            "sales": 174.21,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2kg*6",
+            "sales": 175.23,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "7支",
+            "sales": 175.24,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "支(J)",
+            "sales": 182.97,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200mm*12p",
+            "sales": 183.96,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "320ml(J)",
+            "sales": 185.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1刀架2刀头",
+            "sales": 186.16,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "45ml*2",
+            "sales": 186.56,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50g*2+50g",
+            "sales": 186.60,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "208g",
+            "sales": 190.93,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1.5L*6",
+            "sales": 191.21,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40ml+40ml",
+            "sales": 191.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "YS404",
+            "sales": 192.45,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "32g",
+            "sales": 192.76,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30粒",
+            "sales": 193.76,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "308g",
+            "sales": 195.26,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "20ml(J)",
+            "sales": 199.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "66抽*3包",
+            "sales": 202.30,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "90p",
+            "sales": 202.42,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "240cm*18p",
+            "sales": 203.20,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "55ml+55ml",
+            "sales": 204.49,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "60ml(J)",
+            "sales": 206.51,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "70节*2卷",
+            "sales": 209.91,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "5g*7",
+            "sales": 211.44,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "15g*10袋",
+            "sales": 214.84,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "33ml*2+1",
+            "sales": 215.27,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "54片",
+            "sales": 216.03,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100g*2(J)",
+            "sales": 218.32,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4.0g",
+            "sales": 219.78,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100g+175ml+175ml+50g",
+            "sales": 220.78,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "35ml",
+            "sales": 221.77,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "13片",
+            "sales": 222.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "28片",
+            "sales": 224.03,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "700ml+400ml",
+            "sales": 224.28,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "700g+400ml",
+            "sales": 224.40,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30抽",
+            "sales": 225.34,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "280mm*12p",
+            "sales": 225.63,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "25g/片*5片",
+            "sales": 227.05,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "600ml*2",
+            "sales": 228.07,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "250m",
+            "sales": 230.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "60g+50g",
+            "sales": 232.29,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1.25kg",
+            "sales": 232.67,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40g+100ml",
+            "sales": 234.05,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10g*3(J)",
+            "sales": 234.44,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "235ml",
+            "sales": 234.44,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "30g*2",
+            "sales": 236.09,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "189g",
+            "sales": 236.25,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200张",
+            "sales": 237.24,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "7张*12包",
+            "sales": 237.91,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2kg*2+1",
+            "sales": 238.95,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "120g*14粒",
+            "sales": 240.44,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "16片",
+            "sales": 240.55,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100g+150ml+100g",
+            "sales": 242.52,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "5p*L",
+            "sales": 243.30,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "85节",
+            "sales": 245.51,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40g+1套+1刷头(J)",
+            "sales": 251.50,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2.28kg",
+            "sales": 253.37,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50g+40g",
+            "sales": 256.96,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50g+1支+1",
+            "sales": 259.69,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "110+160+80g",
+            "sales": 259.74,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "160mm*35p",
+            "sales": 260.32,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "25g/片*5",
+            "sales": 260.49,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "300mm*6片",
+            "sales": 265.36,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "360mm*5P",
+            "sales": 266.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100g+100ml+100ml",
+            "sales": 268.62,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "18g",
+            "sales": 270.40,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50节*3卷(J)",
+            "sales": 271.99,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200张*5包",
+            "sales": 272.05,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "200段*10",
+            "sales": 273.74,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1刀+1刀头",
+            "sales": 276.57,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "26抽",
+            "sales": 283.87,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "52P",
+            "sales": 284.97,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50支/盒(J)",
+            "sales": 288.18,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "72片",
+            "sales": 289.50,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "150ml(J)",
+            "sales": 291.91,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "(400+380)ml",
+            "sales": 295.06,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "54节*14卷",
+            "sales": 297.51,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "480ml(J)",
+            "sales": 298.08,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "28mL*5PCS",
+            "sales": 300.30,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "155ml",
+            "sales": 300.96,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "400g(J)",
+            "sales": 302.90,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "150ml+50ml",
+            "sales": 304.85,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "280g(J)",
+            "sales": 304.85,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "215ml(J)",
+            "sales": 307.05,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "420mm*6p",
+            "sales": 311.43,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "120g+50g",
+            "sales": 313.77,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "A6",
+            "sales": 314.05,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "9g(J)",
+            "sales": 314.18,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "4.2g",
+            "sales": 315.18,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "40抽",
+            "sales": 320.02,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50张",
+            "sales": 320.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100p",
+            "sales": 321.04,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "6张*12包",
+            "sales": 321.62,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "140mm*18p",
+            "sales": 326.14,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "1盒(J)",
+            "sales": 327.67,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "645g",
+            "sales": 329.91,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "135ml",
+            "sales": 330.58,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "58片",
+            "sales": 333.61,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "12ml+48g+48g+40ml",
+            "sales": 333.63,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "210ml",
+            "sales": 333.80,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "10g*10",
+            "sales": 334.36,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "(2g+25ml)*5片",
+            "sales": 339.09,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "240ml",
+            "sales": 340.08,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2层*80抽*3包",
+            "sales": 341.20,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "11ml*15(J)",
+            "sales": 341.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "163mm*20p",
+            "sales": 347.94,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100ml洁面+90ml水+100",
+            "sales": 349.83,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "2L*6",
+            "sales": 351.00,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "50支(J)",
+            "sales": 351.14,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "270g",
+            "sales": 351.51,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "12ml(J)",
+            "sales": 355.34,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "25g*4",
+            "sales": 355.62,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "A1",
+            "sales": 356.40,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "100ml*2",
+            "sales": 357.62,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "85ml(J)",
+            "sales": 360.20,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "15ml",
+            "sales": 362.70,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "480ml",
+            "sales": 363.33,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "298g(J)",
+            "sales": 374.95,
+            "salesPer": 0.00
+        },
+        {
+            "productSpec": "298g",
+            "sales": 382.03,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "10包*10p",
+            "sales": 382.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "420ml+60ml",
+            "sales": 384.18,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "40支",
+            "sales": 386.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "2L*2(J)",
+            "sales": 387.26,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1000g",
+            "sales": 389.62,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "18mm*10p",
+            "sales": 390.95,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "666ml",
+            "sales": 391.02,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "125g*2(J)",
+            "sales": 393.35,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1板(J)",
+            "sales": 399.40,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "4.8kg*2",
+            "sales": 403.36,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "160mm*180mm*20片(J)",
+            "sales": 406.35,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "块",
+            "sales": 406.80,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "500g*2(J)",
+            "sales": 408.45,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "150抽*3包",
+            "sales": 414.87,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "36p",
+            "sales": 415.96,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "75节*2卷",
+            "sales": 418.62,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "470g",
+            "sales": 420.19,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "202g*3+202g",
+            "sales": 423.39,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "YS706",
+            "sales": 426.33,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "55.5g",
+            "sales": 428.50,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "2.6kg+1.65kg+1kg*2",
+            "sales": 429.48,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "套(J)",
+            "sales": 430.15,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "220g(J)",
+            "sales": 432.82,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "4.5kg*3",
+            "sales": 443.06,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "40g+10g",
+            "sales": 443.70,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "240g(J)",
+            "sales": 443.74,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "360mm*16p",
+            "sales": 446.81,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "120ml(J)",
+            "sales": 447.16,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "90抽*3层*10包",
+            "sales": 450.67,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1刀架4刀头",
+            "sales": 454.23,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "260张*8包",
+            "sales": 454.96,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "8g*30颗",
+            "sales": 456.44,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "425g",
+            "sales": 460.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "20张",
+            "sales": 464.47,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "8p(J)",
+            "sales": 472.55,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "120g*2+2",
+            "sales": 475.13,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "110g*3",
+            "sales": 475.44,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "46P",
+            "sales": 477.50,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "155mm*20p",
+            "sales": 479.10,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "110ml*48",
+            "sales": 479.56,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "720g*3",
+            "sales": 479.88,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "250mm*12p",
+            "sales": 480.80,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "202g*2*3",
+            "sales": 480.99,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "25ml*5p",
+            "sales": 481.96,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "3p*XL",
+            "sales": 482.19,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "420mm*12p",
+            "sales": 484.39,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "280g",
+            "sales": 485.50,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "65g(J)",
+            "sales": 488.43,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "420mm3p",
+            "sales": 489.26,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "280mm*8p",
+            "sales": 490.20,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "52g",
+            "sales": 492.65,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "16P(J)",
+            "sales": 494.01,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "241",
+            "sales": 502.54,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "300g(J)",
+            "sales": 503.67,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "80抽*4包",
+            "sales": 504.92,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "24包",
+            "sales": 508.82,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180mm*20p",
+            "sales": 510.00,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1套(J)",
+            "sales": 513.42,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "15p(J)",
+            "sales": 516.66,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "358ml",
+            "sales": 526.23,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "60抽*2包",
+            "sales": 528.06,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "320mm*16p",
+            "sales": 529.77,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "60ml*2",
+            "sales": 531.24,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "23颗",
+            "sales": 531.80,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "60p(J)",
+            "sales": 532.88,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "8只",
+            "sales": 532.93,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "910g",
+            "sales": 535.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "720g+280g",
+            "sales": 536.23,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "200m",
+            "sales": 536.39,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180抽*6",
+            "sales": 537.78,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "45ml",
+            "sales": 539.78,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "115g*3",
+            "sales": 541.61,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "240g",
+            "sales": 546.19,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "80抽",
+            "sales": 549.82,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "420g",
+            "sales": 550.66,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "M2p",
+            "sales": 553.10,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "540ml",
+            "sales": 554.15,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "块(J)",
+            "sales": 555.09,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "300ml(J)",
+            "sales": 556.88,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "525ml",
+            "sales": 558.45,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "110ml+160ml+80g+10g",
+            "sales": 559.20,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "68片",
+            "sales": 559.80,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "42cm*3p",
+            "sales": 562.27,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "9p",
+            "sales": 579.78,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "360张",
+            "sales": 580.92,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "60抽*6包",
+            "sales": 581.58,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "600*900",
+            "sales": 585.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "38片",
+            "sales": 586.25,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1650g",
+            "sales": 589.43,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "90抽*（8包送2包）",
+            "sales": 592.25,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "M-L*2p",
+            "sales": 593.51,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "50ml+100ml",
+            "sales": 594.09,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "12pcs(J)",
+            "sales": 594.96,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "218g*2",
+            "sales": 596.59,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "2.86kg",
+            "sales": 597.31,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "205g*3",
+            "sales": 601.39,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "360张*8包",
+            "sales": 602.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "20抽",
+            "sales": 605.75,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "100支(J)",
+            "sales": 615.34,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "3kg+1kg+880g+1.12kg+",
+            "sales": 616.41,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1.7kg+5kg",
+            "sales": 619.23,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "100抽",
+            "sales": 630.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180g+100g+50ml",
+            "sales": 633.33,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "987",
+            "sales": 633.59,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "58P",
+            "sales": 636.73,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "5L",
+            "sales": 638.12,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "440mm",
+            "sales": 639.72,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1.2kg+308g",
+            "sales": 641.04,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "40g*2",
+            "sales": 643.35,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "250mm*8包+290mm*4包",
+            "sales": 644.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "100g+20g",
+            "sales": 646.24,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "160g*2",
+            "sales": 655.97,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "20p(J)",
+            "sales": 659.02,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "258ml",
+            "sales": 662.67,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "175mm*20p",
+            "sales": 664.19,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180mm*12p",
+            "sales": 668.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1818",
+            "sales": 679.81,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "18p*245mm+8p*320mm",
+            "sales": 686.89,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1头1底座",
+            "sales": 691.53,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "500m1",
+            "sales": 692.90,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "228",
+            "sales": 694.36,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "125ml",
+            "sales": 696.00,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180ml*2",
+            "sales": 696.42,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1支(J)",
+            "sales": 697.83,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "4+1p",
+            "sales": 702.37,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "(1.5mL+26mL)*5PCS",
+            "sales": 705.18,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "245cm*10p",
+            "sales": 706.48,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "26抽*10包",
+            "sales": 707.39,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "280mm*13p",
+            "sales": 709.03,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "210g(J)",
+            "sales": 717.97,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "480g*2",
+            "sales": 722.23,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "50ml+50ml+50ml",
+            "sales": 724.59,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "95ml+95ml+30ml+25g+3",
+            "sales": 724.85,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "155mm*35p",
+            "sales": 733.03,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "50g+50g",
+            "sales": 738.55,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "6支",
+            "sales": 739.47,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "145g*12卷",
+            "sales": 741.22,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "2kg+600g",
+            "sales": 743.86,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "210g+50g(J)",
+            "sales": 750.61,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "(4+1)p",
+            "sales": 751.87,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "5包*40抽",
+            "sales": 756.89,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "85g",
+            "sales": 756.99,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "60ml+30ml",
+            "sales": 762.97,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "300mm*10p",
+            "sales": 769.55,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1.5L",
+            "sales": 769.61,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "60抽",
+            "sales": 771.62,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "900g+900g+645g",
+            "sales": 774.18,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "25g*3",
+            "sales": 775.27,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180mm*10p",
+            "sales": 775.71,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "720ml+720ml+580ml",
+            "sales": 782.10,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "34P",
+            "sales": 783.45,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "34片",
+            "sales": 784.40,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "960g(J)",
+            "sales": 787.96,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "30ml*2",
+            "sales": 789.28,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "300g+200g",
+            "sales": 789.86,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "210ml(J)",
+            "sales": 792.73,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "650g*2",
+            "sales": 798.53,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "40.5g",
+            "sales": 803.43,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "240mm*18p",
+            "sales": 805.19,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "80g(J)",
+            "sales": 807.45,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "38P",
+            "sales": 817.90,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "118ml",
+            "sales": 821.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "（60g+8g）*4",
+            "sales": 824.52,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "22片",
+            "sales": 827.51,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "125g*2",
+            "sales": 841.81,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "50ml*2+3ml*2",
+            "sales": 842.61,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "425mm*8P",
+            "sales": 844.31,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "100g+28g",
+            "sales": 845.14,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "290cm*8",
+            "sales": 848.31,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "（400+190）ml",
+            "sales": 857.16,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "290mm*9p",
+            "sales": 858.96,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "468g",
+            "sales": 858.98,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "650g(J)",
+            "sales": 864.46,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "570g",
+            "sales": 867.75,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "56P",
+            "sales": 869.13,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "800*900",
+            "sales": 872.62,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "500ml*2(J)",
+            "sales": 874.91,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "150g+30g",
+            "sales": 878.34,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "340g",
+            "sales": 878.97,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "2.1kg*2",
+            "sales": 884.91,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "64片",
+            "sales": 890.63,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "180ml(J)",
+            "sales": 893.32,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "3.6L",
+            "sales": 895.74,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "2000g",
+            "sales": 901.15,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "450ml(J)",
+            "sales": 907.94,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "40片(J)",
+            "sales": 909.09,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "250mm*109",
+            "sales": 913.45,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "120抽*8包",
+            "sales": 921.98,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "108g*3",
+            "sales": 925.15,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "32P+4P",
+            "sales": 926.64,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "100ml＋100ml＋30ml",
+            "sales": 930.20,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "200抽",
+            "sales": 932.16,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "260mm*(8+1)p",
+            "sales": 936.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "350mm*（6+1）p",
+            "sales": 940.41,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "3.28kg*2",
+            "sales": 940.50,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "140g+30g",
+            "sales": 952.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "480ml*2",
+            "sales": 952.16,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "540g",
+            "sales": 959.78,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "730g",
+            "sales": 968.02,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "135g(J)",
+            "sales": 968.91,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "28张",
+            "sales": 978.64,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "780g",
+            "sales": 983.13,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "42cm*4p",
+            "sales": 986.83,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "20双盘",
+            "sales": 995.99,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "40ml*2",
+            "sales": 999.06,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "3片",
+            "sales": 1004.24,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "150g*4(J)",
+            "sales": 1007.63,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "350mm*12p",
+            "sales": 1008.99,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "70g(J)",
+            "sales": 1010.05,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "50ml(J)",
+            "sales": 1023.52,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "125g*6",
+            "sales": 1023.97,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "850g",
+            "sales": 1025.80,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "280mm*10片",
+            "sales": 1026.12,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "7片*8包",
+            "sales": 1027.37,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "190cm",
+            "sales": 1031.93,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "190mm*12p",
+            "sales": 1035.24,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "750ml*3",
+            "sales": 1037.06,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "290mm*15p",
+            "sales": 1037.21,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "26mL*5P",
+            "sales": 1038.49,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "680g",
+            "sales": 1040.61,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "430ml",
+            "sales": 1041.86,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "240mm10+1p",
+            "sales": 1044.94,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1.15kg",
+            "sales": 1045.15,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1.128kg",
+            "sales": 1048.73,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1600g",
+            "sales": 1053.28,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "18cm*10p",
+            "sales": 1061.55,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "700g*800g+818g",
+            "sales": 1068.84,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "240mm*8片",
+            "sales": 1076.53,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1条+4p",
+            "sales": 1076.97,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "430mm*4p",
+            "sales": 1094.81,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "1*30",
+            "sales": 1096.42,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "480g*3",
+            "sales": 1097.70,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "45g*2",
+            "sales": 1100.79,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "155mm*18p",
+            "sales": 1105.44,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "360mm*5p+420mm*3p",
+            "sales": 1106.11,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "530g",
+            "sales": 1116.63,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "360mm*12p",
+            "sales": 1121.09,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "270mm*12p",
+            "sales": 1123.45,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "80抽*4层*8包",
+            "sales": 1126.79,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "A2",
+            "sales": 1129.14,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "330ml",
+            "sales": 1134.32,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "150mm*20p+20p",
+            "sales": 1134.94,
+            "salesPer": 0.01
+        },
+        {
+            "productSpec": "140g+40g",
+            "sales": 1138.55,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "308ml",
+            "sales": 1140.34,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "908g",
+            "sales": 1147.37,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "22g*5片",
+            "sales": 1149.26,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "508g",
+            "sales": 1151.25,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "5连包",
+            "sales": 1153.40,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "400g+180g",
+            "sales": 1155.47,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "255mm*16p",
+            "sales": 1159.85,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "50g(J)",
+            "sales": 1167.06,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "275mm*12p",
+            "sales": 1176.10,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "125ml+95ml+30ml+10ml",
+            "sales": 1176.20,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "60节*3包",
+            "sales": 1181.48,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "260mm",
+            "sales": 1201.86,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "200ml(J)",
+            "sales": 1207.22,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.308kg",
+            "sales": 1209.83,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.1L",
+            "sales": 1217.51,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.6L",
+            "sales": 1218.17,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "240mm8p",
+            "sales": 1219.33,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.428kg",
+            "sales": 1226.45,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "240段",
+            "sales": 1228.99,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "33ml/片*5片",
+            "sales": 1231.70,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "60ml",
+            "sales": 1248.03,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "18P+3P",
+            "sales": 1250.06,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "26p",
+            "sales": 1250.99,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "18包",
+            "sales": 1253.49,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "252g",
+            "sales": 1264.77,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "10只",
+            "sales": 1264.96,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "3+1片",
+            "sales": 1281.91,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1刀架4刀头+刀架",
+            "sales": 1289.52,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "350ml(J)",
+            "sales": 1310.50,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "5P*7盒",
+            "sales": 1311.80,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.7kg*6",
+            "sales": 1314.58,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "QW202",
+            "sales": 1317.49,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "425mm*4p",
+            "sales": 1322.04,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "40g+180g",
+            "sales": 1323.75,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "180mm*16p",
+            "sales": 1331.16,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "400ml*2",
+            "sales": 1332.26,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "48片",
+            "sales": 1337.59,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "248g",
+            "sales": 1339.29,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1028",
+            "sales": 1342.53,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "35cm*8p",
+            "sales": 1347.46,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "400ml+180ml",
+            "sales": 1348.92,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "108g(J)",
+            "sales": 1351.78,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "540g(J)",
+            "sales": 1357.14,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "900g*2",
+            "sales": 1361.36,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "580ml",
+            "sales": 1366.12,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "518ml",
+            "sales": 1376.40,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "140g*2+65g",
+            "sales": 1379.65,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "120g+130ml+110ml+50g",
+            "sales": 1380.39,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "170ml",
+            "sales": 1381.25,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "26cm*8p",
+            "sales": 1393.11,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "190mm*10p",
+            "sales": 1399.22,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "525g*2",
+            "sales": 1401.75,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "20g+6g",
+            "sales": 1402.40,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "28张*10包",
+            "sales": 1407.81,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "50P",
+            "sales": 1413.21,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "188g*2",
+            "sales": 1417.66,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "380g+100g",
+            "sales": 1418.21,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "550g",
+            "sales": 1418.57,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "225ml",
+            "sales": 1420.98,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "190ml",
+            "sales": 1422.63,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "100ml+50ml",
+            "sales": 1426.27,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "LS8508",
+            "sales": 1428.93,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "308g(J)",
+            "sales": 1452.56,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "245mm",
+            "sales": 1463.38,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "2.2L(J)",
+            "sales": 1466.35,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "460ml",
+            "sales": 1466.42,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "18cm*18p",
+            "sales": 1473.32,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "250mm*8p",
+            "sales": 1475.81,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "240mm*30p",
+            "sales": 1487.29,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "3P+1P",
+            "sales": 1490.42,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1p",
+            "sales": 1494.59,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "68g",
+            "sales": 1511.13,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "160g+40g",
+            "sales": 1511.60,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "98g",
+            "sales": 1516.13,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "300张*8",
+            "sales": 1519.01,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "60-102CM*10P",
+            "sales": 1519.09,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "25g*5片",
+            "sales": 1527.27,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "150ml+120g+100g+50g",
+            "sales": 1528.32,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "18+4片240mm",
+            "sales": 1540.81,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.28L",
+            "sales": 1545.40,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.5kg(J)",
+            "sales": 1548.10,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "150ml+100g+50g+30ml",
+            "sales": 1551.81,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "245mm*8p",
+            "sales": 1562.61,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "400ml+160ml",
+            "sales": 1578.51,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.5kg*2+900g*8",
+            "sales": 1595.88,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1kg(J)",
+            "sales": 1598.48,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "300g*2",
+            "sales": 1613.77,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "166g*3+122g",
+            "sales": 1615.58,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "240mm*12片",
+            "sales": 1621.83,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "42片",
+            "sales": 1622.86,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "30片",
+            "sales": 1627.48,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "40g*5",
+            "sales": 1638.80,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "4p+2p",
+            "sales": 1644.16,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.25L",
+            "sales": 1652.68,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "232g",
+            "sales": 1653.03,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1000ml(J)",
+            "sales": 1661.00,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.35kg",
+            "sales": 1663.93,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "110抽*3层*10包",
+            "sales": 1664.74,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.4kg",
+            "sales": 1670.24,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "340g(J)",
+            "sales": 1674.45,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "290mm*22p",
+            "sales": 1679.59,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "200g（25颗）",
+            "sales": 1686.06,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "100+20g(J)",
+            "sales": 1699.28,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "150g(J)",
+            "sales": 1705.36,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "2包",
+            "sales": 1714.44,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "500g+500g",
+            "sales": 1716.66,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "350mm*9p",
+            "sales": 1717.09,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "25cm*6p",
+            "sales": 1720.83,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "4片",
+            "sales": 1724.72,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "2.1kg",
+            "sales": 1726.89,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "290mm",
+            "sales": 1736.53,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "100g+10g",
+            "sales": 1745.35,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "260g",
+            "sales": 1747.58,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "25p",
+            "sales": 1751.30,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "165g*2",
+            "sales": 1752.33,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "100抽*8包",
+            "sales": 1760.02,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "320g(J)",
+            "sales": 1768.23,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "150g*4",
+            "sales": 1768.67,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "2kg*4",
+            "sales": 1770.12,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "350ml",
+            "sales": 1772.85,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "420mm*5p",
+            "sales": 1773.62,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "8张*10包",
+            "sales": 1777.30,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "300张*10包",
+            "sales": 1786.43,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "275mm*8p",
+            "sales": 1803.27,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "120ml+120g",
+            "sales": 1805.22,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "680g*2",
+            "sales": 1816.41,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1015",
+            "sales": 1824.91,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1.02kg",
+            "sales": 1826.47,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "115g*2(J)",
+            "sales": 1834.21,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "2.08kg",
+            "sales": 1834.71,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "150ml+40g+120g+150g",
+            "sales": 1844.62,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "550",
+            "sales": 1845.39,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1ml(J)",
+            "sales": 1851.70,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "1019",
+            "sales": 1854.14,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "284mm*7p",
+            "sales": 1867.98,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "150节",
+            "sales": 1873.12,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "76抽*16",
+            "sales": 1877.61,
+            "salesPer": 0.02
+        },
+        {
+            "productSpec": "148ml",
+            "sales": 1903.98,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "18mm*18p",
+            "sales": 1915.56,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "四支",
+            "sales": 1915.89,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "50g*48",
+            "sales": 1939.43,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "LR8510",
+            "sales": 1959.43,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "2kg+300g",
+            "sales": 1964.26,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "24P(J)",
+            "sales": 1967.72,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "180mm*18p",
+            "sales": 1971.90,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "280mm8p",
+            "sales": 1987.14,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "280mm*6p",
+            "sales": 1992.03,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "100g+95ml+95ml+50g",
+            "sales": 1992.79,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "320抽",
+            "sales": 1996.99,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "65g",
+            "sales": 2002.49,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "80抽*8包",
+            "sales": 2036.74,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "60g+60g",
+            "sales": 2060.88,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "7p*8包",
+            "sales": 2064.59,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "128张",
+            "sales": 2068.60,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "8片*8包+8片",
+            "sales": 2083.88,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "50g*4",
+            "sales": 2089.41,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "185mm*20p",
+            "sales": 2101.84,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "18mm*20p",
+            "sales": 2108.54,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "1.52kg",
+            "sales": 2114.79,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "780g+118g",
+            "sales": 2116.65,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "550ml",
+            "sales": 2119.17,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "1.08L",
+            "sales": 2135.61,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "408g",
+            "sales": 2145.91,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "1.2L",
+            "sales": 2151.34,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "8+1P",
+            "sales": 2151.92,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "420mm*16p",
+            "sales": 2155.25,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "95ml",
+            "sales": 2159.61,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "80-122cm*10p",
+            "sales": 2164.95,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "535ml*2",
+            "sales": 2171.84,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "160g+20g",
+            "sales": 2197.57,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "（95g+100ml+50g",
+            "sales": 2198.31,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "100抽*6包",
+            "sales": 2204.55,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "组",
+            "sales": 2206.01,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "25p+4p",
+            "sales": 2213.13,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "15g",
+            "sales": 2216.69,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "120抽*4包",
+            "sales": 2220.37,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "4刀头",
+            "sales": 2234.91,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "300张*10",
+            "sales": 2246.54,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "190g+160g+40g*2",
+            "sales": 2246.99,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "128g",
+            "sales": 2249.99,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "28cm*10p",
+            "sales": 2254.04,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "360张*6*15",
+            "sales": 2254.34,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "2卷",
+            "sales": 2256.20,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "100g*2",
+            "sales": 2258.49,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "30ml",
+            "sales": 2268.62,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "60g*2",
+            "sales": 2274.63,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "6片(J)",
+            "sales": 2281.87,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "22P",
+            "sales": 2283.61,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "两支装",
+            "sales": 2285.16,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "270ml",
+            "sales": 2301.42,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "160张",
+            "sales": 2311.06,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "338mm*7p",
+            "sales": 2321.85,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "55g",
+            "sales": 2328.86,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "170g*14卷",
+            "sales": 2331.12,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "50g+5g",
+            "sales": 2381.36,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "（80g+100g）",
+            "sales": 2386.01,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "100抽*8",
+            "sales": 2387.36,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "7片",
+            "sales": 2393.16,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "2.018kg",
+            "sales": 2411.45,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "115mL",
+            "sales": 2413.11,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "1L+900ml",
+            "sales": 2413.13,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "120抽*8",
+            "sales": 2442.06,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "2kg*2+1kg*2",
+            "sales": 2459.33,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "100p*2",
+            "sales": 2460.62,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "265ml",
+            "sales": 2465.69,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "三支装",
+            "sales": 2469.03,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "800g+150g",
+            "sales": 2476.96,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "350mm*4p",
+            "sales": 2484.03,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "2.04kg",
+            "sales": 2492.88,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "245mm*26p",
+            "sales": 2493.49,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "360mm*6p",
+            "sales": 2499.39,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "4g(J)",
+            "sales": 2500.32,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "35g",
+            "sales": 2506.47,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "1kg*2",
+            "sales": 2510.66,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "18片",
+            "sales": 2520.75,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "2L",
+            "sales": 2560.12,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "20p+5p+2p",
+            "sales": 2567.20,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "120g*2+40g*2+3支",
+            "sales": 2595.04,
+            "salesPer": 0.03
+        },
+        {
+            "productSpec": "120ml+120ml+100ml",
+            "sales": 2658.43,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2002g",
+            "sales": 2671.28,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "500ml+500ml+500ml",
+            "sales": 2698.76,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "95g+100ml+100ml+40g",
+            "sales": 2702.99,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "100g(J)",
+            "sales": 2704.86,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "270mm*8片",
+            "sales": 2708.81,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "5kg+180g",
+            "sales": 2712.18,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "（15ml+15ml)*2袋",
+            "sales": 2716.89,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "650g+650g",
+            "sales": 2728.28,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "540ml(J)",
+            "sales": 2755.30,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "280mm*7p",
+            "sales": 2787.71,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "240mm*20p",
+            "sales": 2797.27,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "110ml",
+            "sales": 2821.49,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "6片",
+            "sales": 2835.75,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "1.328kg",
+            "sales": 2843.05,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "320g",
+            "sales": 2845.29,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "130ml+100ml+50g+40ml",
+            "sales": 2890.70,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "580g",
+            "sales": 2895.07,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "1.08kg",
+            "sales": 2898.29,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "360mm*10p",
+            "sales": 2907.44,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "3支装",
+            "sales": 2910.25,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "1.2kg",
+            "sales": 2922.19,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "155mm*40p",
+            "sales": 2928.73,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "1.018kg",
+            "sales": 2944.74,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "240mm*11片",
+            "sales": 2948.63,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "420mm5p+2p",
+            "sales": 2954.59,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "520g",
+            "sales": 2955.48,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "100g+130ml+100ml+30m",
+            "sales": 2958.71,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "280mm*9p",
+            "sales": 2969.15,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "130ml",
+            "sales": 2978.24,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "240mm*12p",
+            "sales": 2999.72,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2.6kg2",
+            "sales": 3004.11,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "520ml",
+            "sales": 3019.33,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "175ml",
+            "sales": 3033.86,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "105ml",
+            "sales": 3046.78,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "1.008kg",
+            "sales": 3068.46,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "1*12",
+            "sales": 3103.07,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "360mm*8p",
+            "sales": 3139.75,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "4g",
+            "sales": 3150.42,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "14p",
+            "sales": 3156.48,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "160ml",
+            "sales": 3164.57,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "10P+5P",
+            "sales": 3215.61,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2.5L",
+            "sales": 3218.56,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "11P+3P",
+            "sales": 3226.18,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2.38kg*2",
+            "sales": 3234.91,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "68g(J)",
+            "sales": 3235.86,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "4支",
+            "sales": 3238.94,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "盒",
+            "sales": 3246.72,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2+1p",
+            "sales": 3248.86,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2kg(J)",
+            "sales": 3252.99,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "240mm*13p",
+            "sales": 3265.38,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "320ml",
+            "sales": 3298.37,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "25g*7片",
+            "sales": 3311.88,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "3.5g+3.5g/套",
+            "sales": 3315.38,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "2.75kg*2",
+            "sales": 3316.84,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "750ml(J)",
+            "sales": 3318.48,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "100ml(J)",
+            "sales": 3328.83,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "225g+160g+40g*2",
+            "sales": 3358.95,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "80ml",
+            "sales": 3365.22,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "400ml(J)",
+            "sales": 3385.37,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "（15+3）片",
+            "sales": 3411.54,
+            "salesPer": 0.04
+        },
+        {
+            "productSpec": "470ml",
+            "sales": 3416.81,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "750ml*2",
+            "sales": 3435.76,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "290mm*7p",
+            "sales": 3436.60,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "355mm*6p",
+            "sales": 3536.67,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "70ml",
+            "sales": 3546.24,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "1.68kg",
+            "sales": 3564.66,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "800ml*3",
+            "sales": 3567.30,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "660g*2",
+            "sales": 3605.66,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "1支",
+            "sales": 3606.62,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "8连包",
+            "sales": 3611.84,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "265mm*8p+355mm*2p",
+            "sales": 3613.94,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "2L+300ml",
+            "sales": 3634.25,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "L-XL*5p",
+            "sales": 3638.52,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "（15ml+15ml)*8袋",
+            "sales": 3653.57,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "单支",
+            "sales": 3671.11,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "15P+3P",
+            "sales": 3699.24,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "4.08kg",
+            "sales": 3700.61,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "5片",
+            "sales": 3708.16,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "5支",
+            "sales": 3710.66,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "1支装",
+            "sales": 3731.93,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "450g+450g",
+            "sales": 3757.88,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "212g*4",
+            "sales": 3762.68,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "410mm*6p",
+            "sales": 3769.44,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "120g*2+900g",
+            "sales": 3771.48,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "120克",
+            "sales": 3774.78,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "245mm*12p",
+            "sales": 3801.57,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "101g*2",
+            "sales": 3890.46,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "400g+160g",
+            "sales": 3924.69,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "单支装",
+            "sales": 3958.45,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "50g+35g/盒",
+            "sales": 3964.56,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "180g(J)",
+            "sales": 4015.62,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "4.8g",
+            "sales": 4020.39,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "75g",
+            "sales": 4025.20,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "450g*2",
+            "sales": 4060.75,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "12片",
+            "sales": 4089.22,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "1.65kg",
+            "sales": 4097.45,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "125g*3(J)",
+            "sales": 4110.99,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "CS8820",
+            "sales": 4130.65,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "38g",
+            "sales": 4133.28,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "420mm*10p",
+            "sales": 4137.30,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "70抽",
+            "sales": 4153.77,
+            "salesPer": 0.05
+        },
+        {
+            "productSpec": "10p+10p",
+            "sales": 4183.66,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "600g*2",
+            "sales": 4194.65,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "680ml",
+            "sales": 4232.86,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "180g+30g",
+            "sales": 4233.64,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "瓶",
+            "sales": 4257.21,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "50ml",
+            "sales": 4271.74,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "1.608kg",
+            "sales": 4318.81,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "420mm*4p",
+            "sales": 4349.56,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "3.38kg*2",
+            "sales": 4368.37,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "110抽*8连包",
+            "sales": 4369.57,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "6连包",
+            "sales": 4375.68,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "12只",
+            "sales": 4410.44,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "350mm*10p",
+            "sales": 4411.25,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "1kg+100g",
+            "sales": 4429.42,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "50g*2+30g",
+            "sales": 4473.87,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "双支装",
+            "sales": 4474.89,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "29cm*16p",
+            "sales": 4477.39,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "420ml+420ml",
+            "sales": 4491.46,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "90抽*8包",
+            "sales": 4529.68,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "3L",
+            "sales": 4564.52,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "15p",
+            "sales": 4566.64,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "720g",
+            "sales": 4589.47,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "50g*5",
+            "sales": 4628.35,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "100g+120ml+120g+50g",
+            "sales": 4631.77,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "60g+8g",
+            "sales": 4662.45,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "650ml",
+            "sales": 4666.12,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "24cm*20p",
+            "sales": 4758.15,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "125g(J)",
+            "sales": 4771.46,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "85g(J)",
+            "sales": 4788.60,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "28p",
+            "sales": 4927.92,
+            "salesPer": 0.06
+        },
+        {
+            "productSpec": "双支",
+            "sales": 5000.61,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "98-141cm*10p",
+            "sales": 5016.09,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "4.1kg",
+            "sales": 5030.18,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "1.54kg",
+            "sales": 5037.24,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "240mm*16p",
+            "sales": 5051.10,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "2.008kg",
+            "sales": 5056.11,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "1000ml",
+            "sales": 5064.10,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "3支",
+            "sales": 5117.93,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "L/XL",
+            "sales": 5121.46,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "1.5L(J)",
+            "sales": 5178.98,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "100g*10",
+            "sales": 5180.94,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "80p*5包",
+            "sales": 5190.49,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "135g",
+            "sales": 5200.61,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "7P",
+            "sales": 5220.70,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "M-L*5p",
+            "sales": 5224.61,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "90ml",
+            "sales": 5226.49,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "2.3kg",
+            "sales": 5226.68,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "860g",
+            "sales": 5228.74,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "245mm*17p",
+            "sales": 5257.72,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "290mm*14p",
+            "sales": 5275.85,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "226g*3",
+            "sales": 5290.50,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "260ml",
+            "sales": 5300.75,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "360mm*14p",
+            "sales": 5302.73,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "420+420ml",
+            "sales": 5340.14,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "195ml",
+            "sales": 5341.35,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "900g+900g",
+            "sales": 5363.57,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "220g",
+            "sales": 5394.55,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "1.88kg",
+            "sales": 5420.33,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "350g",
+            "sales": 5431.51,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "400ml+200ml",
+            "sales": 5453.78,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "20g",
+            "sales": 5490.45,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "32p",
+            "sales": 5493.70,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "99ml",
+            "sales": 5519.19,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "535ml",
+            "sales": 5560.58,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "206g*2",
+            "sales": 5561.45,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "245mm*30p",
+            "sales": 5619.28,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "500g+420g",
+            "sales": 5634.76,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "70p",
+            "sales": 5671.49,
+            "salesPer": 0.07
+        },
+        {
+            "productSpec": "5+1片",
+            "sales": 5702.35,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "380ml",
+            "sales": 5744.71,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "210g+120g",
+            "sales": 5779.61,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "480g",
+            "sales": 5790.22,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "290mm*25p",
+            "sales": 5794.73,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "CS8920",
+            "sales": 5816.15,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "2.5kg*3+8连包+80p",
+            "sales": 5820.58,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "40ml",
+            "sales": 5884.45,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "290mm*12p",
+            "sales": 5887.76,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "3kg*4+888g*4",
+            "sales": 5929.92,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "3L+400ml",
+            "sales": 5941.99,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "180mm*200mm*80片",
+            "sales": 5942.13,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "3+1p",
+            "sales": 5950.60,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "125g*3",
+            "sales": 6023.15,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "200g*3",
+            "sales": 6205.88,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "250ml",
+            "sales": 6267.14,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "120g+120ml+120g",
+            "sales": 6348.87,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "530ml",
+            "sales": 6365.49,
+            "salesPer": 0.08
+        },
+        {
+            "productSpec": "105g",
+            "sales": 6512.78,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "290mm*10p",
+            "sales": 6614.17,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "420mm*8p",
+            "sales": 6651.12,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "14片",
+            "sales": 6662.71,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "25cm*16p",
+            "sales": 6670.86,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "720ml",
+            "sales": 6685.27,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "290mm*8p",
+            "sales": 6696.60,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "295mm*9p",
+            "sales": 6709.07,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "3.5kg*2",
+            "sales": 6791.47,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "140ml",
+            "sales": 6823.05,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "138g",
+            "sales": 6827.30,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "80片",
+            "sales": 6835.63,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "290mm*16p",
+            "sales": 6847.39,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "12包",
+            "sales": 6883.92,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "250g",
+            "sales": 6900.81,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "25g",
+            "sales": 6920.45,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "940g",
+            "sales": 6948.56,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "30p",
+            "sales": 6969.81,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "300张*6包",
+            "sales": 6974.21,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "202g*4",
+            "sales": 6997.05,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "40p",
+            "sales": 6999.61,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "155g",
+            "sales": 7199.54,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "1.43kg",
+            "sales": 7205.44,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "108g",
+            "sales": 7205.73,
+            "salesPer": 0.09
+        },
+        {
+            "productSpec": "215g",
+            "sales": 7238.08,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "90抽*10提",
+            "sales": 7279.43,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "180g*2",
+            "sales": 7334.42,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "包",
+            "sales": 7347.20,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "2.2kg",
+            "sales": 7356.95,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "11片",
+            "sales": 7383.34,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "1800g",
+            "sales": 7404.33,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "100g*6",
+            "sales": 7428.15,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "245mm*9p",
+            "sales": 7431.60,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "250mm*10p",
+            "sales": 7492.71,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "2.38kg*4",
+            "sales": 7607.16,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "1kg+12g",
+            "sales": 7681.87,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "100g+100g",
+            "sales": 7724.00,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "2支装",
+            "sales": 7845.04,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "120g+120ml+100g",
+            "sales": 7878.42,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "80p*6包",
+            "sales": 7954.77,
+            "salesPer": 0.10
+        },
+        {
+            "productSpec": "130抽",
+            "sales": 7982.94,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "88抽*8包",
+            "sales": 7995.56,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "12p",
+            "sales": 8011.28,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "5P*XL",
+            "sales": 8049.66,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "75ml",
+            "sales": 8097.89,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "60p",
+            "sales": 8112.03,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "500g(J)",
+            "sales": 8198.91,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "90抽*12包",
+            "sales": 8245.74,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "240mm*10p",
+            "sales": 8277.20,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "650ml+330ml",
+            "sales": 8314.29,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "101g*4",
+            "sales": 8350.69,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "420mm",
+            "sales": 8397.97,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "130g",
+            "sales": 8402.15,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "245mm*10p",
+            "sales": 8444.37,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "120抽*10包",
+            "sales": 8469.91,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "5.018kg",
+            "sales": 8483.92,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "600g(J)",
+            "sales": 8565.38,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "8片",
+            "sales": 8578.79,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "1.28kg",
+            "sales": 8646.10,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "2.38kg+2.38kg",
+            "sales": 8669.57,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "2kg*2+1.7kg*3",
+            "sales": 8672.39,
+            "salesPer": 0.11
+        },
+        {
+            "productSpec": "2.38kg",
+            "sales": 8765.91,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "700g",
+            "sales": 8795.10,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "10P(J)",
+            "sales": 8866.42,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "500ml(J)",
+            "sales": 8960.84,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "240mm*8p",
+            "sales": 8993.28,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "170g+130g+75ml+4支+3",
+            "sales": 9027.43,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "1.45kg",
+            "sales": 9073.66,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "900ml",
+            "sales": 9074.94,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "120g*2",
+            "sales": 9264.92,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "1400张",
+            "sales": 9276.53,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "2片",
+            "sales": 9296.32,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "500g*3",
+            "sales": 9329.18,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "195g",
+            "sales": 9330.23,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "700ml",
+            "sales": 9462.63,
+            "salesPer": 0.12
+        },
+        {
+            "productSpec": "100抽*10包",
+            "sales": 9541.55,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "80p(J)",
+            "sales": 9593.30,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "200ml+60g",
+            "sales": 9618.30,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "5kg+100g",
+            "sales": 9689.56,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "360张*12包",
+            "sales": 9728.56,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "2.88kg",
+            "sales": 9952.17,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "2L*2+2.18kg*2",
+            "sales": 10046.32,
+            "salesPer": 0.13
+        },
+        {
+            "productSpec": "400g",
+            "sales": 10290.71,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "100抽*12包",
+            "sales": 10311.09,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "45g",
+            "sales": 10329.23,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "165g",
+            "sales": 10412.15,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "95g",
+            "sales": 10447.93,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "180ml",
+            "sales": 10461.37,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "245mm*20p",
+            "sales": 10506.64,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "145g",
+            "sales": 10544.58,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "40片",
+            "sales": 10606.12,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "200g*2",
+            "sales": 10635.23,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "440ml",
+            "sales": 10693.77,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "75g+75g",
+            "sales": 10720.16,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "800g",
+            "sales": 10844.72,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "205g",
+            "sales": 10926.80,
+            "salesPer": 0.14
+        },
+        {
+            "productSpec": "1.41kg",
+            "sales": 11083.73,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "20p",
+            "sales": 11096.10,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "600g+600g",
+            "sales": 11118.49,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "105g*4",
+            "sales": 11167.42,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "3.5g",
+            "sales": 11168.01,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "1.7kg",
+            "sales": 11225.47,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "6P",
+            "sales": 11393.74,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "2.7kg",
+            "sales": 11687.79,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "360g",
+            "sales": 11703.99,
+            "salesPer": 0.15
+        },
+        {
+            "productSpec": "120ml",
+            "sales": 11758.75,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "450g",
+            "sales": 11827.72,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "16P",
+            "sales": 11921.53,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "2.258kg",
+            "sales": 12167.54,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "290mm*18p",
+            "sales": 12244.75,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "1.1kg",
+            "sales": 12274.87,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "360ml",
+            "sales": 12509.59,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "320抽*2",
+            "sales": 12511.51,
+            "salesPer": 0.16
+        },
+        {
+            "productSpec": "1.18kg",
+            "sales": 12526.99,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "130抽*6包",
+            "sales": 12595.61,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "420ml",
+            "sales": 12807.96,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "10支",
+            "sales": 12875.05,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "1.18kg*6",
+            "sales": 12944.69,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "226g*2",
+            "sales": 13094.16,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "950g",
+            "sales": 13172.40,
+            "salesPer": 0.17
+        },
+        {
+            "productSpec": "120g(J)",
+            "sales": 13376.61,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "238g*2",
+            "sales": 13526.29,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "300g",
+            "sales": 13572.22,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "500g*2",
+            "sales": 13748.25,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "5P",
+            "sales": 13831.34,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "6包",
+            "sales": 13932.08,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "3.018kg",
+            "sales": 14028.17,
+            "salesPer": 0.18
+        },
+        {
+            "productSpec": "（180g＋20g）*2",
+            "sales": 14086.61,
+            "salesPer": 0.19
+        },
+        {
+            "productSpec": "500ml+500ml",
+            "sales": 14249.16,
+            "salesPer": 0.19
+        },
+        {
+            "productSpec": "70g",
+            "sales": 14386.77,
+            "salesPer": 0.19
+        },
+        {
+            "productSpec": "1.018L",
+            "sales": 14705.37,
+            "salesPer": 0.19
+        },
+        {
+            "productSpec": "850克",
+            "sales": 14758.03,
+            "salesPer": 0.19
+        },
+        {
+            "productSpec": "1700g",
+            "sales": 14830.12,
+            "salesPer": 0.20
+        },
+        {
+            "productSpec": "500g+175g+30g*2+1支",
+            "sales": 14845.59,
+            "salesPer": 0.20
+        },
+        {
+            "productSpec": "3.6kg+2kg",
+            "sales": 15349.19,
+            "salesPer": 0.20
+        },
+        {
+            "productSpec": "232g*2",
+            "sales": 15794.66,
+            "salesPer": 0.21
+        },
+        {
+            "productSpec": "230g",
+            "sales": 15831.49,
+            "salesPer": 0.21
+        },
+        {
+            "productSpec": "1.8kg*3提",
+            "sales": 15846.72,
+            "salesPer": 0.21
+        },
+        {
+            "productSpec": "90抽*10包",
+            "sales": 15870.10,
+            "salesPer": 0.21
+        },
+        {
+            "productSpec": "210g",
+            "sales": 15970.60,
+            "salesPer": 0.21
+        },
+        {
+            "productSpec": "600g",
+            "sales": 16295.26,
+            "salesPer": 0.21
+        },
+        {
+            "productSpec": "2.5kg*2",
+            "sales": 17228.37,
+            "salesPer": 0.23
+        },
+        {
+            "productSpec": "650g",
+            "sales": 17380.59,
+            "salesPer": 0.23
+        },
+        {
+            "productSpec": "450ml",
+            "sales": 17719.20,
+            "salesPer": 0.23
+        },
+        {
+            "productSpec": "264张*14包",
+            "sales": 17806.19,
+            "salesPer": 0.23
+        },
+        {
+            "productSpec": "600ml",
+            "sales": 18020.45,
+            "salesPer": 0.24
+        },
+        {
+            "productSpec": "40g",
+            "sales": 18099.84,
+            "salesPer": 0.24
+        },
+        {
+            "productSpec": "175g",
+            "sales": 18436.93,
+            "salesPer": 0.24
+        },
+        {
+            "productSpec": "4p",
+            "sales": 19045.94,
+            "salesPer": 0.25
+        },
+        {
+            "productSpec": "3.2kg",
+            "sales": 19384.01,
+            "salesPer": 0.26
+        },
+        {
+            "productSpec": "225g",
+            "sales": 19979.56,
+            "salesPer": 0.26
+        },
+        {
+            "productSpec": "170g",
+            "sales": 20413.90,
+            "salesPer": 0.27
+        },
+        {
+            "productSpec": "160g",
+            "sales": 20683.54,
+            "salesPer": 0.27
+        },
+        {
+            "productSpec": "420张*10",
+            "sales": 20787.86,
+            "salesPer": 0.27
+        },
+        {
+            "productSpec": "2kg*2",
+            "sales": 20841.21,
+            "salesPer": 0.27
+        },
+        {
+            "productSpec": "670g",
+            "sales": 21030.24,
+            "salesPer": 0.28
+        },
+        {
+            "productSpec": "2.6kg",
+            "sales": 21083.26,
+            "salesPer": 0.28
+        },
+        {
+            "productSpec": "150ml",
+            "sales": 21497.41,
+            "salesPer": 0.28
+        },
+        {
+            "productSpec": "2支",
+            "sales": 21677.56,
+            "salesPer": 0.29
+        },
+        {
+            "productSpec": "100g*4",
+            "sales": 21862.17,
+            "salesPer": 0.29
+        },
+        {
+            "productSpec": "80g",
+            "sales": 21898.70,
+            "salesPer": 0.29
+        },
+        {
+            "productSpec": "900g",
+            "sales": 22250.91,
+            "salesPer": 0.29
+        },
+        {
+            "productSpec": "190g",
+            "sales": 22280.84,
+            "salesPer": 0.29
+        },
+        {
+            "productSpec": "个",
+            "sales": 22387.81,
+            "salesPer": 0.30
+        },
+        {
+            "productSpec": "930g",
+            "sales": 22518.21,
+            "salesPer": 0.30
+        },
+        {
+            "productSpec": "2.8kg",
+            "sales": 23067.09,
+            "salesPer": 0.30
+        },
+        {
+            "productSpec": "115g",
+            "sales": 23515.62,
+            "salesPer": 0.31
+        },
+        {
+            "productSpec": "90g",
+            "sales": 23773.21,
+            "salesPer": 0.31
+        },
+        {
+            "productSpec": "202g*2",
+            "sales": 24598.86,
+            "salesPer": 0.32
+        },
+        {
+            "productSpec": "1.8kg+658g",
+            "sales": 24656.18,
+            "salesPer": 0.33
+        },
+        {
+            "productSpec": "18P",
+            "sales": 24743.27,
+            "salesPer": 0.33
+        },
+        {
+            "productSpec": "1.32kg",
+            "sales": 24918.60,
+            "salesPer": 0.33
+        },
+        {
+            "productSpec": "100g*3",
+            "sales": 27177.80,
+            "salesPer": 0.36
+        },
+        {
+            "productSpec": "2p",
+            "sales": 27783.68,
+            "salesPer": 0.37
+        },
+        {
+            "productSpec": "3.68kg",
+            "sales": 28315.62,
+            "salesPer": 0.37
+        },
+        {
+            "productSpec": "3P",
+            "sales": 28779.06,
+            "salesPer": 0.38
+        },
+        {
+            "productSpec": "20片",
+            "sales": 28779.20,
+            "salesPer": 0.38
+        },
+        {
+            "productSpec": "10片",
+            "sales": 30918.66,
+            "salesPer": 0.41
+        },
+        {
+            "productSpec": "125g",
+            "sales": 31544.55,
+            "salesPer": 0.42
+        },
+        {
+            "productSpec": "110g",
+            "sales": 31902.96,
+            "salesPer": 0.42
+        },
+        {
+            "productSpec": "300ml",
+            "sales": 32423.15,
+            "salesPer": 0.43
+        },
+        {
+            "productSpec": "4kg",
+            "sales": 32425.91,
+            "salesPer": 0.43
+        },
+        {
+            "productSpec": "1.208kg",
+            "sales": 32660.75,
+            "salesPer": 0.43
+        },
+        {
+            "productSpec": "930ml",
+            "sales": 32815.46,
+            "salesPer": 0.43
+        },
+        {
+            "productSpec": "500ml*2",
+            "sales": 34859.94,
+            "salesPer": 0.46
+        },
+        {
+            "productSpec": "4.5kg",
+            "sales": 37057.64,
+            "salesPer": 0.49
+        },
+        {
+            "productSpec": "1.3kg",
+            "sales": 37814.42,
+            "salesPer": 0.50
+        },
+        {
+            "productSpec": "30g",
+            "sales": 37956.82,
+            "salesPer": 0.50
+        },
+        {
+            "productSpec": "750g",
+            "sales": 42716.97,
+            "salesPer": 0.56
+        },
+        {
+            "productSpec": "190g*2",
+            "sales": 42920.68,
+            "salesPer": 0.57
+        },
+        {
+            "productSpec": "3000g",
+            "sales": 43296.55,
+            "salesPer": 0.57
+        },
+        {
+            "productSpec": "3kg*3",
+            "sales": 44936.26,
+            "salesPer": 0.59
+        },
+        {
+            "productSpec": "2.5kg",
+            "sales": 45684.99,
+            "salesPer": 0.60
+        },
+        {
+            "productSpec": "800ml",
+            "sales": 46426.92,
+            "salesPer": 0.61
+        },
+        {
+            "productSpec": "360张*6",
+            "sales": 46607.36,
+            "salesPer": 0.61
+        },
+        {
+            "productSpec": "140g",
+            "sales": 47830.15,
+            "salesPer": 0.63
+        },
+        {
+            "productSpec": "1L",
+            "sales": 48201.88,
+            "salesPer": 0.64
+        },
+        {
+            "productSpec": "500g",
+            "sales": 48861.07,
+            "salesPer": 0.64
+        },
+        {
+            "productSpec": "8p",
+            "sales": 49552.01,
+            "salesPer": 0.65
+        },
+        {
+            "productSpec": "1.8kg",
+            "sales": 50120.24,
+            "salesPer": 0.66
+        },
+        {
+            "productSpec": "支",
+            "sales": 52169.48,
+            "salesPer": 0.69
+        },
+        {
+            "productSpec": "无规格",
+            "sales": 58948.07,
+            "salesPer": 0.78
+        },
+        {
+            "productSpec": "750ml",
+            "sales": 60800.78,
+            "salesPer": 0.80
+        },
+        {
+            "productSpec": "1.5kg",
+            "sales": 63181.77,
+            "salesPer": 0.83
+        },
+        {
+            "productSpec": "400ml",
+            "sales": 63946.67,
+            "salesPer": 0.84
+        },
+        {
+            "productSpec": "套",
+            "sales": 65082.89,
+            "salesPer": 0.86
+        },
+        {
+            "productSpec": "150g",
+            "sales": 67254.74,
+            "salesPer": 0.89
+        },
+        {
+            "productSpec": "60g",
+            "sales": 68431.79,
+            "salesPer": 0.90
+        },
+        {
+            "productSpec": "1*1",
+            "sales": 69108.45,
+            "salesPer": 0.91
+        },
+        {
+            "productSpec": "200g",
+            "sales": 70908.09,
+            "salesPer": 0.93
+        },
+        {
+            "productSpec": "200ml",
+            "sales": 71205.04,
+            "salesPer": 0.94
+        },
+        {
+            "productSpec": "80p",
+            "sales": 73781.28,
+            "salesPer": 0.97
+        },
+        {
+            "productSpec": "10p",
+            "sales": 82492.21,
+            "salesPer": 1.09
+        },
+        {
+            "productSpec": "180g",
+            "sales": 83185.98,
+            "salesPer": 1.10
+        },
+        {
+            "productSpec": "100ml",
+            "sales": 85098.48,
+            "salesPer": 1.12
+        },
+        {
+            "productSpec": "3kg",
+            "sales": 91031.08,
+            "salesPer": 1.20
+        },
+        {
+            "productSpec": "120g",
+            "sales": 94387.64,
+            "salesPer": 1.24
+        },
+        {
+            "productSpec": "3.5kg",
+            "sales": 100183.64,
+            "salesPer": 1.32
+        },
+        {
+            "productSpec": "500ml",
+            "sales": 101299.92,
+            "salesPer": 1.34
+        },
+        {
+            "productSpec": "2kg",
+            "sales": 105909.51,
+            "salesPer": 1.40
+        },
+        {
+            "productSpec": "100ml+120ml+30ml+50g",
+            "sales": 108597.63,
+            "salesPer": 1.43
+        },
+        {
+            "productSpec": "72抽*6",
+            "sales": 111054.98,
+            "salesPer": 1.46
+        },
+        {
+            "productSpec": "500ml*3",
+            "sales": 122873.98,
+            "salesPer": 1.62
+        },
+        {
+            "productSpec": "1KG",
+            "sales": 145377.97,
+            "salesPer": 1.92
+        },
+        {
+            "productSpec": "100g",
+            "sales": 147012.45,
+            "salesPer": 1.94
+        },
+        {
+            "productSpec": "50g",
+            "sales": 161022.00,
+            "salesPer": 2.12
+        },
+        {
+            "productSpec": "4.75kg",
+            "sales": 192579.01,
+            "salesPer": 2.54
+        },
+        {
+            "productSpec": "4.8kg",
+            "sales": 238798.90,
+            "salesPer": 3.15
+        },
+        {
+            "productSpec": "5kg",
+            "sales": 320488.28,
+            "salesPer": 4.23
+        }
+    ],
+    "timestamp": 1776308369817
+}

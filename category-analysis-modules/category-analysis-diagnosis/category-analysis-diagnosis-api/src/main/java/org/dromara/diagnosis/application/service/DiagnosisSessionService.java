@@ -63,8 +63,12 @@ public class DiagnosisSessionService {
     public DiagnosisSessionCreateResponse createSession(DiagnosisSessionCreateRequest request) {
         String queryHash = queryHashService.buildQueryHash(request);
         DiagnosisOverviewSnapshotRow overview = snapshotMapper.selectLatestOverviewByQuery(TENANT_ID, queryHash);
-
         DiagnosisSessionCacheModel existing = sessionCacheStore.getByQueryHash(queryHash);
+        if (existing != null && hasText(existing.getSessionId()) && overview != null) {
+            existing.setDataVersion(overview.getDataVersion());
+            sessionCacheStore.save(existing.getSessionId(), existing, sessionTtl());
+            return buildReadyResponse(existing, overview.getDataVersion(), "REUSED_READY_SESSION");
+        }
         if (overview == null && existing != null && hasText(existing.getSessionId()) && existing.getJobId() != null) {
             return buildResponseFromExistingSession(existing);
         }
@@ -112,20 +116,21 @@ public class DiagnosisSessionService {
         cacheModel.setDataVersion(overview == null ? null : overview.getDataVersion());
         cacheModel.setJobId(triggeredJobId);
         sessionCacheStore.save(sessionId, cacheModel, sessionTtl());
+        if (overview != null) {
+            return buildReadyResponse(cacheModel, overview.getDataVersion(), source);
+        }
 
         DiagnosisSessionCreateResponse response = new DiagnosisSessionCreateResponse();
         response.setSessionId(sessionId);
         response.setQueryHash(queryHash);
-        response.setDataVersion(overview == null ? null : overview.getDataVersion());
-        response.setCacheHit(overview != null);
-        response.setReady(overview != null);
+        response.setDataVersion(null);
+        response.setCacheHit(Boolean.FALSE);
+        response.setReady(Boolean.FALSE);
         response.setTriggeredJobId(triggeredJobId);
-        response.setStatus(overview != null ? "SUCCESS" : (triggeredJob == null ? "PENDING" : triggeredJob.getStatus()));
-        response.setOrchestratorStatus(overview != null
-            ? "SUCCESS"
-            : (triggeredJob == null ? "PENDING" : (hasText(triggeredJob.getOrchestratorStatus())
-                ? triggeredJob.getOrchestratorStatus()
-                : triggeredJob.getStatus())));
+        response.setStatus(triggeredJob == null ? "PENDING" : triggeredJob.getStatus());
+        response.setOrchestratorStatus(triggeredJob == null ? "PENDING" : (hasText(triggeredJob.getOrchestratorStatus())
+            ? triggeredJob.getOrchestratorStatus()
+            : triggeredJob.getStatus()));
         response.setSource(source);
         return response;
     }
@@ -149,6 +154,22 @@ public class DiagnosisSessionService {
             response.setStatus("RUNNING");
             response.setOrchestratorStatus("RUNNING");
         }
+        return response;
+    }
+
+    private DiagnosisSessionCreateResponse buildReadyResponse(DiagnosisSessionCacheModel session,
+                                                              String dataVersion,
+                                                              String source) {
+        DiagnosisSessionCreateResponse response = new DiagnosisSessionCreateResponse();
+        response.setSessionId(session.getSessionId());
+        response.setQueryHash(session.getQueryHash());
+        response.setDataVersion(dataVersion);
+        response.setCacheHit(Boolean.TRUE);
+        response.setReady(Boolean.TRUE);
+        response.setTriggeredJobId(session.getJobId());
+        response.setStatus("SUCCESS");
+        response.setOrchestratorStatus("SUCCESS");
+        response.setSource(source);
         return response;
     }
 

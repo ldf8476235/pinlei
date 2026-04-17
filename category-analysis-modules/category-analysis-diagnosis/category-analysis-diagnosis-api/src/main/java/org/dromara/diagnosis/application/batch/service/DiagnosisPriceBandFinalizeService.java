@@ -36,6 +36,10 @@ public class DiagnosisPriceBandFinalizeService {
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final BigDecimal MIN_BAND_WIDTH = new BigDecimal("0.01");
     private static final int DEFAULT_BAND_COUNT = 10;
+    private static final int RANGE_INSERT_BATCH_SIZE = 50;
+    private static final int LINE_INSERT_BATCH_SIZE = 100;
+    private static final int POINT_INSERT_BATCH_SIZE = 100;
+    private static final int SKU_INSERT_BATCH_SIZE = 30;
 
     private final DiagnosisBatchSourceMapper batchSourceMapper;
     private final DiagnosisPriceBandConfigMapper priceBandConfigMapper;
@@ -76,16 +80,16 @@ public class DiagnosisPriceBandFinalizeService {
         List<DiagnosisPriceBandSkuRow> skuRows = buildSkuRows(context, products, totalSales, totalGross);
 
         if (!rangeRows.isEmpty()) {
-            priceBandMapper.batchInsertRange(rangeRows);
+            batchInsertRangeRows(rangeRows);
         }
         if (!lineRows.isEmpty()) {
-            priceBandMapper.batchInsertLine(lineRows);
+            batchInsertLineRows(lineRows);
         }
         if (!pointRows.isEmpty()) {
-            priceBandMapper.batchInsertPoint(pointRows);
+            batchInsertPointRows(pointRows);
         }
         if (!skuRows.isEmpty()) {
-            priceBandMapper.batchInsertSku(skuRows);
+            batchInsertSkuRows(skuRows);
         }
 
         return DiagnosisPriceBandFinalizeResult.builder()
@@ -94,6 +98,34 @@ public class DiagnosisPriceBandFinalizeService {
             .pointRows((long) pointRows.size())
             .skuRows((long) skuRows.size())
             .build();
+    }
+
+    private void batchInsertRangeRows(List<DiagnosisPriceBandRangeRow> rows) {
+        for (int start = 0; start < rows.size(); start += RANGE_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + RANGE_INSERT_BATCH_SIZE, rows.size());
+            priceBandMapper.batchInsertRange(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertLineRows(List<DiagnosisPriceBandLineRow> rows) {
+        for (int start = 0; start < rows.size(); start += LINE_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + LINE_INSERT_BATCH_SIZE, rows.size());
+            priceBandMapper.batchInsertLine(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertPointRows(List<DiagnosisPriceBandPointRow> rows) {
+        for (int start = 0; start < rows.size(); start += POINT_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + POINT_INSERT_BATCH_SIZE, rows.size());
+            priceBandMapper.batchInsertPoint(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertSkuRows(List<DiagnosisPriceBandSkuRow> rows) {
+        for (int start = 0; start < rows.size(); start += SKU_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + SKU_INSERT_BATCH_SIZE, rows.size());
+            priceBandMapper.batchInsertSku(rows.subList(start, end));
+        }
     }
 
     private DiagnosisPriceBandFinalizeResult emptyResult() {

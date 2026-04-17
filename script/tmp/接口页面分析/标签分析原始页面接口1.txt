@@ -1,0 +1,4512 @@
+请求地址：/api/classDoctorTag/queryTagType
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "tagType": "001",
+            "tagTypeName": "原料",
+            "tagList": [
+                {
+                    "tagNo": " 控油配方 ",
+                    "tagName": " 控油配方 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "3D炫彩技术",
+                    "tagName": "3D炫彩技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "3X消臭技术",
+                    "tagName": "3X消臭技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "3X除菌技术",
+                    "tagName": "3X除菌技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "7天抑菌技术",
+                    "tagName": "7天抑菌技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "APG配方",
+                    "tagName": "APG配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "PRO-V",
+                    "tagName": "PRO-V",
+                    "sales": null
+                },
+                {
+                    "tagNo": "PRO-V乳液",
+                    "tagName": "PRO-V乳液",
+                    "sales": null
+                },
+                {
+                    "tagNo": "PRO-V修护技术",
+                    "tagName": "PRO-V修护技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "SPA水疗成分",
+                    "tagName": "SPA水疗成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "supnice技术",
+                    "tagName": "supnice技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "三合一配方",
+                    "tagName": "三合一配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "三联装",
+                    "tagName": "三联装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "三腔复合配方",
+                    "tagName": "三腔复合配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "三重配方",
+                    "tagName": "三重配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "专业配方",
+                    "tagName": "专业配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "专研配方",
+                    "tagName": "专研配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝毛净技术",
+                    "tagName": "丝毛净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝蛋白",
+                    "tagName": "丝蛋白",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝质精华",
+                    "tagName": "丝质精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "两联装",
+                    "tagName": "两联装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈配方",
+                    "tagName": "丰盈配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乙醇消毒成分",
+                    "tagName": "乙醇消毒成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乳液",
+                    "tagName": "乳液",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乳清蛋白",
+                    "tagName": "乳清蛋白",
+                    "sales": null
+                },
+                {
+                    "tagNo": "二合一配方",
+                    "tagName": "二合一配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "二硫化硒",
+                    "tagName": "二硫化硒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "云感泡沫技术",
+                    "tagName": "云感泡沫技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亮洁成分",
+                    "tagName": "亮洁成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亮白配方",
+                    "tagName": "亮白配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亲护配方",
+                    "tagName": "亲护配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亲肤配方",
+                    "tagName": "亲肤配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "人参",
+                    "tagName": "人参",
+                    "sales": null
+                },
+                {
+                    "tagNo": "优护配方",
+                    "tagName": "优护配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "低敏配方",
+                    "tagName": "低敏配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "低泡配方",
+                    "tagName": "低泡配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "便携装技术",
+                    "tagName": "便携装技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护成分",
+                    "tagName": "修护成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "倍润配方",
+                    "tagName": "倍润配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "健康泡泡",
+                    "tagName": "健康泡泡",
+                    "sales": null
+                },
+                {
+                    "tagNo": "光泽成分",
+                    "tagName": "光泽成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "光耀莹润技术",
+                    "tagName": "光耀莹润技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "免水洗喷渍技术",
+                    "tagName": "免水洗喷渍技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "全效复合酶",
+                    "tagName": "全效复合酶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "全效配方",
+                    "tagName": "全效配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "全效馨香配方",
+                    "tagName": "全效馨香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "兰花提取物",
+                    "tagName": "兰花提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养根配方",
+                    "tagName": "养根配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "内衣专用",
+                    "tagName": "内衣专用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "冰爽因子",
+                    "tagName": "冰爽因子",
+                    "sales": null
+                },
+                {
+                    "tagNo": "冷水速洁技术",
+                    "tagName": "冷水速洁技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净屑配方",
+                    "tagName": "净屑配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净澈配方",
+                    "tagName": "净澈配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净白配方",
+                    "tagName": "净白配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净蓝配方",
+                    "tagName": "净蓝配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "凝萃配方",
+                    "tagName": "凝萃配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "加强配方",
+                    "tagName": "加强配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "加酶配方",
+                    "tagName": "加酶配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "升级配方",
+                    "tagName": "升级配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "卫诺消毒技术",
+                    "tagName": "卫诺消毒技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "原生态配方",
+                    "tagName": "原生态配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑配方",
+                    "tagName": "去屑配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去油配方",
+                    "tagName": "去油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去渍复合酶",
+                    "tagName": "去渍复合酶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去渍配方",
+                    "tagName": "去渍配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "发芯强化",
+                    "tagName": "发芯强化",
+                    "sales": null
+                },
+                {
+                    "tagNo": "古龙香氛",
+                    "tagName": "古龙香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "四块装",
+                    "tagName": "四块装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "基础配方",
+                    "tagName": "基础配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "增白配方",
+                    "tagName": "增白配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "墨藻提取物",
+                    "tagName": "墨藻提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "墨藻精华",
+                    "tagName": "墨藻精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "复合抑菌成分",
+                    "tagName": "复合抑菌成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "复合配方",
+                    "tagName": "复合配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "复合酶制剂",
+                    "tagName": "复合酶制剂",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多巴胺旋风技术",
+                    "tagName": "多巴胺旋风技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效修复配方",
+                    "tagName": "多效修复配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效水润成分",
+                    "tagName": "多效水润成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效配方",
+                    "tagName": "多效配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效除螨配方",
+                    "tagName": "多效除螨配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多用途消毒配方",
+                    "tagName": "多用途消毒配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "大公鸡清洁套装",
+                    "tagName": "大公鸡清洁套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "大公鸡皂液配方",
+                    "tagName": "大公鸡皂液配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "大师香氛柔顺剂",
+                    "tagName": "大师香氛柔顺剂",
+                    "sales": null
+                },
+                {
+                    "tagNo": "大师香氛配方",
+                    "tagName": "大师香氛配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然植物成分",
+                    "tagName": "天然植物成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然植物配方",
+                    "tagName": "天然植物配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然熏香配方",
+                    "tagName": "天然熏香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然皂基",
+                    "tagName": "天然皂基",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然配方",
+                    "tagName": "天然配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然酵素配方",
+                    "tagName": "天然酵素配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然除菌配方",
+                    "tagName": "天然除菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然香氛精油",
+                    "tagName": "天然香氛精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "头皮净化",
+                    "tagName": "头皮净化",
+                    "sales": null
+                },
+                {
+                    "tagNo": "奇幻精油",
+                    "tagName": "奇幻精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "奇迹臻养技术",
+                    "tagName": "奇迹臻养技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女士专用",
+                    "tagName": "女士专用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女神节专享配方",
+                    "tagName": "女神节专享配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女神节呵护套装",
+                    "tagName": "女神节呵护套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女神节清洁套装",
+                    "tagName": "女神节清洁套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女神节超值套装",
+                    "tagName": "女神节超值套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "姜汁精华",
+                    "tagName": "姜汁精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "威洁士技术",
+                    "tagName": "威洁士技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "威煌配方",
+                    "tagName": "威煌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "婴幼儿专用",
+                    "tagName": "婴幼儿专用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "安护配方",
+                    "tagName": "安护配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "宝宝专用配方",
+                    "tagName": "宝宝专用配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "密集滋养配方",
+                    "tagName": "密集滋养配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小苍兰促销装",
+                    "tagName": "小苍兰促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小苍兰配方",
+                    "tagName": "小苍兰配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小苍兰香氛",
+                    "tagName": "小苍兰香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小苏打配方",
+                    "tagName": "小苏打配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小雏菊香氛",
+                    "tagName": "小雏菊香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "尿布专用",
+                    "tagName": "尿布专用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山姜配方",
+                    "tagName": "山姜配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山竹精华",
+                    "tagName": "山竹精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山羊奶精华",
+                    "tagName": "山羊奶精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山茶花精华",
+                    "tagName": "山茶花精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山茶花香氛",
+                    "tagName": "山茶花香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "带出液口设计",
+                    "tagName": "带出液口设计",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强效去渍酶",
+                    "tagName": "强效去渍酶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强效配方",
+                    "tagName": "强效配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧配方",
+                    "tagName": "强韧配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "彩漂技术",
+                    "tagName": "彩漂技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "彩衣漂净技术",
+                    "tagName": "彩衣漂净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "征服配方",
+                    "tagName": "征服配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "御品海洋精华",
+                    "tagName": "御品海洋精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "微米净澈成分",
+                    "tagName": "微米净澈成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "微米净透技术",
+                    "tagName": "微米净透技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "快洗技术",
+                    "tagName": "快洗技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "怡神薰衣草促销装",
+                    "tagName": "怡神薰衣草促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "怡神薰衣草配方",
+                    "tagName": "怡神薰衣草配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "扁桃油",
+                    "tagName": "扁桃油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "手洗配方",
+                    "tagName": "手洗配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "抑菌配方",
+                    "tagName": "抑菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "抗菌配方",
+                    "tagName": "抗菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "护头皮配方",
+                    "tagName": "护头皮配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "护色因子",
+                    "tagName": "护色因子",
+                    "sales": null
+                },
+                {
+                    "tagNo": "护色防串色技术",
+                    "tagName": "护色防串色技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "护衣留香珠技术",
+                    "tagName": "护衣留香珠技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "排浊配方",
+                    "tagName": "排浊配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油成分",
+                    "tagName": "控油成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油配方",
+                    "tagName": "控油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "摩擦生香技术",
+                    "tagName": "摩擦生香技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "敏感护理",
+                    "tagName": "敏感护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "新年超值礼包",
+                    "tagName": "新年超值礼包",
+                    "sales": null
+                },
+                {
+                    "tagNo": "旅行套装",
+                    "tagName": "旅行套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无患子提取物",
+                    "tagName": "无患子提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无患子精华",
+                    "tagName": "无患子精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无硅油配方",
+                    "tagName": "无硅油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无硫酸盐配方",
+                    "tagName": "无硫酸盐配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无磷配方",
+                    "tagName": "无磷配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "日本抑菌科技",
+                    "tagName": "日本抑菌科技",
+                    "sales": null
+                },
+                {
+                    "tagNo": "时尚优家套装",
+                    "tagName": "时尚优家套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "普罗旺斯香氛",
+                    "tagName": "普罗旺斯香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "智净护衣套装",
+                    "tagName": "智净护衣套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "智能洁净因子",
+                    "tagName": "智能洁净因子",
+                    "sales": null
+                },
+                {
+                    "tagNo": "有氧洁净技术",
+                    "tagName": "有氧洁净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "有氧配方",
+                    "tagName": "有氧配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "本草",
+                    "tagName": "本草",
+                    "sales": null
+                },
+                {
+                    "tagNo": "机洗配方",
+                    "tagName": "机洗配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "杀菌留香珠",
+                    "tagName": "杀菌留香珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "果油配方",
+                    "tagName": "果油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔光滋养精华",
+                    "tagName": "柔光滋养精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔净配方",
+                    "tagName": "柔净配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔护配方",
+                    "tagName": "柔护配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺剂换购码",
+                    "tagName": "柔顺剂换购码",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺因子",
+                    "tagName": "柔顺因子",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺成分",
+                    "tagName": "柔顺成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺护理技术",
+                    "tagName": "柔顺护理技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柠檬配方",
+                    "tagName": "柠檬配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柠檬除菌配方",
+                    "tagName": "柠檬除菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "栀子花香",
+                    "tagName": "栀子花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "校服净技术",
+                    "tagName": "校服净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "桂花留香珠",
+                    "tagName": "桂花留香珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植沐悦色护理液",
+                    "tagName": "植沐悦色护理液",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植润配方",
+                    "tagName": "植润配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物亲肤配方",
+                    "tagName": "植物亲肤配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物基配方",
+                    "tagName": "植物基配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物精华",
+                    "tagName": "植物精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物配方",
+                    "tagName": "植物配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物酵素配方",
+                    "tagName": "植物酵素配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物除菌配方",
+                    "tagName": "植物除菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植翠喷雾技术",
+                    "tagName": "植翠喷雾技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植萃成分",
+                    "tagName": "植萃成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植萃配方",
+                    "tagName": "植萃配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "椰油皂促销装",
+                    "tagName": "椰油皂促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "椰油精华",
+                    "tagName": "椰油精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "椰油配方",
+                    "tagName": "椰油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "樱花提取物",
+                    "tagName": "樱花提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "樱香精华",
+                    "tagName": "樱香精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "樱香配方",
+                    "tagName": "樱香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "橄榄油",
+                    "tagName": "橄榄油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒成分",
+                    "tagName": "止痒成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "母婴酵素配方",
+                    "tagName": "母婴酵素配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "毛呢干洗剂",
+                    "tagName": "毛呢干洗剂",
+                    "sales": null
+                },
+                {
+                    "tagNo": "氨基酸配方",
+                    "tagName": "氨基酸配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水光弹润技术",
+                    "tagName": "水光弹润技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水凝精华",
+                    "tagName": "水凝精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水晶配方",
+                    "tagName": "水晶配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水果精华",
+                    "tagName": "水果精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润精华",
+                    "tagName": "水润精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "汉草精华",
+                    "tagName": "汉草精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "沁润水养技术",
+                    "tagName": "沁润水养技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "沁润配方",
+                    "tagName": "沁润配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "泡沫技术",
+                    "tagName": "泡沫技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "泡泡配方",
+                    "tagName": "泡泡配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洁净配方",
+                    "tagName": "洁净配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洁多芬香氛",
+                    "tagName": "洁多芬香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洁雅百合香氛",
+                    "tagName": "洁雅百合香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洋甘菊配方",
+                    "tagName": "洋甘菊配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗护套装",
+                    "tagName": "洗护套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗护沐套装",
+                    "tagName": "洗护沐套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗白白配方",
+                    "tagName": "洗白白配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗衣防染巾",
+                    "tagName": "洗衣防染巾",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗香香配方",
+                    "tagName": "洗香香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活力配方",
+                    "tagName": "活力配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活性炭",
+                    "tagName": "活性炭",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活氧成分",
+                    "tagName": "活氧成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活炭成分",
+                    "tagName": "活炭成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活花水凝",
+                    "tagName": "活花水凝",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浓缩护色技术",
+                    "tagName": "浓缩护色技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浓缩精华",
+                    "tagName": "浓缩精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浓缩配方",
+                    "tagName": "浓缩配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浓缩香氛配方",
+                    "tagName": "浓缩香氛配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浪漫玫瑰配方",
+                    "tagName": "浪漫玫瑰配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "海洋矿物质",
+                    "tagName": "海洋矿物质",
+                    "sales": null
+                },
+                {
+                    "tagNo": "海洋精华配方",
+                    "tagName": "海洋精华配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "消毒配方",
+                    "tagName": "消毒配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "消臭除菌技术",
+                    "tagName": "消臭除菌技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "润护配方",
+                    "tagName": "润护配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淘米水成分",
+                    "tagName": "淘米水成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡雅樱花配方",
+                    "tagName": "淡雅樱花配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡雅熏香技术",
+                    "tagName": "淡雅熏香技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深层洁净技术",
+                    "tagName": "深层洁净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深度除菌配方",
+                    "tagName": "深度除菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深海配方",
+                    "tagName": "深海配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深透净爽成分",
+                    "tagName": "深透净爽成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新柔顺促销装",
+                    "tagName": "清新柔顺促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新柔顺配方",
+                    "tagName": "清新柔顺配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新柠檬配方",
+                    "tagName": "清新柠檬配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新消毒配方",
+                    "tagName": "清新消毒配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清柚玫瑰补充装",
+                    "tagName": "清柚玫瑰补充装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清洁套装",
+                    "tagName": "清洁套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清润成分",
+                    "tagName": "清润成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽成分",
+                    "tagName": "清爽成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清莲馨香配方",
+                    "tagName": "清莲馨香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温和配方",
+                    "tagName": "温和配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温润配方",
+                    "tagName": "温润配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养成分",
+                    "tagName": "滋养成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "漂白技术",
+                    "tagName": "漂白技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "烫染修护",
+                    "tagName": "烫染修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "热情配方",
+                    "tagName": "热情配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "焕新护衣留香珠",
+                    "tagName": "焕新护衣留香珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "熏香组合配方",
+                    "tagName": "熏香组合配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "熏香配方",
+                    "tagName": "熏香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "爆炸盐配方",
+                    "tagName": "爆炸盐配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "牛奶精华",
+                    "tagName": "牛奶精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玉铃兰柔顺配方",
+                    "tagName": "玉铃兰柔顺配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玫瑰果提取物",
+                    "tagName": "玫瑰果提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玫瑰留香技术",
+                    "tagName": "玫瑰留香技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玫瑰精油",
+                    "tagName": "玫瑰精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "环保浓缩配方",
+                    "tagName": "环保浓缩配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玻尿酸配方",
+                    "tagName": "玻尿酸配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "珍珠精华",
+                    "tagName": "珍珠精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "甜橙精油",
+                    "tagName": "甜橙精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "甜睡配方",
+                    "tagName": "甜睡配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "生姜提取物",
+                    "tagName": "生姜提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "生物酶配方",
+                    "tagName": "生物酶配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "生物酶香氛",
+                    "tagName": "生物酶香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "男士专用配方",
+                    "tagName": "男士专用配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "留香柔顺技术",
+                    "tagName": "留香柔顺技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "白衣漂净技术",
+                    "tagName": "白衣漂净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "百合花香氛",
+                    "tagName": "百合花香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "皂角提取物",
+                    "tagName": "皂角提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "真丝羊绒护理液",
+                    "tagName": "真丝羊绒护理液",
+                    "sales": null
+                },
+                {
+                    "tagNo": "石榴提取物",
+                    "tagName": "石榴提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "竹炭配方",
+                    "tagName": "竹炭配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "米萃配方",
+                    "tagName": "米萃配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "粉漾玫瑰香氛",
+                    "tagName": "粉漾玫瑰香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "粉色金典配方",
+                    "tagName": "粉色金典配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "精华",
+                    "tagName": "精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "精油成分",
+                    "tagName": "精油成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "精油配方",
+                    "tagName": "精油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "精油香氛配方",
+                    "tagName": "精油香氛配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "红玫瑰留香珠",
+                    "tagName": "红玫瑰留香珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "红石榴香氛",
+                    "tagName": "红石榴香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "红藻提取物",
+                    "tagName": "红藻提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "纯净温和配方",
+                    "tagName": "纯净温和配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "纺优美洗衣珠",
+                    "tagName": "纺优美洗衣珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "纺优美留香珠",
+                    "tagName": "纺优美留香珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "经典薰衣草促销装",
+                    "tagName": "经典薰衣草促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "经典薰衣草配方",
+                    "tagName": "经典薰衣草配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "维多利亚玫瑰香氛",
+                    "tagName": "维多利亚玫瑰香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "绿茶提取物",
+                    "tagName": "绿茶提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "绿藻提取物",
+                    "tagName": "绿藻提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "缤纷落樱配方",
+                    "tagName": "缤纷落樱配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "羊绒羊毛专用配方",
+                    "tagName": "羊绒羊毛专用配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "羊绒脂成分",
+                    "tagName": "羊绒脂成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "羽绒服专用配方",
+                    "tagName": "羽绒服专用配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "羽绒服干洗技术",
+                    "tagName": "羽绒服干洗技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "羽绒服泡沫技术",
+                    "tagName": "羽绒服泡沫技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "自然配方",
+                    "tagName": "自然配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "臻养成分",
+                    "tagName": "臻养成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒润配方",
+                    "tagName": "舒润配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒爽成分",
+                    "tagName": "舒爽成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒缓配方",
+                    "tagName": "舒缓配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "色渍净技术",
+                    "tagName": "色渍净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "芦荟精华",
+                    "tagName": "芦荟精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "花卉提取物",
+                    "tagName": "花卉提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "花漾栀子香氛",
+                    "tagName": "花漾栀子香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "花香除菌配方",
+                    "tagName": "花香除菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茉莉清香配方",
+                    "tagName": "茉莉清香配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶树精油",
+                    "tagName": "茶树精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶树精油配方",
+                    "tagName": "茶树精油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶籽精华",
+                    "tagName": "茶籽精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶萃提取物",
+                    "tagName": "茶萃提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶麸成分",
+                    "tagName": "茶麸成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "草本配方",
+                    "tagName": "草本配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "草莓精华",
+                    "tagName": "草莓精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "药皂配方",
+                    "tagName": "药皂配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "菁萃精华",
+                    "tagName": "菁萃精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "营养配方",
+                    "tagName": "营养配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "葡萄籽提取物",
+                    "tagName": "葡萄籽提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓝风铃香氛",
+                    "tagName": "蓝风铃香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓬松配方",
+                    "tagName": "蓬松配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓬湃配方",
+                    "tagName": "蓬湃配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蔷薇花香氛",
+                    "tagName": "蔷薇花香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薄荷成分",
+                    "tagName": "薄荷成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草",
+                    "tagName": "薰衣草",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草促销装",
+                    "tagName": "薰衣草促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草柔顺促销装",
+                    "tagName": "薰衣草柔顺促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草柔顺配方",
+                    "tagName": "薰衣草柔顺配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草精油",
+                    "tagName": "薰衣草精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "藏红花精华",
+                    "tagName": "藏红花精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蚕丝",
+                    "tagName": "蚕丝",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蛇胆精华",
+                    "tagName": "蛇胆精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蛋白",
+                    "tagName": "蛋白",
+                    "sales": null
+                },
+                {
+                    "tagNo": "衣物护理剂",
+                    "tagName": "衣物护理剂",
+                    "sales": null
+                },
+                {
+                    "tagNo": "衣物柔顺技术",
+                    "tagName": "衣物柔顺技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "衣物除异味喷雾",
+                    "tagName": "衣物除异味喷雾",
+                    "sales": null
+                },
+                {
+                    "tagNo": "衣领净技术",
+                    "tagName": "衣领净技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "补水因子",
+                    "tagName": "补水因子",
+                    "sales": null
+                },
+                {
+                    "tagNo": "表面活性剂、酶",
+                    "tagName": "表面活性剂、酶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "表面活性剂、除菌因子",
+                    "tagName": "表面活性剂、除菌因子",
+                    "sales": null
+                },
+                {
+                    "tagNo": "衬衫专用",
+                    "tagName": "衬衫专用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "裸感配方",
+                    "tagName": "裸感配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "质感垂坠成分",
+                    "tagName": "质感垂坠成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "贴身专用",
+                    "tagName": "贴身专用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超值套装",
+                    "tagName": "超值套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超效配方",
+                    "tagName": "超效配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超洁配方",
+                    "tagName": "超洁配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "轻盈配方",
+                    "tagName": "轻盈配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "运动型配方",
+                    "tagName": "运动型配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "运动配方",
+                    "tagName": "运动配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "透明质酸",
+                    "tagName": "透明质酸",
+                    "sales": null
+                },
+                {
+                    "tagNo": "透明配方",
+                    "tagName": "透明配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "速干面料专用技术",
+                    "tagName": "速干面料专用技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "郁金香精华",
+                    "tagName": "郁金香精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "酵素配方",
+                    "tagName": "酵素配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "酶制剂",
+                    "tagName": "酶制剂",
+                    "sales": null
+                },
+                {
+                    "tagNo": "金纯精油",
+                    "tagName": "金纯精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "铃兰香氛",
+                    "tagName": "铃兰香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "银杏提取物",
+                    "tagName": "银杏提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防串色柔顺技术",
+                    "tagName": "防串色柔顺技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防断配方",
+                    "tagName": "防断配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防染吸色片",
+                    "tagName": "防染吸色片",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防脱配方",
+                    "tagName": "防脱配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "除味除菌喷雾",
+                    "tagName": "除味除菌喷雾",
+                    "sales": null
+                },
+                {
+                    "tagNo": "除菌去味技术",
+                    "tagName": "除菌去味技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "除菌成分",
+                    "tagName": "除菌成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "除菌柔顺二合一",
+                    "tagName": "除菌柔顺二合一",
+                    "sales": null
+                },
+                {
+                    "tagNo": "除菌除螨配方",
+                    "tagName": "除菌除螨配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "除螨配方",
+                    "tagName": "除螨配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "雅致抗菌配方",
+                    "tagName": "雅致抗菌配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "霍霍巴油",
+                    "tagName": "霍霍巴油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "青柚玫瑰香氛",
+                    "tagName": "青柚玫瑰香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "青柠消毒配方",
+                    "tagName": "青柠消毒配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "青花椒提取物",
+                    "tagName": "青花椒提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "顺柔配方",
+                    "tagName": "顺柔配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "预涂技术配方",
+                    "tagName": "预涂技术配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "风清配方",
+                    "tagName": "风清配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "风铃熏衣香氛",
+                    "tagName": "风铃熏衣香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "首乌",
+                    "tagName": "首乌",
+                    "sales": null
+                },
+                {
+                    "tagNo": "首乌精华",
+                    "tagName": "首乌精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香乳配方",
+                    "tagName": "香乳配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛喷雾技术",
+                    "tagName": "香氛喷雾技术",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛套装",
+                    "tagName": "香氛套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛微胶囊",
+                    "tagName": "香氛微胶囊",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛浓缩配方",
+                    "tagName": "香氛浓缩配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛精华",
+                    "tagName": "香氛精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛精油",
+                    "tagName": "香氛精油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛赠礼配方",
+                    "tagName": "香氛赠礼配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛配方",
+                    "tagName": "香氛配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香皂配方",
+                    "tagName": "香皂配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香薰洗衣液套装",
+                    "tagName": "香薰洗衣液套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "马油成分",
+                    "tagName": "马油成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "马赛椰油配方",
+                    "tagName": "马赛椰油配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "高奢香氛配方",
+                    "tagName": "高奢香氛配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "魔法香珠配方",
+                    "tagName": "魔法香珠配方",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鲜奶精华",
+                    "tagName": "鲜奶精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鲜奶蛋白",
+                    "tagName": "鲜奶蛋白",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鲜姜提取物",
+                    "tagName": "鲜姜提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鲜姜汁",
+                    "tagName": "鲜姜汁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鲜榨姜汁",
+                    "tagName": "鲜榨姜汁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鸢尾提取物",
+                    "tagName": "鸢尾提取物",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鹅梨沉香留香珠",
+                    "tagName": "鹅梨沉香留香珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "黄瓜精华",
+                    "tagName": "黄瓜精华",
+                    "sales": null
+                },
+                {
+                    "tagNo": "黑亮滋养成分",
+                    "tagName": "黑亮滋养成分",
+                    "sales": null
+                },
+                {
+                    "tagNo": "黑芝麻",
+                    "tagName": "黑芝麻",
+                    "sales": null
+                }
+            ]
+        },
+        {
+            "tagType": "003",
+            "tagTypeName": "功效",
+            "tagList": [
+                {
+                    "tagNo": " 儿童护理 ",
+                    "tagName": " 儿童护理 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": " 去油、清爽 ",
+                    "tagName": " 去油、清爽 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": " 清爽去油 ",
+                    "tagName": " 清爽去油 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": " 滋润 ",
+                    "tagName": " 滋润 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": " 蓬松护理 ",
+                    "tagName": " 蓬松护理 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "专业去屑",
+                    "tagName": "专业去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "专业去渍",
+                    "tagName": "专业去渍",
+                    "sales": null
+                },
+                {
+                    "tagNo": "专业防脱",
+                    "tagName": "专业防脱",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝滑、亮泽",
+                    "tagName": "丝滑、亮泽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝滑、冰爽",
+                    "tagName": "丝滑、冰爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝滑、去屑",
+                    "tagName": "丝滑、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝滑亮泽",
+                    "tagName": "丝滑亮泽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝滑修护",
+                    "tagName": "丝滑修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝滑护发",
+                    "tagName": "丝滑护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丝质顺滑",
+                    "tagName": "丝质顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈",
+                    "tagName": "丰盈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈、去屑",
+                    "tagName": "丰盈、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈、蓬松",
+                    "tagName": "丰盈、蓬松",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈强韧",
+                    "tagName": "丰盈强韧",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈护理",
+                    "tagName": "丰盈护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈蓬松",
+                    "tagName": "丰盈蓬松",
+                    "sales": null
+                },
+                {
+                    "tagNo": "丰盈飘逸",
+                    "tagName": "丰盈飘逸",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乌发固发",
+                    "tagName": "乌发固发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乌黑、莹亮",
+                    "tagName": "乌黑、莹亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乌黑亮泽",
+                    "tagName": "乌黑亮泽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "二合一",
+                    "tagName": "二合一",
+                    "sales": null
+                },
+                {
+                    "tagNo": "二合一护理",
+                    "tagName": "二合一护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "五星级洁净",
+                    "tagName": "五星级洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亮泽、柔顺",
+                    "tagName": "亮泽、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亮泽护发",
+                    "tagName": "亮泽护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "亲肤护理",
+                    "tagName": "亲肤护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "便携护理",
+                    "tagName": "便携护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "便携旅行",
+                    "tagName": "便携旅行",
+                    "sales": null
+                },
+                {
+                    "tagNo": "便携清洁",
+                    "tagName": "便携清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "保湿、顺滑",
+                    "tagName": "保湿、顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "保湿修复",
+                    "tagName": "保湿修复",
+                    "sales": null
+                },
+                {
+                    "tagNo": "保湿滋养",
+                    "tagName": "保湿滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "保湿舒缓",
+                    "tagName": "保湿舒缓",
+                    "sales": null
+                },
+                {
+                    "tagNo": "保湿顺滑",
+                    "tagName": "保湿顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修复、去屑",
+                    "tagName": "修复、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修复护理",
+                    "tagName": "修复护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护",
+                    "tagName": "修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护、去屑",
+                    "tagName": "修护、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护、水养",
+                    "tagName": "修护、水养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护、盈润",
+                    "tagName": "修护、盈润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护丝滑",
+                    "tagName": "修护丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护去屑",
+                    "tagName": "修护去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护发质",
+                    "tagName": "修护发质",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护护理",
+                    "tagName": "修护护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修护滋养",
+                    "tagName": "修护滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "修润、盈卷",
+                    "tagName": "修润、盈卷",
+                    "sales": null
+                },
+                {
+                    "tagNo": "倍柔护理",
+                    "tagName": "倍柔护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "倍润、去屑",
+                    "tagName": "倍润、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "倍润护理",
+                    "tagName": "倍润护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "健养强韧",
+                    "tagName": "健养强韧",
+                    "sales": null
+                },
+                {
+                    "tagNo": "健发",
+                    "tagName": "健发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "健发护理",
+                    "tagName": "健发护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "健肤护理",
+                    "tagName": "健肤护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "儿童护发",
+                    "tagName": "儿童护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "儿童护理",
+                    "tagName": "儿童护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "儿童洁净",
+                    "tagName": "儿童洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "光泽、丝滑",
+                    "tagName": "光泽、丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养发、柔顺",
+                    "tagName": "养发、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养发护发",
+                    "tagName": "养发护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养根、韧发",
+                    "tagName": "养根、韧发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养根健发",
+                    "tagName": "养根健发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养根强韧",
+                    "tagName": "养根强韧",
+                    "sales": null
+                },
+                {
+                    "tagNo": "养根韧发",
+                    "tagName": "养根韧发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "冰凉、去屑",
+                    "tagName": "冰凉、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "冰爽、去屑",
+                    "tagName": "冰爽、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净屑、劲澈",
+                    "tagName": "净屑、劲澈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净屑、香氛",
+                    "tagName": "净屑、香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净油、去屑",
+                    "tagName": "净油、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净润臻养",
+                    "tagName": "净润臻养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净澈、丰盈",
+                    "tagName": "净澈、丰盈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净澈、去屑",
+                    "tagName": "净澈、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净澈头皮",
+                    "tagName": "净澈头皮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净澈蓬松",
+                    "tagName": "净澈蓬松",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净爽、去屑",
+                    "tagName": "净爽、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "净透、去屑",
+                    "tagName": "净透、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "劲爽",
+                    "tagName": "劲爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "劲爽、去屑",
+                    "tagName": "劲爽、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "卷曲定型",
+                    "tagName": "卷曲定型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑",
+                    "tagName": "去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、修复",
+                    "tagName": "去屑、修复",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、健发",
+                    "tagName": "去屑、健发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、控油",
+                    "tagName": "去屑、控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、柔顺",
+                    "tagName": "去屑、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、止痒",
+                    "tagName": "去屑、止痒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、活力",
+                    "tagName": "去屑、活力",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、清洁",
+                    "tagName": "去屑、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、滋养",
+                    "tagName": "去屑、滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、轻盈",
+                    "tagName": "去屑、轻盈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑、香氛",
+                    "tagName": "去屑、香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑去油",
+                    "tagName": "去屑去油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑护理",
+                    "tagName": "去屑护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑止痒",
+                    "tagName": "去屑止痒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑水润",
+                    "tagName": "去屑水润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑滋养",
+                    "tagName": "去屑滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去屑防断",
+                    "tagName": "去屑防断",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去油、去屑",
+                    "tagName": "去油、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去油、清爽",
+                    "tagName": "去油、清爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去油防脱",
+                    "tagName": "去油防脱",
+                    "sales": null
+                },
+                {
+                    "tagNo": "去渍抑菌",
+                    "tagName": "去渍抑菌",
+                    "sales": null
+                },
+                {
+                    "tagNo": "双效去油",
+                    "tagName": "双效去油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "固发防脱",
+                    "tagName": "固发防脱",
+                    "sales": null
+                },
+                {
+                    "tagNo": "垂坠、顺滑",
+                    "tagName": "垂坠、顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "垂顺护理",
+                    "tagName": "垂顺护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "基础清洁",
+                    "tagName": "基础清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效修复",
+                    "tagName": "多效修复",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效修护",
+                    "tagName": "多效修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效呵护、去屑",
+                    "tagName": "多效呵护、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效护理",
+                    "tagName": "多效护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "多效水润、去屑",
+                    "tagName": "多效水润、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "头皮平衡",
+                    "tagName": "头皮平衡",
+                    "sales": null
+                },
+                {
+                    "tagNo": "头皮护理",
+                    "tagName": "头皮护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "套装",
+                    "tagName": "套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "奢养、修护",
+                    "tagName": "奢养、修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "奢卷护理",
+                    "tagName": "奢卷护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女士防脱",
+                    "tagName": "女士防脱",
+                    "sales": null
+                },
+                {
+                    "tagNo": "婴儿护理",
+                    "tagName": "婴儿护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "家庭护理",
+                    "tagName": "家庭护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "弹润发质",
+                    "tagName": "弹润发质",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强劲洁净",
+                    "tagName": "强劲洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强根健发",
+                    "tagName": "强根健发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧、蓬松",
+                    "tagName": "强韧、蓬松",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧、防断",
+                    "tagName": "强韧、防断",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧丰盈",
+                    "tagName": "强韧丰盈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧修护",
+                    "tagName": "强韧修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧发丝",
+                    "tagName": "强韧发丝",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧发根",
+                    "tagName": "强韧发根",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧发质",
+                    "tagName": "强韧发质",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧润发",
+                    "tagName": "强韧润发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧焕活",
+                    "tagName": "强韧焕活",
+                    "sales": null
+                },
+                {
+                    "tagNo": "强韧焕能",
+                    "tagName": "强韧焕能",
+                    "sales": null
+                },
+                {
+                    "tagNo": "护发防掉",
+                    "tagName": "护发防掉",
+                    "sales": null
+                },
+                {
+                    "tagNo": "护根韧发",
+                    "tagName": "护根韧发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油",
+                    "tagName": "控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、健发",
+                    "tagName": "控油、健发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、净润",
+                    "tagName": "控油、净润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、净爽",
+                    "tagName": "控油、净爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、劲爽",
+                    "tagName": "控油、劲爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、去屑",
+                    "tagName": "控油、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、平衡",
+                    "tagName": "控油、平衡",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、强根",
+                    "tagName": "控油、强根",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、强韧",
+                    "tagName": "控油、强韧",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、水润",
+                    "tagName": "控油、水润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、活力",
+                    "tagName": "控油、活力",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、清润",
+                    "tagName": "控油、清润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、清爽",
+                    "tagName": "控油、清爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、焕活",
+                    "tagName": "控油、焕活",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油、蓬松",
+                    "tagName": "控油、蓬松",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油丰盈",
+                    "tagName": "控油丰盈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油去屑",
+                    "tagName": "控油去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油护理",
+                    "tagName": "控油护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油清爽",
+                    "tagName": "控油清爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "控油蓬松",
+                    "tagName": "控油蓬松",
+                    "sales": null
+                },
+                {
+                    "tagNo": "敏感护理",
+                    "tagName": "敏感护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "旅行便携",
+                    "tagName": "旅行便携",
+                    "sales": null
+                },
+                {
+                    "tagNo": "日常修护",
+                    "tagName": "日常修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "染烫修护",
+                    "tagName": "染烫修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔光滋养",
+                    "tagName": "柔光滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔净",
+                    "tagName": "柔净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔润",
+                    "tagName": "柔润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔润、滋养",
+                    "tagName": "柔润、滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔润护理",
+                    "tagName": "柔润护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔润顺滑",
+                    "tagName": "柔润顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔滑、去屑",
+                    "tagName": "柔滑、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔滑、清洁",
+                    "tagName": "柔滑、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔滑护理",
+                    "tagName": "柔滑护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔韧、顺滑",
+                    "tagName": "柔韧、顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔韧护理",
+                    "tagName": "柔韧护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔韧顺滑",
+                    "tagName": "柔韧顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺",
+                    "tagName": "柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺、丝滑",
+                    "tagName": "柔顺、丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺、亮泽",
+                    "tagName": "柔顺、亮泽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺、光泽",
+                    "tagName": "柔顺、光泽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺、去屑",
+                    "tagName": "柔顺、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺、盈润",
+                    "tagName": "柔顺、盈润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺、莹亮",
+                    "tagName": "柔顺、莹亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺护发",
+                    "tagName": "柔顺护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺护理",
+                    "tagName": "柔顺护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺护色",
+                    "tagName": "柔顺护色",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺滋养",
+                    "tagName": "柔顺滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺热感",
+                    "tagName": "柔顺热感",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柔顺补水",
+                    "tagName": "柔顺补水",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒、冰爽",
+                    "tagName": "止痒、冰爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒、去屑",
+                    "tagName": "止痒、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒、控油",
+                    "tagName": "止痒、控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒、祛屑",
+                    "tagName": "止痒、祛屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒净屑",
+                    "tagName": "止痒净屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "止痒控油",
+                    "tagName": "止痒控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "毛躁修护",
+                    "tagName": "毛躁修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水光润发",
+                    "tagName": "水光润发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水光蓬弹",
+                    "tagName": "水光蓬弹",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、丝滑",
+                    "tagName": "水润、丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、亮泽",
+                    "tagName": "水润、亮泽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、修护",
+                    "tagName": "水润、修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、养护",
+                    "tagName": "水润、养护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、去屑",
+                    "tagName": "水润、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、去屑、嫩白",
+                    "tagName": "水润、去屑、嫩白",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、柔滑",
+                    "tagName": "水润、柔滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、洁顺",
+                    "tagName": "水润、洁顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、清洁",
+                    "tagName": "水润、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、滋养",
+                    "tagName": "水润、滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、盈润",
+                    "tagName": "水润、盈润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润、顺滑",
+                    "tagName": "水润、顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润保湿",
+                    "tagName": "水润保湿",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润养护",
+                    "tagName": "水润养护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润去屑",
+                    "tagName": "水润去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润护理",
+                    "tagName": "水润护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水润滋养",
+                    "tagName": "水润滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "水漾保湿",
+                    "tagName": "水漾保湿",
+                    "sales": null
+                },
+                {
+                    "tagNo": "沁爽、去屑",
+                    "tagName": "沁爽、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "泡泡洁净",
+                    "tagName": "泡泡洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洁净薰香",
+                    "tagName": "洁净薰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗护套装",
+                    "tagName": "洗护套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗护沐套装",
+                    "tagName": "洗护沐套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洗沐套装",
+                    "tagName": "洗沐套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活力、去屑",
+                    "tagName": "活力、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活力洁净",
+                    "tagName": "活力洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "活效去屑",
+                    "tagName": "活效去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浓缩洁净",
+                    "tagName": "浓缩洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "润养",
+                    "tagName": "润养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "润养、去屑",
+                    "tagName": "润养、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "润养、柔顺",
+                    "tagName": "润养、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "润泽、丝滑",
+                    "tagName": "润泽、丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "润泽、柔顺",
+                    "tagName": "润泽、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深层洁净、去屑",
+                    "tagName": "深层洁净、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深层洁净、呵护",
+                    "tagName": "深层洁净、呵护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深层滋养",
+                    "tagName": "深层滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "深度修护",
+                    "tagName": "深度修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新洁净",
+                    "tagName": "清新洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清柔、顺滑",
+                    "tagName": "清柔、顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清洁保湿",
+                    "tagName": "清洁保湿",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清洁养护",
+                    "tagName": "清洁养护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽",
+                    "tagName": "清爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽、去屑",
+                    "tagName": "清爽、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽、柔亮",
+                    "tagName": "清爽、柔亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽、柔顺",
+                    "tagName": "清爽、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽护理",
+                    "tagName": "清爽护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽控油",
+                    "tagName": "清爽控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽柔顺",
+                    "tagName": "清爽柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清爽洁净",
+                    "tagName": "清爽洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温和、去屑",
+                    "tagName": "温和、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温和呵护",
+                    "tagName": "温和呵护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温和护理",
+                    "tagName": "温和护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温和洁净",
+                    "tagName": "温和洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "温润护理",
+                    "tagName": "温润护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养",
+                    "tagName": "滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、修护",
+                    "tagName": "滋养、修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、去屑",
+                    "tagName": "滋养、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、柔滑",
+                    "tagName": "滋养、柔滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、柔顺",
+                    "tagName": "滋养、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、水润",
+                    "tagName": "滋养、水润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、清洁",
+                    "tagName": "滋养、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养、莹亮",
+                    "tagName": "滋养、莹亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养保湿",
+                    "tagName": "滋养保湿",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养修护",
+                    "tagName": "滋养修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养健发",
+                    "tagName": "滋养健发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养发丝",
+                    "tagName": "滋养发丝",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养发根",
+                    "tagName": "滋养发根",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养发质",
+                    "tagName": "滋养发质",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养护理",
+                    "tagName": "滋养护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋养盈亮",
+                    "tagName": "滋养盈亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋润、去屑",
+                    "tagName": "滋润、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋润、柔顺",
+                    "tagName": "滋润、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋润、舒爽",
+                    "tagName": "滋润、舒爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋润、顺滑",
+                    "tagName": "滋润、顺滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋润修护",
+                    "tagName": "滋润修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滋润护理",
+                    "tagName": "滋润护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "滑顺、清洁",
+                    "tagName": "滑顺、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "炫亮",
+                    "tagName": "炫亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "炫亮、去屑",
+                    "tagName": "炫亮、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "炫亮、清洁",
+                    "tagName": "炫亮、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "炫亮发色",
+                    "tagName": "炫亮发色",
+                    "sales": null
+                },
+                {
+                    "tagNo": "炫亮护理",
+                    "tagName": "炫亮护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "焕活、柔顺",
+                    "tagName": "焕活、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "焗养丝滑",
+                    "tagName": "焗养丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "焗养护发",
+                    "tagName": "焗养护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "焗养护理",
+                    "tagName": "焗养护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "焗油、去屑",
+                    "tagName": "焗油、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "特润防皴",
+                    "tagName": "特润防皴",
+                    "sales": null
+                },
+                {
+                    "tagNo": "生发护发",
+                    "tagName": "生发护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "盈润护发",
+                    "tagName": "盈润护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "祛屑、修护",
+                    "tagName": "祛屑、修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "祛屑、控油",
+                    "tagName": "祛屑、控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "祛屑、止痒",
+                    "tagName": "祛屑、止痒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "祛屑、清爽",
+                    "tagName": "祛屑、清爽",
+                    "sales": null
+                },
+                {
+                    "tagNo": "祛屑止痒",
+                    "tagName": "祛屑止痒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "祛油、止痒",
+                    "tagName": "祛油、止痒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "经典三件套",
+                    "tagName": "经典三件套",
+                    "sales": null
+                },
+                {
+                    "tagNo": "育发防脱",
+                    "tagName": "育发防脱",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒润护理",
+                    "tagName": "舒润护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒爽、清洁",
+                    "tagName": "舒爽、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒缓、去屑",
+                    "tagName": "舒缓、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒缓头皮",
+                    "tagName": "舒缓头皮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒缓控油",
+                    "tagName": "舒缓控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "舒缓洁净",
+                    "tagName": "舒缓洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "草本护理",
+                    "tagName": "草本护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "莹亮修护",
+                    "tagName": "莹亮修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "莹亮滋养",
+                    "tagName": "莹亮滋养",
+                    "sales": null
+                },
+                {
+                    "tagNo": "莹润",
+                    "tagName": "莹润",
+                    "sales": null
+                },
+                {
+                    "tagNo": "萃护护理",
+                    "tagName": "萃护护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "营养修复",
+                    "tagName": "营养修复",
+                    "sales": null
+                },
+                {
+                    "tagNo": "营养呵护",
+                    "tagName": "营养呵护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "营养护理",
+                    "tagName": "营养护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓬松、柔亮",
+                    "tagName": "蓬松、柔亮",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓬松丰盈",
+                    "tagName": "蓬松丰盈",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓬松护理",
+                    "tagName": "蓬松护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓬松控油",
+                    "tagName": "蓬松控油",
+                    "sales": null
+                },
+                {
+                    "tagNo": "衣物柔顺",
+                    "tagName": "衣物柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "补水、去屑",
+                    "tagName": "补水、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "调养、润发",
+                    "tagName": "调养、润发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "赋活修护",
+                    "tagName": "赋活修护",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超值套装",
+                    "tagName": "超值套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超值护理",
+                    "tagName": "超值护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超值洁净",
+                    "tagName": "超值洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "超净洁净",
+                    "tagName": "超净洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "趣味洁净",
+                    "tagName": "趣味洁净",
+                    "sales": null
+                },
+                {
+                    "tagNo": "轻柔、丝滑",
+                    "tagName": "轻柔、丝滑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "轻盈、柔顺",
+                    "tagName": "轻盈、柔顺",
+                    "sales": null
+                },
+                {
+                    "tagNo": "轻盈护理",
+                    "tagName": "轻盈护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "轻盈润发",
+                    "tagName": "轻盈润发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防断、韧发",
+                    "tagName": "防断、韧发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防断护理",
+                    "tagName": "防断护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防断韧发",
+                    "tagName": "防断韧发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防皴护理",
+                    "tagName": "防皴护理",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防脱育发",
+                    "tagName": "防脱育发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防脱韧发",
+                    "tagName": "防脱韧发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "防落发",
+                    "tagName": "防落发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "顺柔",
+                    "tagName": "顺柔",
+                    "sales": null
+                },
+                {
+                    "tagNo": "顺柔护发",
+                    "tagName": "顺柔护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "顺滑、去屑",
+                    "tagName": "顺滑、去屑",
+                    "sales": null
+                },
+                {
+                    "tagNo": "顺滑、清洁",
+                    "tagName": "顺滑、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "顺滑护发",
+                    "tagName": "顺滑护发",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛、清洁",
+                    "tagName": "香氛、清洁",
+                    "sales": null
+                },
+                {
+                    "tagNo": "馨香柔顺",
+                    "tagName": "馨香柔顺",
+                    "sales": null
+                }
+            ]
+        },
+        {
+            "tagType": "005",
+            "tagTypeName": "香型",
+            "tagList": [
+                {
+                    "tagNo": " 淡香 ",
+                    "tagName": " 淡香 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": " 绿茶香 ",
+                    "tagName": " 绿茶香 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "五月玫瑰",
+                    "tagName": "五月玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "人参香",
+                    "tagName": "人参香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "依兰花香",
+                    "tagName": "依兰花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "兰花香",
+                    "tagName": "兰花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "冰爽香",
+                    "tagName": "冰爽香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "加香型",
+                    "tagName": "加香型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "参姜香",
+                    "tagName": "参姜香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "古龙香",
+                    "tagName": "古龙香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "大马士革玫瑰",
+                    "tagName": "大马士革玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然熏香",
+                    "tagName": "天然熏香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然皂香",
+                    "tagName": "天然皂香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "天然香型",
+                    "tagName": "天然香型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "奶香",
+                    "tagName": "奶香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "姜香",
+                    "tagName": "姜香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小苍兰",
+                    "tagName": "小苍兰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小苍兰香",
+                    "tagName": "小苍兰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山茶花",
+                    "tagName": "山茶花",
+                    "sales": null
+                },
+                {
+                    "tagNo": "山茶花香",
+                    "tagName": "山茶花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "怡神薰衣草",
+                    "tagName": "怡神薰衣草",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无香",
+                    "tagName": "无香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "无香型",
+                    "tagName": "无香型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "日晒清新",
+                    "tagName": "日晒清新",
+                    "sales": null
+                },
+                {
+                    "tagNo": "木香",
+                    "tagName": "木香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "松木香",
+                    "tagName": "松木香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "果香",
+                    "tagName": "果香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "柠檬香",
+                    "tagName": "柠檬香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "栀子香",
+                    "tagName": "栀子香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "桂花香",
+                    "tagName": "桂花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "桔柚香",
+                    "tagName": "桔柚香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "森林香",
+                    "tagName": "森林香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "植物香",
+                    "tagName": "植物香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "椰香",
+                    "tagName": "椰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "樱花香",
+                    "tagName": "樱花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "橄榄香",
+                    "tagName": "橄榄香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "洋甘菊香",
+                    "tagName": "洋甘菊香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "浪漫樱花",
+                    "tagName": "浪漫樱花",
+                    "sales": null
+                },
+                {
+                    "tagNo": "海洋香",
+                    "tagName": "海洋香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡雅樱花",
+                    "tagName": "淡雅樱花",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡雅玫瑰",
+                    "tagName": "淡雅玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡雅花香",
+                    "tagName": "淡雅花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡雅薰香",
+                    "tagName": "淡雅薰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "淡香",
+                    "tagName": "淡香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "混合香型",
+                    "tagName": "混合香型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清凉香",
+                    "tagName": "清凉香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新桉树",
+                    "tagName": "清新桉树",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新蓝铃",
+                    "tagName": "清新蓝铃",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清新香",
+                    "tagName": "清新香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清柚玫瑰",
+                    "tagName": "清柚玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清莲香",
+                    "tagName": "清莲香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "清雅茉莉",
+                    "tagName": "清雅茉莉",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玉铃兰",
+                    "tagName": "玉铃兰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "玫瑰香",
+                    "tagName": "玫瑰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "甜橙",
+                    "tagName": "甜橙",
+                    "sales": null
+                },
+                {
+                    "tagNo": "生姜香",
+                    "tagName": "生姜香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "白兰香",
+                    "tagName": "白兰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "百合香",
+                    "tagName": "百合香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "皂香",
+                    "tagName": "皂香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "石榴香",
+                    "tagName": "石榴香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "粉漾玫瑰",
+                    "tagName": "粉漾玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "粉红茉莉",
+                    "tagName": "粉红茉莉",
+                    "sales": null
+                },
+                {
+                    "tagNo": "粉色香型",
+                    "tagName": "粉色香型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "精油香",
+                    "tagName": "精油香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "红玫瑰",
+                    "tagName": "红玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "红石榴",
+                    "tagName": "红石榴",
+                    "sales": null
+                },
+                {
+                    "tagNo": "绿茶香",
+                    "tagName": "绿茶香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "绿藻香",
+                    "tagName": "绿藻香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "自然清新",
+                    "tagName": "自然清新",
+                    "sales": null
+                },
+                {
+                    "tagNo": "自然香",
+                    "tagName": "自然香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "芦荟",
+                    "tagName": "芦荟",
+                    "sales": null
+                },
+                {
+                    "tagNo": "芦荟香",
+                    "tagName": "芦荟香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "花香",
+                    "tagName": "花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茉莉香",
+                    "tagName": "茉莉香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶树香",
+                    "tagName": "茶树香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "茶香",
+                    "tagName": "茶香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "草本香",
+                    "tagName": "草本香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "药香",
+                    "tagName": "药香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓝色香型",
+                    "tagName": "蓝色香型",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蓝风铃香",
+                    "tagName": "蓝风铃香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "蔷薇花香",
+                    "tagName": "蔷薇花香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薄荷香",
+                    "tagName": "薄荷香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草",
+                    "tagName": "薰衣草",
+                    "sales": null
+                },
+                {
+                    "tagNo": "薰衣草香",
+                    "tagName": "薰衣草香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "运动香",
+                    "tagName": "运动香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "迷情香水",
+                    "tagName": "迷情香水",
+                    "sales": null
+                },
+                {
+                    "tagNo": "铃兰香",
+                    "tagName": "铃兰香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "阳光馨香",
+                    "tagName": "阳光馨香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "雏菊香",
+                    "tagName": "雏菊香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "青柚玫瑰",
+                    "tagName": "青柚玫瑰",
+                    "sales": null
+                },
+                {
+                    "tagNo": "青柠香",
+                    "tagName": "青柠香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "风铃熏衣",
+                    "tagName": "风铃熏衣",
+                    "sales": null
+                },
+                {
+                    "tagNo": "风铃草",
+                    "tagName": "风铃草",
+                    "sales": null
+                },
+                {
+                    "tagNo": "香氛",
+                    "tagName": "香氛",
+                    "sales": null
+                },
+                {
+                    "tagNo": "馨香",
+                    "tagName": "馨香",
+                    "sales": null
+                },
+                {
+                    "tagNo": "鹅梨沉香",
+                    "tagName": "鹅梨沉香",
+                    "sales": null
+                }
+            ]
+        },
+        {
+            "tagType": "006",
+            "tagTypeName": "包装",
+            "tagList": [
+                {
+                    "tagNo": " 瓶装 ",
+                    "tagName": " 瓶装 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "促销装",
+                    "tagName": "促销装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "块装",
+                    "tagName": "块装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "壶装",
+                    "tagName": "壶装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "大瓶",
+                    "tagName": "大瓶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "套盒",
+                    "tagName": "套盒",
+                    "sales": null
+                },
+                {
+                    "tagNo": "套装",
+                    "tagName": "套装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "小瓶",
+                    "tagName": "小瓶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "旅行装",
+                    "tagName": "旅行装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "桶装",
+                    "tagName": "桶装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "泵装",
+                    "tagName": "泵装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "瓶装",
+                    "tagName": "瓶装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "盒装",
+                    "tagName": "盒装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "礼盒装",
+                    "tagName": "礼盒装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "立袋装",
+                    "tagName": "立袋装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "箱装",
+                    "tagName": "箱装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "组合装",
+                    "tagName": "组合装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "罐装",
+                    "tagName": "罐装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "翻盖装",
+                    "tagName": "翻盖装",
+                    "sales": null
+                },
+                {
+                    "tagNo": "袋装",
+                    "tagName": "袋装",
+                    "sales": null
+                }
+            ]
+        },
+        {
+            "tagType": "007",
+            "tagTypeName": "人群",
+            "tagList": [
+                {
+                    "tagNo": " 通用 ",
+                    "tagName": " 通用 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "儿童",
+                    "tagName": "儿童",
+                    "sales": null
+                },
+                {
+                    "tagNo": "女性",
+                    "tagName": "女性",
+                    "sales": null
+                },
+                {
+                    "tagNo": "婴儿",
+                    "tagName": "婴儿",
+                    "sales": null
+                },
+                {
+                    "tagNo": "成人",
+                    "tagName": "成人",
+                    "sales": null
+                },
+                {
+                    "tagNo": "男性",
+                    "tagName": "男性",
+                    "sales": null
+                },
+                {
+                    "tagNo": "通用",
+                    "tagName": "通用",
+                    "sales": null
+                },
+                {
+                    "tagNo": "青少年",
+                    "tagName": "青少年",
+                    "sales": null
+                }
+            ]
+        },
+        {
+            "tagType": "009",
+            "tagTypeName": "产地",
+            "tagList": [
+                {
+                    "tagNo": " 国产 ",
+                    "tagName": " 国产 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "国产",
+                    "tagName": "国产",
+                    "sales": null
+                },
+                {
+                    "tagNo": "进口",
+                    "tagName": "进口",
+                    "sales": null
+                }
+            ]
+        },
+        {
+            "tagType": "010",
+            "tagTypeName": "产品形态",
+            "tagList": [
+                {
+                    "tagNo": " 液体 ",
+                    "tagName": " 液体 ",
+                    "sales": null
+                },
+                {
+                    "tagNo": "乳液",
+                    "tagName": "乳液",
+                    "sales": null
+                },
+                {
+                    "tagNo": "凝珠",
+                    "tagName": "凝珠",
+                    "sales": null
+                },
+                {
+                    "tagNo": "凝胶",
+                    "tagName": "凝胶",
+                    "sales": null
+                },
+                {
+                    "tagNo": "喷液",
+                    "tagName": "喷液",
+                    "sales": null
+                },
+                {
+                    "tagNo": "喷雾",
+                    "tagName": "喷雾",
+                    "sales": null
+                },
+                {
+                    "tagNo": "固体",
+                    "tagName": "固体",
+                    "sales": null
+                },
+                {
+                    "tagNo": "晶粉",
+                    "tagName": "晶粉",
+                    "sales": null
+                },
+                {
+                    "tagNo": "泡沫",
+                    "tagName": "泡沫",
+                    "sales": null
+                },
+                {
+                    "tagNo": "液体",
+                    "tagName": "液体",
+                    "sales": null
+                },
+                {
+                    "tagNo": "液体+膏状",
+                    "tagName": "液体+膏状",
+                    "sales": null
+                },
+                {
+                    "tagNo": "混合",
+                    "tagName": "混合",
+                    "sales": null
+                },
+                {
+                    "tagNo": "片剂",
+                    "tagName": "片剂",
+                    "sales": null
+                },
+                {
+                    "tagNo": "皂粉",
+                    "tagName": "皂粉",
+                    "sales": null
+                },
+                {
+                    "tagNo": "粉状",
+                    "tagName": "粉状",
+                    "sales": null
+                },
+                {
+                    "tagNo": "膏状",
+                    "tagName": "膏状",
+                    "sales": null
+                },
+                {
+                    "tagNo": "颗粒",
+                    "tagName": "颗粒",
+                    "sales": null
+                }
+            ]
+        }
+    ],
+    "timestamp": 1776320288488
+}

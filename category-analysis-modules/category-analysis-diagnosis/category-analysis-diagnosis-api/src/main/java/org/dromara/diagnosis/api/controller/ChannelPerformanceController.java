@@ -15,6 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * 渠道业绩
+ */
 @Validated
 @RestController
 @RequiredArgsConstructor

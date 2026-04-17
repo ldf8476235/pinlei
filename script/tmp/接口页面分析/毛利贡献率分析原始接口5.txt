@@ -2,8 +2,8 @@
 请求参数：{"id":118,"status":["-1","0","1"],"promotion":"0","currentGross":"0","compareGross":"0","page":1,"size":10,"order":"sales","orderType":"desc"}
 请求参数解析
 排序字段（只能排序一个字段）：productNo，storeNum，saleQuantity，saleQuantityPsd，sales，salesPer，salesPsd，gross，grossPer，grossPsd，grossRate，stockQuantity，turnoverRate，turnoverDays，stockSalesRate，contributionRate，gmroi，salesRate，activity，firstSaleDate
-currentGmroi: 本期四象限，0 = 全部：统计所有 SKU，不做过滤。1 = 成功。2 = 吸客。3 = 沉睡。
-compareGmroi：对比四象限，0 = 全部：统计所有 SKU，不做过滤。1 = 成功。2 = 吸客。3 = 沉睡。
+currentGross: 本期四象限，0 = 全部：统计所有 SKU，不做过滤。1 = 领跑商品。4 = 利润商品。2 = 吸客商品。3 = 问题商品。
+compareGross：对比四象限，0 = 全部：统计所有 SKU，不做过滤。1 = 领跑商品。4 = 利润商品。2 = 吸客商品。3 = 问题商品。
 返回参数：{
     "success": true,
     "message": "",

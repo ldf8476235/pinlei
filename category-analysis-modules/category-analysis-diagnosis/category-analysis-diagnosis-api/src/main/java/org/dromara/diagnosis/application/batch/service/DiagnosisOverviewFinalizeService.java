@@ -48,25 +48,24 @@ public class DiagnosisOverviewFinalizeService {
         Integer totalSku = agg.getTotalSku() == null ? 0 : agg.getTotalSku();
         Integer activeSku = agg.getActiveSku() == null ? 0 : agg.getActiveSku();
 
-        BigDecimal customerPrice = finalizeSupport.safeDivide(sales, customerCount);
-        BigDecimal customerAvgQuantity = finalizeSupport.safeDivide(saleQuantity, customerCount);
-        BigDecimal pieceAvgPrice = finalizeSupport.safeDivide(sales, saleQuantity);
-        BigDecimal inventorySalesRatio = finalizeSupport.safeDivide(avgInventory, sales);
-        BigDecimal turnoverDays = inventorySalesRatio == null ? BigDecimal.ZERO
-            : inventorySalesRatio.multiply(BigDecimal.valueOf(context.getPeriodDays()));
-        BigDecimal penetrateRate = finalizeSupport.ratioPercent(customerCount, customerCountTotal);
+        BigDecimal customerPrice = finalizeSupport.divideOrZero(sales, customerCount);
+        BigDecimal customerAvgQuantity = finalizeSupport.divideOrZero(saleQuantity, customerCount);
+        BigDecimal pieceAvgPrice = finalizeSupport.divideOrZero(sales, saleQuantity);
+        BigDecimal inventorySalesRatio = finalizeSupport.divideOrZero(avgInventory, sales);
+        BigDecimal turnoverDays = inventorySalesRatio.multiply(BigDecimal.valueOf(context.getPeriodDays()));
+        BigDecimal penetrateRate = finalizeSupport.ratioPercentOrZero(customerCount, customerCountTotal);
 
         BigDecimal compareSales = compareAgg == null ? null : finalizeSupport.nvl(compareAgg.getTotalSales());
         BigDecimal compareGross = compareAgg == null ? null : finalizeSupport.nvl(compareAgg.getTotalGross());
         BigDecimal compareSaleQuantity = compareAgg == null ? null : finalizeSupport.nvl(compareAgg.getTotalSaleQuantity());
         BigDecimal compareSalesCost = compareAgg == null ? null : finalizeSupport.nvl(compareAgg.getTotalSalesCost());
-        Integer compareTotalSku = compareAgg == null || compareAgg.getTotalSku() == null ? null : compareAgg.getTotalSku();
-        BigDecimal compareInventorySalesRatio = compareAgg == null ? null : finalizeSupport.safeDivide(compareAvgInventory, compareSales);
-        BigDecimal compareTurnoverDays = compareInventorySalesRatio == null ? null
-            : compareInventorySalesRatio.multiply(BigDecimal.valueOf(Math.max(1L, context.getCompareDays())));
-        BigDecimal comparePenetrateRate = compareAgg == null ? null
-            : finalizeSupport.ratioPercent(compareCustomerCount, compareCustomerCountTotal);
-        BigDecimal compareSalesRate = compareAgg == null ? null
+        Integer compareTotalSku = compareAgg == null || compareAgg.getTotalSku() == null ? 0 : compareAgg.getTotalSku();
+        BigDecimal compareInventorySalesRatio = compareAgg == null ? BigDecimal.ZERO
+            : finalizeSupport.divideOrZero(compareAvgInventory, compareSales);
+        BigDecimal compareTurnoverDays = compareInventorySalesRatio.multiply(BigDecimal.valueOf(Math.max(1L, context.getCompareDays())));
+        BigDecimal comparePenetrateRate = compareAgg == null ? BigDecimal.ZERO
+            : finalizeSupport.ratioPercentOrZero(compareCustomerCount, compareCustomerCountTotal);
+        BigDecimal compareSalesRate = compareAgg == null ? BigDecimal.ZERO
             : finalizeSupport.calcRate(compareAgg.getActiveSku(), compareAgg.getTotalSku());
 
         DiagnosisOverviewSnapshotRow overview = new DiagnosisOverviewSnapshotRow();
@@ -95,9 +94,9 @@ public class DiagnosisOverviewFinalizeService {
         overview.setMetricCustomerAvgQuantity(customerAvgQuantity);
         overview.setMetricPieceAvgPrice(pieceAvgPrice);
         overview.setMetricAvgInventory(avgInventory);
-        overview.setMetricInventorySalesRatio(inventorySalesRatio == null ? BigDecimal.ZERO : inventorySalesRatio);
-        overview.setMetricInventoryTurnoverDays(turnoverDays == null ? BigDecimal.ZERO : turnoverDays);
-        overview.setMetricPenetrateRate(penetrateRate == null ? BigDecimal.ZERO : penetrateRate);
+        overview.setMetricInventorySalesRatio(inventorySalesRatio);
+        overview.setMetricInventoryTurnoverDays(turnoverDays);
+        overview.setMetricPenetrateRate(penetrateRate);
         overview.setMetricTotalSku(totalSku);
         overview.setMetricActiveSku(activeSku);
         overview.setMetricSalesRate(finalizeSupport.calcRate(activeSku, totalSku));

@@ -1,7 +1,6 @@
--- diagnosis 客户分析预计算结果层升级脚本 (SQL Server)
--- 包含:
--- 1) diag_result_customer_contribution 结果表
--- 2) 年龄段字典 diag_customer_age_bucket
+﻿-- diagnosis 瀹㈡埛鍒嗘瀽棰勮绠楃粨鏋滃眰鍗囩骇鑴氭湰 (SQL Server)
+-- 鍖呭惈:
+-- 1) diag_result_customer_contribution 缁撴灉琛?-- 2) 骞撮緞娈靛瓧鍏?diag_customer_age_bucket
 
 SET ANSI_NULLS ON;
 SET QUOTED_IDENTIFIER ON;
@@ -98,23 +97,28 @@ IF NOT EXISTS (
       AND dict_type = N'diag_customer_age_bucket'
 )
 BEGIN
+    DECLARE @nextDictTypeId BIGINT;
+    SELECT @nextDictTypeId = ISNULL(MAX(dict_id), 0) + 1 FROM sys_dict_type;
+
     INSERT INTO sys_dict_type
     (
+        dict_id,
         tenant_id,
         dict_name,
         dict_type,
-        status,
+        create_dept,
         create_by,
         create_time,
         remark
     )
     VALUES
     (
+        @nextDictTypeId,
         N'000000',
         N'诊断客户年龄段',
         N'diag_customer_age_bucket',
-        N'0',
-        N'system',
+        103,
+        1,
         GETDATE(),
         N'客户分析年龄段配置，格式为 start-end；空值表示无界'
     );
@@ -122,55 +126,64 @@ END
 GO
 
 DECLARE @dictType NVARCHAR(100) = N'diag_customer_age_bucket';
+DECLARE @nextDictCode BIGINT;
+SELECT @nextDictCode = ISNULL(MAX(dict_code), 0) + 1 FROM sys_dict_data;
 
 IF NOT EXISTS (SELECT 1 FROM sys_dict_data WHERE tenant_id = N'000000' AND dict_type = @dictType AND dict_value = N'-20')
 BEGIN
     INSERT INTO sys_dict_data
-    (tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, status, create_by, create_time, remark)
+    (dict_code, tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, create_dept, create_by, create_time, remark)
     VALUES
-    (N'000000', 1, N'<=20', N'-20', @dictType, N'', N'default', N'N', N'0', N'system', GETDATE(), N'左闭右闭: age<=20');
+    (@nextDictCode, N'000000', 1, N'<=20', N'-20', @dictType, N'', N'default', N'N', 103, 1, GETDATE(), N'左闭右闭: age<=20');
+    SET @nextDictCode = @nextDictCode + 1;
 END
 
 IF NOT EXISTS (SELECT 1 FROM sys_dict_data WHERE tenant_id = N'000000' AND dict_type = @dictType AND dict_value = N'21-30')
 BEGIN
     INSERT INTO sys_dict_data
-    (tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, status, create_by, create_time, remark)
+    (dict_code, tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, create_dept, create_by, create_time, remark)
     VALUES
-    (N'000000', 2, N'21-30', N'21-30', @dictType, N'', N'default', N'N', N'0', N'system', GETDATE(), N'左闭右闭: 21<=age<=30');
+    (@nextDictCode, N'000000', 2, N'21-30', N'21-30', @dictType, N'', N'default', N'N', 103, 1, GETDATE(), N'左闭右闭: 21<=age<=30');
+    SET @nextDictCode = @nextDictCode + 1;
 END
 
 IF NOT EXISTS (SELECT 1 FROM sys_dict_data WHERE tenant_id = N'000000' AND dict_type = @dictType AND dict_value = N'31-40')
 BEGIN
     INSERT INTO sys_dict_data
-    (tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, status, create_by, create_time, remark)
+    (dict_code, tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, create_dept, create_by, create_time, remark)
     VALUES
-    (N'000000', 3, N'31-40', N'31-40', @dictType, N'', N'default', N'N', N'0', N'system', GETDATE(), N'左闭右闭: 31<=age<=40');
+    (@nextDictCode, N'000000', 3, N'31-40', N'31-40', @dictType, N'', N'default', N'N', 103, 1, GETDATE(), N'左闭右闭: 31<=age<=40');
+    SET @nextDictCode = @nextDictCode + 1;
 END
 
 IF NOT EXISTS (SELECT 1 FROM sys_dict_data WHERE tenant_id = N'000000' AND dict_type = @dictType AND dict_value = N'41-50')
 BEGIN
     INSERT INTO sys_dict_data
-    (tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, status, create_by, create_time, remark)
+    (dict_code, tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, create_dept, create_by, create_time, remark)
     VALUES
-    (N'000000', 4, N'41-50', N'41-50', @dictType, N'', N'default', N'N', N'0', N'system', GETDATE(), N'左闭右闭: 41<=age<=50');
+    (@nextDictCode, N'000000', 4, N'41-50', N'41-50', @dictType, N'', N'default', N'N', 103, 1, GETDATE(), N'左闭右闭: 41<=age<=50');
+    SET @nextDictCode = @nextDictCode + 1;
 END
 
 IF NOT EXISTS (SELECT 1 FROM sys_dict_data WHERE tenant_id = N'000000' AND dict_type = @dictType AND dict_value = N'51-60')
 BEGIN
     INSERT INTO sys_dict_data
-    (tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, status, create_by, create_time, remark)
+    (dict_code, tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, create_dept, create_by, create_time, remark)
     VALUES
-    (N'000000', 5, N'51-60', N'51-60', @dictType, N'', N'default', N'N', N'0', N'system', GETDATE(), N'左闭右闭: 51<=age<=60');
+    (@nextDictCode, N'000000', 5, N'51-60', N'51-60', @dictType, N'', N'default', N'N', 103, 1, GETDATE(), N'左闭右闭: 51<=age<=60');
+    SET @nextDictCode = @nextDictCode + 1;
 END
 
 IF NOT EXISTS (SELECT 1 FROM sys_dict_data WHERE tenant_id = N'000000' AND dict_type = @dictType AND dict_value = N'61-')
 BEGIN
     INSERT INTO sys_dict_data
-    (tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, status, create_by, create_time, remark)
+    (dict_code, tenant_id, dict_sort, dict_label, dict_value, dict_type, css_class, list_class, is_default, create_dept, create_by, create_time, remark)
     VALUES
-    (N'000000', 6, N'>=61', N'61-', @dictType, N'', N'default', N'N', N'0', N'system', GETDATE(), N'左闭右闭: age>=61');
+    (@nextDictCode, N'000000', 6, N'>=61', N'61-', @dictType, N'', N'default', N'N', 103, 1, GETDATE(), N'左闭右闭: age>=61');
+    SET @nextDictCode = @nextDictCode + 1;
 END
 GO
 
 PRINT N'[OK] diagnosis customer analysis schema upgrade done';
 GO
+

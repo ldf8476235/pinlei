@@ -16,6 +16,15 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceVipGenderAgeAgg
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductStockRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductMetaRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandMetaRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandStockRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecMetaRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecStockRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagAggRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagMetaRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagStockRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow;
 
 import java.math.BigDecimal;
@@ -49,5 +58,14 @@ public interface DiagnosisBatchSourceMapper {
     List<DiagnosisSourceAbcProductStockRow> aggregateAbcProductStock(@Param("param") DiagnosisSourceShardParam param,
                                                                      @Param("stockDate") LocalDate stockDate);
     List<DiagnosisSourceAbcProductMetaRow> selectAbcProductMeta(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceBrandAggRow> aggregateBrandMetrics(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceBrandStockRow> aggregateBrandStock(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceBrandMetaRow> selectBrandMeta(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceSpecAggRow> aggregateSpecMetrics(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceSpecStockRow> aggregateSpecStock(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceSpecMetaRow> selectSpecMeta(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceTagAggRow> aggregateTagMetrics(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceTagStockRow> aggregateTagStock(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceTagMetaRow> selectTagMeta(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisDictRow> selectOnlineChannelDictRows(@Param("dictTypes") List<String> dictTypes);
 }

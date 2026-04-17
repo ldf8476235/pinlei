@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeEventRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisRecordQueryRow;
+import org.dromara.diagnosis.api.request.DiagnosisRecordQueryRequest;
 
 import java.util.List;
 
@@ -52,4 +54,17 @@ public interface DiagnosisPrecomputeMapper {
     List<DiagnosisPrecomputeEventRow> selectRecentEventsByJobId(@Param("tenantId") String tenantId,
                                                                 @Param("jobId") Long jobId,
                                                                 @Param("limit") Integer limit);
+
+    Long countDiagnosisRecordRows(@Param("tenantId") String tenantId,
+                                  @Param("req") DiagnosisRecordQueryRequest request);
+
+    List<DiagnosisRecordQueryRow> selectDiagnosisRecordRows(@Param("tenantId") String tenantId,
+                                                            @Param("req") DiagnosisRecordQueryRequest request,
+                                                            @Param("offset") Integer offset,
+                                                            @Param("limit") Integer limit);
+
+    List<DiagnosisRecordQueryRow> selectDiagnosisRecordRowsFallback(@Param("tenantId") String tenantId,
+                                                                    @Param("req") DiagnosisRecordQueryRequest request,
+                                                                    @Param("offset") Integer offset,
+                                                                    @Param("limit") Integer limit);
 }

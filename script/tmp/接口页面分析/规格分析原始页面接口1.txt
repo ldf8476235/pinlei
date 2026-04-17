@@ -1,0 +1,16 @@
+请求接口：/api/classDoctorSpec/querySpecSkuSum
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "totalNum": 1198,
+        "newNum": 72
+    },
+    "timestamp": 1776308369835
+}
+
+返回参数解析：
+totalNum ： 规格总数
+newNum：新销规格

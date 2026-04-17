@@ -24,6 +24,7 @@ public class DiagnosisGmroiContributionFinalizeService {
 
     private static final String TENANT_ID = "000000";
     private static final BigDecimal GROSS_THRESHOLD = new BigDecimal("17");
+    private static final int SKU_INSERT_BATCH_SIZE = 30;
 
     private final DiagnosisBatchSourceMapper batchSourceMapper;
     private final DiagnosisGmroiContributionMapper gmroiContributionMapper;
@@ -143,11 +144,18 @@ public class DiagnosisGmroiContributionFinalizeService {
         }
 
         if (!rows.isEmpty()) {
-            gmroiContributionMapper.batchInsertSku(rows);
+            batchInsertSkuRows(rows);
         }
         return DiagnosisGmroiFinalizeResult.builder()
             .skuRows(rows.size())
             .build();
+    }
+
+    private void batchInsertSkuRows(List<DiagnosisGmroiSkuRow> rows) {
+        for (int start = 0; start < rows.size(); start += SKU_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + SKU_INSERT_BATCH_SIZE, rows.size());
+            gmroiContributionMapper.batchInsertSku(rows.subList(start, end));
+        }
     }
 
     private DiagnosisGmroiSkuRow toRow(DiagnosisFinalizeContext context,

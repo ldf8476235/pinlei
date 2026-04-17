@@ -5,22 +5,28 @@ import org.dromara.common.json.utils.JsonUtils;
 import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;
 import org.dromara.diagnosis.application.batch.model.DiagnosisChannelFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisAbcFinalizeResult;
+import org.dromara.diagnosis.application.batch.model.DiagnosisBrandFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisFinalizeContext;
 import org.dromara.diagnosis.application.batch.model.DiagnosisGmroiFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisGrossFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisOverviewFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisPriceBandFinalizeResult;
+import org.dromara.diagnosis.application.batch.model.DiagnosisSpecFinalizeResult;
+import org.dromara.diagnosis.application.batch.model.DiagnosisTagFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisSubclassFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisTrendFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisVipFinalizeResult;
 import org.dromara.diagnosis.application.batch.service.DiagnosisChannelPerformanceFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisAbcStructureFinalizeService;
+import org.dromara.diagnosis.application.batch.service.DiagnosisBrandFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisExtendedSnapshotFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisFinalizeSupport;
 import org.dromara.diagnosis.application.batch.service.DiagnosisGmroiContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisGrossContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisOverviewFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisPriceBandFinalizeService;
+import org.dromara.diagnosis.application.batch.service.DiagnosisSpecFinalizeService;
+import org.dromara.diagnosis.application.batch.service.DiagnosisTagFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisSubclassContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisTrendFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisVipAnalysisFinalizeService;
@@ -79,6 +85,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
     private final DiagnosisGrossContributionFinalizeService grossContributionFinalizeService;
     private final DiagnosisGmroiContributionFinalizeService gmroiContributionFinalizeService;
     private final DiagnosisPriceBandFinalizeService priceBandFinalizeService;
+    private final DiagnosisBrandFinalizeService brandFinalizeService;
+    private final DiagnosisSpecFinalizeService specFinalizeService;
+    private final DiagnosisTagFinalizeService tagFinalizeService;
     private final DiagnosisAsyncOrchestratorService asyncOrchestratorService;
 
     @Override
@@ -150,6 +159,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         AtomicReference<DiagnosisGrossFinalizeResult> grossResultRef = new AtomicReference<>();
         AtomicReference<DiagnosisGmroiFinalizeResult> gmroiResultRef = new AtomicReference<>();
         AtomicReference<DiagnosisPriceBandFinalizeResult> priceBandResultRef = new AtomicReference<>();
+        AtomicReference<DiagnosisBrandFinalizeResult> brandResultRef = new AtomicReference<>();
+        AtomicReference<DiagnosisSpecFinalizeResult> specResultRef = new AtomicReference<>();
+        AtomicReference<DiagnosisTagFinalizeResult> tagResultRef = new AtomicReference<>();
 
         Map<String, Supplier<Long>> moduleSuppliers = new LinkedHashMap<>();
         moduleSuppliers.put("overview", () -> {
@@ -197,6 +209,25 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                 + priceBandResult.getLineRows()
                 + priceBandResult.getPointRows()
                 + priceBandResult.getSkuRows();
+        });
+        moduleSuppliers.put("brand", () -> {
+            DiagnosisBrandFinalizeResult brandResult = brandFinalizeService.finalizeBrand(finalizeContext);
+            brandResultRef.set(brandResult);
+            return brandResult.getOverviewRows()
+                + brandResult.getMetricRows()
+                + brandResult.getJsonRows();
+        });
+        moduleSuppliers.put("spec", () -> {
+            DiagnosisSpecFinalizeResult specResult = specFinalizeService.finalizeSpec(finalizeContext);
+            specResultRef.set(specResult);
+            return specResult.getOverviewRows()
+                + specResult.getMetricRows()
+                + specResult.getJsonRows();
+        });
+        moduleSuppliers.put("tag", () -> {
+            DiagnosisTagFinalizeResult tagResult = tagFinalizeService.finalizeTag(finalizeContext);
+            tagResultRef.set(tagResult);
+            return tagResult.getMetricRows() + tagResult.getJsonRows();
         });
 
         DiagnosisAsyncOrchestratorRequest orchestratorRequest = DiagnosisAsyncOrchestratorRequest.builder()
@@ -264,6 +295,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
             DiagnosisGrossFinalizeResult grossResult = grossResultRef.get();
             DiagnosisGmroiFinalizeResult gmroiResult = gmroiResultRef.get();
             DiagnosisPriceBandFinalizeResult priceBandResult = priceBandResultRef.get();
+            DiagnosisBrandFinalizeResult brandResult = brandResultRef.get();
+            DiagnosisSpecFinalizeResult specResult = specResultRef.get();
+            DiagnosisTagFinalizeResult tagResult = tagResultRef.get();
 
             Long totalRows = batchSourceMapper.countRows(param);
             long windowRowsRead = totalRows == null ? 0L : totalRows;
@@ -296,6 +330,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                 grossResult,
                 gmroiResult,
                 priceBandResult,
+                brandResult,
+                specResult,
+                tagResult,
                 windowRowsRead,
                 windowRowsWritten,
                 job
@@ -418,6 +455,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("gross", moduleNode(statusMap, errorMap, "gross"));
         payload.put("gmroi", moduleNode(statusMap, errorMap, "gmroi"));
         payload.put("priceBand", moduleNode(statusMap, errorMap, "priceBand"));
+        payload.put("brand", moduleNode(statusMap, errorMap, "brand"));
+        payload.put("spec", moduleNode(statusMap, errorMap, "spec"));
+        payload.put("tag", moduleNode(statusMap, errorMap, "tag"));
         return JsonUtils.toJsonString(payload);
     }
 
@@ -444,6 +484,9 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                                      DiagnosisGrossFinalizeResult grossResult,
                                      DiagnosisGmroiFinalizeResult gmroiResult,
                                      DiagnosisPriceBandFinalizeResult priceBandResult,
+                                     DiagnosisBrandFinalizeResult brandResult,
+                                     DiagnosisSpecFinalizeResult specResult,
+                                     DiagnosisTagFinalizeResult tagResult,
                                      long windowRowsRead,
                                      long windowRowsWritten,
                                      DiagnosisPrecomputeJobRow job) {
@@ -477,6 +520,14 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("priceBandLineRows", priceBandResult == null ? 0L : priceBandResult.getLineRows());
         payload.put("priceBandPointRows", priceBandResult == null ? 0L : priceBandResult.getPointRows());
         payload.put("priceBandSkuRows", priceBandResult == null ? 0L : priceBandResult.getSkuRows());
+        payload.put("brandOverviewRows", brandResult == null ? 0L : brandResult.getOverviewRows());
+        payload.put("brandMetricRows", brandResult == null ? 0L : brandResult.getMetricRows());
+        payload.put("brandJsonRows", brandResult == null ? 0L : brandResult.getJsonRows());
+        payload.put("specOverviewRows", specResult == null ? 0L : specResult.getOverviewRows());
+        payload.put("specMetricRows", specResult == null ? 0L : specResult.getMetricRows());
+        payload.put("specJsonRows", specResult == null ? 0L : specResult.getJsonRows());
+        payload.put("tagMetricRows", tagResult == null ? 0L : tagResult.getMetricRows());
+        payload.put("tagJsonRows", tagResult == null ? 0L : tagResult.getJsonRows());
         payload.put("windowRowsRead", windowRowsRead);
         payload.put("windowRowsWritten", windowRowsWritten);
         payload.put("jobDoneWindows", job.getDoneWindows());

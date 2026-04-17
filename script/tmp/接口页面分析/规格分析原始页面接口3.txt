@@ -1,0 +1,56 @@
+请求地址：/api/classDoctorSpec/querySpecSalesRanking
+请求参数：{"id":118,"type":"1","orderType":"desc","page":1,"size":10}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "ave": 6326.34,
+        "maxData": 320488.28,
+        "minData": -783.70,
+        "total": 1199,
+        "list": [
+            {
+                "productSpec": "2kg",
+                "data": 105909.51
+            },
+            {
+                "productSpec": "100ml+120ml+30ml+50g",
+                "data": 108597.63
+            },
+            {
+                "productSpec": "72抽*6",
+                "data": 111054.98
+            },
+            {
+                "productSpec": "500ml*3",
+                "data": 122873.98
+            },
+            {
+                "productSpec": "1KG",
+                "data": 145377.97
+            },
+            {
+                "productSpec": "100g",
+                "data": 147012.45
+            },
+            {
+                "productSpec": "50g",
+                "data": 161022.00
+            },
+            {
+                "productSpec": "4.75kg",
+                "data": 192579.01
+            },
+            {
+                "productSpec": "4.8kg",
+                "data": 238798.90
+            },
+            {
+                "productSpec": "5kg",
+                "data": 320488.28
+            }
+        ]
+    },
+    "timestamp": 1776308369850
+}

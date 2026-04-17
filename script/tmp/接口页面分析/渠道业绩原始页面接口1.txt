@@ -1,4 +1,4 @@
-接口：/api/classDoctorChannel/queryChannelSalesPie
+请求接口：/api/classDoctorChannel/queryChannelSalesPie
 请求参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":"004","currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
 返回参数：
 {

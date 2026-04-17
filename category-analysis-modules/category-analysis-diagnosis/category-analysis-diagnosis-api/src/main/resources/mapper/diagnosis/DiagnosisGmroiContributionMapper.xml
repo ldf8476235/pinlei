@@ -35,8 +35,8 @@
                 #{row.saleQuantity}, #{row.saleQuantityPsd}, #{row.sales}, #{row.salesPer}, #{row.salesPsd},
                 #{row.gross}, #{row.grossPer}, #{row.grossPsd}, #{row.grossRate}, #{row.stockQuantity}, #{row.stockSalesRate},
                 #{row.turnoverRate}, #{row.turnoverDays}, #{row.contributionRate}, #{row.gmroi}, #{row.salesRate},
-                #{row.activity}, #{row.firstSaleDate}, #{row.newProduct}, #{row.keyProduct}, #{row.seasonableFlag}, #{row.seasonableFlagName},
-                #{row.seasonableStartDate}, #{row.seasonableEndDate}, #{row.classNo}, #{row.className}, #{row.classLevel},
+                #{row.activity}, #{row.firstSaleDate,jdbcType=DATE}, #{row.newProduct}, #{row.keyProduct}, #{row.seasonableFlag}, #{row.seasonableFlagName},
+                #{row.seasonableStartDate,jdbcType=DATE}, #{row.seasonableEndDate,jdbcType=DATE}, #{row.classNo}, #{row.className}, #{row.classLevel},
                 #{row.productBarcode}, #{row.brandName}, #{row.spec}, #{row.inPrice}, #{row.salesPrice},
                 #{row.productVendorNo}, #{row.productVendorName}, #{row.productVendorNoName}, #{row.promotionFlag},
                 #{row.compareSales}, #{row.compareGross}, #{row.compareTurnoverRate}, #{row.compareGrossRate}, #{row.compareGmroi}
@@ -178,4 +178,3 @@
     </select>
 
 </mapper>
-

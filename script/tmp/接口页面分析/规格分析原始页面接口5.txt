@@ -1,0 +1,6360 @@
+请求地址（查询规格）：/api/classDoctorSpec/querySpecType
+请求参数（我们就使用sessionId）：{"id":118}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "type": "1",
+            "specNo": "600ml",
+            "specName": "600ml"
+        },
+        {
+            "type": "1",
+            "specNo": "200ml",
+            "specName": "200ml"
+        },
+        {
+            "type": "1",
+            "specNo": "350ml",
+            "specName": "350ml"
+        },
+        {
+            "type": "1",
+            "specNo": "700ml",
+            "specName": "700ml"
+        },
+        {
+            "type": "1",
+            "specNo": "400ml",
+            "specName": "400ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1L",
+            "specName": "1L"
+        },
+        {
+            "type": "1",
+            "specNo": "800ml",
+            "specName": "800ml"
+        },
+        {
+            "type": "1",
+            "specNo": "350g",
+            "specName": "350g"
+        },
+        {
+            "type": "1",
+            "specNo": "750g",
+            "specName": "750g"
+        },
+        {
+            "type": "1",
+            "specNo": "700g",
+            "specName": "700g"
+        },
+        {
+            "type": "1",
+            "specNo": "750ml",
+            "specName": "750ml"
+        },
+        {
+            "type": "1",
+            "specNo": "360ml",
+            "specName": "360ml"
+        },
+        {
+            "type": "1",
+            "specNo": "360g",
+            "specName": "360g"
+        },
+        {
+            "type": "1",
+            "specNo": "400g",
+            "specName": "400g"
+        },
+        {
+            "type": "1",
+            "specNo": "400g+160g",
+            "specName": "400g+160g"
+        },
+        {
+            "type": "1",
+            "specNo": "400ml+160ml",
+            "specName": "400ml+160ml"
+        },
+        {
+            "type": "1",
+            "specNo": "170g",
+            "specName": "170g"
+        },
+        {
+            "type": "1",
+            "specNo": "265ml",
+            "specName": "265ml"
+        },
+        {
+            "type": "1",
+            "specNo": "535ml",
+            "specName": "535ml"
+        },
+        {
+            "type": "1",
+            "specNo": "800g",
+            "specName": "800g"
+        },
+        {
+            "type": "1",
+            "specNo": "650g",
+            "specName": "650g"
+        },
+        {
+            "type": "1",
+            "specNo": "300ml",
+            "specName": "300ml"
+        },
+        {
+            "type": "1",
+            "specNo": "530ml",
+            "specName": "530ml"
+        },
+        {
+            "type": "1",
+            "specNo": "380ml",
+            "specName": "380ml"
+        },
+        {
+            "type": "1",
+            "specNo": "930ml",
+            "specName": "930ml"
+        },
+        {
+            "type": "1",
+            "specNo": "500g",
+            "specName": "500g"
+        },
+        {
+            "type": "1",
+            "specNo": "520ml",
+            "specName": "520ml"
+        },
+        {
+            "type": "1",
+            "specNo": "700g+400ml",
+            "specName": "700g+400ml"
+        },
+        {
+            "type": "1",
+            "specNo": "900g",
+            "specName": "900g"
+        },
+        {
+            "type": "1",
+            "specNo": "425g",
+            "specName": "425g"
+        },
+        {
+            "type": "1",
+            "specNo": "645g",
+            "specName": "645g"
+        },
+        {
+            "type": "1",
+            "specNo": "930g",
+            "specName": "930g"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml",
+            "specName": "500ml"
+        },
+        {
+            "type": "1",
+            "specNo": "500m1",
+            "specName": "500m1"
+        },
+        {
+            "type": "1",
+            "specNo": "720ml",
+            "specName": "720ml"
+        },
+        {
+            "type": "1",
+            "specNo": "450ml(J)",
+            "specName": "450ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "450g",
+            "specName": "450g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.018L",
+            "specName": "1.018L"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml(J)",
+            "specName": "500ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "280g(J)",
+            "specName": "280g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "480g",
+            "specName": "480g"
+        },
+        {
+            "type": "1",
+            "specNo": "60ml*2+80ml",
+            "specName": "60ml*2+80ml"
+        },
+        {
+            "type": "1",
+            "specNo": "80ml*3",
+            "specName": "80ml*3"
+        },
+        {
+            "type": "1",
+            "specNo": "430ml",
+            "specName": "430ml"
+        },
+        {
+            "type": "1",
+            "specNo": "670g",
+            "specName": "670g"
+        },
+        {
+            "type": "1",
+            "specNo": "940g",
+            "specName": "940g"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml*3",
+            "specName": "500ml*3"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml*2",
+            "specName": "500ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "800ml*3",
+            "specName": "800ml*3"
+        },
+        {
+            "type": "1",
+            "specNo": "1500g",
+            "specName": "1500g"
+        },
+        {
+            "type": "1",
+            "specNo": "720g",
+            "specName": "720g"
+        },
+        {
+            "type": "1",
+            "specNo": "500g*3",
+            "specName": "500g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "720g*3",
+            "specName": "720g*3"
+        },
+        {
+            "type": "3",
+            "specNo": "720g*3",
+            "specName": "720g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "680ml",
+            "specName": "680ml"
+        },
+        {
+            "type": "1",
+            "specNo": "900g+900g+645g",
+            "specName": "900g+900g+645g"
+        },
+        {
+            "type": "1",
+            "specNo": "750ml*3",
+            "specName": "750ml*3"
+        },
+        {
+            "type": "3",
+            "specNo": "750ml*3",
+            "specName": "750ml*3"
+        },
+        {
+            "type": "1",
+            "specNo": "720ml+720ml+580ml",
+            "specName": "720ml+720ml+580ml"
+        },
+        {
+            "type": "3",
+            "specNo": "720ml+720ml+580ml",
+            "specName": "720ml+720ml+580ml"
+        },
+        {
+            "type": "1",
+            "specNo": "150g",
+            "specName": "150g"
+        },
+        {
+            "type": "1",
+            "specNo": "300g",
+            "specName": "300g"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml",
+            "specName": "150ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml+50ml+50ml",
+            "specName": "50ml+50ml+50ml"
+        },
+        {
+            "type": "3",
+            "specNo": "50ml+50ml+50ml",
+            "specName": "50ml+50ml+50ml"
+        },
+        {
+            "type": "1",
+            "specNo": "730g",
+            "specName": "730g"
+        },
+        {
+            "type": "3",
+            "specNo": "730g",
+            "specName": "730g"
+        },
+        {
+            "type": "1",
+            "specNo": "650ml",
+            "specName": "650ml"
+        },
+        {
+            "type": "1",
+            "specNo": "650ml+330ml",
+            "specName": "650ml+330ml"
+        },
+        {
+            "type": "1",
+            "specNo": "470ml",
+            "specName": "470ml"
+        },
+        {
+            "type": "1",
+            "specNo": "200g",
+            "specName": "200g"
+        },
+        {
+            "type": "1",
+            "specNo": "套",
+            "specName": "套"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml*6",
+            "specName": "500ml*6"
+        },
+        {
+            "type": "1",
+            "specNo": "525ml",
+            "specName": "525ml"
+        },
+        {
+            "type": "1",
+            "specNo": "550ml",
+            "specName": "550ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1.18kg",
+            "specName": "1.18kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1L*3",
+            "specName": "1L*3"
+        },
+        {
+            "type": "1",
+            "specNo": "450ml",
+            "specName": "450ml"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml+500ml",
+            "specName": "500ml+500ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1KG",
+            "specName": "1KG"
+        },
+        {
+            "type": "1",
+            "specNo": "175ml",
+            "specName": "175ml"
+        },
+        {
+            "type": "1",
+            "specNo": "700ml+320ml",
+            "specName": "700ml+320ml"
+        },
+        {
+            "type": "1",
+            "specNo": "400ml+200ml",
+            "specName": "400ml+200ml"
+        },
+        {
+            "type": "1",
+            "specNo": "320ml",
+            "specName": "320ml"
+        },
+        {
+            "type": "1",
+            "specNo": "580g",
+            "specName": "580g"
+        },
+        {
+            "type": "1",
+            "specNo": "300ml(J)",
+            "specName": "300ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "(400+380)ml",
+            "specName": "(400+380)ml"
+        },
+        {
+            "type": "1",
+            "specNo": "440ml",
+            "specName": "440ml"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml+500ml+500ml",
+            "specName": "500ml+500ml+500ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml*2+30g+牙刷",
+            "specName": "50ml*2+30g+牙刷"
+        },
+        {
+            "type": "3",
+            "specNo": "50ml*2+30g+牙刷",
+            "specName": "50ml*2+30g+牙刷"
+        },
+        {
+            "type": "1",
+            "specNo": "700g*800g+818g",
+            "specName": "700g*800g+818g"
+        },
+        {
+            "type": "1",
+            "specNo": "（400+190）ml",
+            "specName": "（400+190）ml"
+        },
+        {
+            "type": "1",
+            "specNo": "520g",
+            "specName": "520g"
+        },
+        {
+            "type": "1",
+            "specNo": "750ml*2",
+            "specName": "750ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "1L+900ml",
+            "specName": "1L+900ml"
+        },
+        {
+            "type": "3",
+            "specNo": "1L+900ml",
+            "specName": "1L+900ml"
+        },
+        {
+            "type": "1",
+            "specNo": "650ml+400ml",
+            "specName": "650ml+400ml"
+        },
+        {
+            "type": "1",
+            "specNo": "175g",
+            "specName": "175g"
+        },
+        {
+            "type": "1",
+            "specNo": "530g",
+            "specName": "530g"
+        },
+        {
+            "type": "1",
+            "specNo": "200ml(J)",
+            "specName": "200ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "600ml(J)",
+            "specName": "600ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "250ml",
+            "specName": "250ml"
+        },
+        {
+            "type": "1",
+            "specNo": "40ml+40ml",
+            "specName": "40ml+40ml"
+        },
+        {
+            "type": "1",
+            "specNo": "400ml(J)",
+            "specName": "400ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "750ml(J)",
+            "specName": "750ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml*2",
+            "specName": "50ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "358ml",
+            "specName": "358ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1000ml",
+            "specName": "1000ml"
+        },
+        {
+            "type": "1",
+            "specNo": "340g(J)",
+            "specName": "340g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "310ml",
+            "specName": "310ml"
+        },
+        {
+            "type": "1",
+            "specNo": "550g",
+            "specName": "550g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.1L",
+            "specName": "1.1L"
+        },
+        {
+            "type": "1",
+            "specNo": "99ml",
+            "specName": "99ml"
+        },
+        {
+            "type": "1",
+            "specNo": "30g",
+            "specName": "30g"
+        },
+        {
+            "type": "1",
+            "specNo": "50g",
+            "specName": "50g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.2kg",
+            "specName": "1.2kg"
+        },
+        {
+            "type": "1",
+            "specNo": "235g",
+            "specName": "235g"
+        },
+        {
+            "type": "1",
+            "specNo": "500g+500g",
+            "specName": "500g+500g"
+        },
+        {
+            "type": "1",
+            "specNo": "270ml",
+            "specName": "270ml"
+        },
+        {
+            "type": "1",
+            "specNo": "680g",
+            "specName": "680g"
+        },
+        {
+            "type": "1",
+            "specNo": "330ml",
+            "specName": "330ml"
+        },
+        {
+            "type": "1",
+            "specNo": "460ml",
+            "specName": "460ml"
+        },
+        {
+            "type": "1",
+            "specNo": "700ml+400ml",
+            "specName": "700ml+400ml"
+        },
+        {
+            "type": "1",
+            "specNo": "535ml*2",
+            "specName": "535ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "170ml",
+            "specName": "170ml"
+        },
+        {
+            "type": "1",
+            "specNo": "180ml",
+            "specName": "180ml"
+        },
+        {
+            "type": "1",
+            "specNo": "260ml",
+            "specName": "260ml"
+        },
+        {
+            "type": "1",
+            "specNo": "420ml",
+            "specName": "420ml"
+        },
+        {
+            "type": "1",
+            "specNo": "480ml(J)",
+            "specName": "480ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "180ml*2",
+            "specName": "180ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "260g",
+            "specName": "260g"
+        },
+        {
+            "type": "1",
+            "specNo": "225ml",
+            "specName": "225ml"
+        },
+        {
+            "type": "1",
+            "specNo": "900ml",
+            "specName": "900ml"
+        },
+        {
+            "type": "1",
+            "specNo": "70ml",
+            "specName": "70ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1000ml(J)",
+            "specName": "1000ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "12ml(J)",
+            "specName": "12ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "180g",
+            "specName": "180g"
+        },
+        {
+            "type": "1",
+            "specNo": "3包",
+            "specName": "3包"
+        },
+        {
+            "type": "1",
+            "specNo": "3袋",
+            "specName": "3袋"
+        },
+        {
+            "type": "1",
+            "specNo": "18g12+1ml12",
+            "specName": "18g12+1ml12"
+        },
+        {
+            "type": "1",
+            "specNo": "100g",
+            "specName": "100g"
+        },
+        {
+            "type": "1",
+            "specNo": "80g(J)",
+            "specName": "80g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml(J)",
+            "specName": "100ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml",
+            "specName": "100ml"
+        },
+        {
+            "type": "1",
+            "specNo": "30ml",
+            "specName": "30ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml",
+            "specName": "50ml"
+        },
+        {
+            "type": "1",
+            "specNo": "140ml",
+            "specName": "140ml"
+        },
+        {
+            "type": "1",
+            "specNo": "80ml",
+            "specName": "80ml"
+        },
+        {
+            "type": "1",
+            "specNo": "48g",
+            "specName": "48g"
+        },
+        {
+            "type": "1",
+            "specNo": "70g",
+            "specName": "70g"
+        },
+        {
+            "type": "1",
+            "specNo": "12ml+48g+48g+40ml",
+            "specName": "12ml+48g+48g+40ml"
+        },
+        {
+            "type": "1",
+            "specNo": "60g",
+            "specName": "60g"
+        },
+        {
+            "type": "1",
+            "specNo": "1*12",
+            "specName": "1*12"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml*2+3ml*2",
+            "specName": "50ml*2+3ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "（15ml+15ml)*2袋",
+            "specName": "（15ml+15ml)*2袋"
+        },
+        {
+            "type": "1",
+            "specNo": "（15ml+15ml)*8袋",
+            "specName": "（15ml+15ml)*8袋"
+        },
+        {
+            "type": "1",
+            "specNo": "60ml*2",
+            "specName": "60ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "148ml",
+            "specName": "148ml"
+        },
+        {
+            "type": "1",
+            "specNo": "40ml*2+10ml",
+            "specName": "40ml*2+10ml"
+        },
+        {
+            "type": "1",
+            "specNo": "60g*2",
+            "specName": "60g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "30g*2",
+            "specName": "30g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "160g",
+            "specName": "160g"
+        },
+        {
+            "type": "1",
+            "specNo": "210ml",
+            "specName": "210ml"
+        },
+        {
+            "type": "1",
+            "specNo": "30ml*2",
+            "specName": "30ml*2"
+        },
+        {
+            "type": "3",
+            "specNo": "30ml*2",
+            "specName": "30ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml*2",
+            "specName": "100ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+100g",
+            "specName": "100g+100g"
+        },
+        {
+            "type": "1",
+            "specNo": "15ml*8",
+            "specName": "15ml*8"
+        },
+        {
+            "type": "3",
+            "specNo": "15ml*8",
+            "specName": "15ml*8"
+        },
+        {
+            "type": "1",
+            "specNo": "120g(J)",
+            "specName": "120g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "240g(J)",
+            "specName": "240g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "120ml(J)",
+            "specName": "120ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "130g",
+            "specName": "130g"
+        },
+        {
+            "type": "1",
+            "specNo": "215ml(J)",
+            "specName": "215ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "210ml(J)",
+            "specName": "210ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "150g(J)",
+            "specName": "150g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "180g(J)",
+            "specName": "180g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml(J)",
+            "specName": "150ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "250g",
+            "specName": "250g"
+        },
+        {
+            "type": "1",
+            "specNo": "85ml(J)",
+            "specName": "85ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "180ml(J)",
+            "specName": "180ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "80g",
+            "specName": "80g"
+        },
+        {
+            "type": "1",
+            "specNo": "128ml(J)",
+            "specName": "128ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "120g",
+            "specName": "120g"
+        },
+        {
+            "type": "1",
+            "specNo": "90g",
+            "specName": "90g"
+        },
+        {
+            "type": "1",
+            "specNo": "140g",
+            "specName": "140g"
+        },
+        {
+            "type": "1",
+            "specNo": "190g",
+            "specName": "190g"
+        },
+        {
+            "type": "1",
+            "specNo": "155g",
+            "specName": "155g"
+        },
+        {
+            "type": "1",
+            "specNo": "225g",
+            "specName": "225g"
+        },
+        {
+            "type": "1",
+            "specNo": "210g",
+            "specName": "210g"
+        },
+        {
+            "type": "1",
+            "specNo": "120g*2",
+            "specName": "120g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "210g+120g",
+            "specName": "210g+120g"
+        },
+        {
+            "type": "1",
+            "specNo": "170g+130g+75ml+4支+3",
+            "specName": "170g+130g+75ml+4支+3"
+        },
+        {
+            "type": "1",
+            "specNo": "105g",
+            "specName": "105g"
+        },
+        {
+            "type": "1",
+            "specNo": "180g+30g",
+            "specName": "180g+30g"
+        },
+        {
+            "type": "1",
+            "specNo": "110g",
+            "specName": "110g"
+        },
+        {
+            "type": "1",
+            "specNo": "120g*2+900g",
+            "specName": "120g*2+900g"
+        },
+        {
+            "type": "1",
+            "specNo": "140g*2+65g",
+            "specName": "140g*2+65g"
+        },
+        {
+            "type": "1",
+            "specNo": "190g+160g+40g*2",
+            "specName": "190g+160g+40g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "个",
+            "specName": "个"
+        },
+        {
+            "type": "1",
+            "specNo": "165g*2",
+            "specName": "165g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "220g",
+            "specName": "220g"
+        },
+        {
+            "type": "1",
+            "specNo": "45g",
+            "specName": "45g"
+        },
+        {
+            "type": "1",
+            "specNo": "65g",
+            "specName": "65g"
+        },
+        {
+            "type": "1",
+            "specNo": "135g",
+            "specName": "135g"
+        },
+        {
+            "type": "1",
+            "specNo": "165g",
+            "specName": "165g"
+        },
+        {
+            "type": "1",
+            "specNo": "145g",
+            "specName": "145g"
+        },
+        {
+            "type": "1",
+            "specNo": "240g",
+            "specName": "240g"
+        },
+        {
+            "type": "1",
+            "specNo": "125g",
+            "specName": "125g"
+        },
+        {
+            "type": "1",
+            "specNo": "100+20g(J)",
+            "specName": "100+20g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "120克",
+            "specName": "120克"
+        },
+        {
+            "type": "1",
+            "specNo": "120g*2+2",
+            "specName": "120g*2+2"
+        },
+        {
+            "type": "1",
+            "specNo": "180g+100g+30g+30g",
+            "specName": "180g+100g+30g+30g"
+        },
+        {
+            "type": "1",
+            "specNo": "225g+160g+40g*2",
+            "specName": "225g+160g+40g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "140g+30g",
+            "specName": "140g+30g"
+        },
+        {
+            "type": "1",
+            "specNo": "195g",
+            "specName": "195g"
+        },
+        {
+            "type": "1",
+            "specNo": "215g",
+            "specName": "215g"
+        },
+        {
+            "type": "1",
+            "specNo": "230g",
+            "specName": "230g"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*6瓶",
+            "specName": "25g*6瓶"
+        },
+        {
+            "type": "1",
+            "specNo": "40g+180g",
+            "specName": "40g+180g"
+        },
+        {
+            "type": "1",
+            "specNo": "138g",
+            "specName": "138g"
+        },
+        {
+            "type": "1",
+            "specNo": "500g+175g+30g*2+1支",
+            "specName": "500g+175g+30g*2+1支"
+        },
+        {
+            "type": "1",
+            "specNo": "120g*2+40g*2+3支",
+            "specName": "120g*2+40g*2+3支"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+10g",
+            "specName": "100g+10g"
+        },
+        {
+            "type": "1",
+            "specNo": "205g",
+            "specName": "205g"
+        },
+        {
+            "type": "1",
+            "specNo": "75ml",
+            "specName": "75ml"
+        },
+        {
+            "type": "1",
+            "specNo": "160g+160g",
+            "specName": "160g+160g"
+        },
+        {
+            "type": "1",
+            "specNo": "160g+20g",
+            "specName": "160g+20g"
+        },
+        {
+            "type": "1",
+            "specNo": "160g+40g",
+            "specName": "160g+40g"
+        },
+        {
+            "type": "1",
+            "specNo": "180g*2",
+            "specName": "180g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "40g",
+            "specName": "40g"
+        },
+        {
+            "type": "1",
+            "specNo": "45g*2",
+            "specName": "45g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "50g+50g",
+            "specName": "50g+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "40g+40g",
+            "specName": "40g+40g"
+        },
+        {
+            "type": "1",
+            "specNo": "40g+10g",
+            "specName": "40g+10g"
+        },
+        {
+            "type": "1",
+            "specNo": "支",
+            "specName": "支"
+        },
+        {
+            "type": "1",
+            "specNo": "40g*2",
+            "specName": "40g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "3.5g+3.5g/套",
+            "specName": "3.5g+3.5g/套"
+        },
+        {
+            "type": "1",
+            "specNo": "50g+1支+1",
+            "specName": "50g+1支+1"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*4",
+            "specName": "25g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "60g+60g",
+            "specName": "60g+60g"
+        },
+        {
+            "type": "1",
+            "specNo": "7021",
+            "specName": "7021"
+        },
+        {
+            "type": "1",
+            "specNo": "1015",
+            "specName": "1015"
+        },
+        {
+            "type": "1",
+            "specNo": "1818",
+            "specName": "1818"
+        },
+        {
+            "type": "1",
+            "specNo": "1019",
+            "specName": "1019"
+        },
+        {
+            "type": "1",
+            "specNo": "228",
+            "specName": "228"
+        },
+        {
+            "type": "1",
+            "specNo": "QW202",
+            "specName": "QW202"
+        },
+        {
+            "type": "1",
+            "specNo": "组",
+            "specName": "组"
+        },
+        {
+            "type": "1",
+            "specNo": "1*30",
+            "specName": "1*30"
+        },
+        {
+            "type": "1",
+            "specNo": "2支",
+            "specName": "2支"
+        },
+        {
+            "type": "1",
+            "specNo": "2支装",
+            "specName": "2支装"
+        },
+        {
+            "type": "1",
+            "specNo": "987",
+            "specName": "987"
+        },
+        {
+            "type": "1",
+            "specNo": "3支装",
+            "specName": "3支装"
+        },
+        {
+            "type": "1",
+            "specNo": "双支装",
+            "specName": "双支装"
+        },
+        {
+            "type": "1",
+            "specNo": "三支装",
+            "specName": "三支装"
+        },
+        {
+            "type": "1",
+            "specNo": "YS706",
+            "specName": "YS706"
+        },
+        {
+            "type": "1",
+            "specNo": "YS404",
+            "specName": "YS404"
+        },
+        {
+            "type": "1",
+            "specNo": "两支装",
+            "specName": "两支装"
+        },
+        {
+            "type": "1",
+            "specNo": "3支",
+            "specName": "3支"
+        },
+        {
+            "type": "1",
+            "specNo": "单支装",
+            "specName": "单支装"
+        },
+        {
+            "type": "1",
+            "specNo": "双支",
+            "specName": "双支"
+        },
+        {
+            "type": "1",
+            "specNo": "1支",
+            "specName": "1支"
+        },
+        {
+            "type": "1",
+            "specNo": "1支(J)",
+            "specName": "1支(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "10支",
+            "specName": "10支"
+        },
+        {
+            "type": "1",
+            "specNo": "支(J)",
+            "specName": "支(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1支装",
+            "specName": "1支装"
+        },
+        {
+            "type": "1",
+            "specNo": "4支",
+            "specName": "4支"
+        },
+        {
+            "type": "1",
+            "specNo": "单支",
+            "specName": "单支"
+        },
+        {
+            "type": "1",
+            "specNo": "四支",
+            "specName": "四支"
+        },
+        {
+            "type": "1",
+            "specNo": "5支",
+            "specName": "5支"
+        },
+        {
+            "type": "1",
+            "specNo": "A6",
+            "specName": "A6"
+        },
+        {
+            "type": "1",
+            "specNo": "A1",
+            "specName": "A1"
+        },
+        {
+            "type": "1",
+            "specNo": "A2",
+            "specName": "A2"
+        },
+        {
+            "type": "1",
+            "specNo": "6支",
+            "specName": "6支"
+        },
+        {
+            "type": "3",
+            "specNo": "6支",
+            "specName": "6支"
+        },
+        {
+            "type": "1",
+            "specNo": "两支",
+            "specName": "两支"
+        },
+        {
+            "type": "1",
+            "specNo": "1支装(J)",
+            "specName": "1支装(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "40g+1套+1刷头(J)",
+            "specName": "40g+1套+1刷头(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "3支装(J)",
+            "specName": "3支装(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1套(J)",
+            "specName": "1套(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "套(J)",
+            "specName": "套(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "2支(J)",
+            "specName": "2支(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "盒(J)",
+            "specName": "盒(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "ND01",
+            "specName": "ND01"
+        },
+        {
+            "type": "1",
+            "specNo": "1028",
+            "specName": "1028"
+        },
+        {
+            "type": "1",
+            "specNo": "1*72",
+            "specName": "1*72"
+        },
+        {
+            "type": "1",
+            "specNo": "55.5g",
+            "specName": "55.5g"
+        },
+        {
+            "type": "3",
+            "specNo": "55.5g",
+            "specName": "55.5g"
+        },
+        {
+            "type": "1",
+            "specNo": "60ml(J)",
+            "specName": "60ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "250ml(J)",
+            "specName": "250ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "250m",
+            "specName": "250m"
+        },
+        {
+            "type": "1",
+            "specNo": "8ml(J)",
+            "specName": "8ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "17ml(J)",
+            "specName": "17ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "11ml*15(J)",
+            "specName": "11ml*15(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "50支/盒(J)",
+            "specName": "50支/盒(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "33g",
+            "specName": "33g"
+        },
+        {
+            "type": "1",
+            "specNo": "20ml(J)",
+            "specName": "20ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "30粒",
+            "specName": "30粒"
+        },
+        {
+            "type": "1",
+            "specNo": "50支(J)",
+            "specName": "50支(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "100支(J)",
+            "specName": "100支(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "40支",
+            "specName": "40支"
+        },
+        {
+            "type": "1",
+            "specNo": "400ml+180ml",
+            "specName": "400ml+180ml"
+        },
+        {
+            "type": "1",
+            "specNo": "310g",
+            "specName": "310g"
+        },
+        {
+            "type": "3",
+            "specNo": "310g",
+            "specName": "310g"
+        },
+        {
+            "type": "1",
+            "specNo": "400g+180g",
+            "specName": "400g+180g"
+        },
+        {
+            "type": "1",
+            "specNo": "405ml",
+            "specName": "405ml"
+        },
+        {
+            "type": "1",
+            "specNo": "500g(J)",
+            "specName": "500g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "540ml(J)",
+            "specName": "540ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "320g(J)",
+            "specName": "320g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "308g",
+            "specName": "308g"
+        },
+        {
+            "type": "1",
+            "specNo": "720g+280g",
+            "specName": "720g+280g"
+        },
+        {
+            "type": "1",
+            "specNo": "350ml(J)",
+            "specName": "350ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "650g*2",
+            "specName": "650g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "680g*2",
+            "specName": "680g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "320g+80g",
+            "specName": "320g+80g"
+        },
+        {
+            "type": "1",
+            "specNo": "480ml+45ml",
+            "specName": "480ml+45ml"
+        },
+        {
+            "type": "3",
+            "specNo": "480ml+45ml",
+            "specName": "480ml+45ml"
+        },
+        {
+            "type": "1",
+            "specNo": "420g",
+            "specName": "420g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.1kg",
+            "specName": "1.1kg"
+        },
+        {
+            "type": "1",
+            "specNo": "570g",
+            "specName": "570g"
+        },
+        {
+            "type": "1",
+            "specNo": "540g",
+            "specName": "540g"
+        },
+        {
+            "type": "1",
+            "specNo": "650g+650g",
+            "specName": "650g+650g"
+        },
+        {
+            "type": "1",
+            "specNo": "580ml",
+            "specName": "580ml"
+        },
+        {
+            "type": "3",
+            "specNo": "580ml",
+            "specName": "580ml"
+        },
+        {
+            "type": "1",
+            "specNo": "480ml",
+            "specName": "480ml"
+        },
+        {
+            "type": "1",
+            "specNo": "95g",
+            "specName": "95g"
+        },
+        {
+            "type": "1",
+            "specNo": "140g+40g",
+            "specName": "140g+40g"
+        },
+        {
+            "type": "1",
+            "specNo": "75g",
+            "specName": "75g"
+        },
+        {
+            "type": "1",
+            "specNo": "68g(J)",
+            "specName": "68g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+28g",
+            "specName": "100g+28g"
+        },
+        {
+            "type": "1",
+            "specNo": "120g*48",
+            "specName": "120g*48"
+        },
+        {
+            "type": "1",
+            "specNo": "308ml",
+            "specName": "308ml"
+        },
+        {
+            "type": "1",
+            "specNo": "120ml",
+            "specName": "120ml"
+        },
+        {
+            "type": "1",
+            "specNo": "125ml",
+            "specName": "125ml"
+        },
+        {
+            "type": "1",
+            "specNo": "160ml",
+            "specName": "160ml"
+        },
+        {
+            "type": "1",
+            "specNo": "115g*3",
+            "specName": "115g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "125g(J)",
+            "specName": "125g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "125g*3",
+            "specName": "125g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "85g(J)",
+            "specName": "85g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "115g",
+            "specName": "115g"
+        },
+        {
+            "type": "1",
+            "specNo": "128g(J)",
+            "specName": "128g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "420ml+420ml",
+            "specName": "420ml+420ml"
+        },
+        {
+            "type": "1",
+            "specNo": "108g(J)",
+            "specName": "108g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "108g",
+            "specName": "108g"
+        },
+        {
+            "type": "1",
+            "specNo": "105g*4",
+            "specName": "105g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*3",
+            "specName": "100g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "135g(J)",
+            "specName": "135g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "115g*2(J)",
+            "specName": "115g*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "块(J)",
+            "specName": "块(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "块",
+            "specName": "块"
+        },
+        {
+            "type": "1",
+            "specNo": "540ml",
+            "specName": "540ml"
+        },
+        {
+            "type": "1",
+            "specNo": "108g*3",
+            "specName": "108g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "248g",
+            "specName": "248g"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*4",
+            "specName": "100g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "105g*3",
+            "specName": "105g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*6",
+            "specName": "100g*6"
+        },
+        {
+            "type": "1",
+            "specNo": "500g*2",
+            "specName": "500g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "瓶",
+            "specName": "瓶"
+        },
+        {
+            "type": "1",
+            "specNo": "258ml",
+            "specName": "258ml"
+        },
+        {
+            "type": "1",
+            "specNo": "450g+450g",
+            "specName": "450g+450g"
+        },
+        {
+            "type": "1",
+            "specNo": "420+420ml",
+            "specName": "420+420ml"
+        },
+        {
+            "type": "1",
+            "specNo": "480ml*2",
+            "specName": "480ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "290ml",
+            "specName": "290ml"
+        },
+        {
+            "type": "3",
+            "specNo": "290ml",
+            "specName": "290ml"
+        },
+        {
+            "type": "1",
+            "specNo": "320g",
+            "specName": "320g"
+        },
+        {
+            "type": "1",
+            "specNo": "300g*2",
+            "specName": "300g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "80ml(J)",
+            "specName": "80ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "260ml+25ml",
+            "specName": "260ml+25ml"
+        },
+        {
+            "type": "3",
+            "specNo": "260ml+25ml",
+            "specName": "260ml+25ml"
+        },
+        {
+            "type": "1",
+            "specNo": "20ml+30g",
+            "specName": "20ml+30g"
+        },
+        {
+            "type": "3",
+            "specNo": "20ml+30g",
+            "specName": "20ml+30g"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*60g",
+            "specName": "50g*60g"
+        },
+        {
+            "type": "1",
+            "specNo": "60ml+30ml",
+            "specName": "60ml+30ml"
+        },
+        {
+            "type": "1",
+            "specNo": "38g",
+            "specName": "38g"
+        },
+        {
+            "type": "1",
+            "specNo": "40ml",
+            "specName": "40ml"
+        },
+        {
+            "type": "1",
+            "specNo": "60g+50g",
+            "specName": "60g+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "40g+100ml",
+            "specName": "40g+100ml"
+        },
+        {
+            "type": "1",
+            "specNo": "60ml",
+            "specName": "60ml"
+        },
+        {
+            "type": "1",
+            "specNo": "35g",
+            "specName": "35g"
+        },
+        {
+            "type": "1",
+            "specNo": "50g+40g",
+            "specName": "50g+40g"
+        },
+        {
+            "type": "3",
+            "specNo": "50g+40g",
+            "specName": "50g+40g"
+        },
+        {
+            "type": "1",
+            "specNo": "（50+50）g",
+            "specName": "（50+50）g"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml+60ml+48P",
+            "specName": "50ml+60ml+48P"
+        },
+        {
+            "type": "3",
+            "specNo": "50ml+60ml+48P",
+            "specName": "50ml+60ml+48P"
+        },
+        {
+            "type": "1",
+            "specNo": "32g",
+            "specName": "32g"
+        },
+        {
+            "type": "3",
+            "specNo": "32g",
+            "specName": "32g"
+        },
+        {
+            "type": "1",
+            "specNo": "35ml",
+            "specName": "35ml"
+        },
+        {
+            "type": "1",
+            "specNo": "90ml",
+            "specName": "90ml"
+        },
+        {
+            "type": "1",
+            "specNo": "105ml",
+            "specName": "105ml"
+        },
+        {
+            "type": "1",
+            "specNo": "20g+6g",
+            "specName": "20g+6g"
+        },
+        {
+            "type": "1",
+            "specNo": "（95g+100ml+50g",
+            "specName": "（95g+100ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "95g+100ml+100ml+40g",
+            "specName": "95g+100ml+100ml+40g"
+        },
+        {
+            "type": "1",
+            "specNo": "50g+5g",
+            "specName": "50g+5g"
+        },
+        {
+            "type": "1",
+            "specNo": "20g",
+            "specName": "20g"
+        },
+        {
+            "type": "1",
+            "specNo": "18.5g",
+            "specName": "18.5g"
+        },
+        {
+            "type": "1",
+            "specNo": "50g+35g/盒",
+            "specName": "50g+35g/盒"
+        },
+        {
+            "type": "1",
+            "specNo": "40.5g",
+            "specName": "40.5g"
+        },
+        {
+            "type": "1",
+            "specNo": "85g",
+            "specName": "85g"
+        },
+        {
+            "type": "1",
+            "specNo": "200ml+60g",
+            "specName": "200ml+60g"
+        },
+        {
+            "type": "1",
+            "specNo": "110ml",
+            "specName": "110ml"
+        },
+        {
+            "type": "1",
+            "specNo": "110+160+80g",
+            "specName": "110+160+80g"
+        },
+        {
+            "type": "1",
+            "specNo": "120ml+120g",
+            "specName": "120ml+120g"
+        },
+        {
+            "type": "1",
+            "specNo": "（80g+100g）",
+            "specName": "（80g+100g）"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml+40g+120g+150g",
+            "specName": "150ml+40g+120g+150g"
+        },
+        {
+            "type": "3",
+            "specNo": "150ml+40g+120g+150g",
+            "specName": "150ml+40g+120g+150g"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml+120g+100g+50g",
+            "specName": "150ml+120g+100g+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml+100g+50g+30ml",
+            "specName": "150ml+100g+50g+30ml"
+        },
+        {
+            "type": "1",
+            "specNo": "120g+120ml+120g",
+            "specName": "120g+120ml+120g"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml洁面+90ml水+100",
+            "specName": "100ml洁面+90ml水+100"
+        },
+        {
+            "type": "1",
+            "specNo": "45ml",
+            "specName": "45ml"
+        },
+        {
+            "type": "1",
+            "specNo": "98g",
+            "specName": "98g"
+        },
+        {
+            "type": "1",
+            "specNo": "55g",
+            "specName": "55g"
+        },
+        {
+            "type": "1",
+            "specNo": "110ml*48",
+            "specName": "110ml*48"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*48",
+            "specName": "50g*48"
+        },
+        {
+            "type": "1",
+            "specNo": "298g(J)",
+            "specName": "298g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "118ml",
+            "specName": "118ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+100ml+100ml",
+            "specName": "100g+100ml+100ml"
+        },
+        {
+            "type": "1",
+            "specNo": "52g",
+            "specName": "52g"
+        },
+        {
+            "type": "1",
+            "specNo": "26g",
+            "specName": "26g"
+        },
+        {
+            "type": "3",
+            "specNo": "26g",
+            "specName": "26g"
+        },
+        {
+            "type": "1",
+            "specNo": "25g",
+            "specName": "25g"
+        },
+        {
+            "type": "1",
+            "specNo": "280g",
+            "specName": "280g"
+        },
+        {
+            "type": "1",
+            "specNo": "95ml",
+            "specName": "95ml"
+        },
+        {
+            "type": "1",
+            "specNo": "115mL",
+            "specName": "115mL"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml+50g",
+            "specName": "100ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "55ml+55ml",
+            "specName": "55ml+55ml"
+        },
+        {
+            "type": "3",
+            "specNo": "55ml+55ml",
+            "specName": "55ml+55ml"
+        },
+        {
+            "type": "1",
+            "specNo": "130ml",
+            "specName": "130ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+130ml+100ml+30m",
+            "specName": "100g+130ml+100ml+30m"
+        },
+        {
+            "type": "1",
+            "specNo": "130ml+100ml+50g+40ml",
+            "specName": "130ml+100ml+50g+40ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+175ml+175ml+50g",
+            "specName": "100g+175ml+175ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "200m",
+            "specName": "200m"
+        },
+        {
+            "type": "1",
+            "specNo": "26g*5",
+            "specName": "26g*5"
+        },
+        {
+            "type": "1",
+            "specNo": "130ml*48",
+            "specName": "130ml*48"
+        },
+        {
+            "type": "1",
+            "specNo": "99ml(J)",
+            "specName": "99ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "22g*5片",
+            "specName": "22g*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*5片",
+            "specName": "25g*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "5片",
+            "specName": "5片"
+        },
+        {
+            "type": "1",
+            "specNo": "25ml*5p",
+            "specName": "25ml*5p"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*5片/盒",
+            "specName": "25g*5片/盒"
+        },
+        {
+            "type": "1",
+            "specNo": "25g/片*5",
+            "specName": "25g/片*5"
+        },
+        {
+            "type": "1",
+            "specNo": "5P",
+            "specName": "5P"
+        },
+        {
+            "type": "1",
+            "specNo": "(2g+25ml)*5片",
+            "specName": "(2g+25ml)*5片"
+        },
+        {
+            "type": "3",
+            "specNo": "(2g+25ml)*5片",
+            "specName": "(2g+25ml)*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "26mL*5P",
+            "specName": "26mL*5P"
+        },
+        {
+            "type": "1",
+            "specNo": "32ml*5片",
+            "specName": "32ml*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "33ml/片*5片",
+            "specName": "33ml/片*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "(1.5mL+26mL)*5PCS",
+            "specName": "(1.5mL+26mL)*5PCS"
+        },
+        {
+            "type": "1",
+            "specNo": "28mL*5PCS",
+            "specName": "28mL*5PCS"
+        },
+        {
+            "type": "1",
+            "specNo": "5P*7盒",
+            "specName": "5P*7盒"
+        },
+        {
+            "type": "1",
+            "specNo": "5g*7",
+            "specName": "5g*7"
+        },
+        {
+            "type": "1",
+            "specNo": "30ml*7",
+            "specName": "30ml*7"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*7片",
+            "specName": "25g*7片"
+        },
+        {
+            "type": "1",
+            "specNo": "13片",
+            "specName": "13片"
+        },
+        {
+            "type": "3",
+            "specNo": "13片",
+            "specName": "13片"
+        },
+        {
+            "type": "1",
+            "specNo": "10p",
+            "specName": "10p"
+        },
+        {
+            "type": "1",
+            "specNo": "30ml*10p",
+            "specName": "30ml*10p"
+        },
+        {
+            "type": "3",
+            "specNo": "30ml*10p",
+            "specName": "30ml*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "3.8g*12",
+            "specName": "3.8g*12"
+        },
+        {
+            "type": "1",
+            "specNo": "10g*10对",
+            "specName": "10g*10对"
+        },
+        {
+            "type": "1",
+            "specNo": "6g*10对",
+            "specName": "6g*10对"
+        },
+        {
+            "type": "1",
+            "specNo": "20g*5片",
+            "specName": "20g*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "7g*7",
+            "specName": "7g*7"
+        },
+        {
+            "type": "1",
+            "specNo": "5g",
+            "specName": "5g"
+        },
+        {
+            "type": "1",
+            "specNo": "7g",
+            "specName": "7g"
+        },
+        {
+            "type": "1",
+            "specNo": "25ml片*5",
+            "specName": "25ml片*5"
+        },
+        {
+            "type": "3",
+            "specNo": "25ml片*5",
+            "specName": "25ml片*5"
+        },
+        {
+            "type": "1",
+            "specNo": "10片",
+            "specName": "10片"
+        },
+        {
+            "type": "1",
+            "specNo": "25g/片*5片",
+            "specName": "25g/片*5片"
+        },
+        {
+            "type": "1",
+            "specNo": "3.5g(J)",
+            "specName": "3.5g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "4g(J)",
+            "specName": "4g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "4g",
+            "specName": "4g"
+        },
+        {
+            "type": "1",
+            "specNo": "4.8g",
+            "specName": "4.8g"
+        },
+        {
+            "type": "1",
+            "specNo": "3.5g",
+            "specName": "3.5g"
+        },
+        {
+            "type": "1",
+            "specNo": "4.2g",
+            "specName": "4.2g"
+        },
+        {
+            "type": "1",
+            "specNo": "4.0g",
+            "specName": "4.0g"
+        },
+        {
+            "type": "1",
+            "specNo": "2g",
+            "specName": "2g"
+        },
+        {
+            "type": "1",
+            "specNo": "9g",
+            "specName": "9g"
+        },
+        {
+            "type": "3",
+            "specNo": "9g",
+            "specName": "9g"
+        },
+        {
+            "type": "1",
+            "specNo": "15g",
+            "specName": "15g"
+        },
+        {
+            "type": "1",
+            "specNo": "15ml",
+            "specName": "15ml"
+        },
+        {
+            "type": "1",
+            "specNo": "18g",
+            "specName": "18g"
+        },
+        {
+            "type": "3",
+            "specNo": "18g",
+            "specName": "18g"
+        },
+        {
+            "type": "1",
+            "specNo": "240ml",
+            "specName": "240ml"
+        },
+        {
+            "type": "1",
+            "specNo": "298g",
+            "specName": "298g"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml(J)",
+            "specName": "50ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "140g(J)",
+            "specName": "140g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "70g(J)",
+            "specName": "70g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "195ml",
+            "specName": "195ml"
+        },
+        {
+            "type": "1",
+            "specNo": "20ml*2",
+            "specName": "20ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "190ml",
+            "specName": "190ml"
+        },
+        {
+            "type": "1",
+            "specNo": "165ml",
+            "specName": "165ml"
+        },
+        {
+            "type": "1",
+            "specNo": "198ml",
+            "specName": "198ml"
+        },
+        {
+            "type": "1",
+            "specNo": "45ml(J)",
+            "specName": "45ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "188ml",
+            "specName": "188ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*2+30g",
+            "specName": "50g*2+30g"
+        },
+        {
+            "type": "1",
+            "specNo": "68g",
+            "specName": "68g"
+        },
+        {
+            "type": "1",
+            "specNo": "75g+75g",
+            "specName": "75g+75g"
+        },
+        {
+            "type": "1",
+            "specNo": "50g(J)",
+            "specName": "50g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "100g(J)",
+            "specName": "100g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "35g+35g",
+            "specName": "35g+35g"
+        },
+        {
+            "type": "1",
+            "specNo": "60g+8g",
+            "specName": "60g+8g"
+        },
+        {
+            "type": "1",
+            "specNo": "30g*4",
+            "specName": "30g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "（60g+8g）*4",
+            "specName": "（60g+8g）*4"
+        },
+        {
+            "type": "1",
+            "specNo": "6g*20",
+            "specName": "6g*20"
+        },
+        {
+            "type": "1",
+            "specNo": "135ml",
+            "specName": "135ml"
+        },
+        {
+            "type": "1",
+            "specNo": "235ml",
+            "specName": "235ml"
+        },
+        {
+            "type": "1",
+            "specNo": "155ml",
+            "specName": "155ml"
+        },
+        {
+            "type": "1",
+            "specNo": "350g+130g",
+            "specName": "350g+130g"
+        },
+        {
+            "type": "1",
+            "specNo": "110ml+160ml+80g+10g",
+            "specName": "110ml+160ml+80g+10g"
+        },
+        {
+            "type": "1",
+            "specNo": "380g+100g",
+            "specName": "380g+100g"
+        },
+        {
+            "type": "1",
+            "specNo": "120g+130ml+110ml+50g",
+            "specName": "120g+130ml+110ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml+100ml+50g",
+            "specName": "150ml+100ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "盒",
+            "specName": "盒"
+        },
+        {
+            "type": "1",
+            "specNo": "120ml+120ml+100ml",
+            "specName": "120ml+120ml+100ml"
+        },
+        {
+            "type": "1",
+            "specNo": "125ml+95ml+30ml+10ml",
+            "specName": "125ml+95ml+30ml+10ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml＋100ml＋30ml",
+            "specName": "100ml＋100ml＋30ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+150ml+100g",
+            "specName": "100g+150ml+100g"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+120ml+120g+50g",
+            "specName": "100g+120ml+120g+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+95ml+95ml+50g",
+            "specName": "100g+95ml+95ml+50g"
+        },
+        {
+            "type": "3",
+            "specNo": "100g+95ml+95ml+50g",
+            "specName": "100g+95ml+95ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "95ml+95ml+30ml+25g+3",
+            "specName": "95ml+95ml+30ml+25g+3"
+        },
+        {
+            "type": "3",
+            "specNo": "95ml+95ml+30ml+25g+3",
+            "specName": "95ml+95ml+30ml+25g+3"
+        },
+        {
+            "type": "1",
+            "specNo": "120g+120ml+100g",
+            "specName": "120g+120ml+100g"
+        },
+        {
+            "type": "3",
+            "specNo": "120g+120ml+100g",
+            "specName": "120g+120ml+100g"
+        },
+        {
+            "type": "1",
+            "specNo": "30ml+30ml+12ml",
+            "specName": "30ml+30ml+12ml"
+        },
+        {
+            "type": "3",
+            "specNo": "30ml+30ml+12ml",
+            "specName": "30ml+30ml+12ml"
+        },
+        {
+            "type": "1",
+            "specNo": "10ml+30ml+30ml",
+            "specName": "10ml+30ml+30ml"
+        },
+        {
+            "type": "3",
+            "specNo": "10ml+30ml+30ml",
+            "specName": "10ml+30ml+30ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50g+100ml+150ml",
+            "specName": "50g+100ml+150ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml+120ml+30ml+50g",
+            "specName": "100ml+120ml+30ml+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "9g(J)",
+            "specName": "9g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "2P(J)",
+            "specName": "2P(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "3.8g",
+            "specName": "3.8g"
+        },
+        {
+            "type": "3",
+            "specNo": "3.8g",
+            "specName": "3.8g"
+        },
+        {
+            "type": "1",
+            "specNo": "0.8g",
+            "specName": "0.8g"
+        },
+        {
+            "type": "3",
+            "specNo": "0.8g",
+            "specName": "0.8g"
+        },
+        {
+            "type": "1",
+            "specNo": "1*1",
+            "specName": "1*1"
+        },
+        {
+            "type": "1",
+            "specNo": "10ml(J)",
+            "specName": "10ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1ml(J)",
+            "specName": "1ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "150g+30g",
+            "specName": "150g+30g"
+        },
+        {
+            "type": "1",
+            "specNo": "120g+50g+10ml",
+            "specName": "120g+50g+10ml"
+        },
+        {
+            "type": "3",
+            "specNo": "120g+50g+10ml",
+            "specName": "120g+50g+10ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+20g",
+            "specName": "100g+20g"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml+50ml",
+            "specName": "150ml+50ml"
+        },
+        {
+            "type": "3",
+            "specNo": "150ml+50ml",
+            "specName": "150ml+50ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml+100ml",
+            "specName": "50ml+100ml"
+        },
+        {
+            "type": "3",
+            "specNo": "50ml+100ml",
+            "specName": "50ml+100ml"
+        },
+        {
+            "type": "1",
+            "specNo": "120g+70ml+22ml",
+            "specName": "120g+70ml+22ml"
+        },
+        {
+            "type": "1",
+            "specNo": "50ml*3",
+            "specName": "50ml*3"
+        },
+        {
+            "type": "1",
+            "specNo": "145ml",
+            "specName": "145ml"
+        },
+        {
+            "type": "3",
+            "specNo": "145ml",
+            "specName": "145ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100ml+50ml",
+            "specName": "100ml+50ml"
+        },
+        {
+            "type": "1",
+            "specNo": "180g+100g+50ml",
+            "specName": "180g+100g+50ml"
+        },
+        {
+            "type": "1",
+            "specNo": "100g+100ml",
+            "specName": "100g+100ml"
+        },
+        {
+            "type": "3",
+            "specNo": "100g+100ml",
+            "specName": "100g+100ml"
+        },
+        {
+            "type": "1",
+            "specNo": "210g(J)",
+            "specName": "210g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "包",
+            "specName": "包"
+        },
+        {
+            "type": "1",
+            "specNo": "271",
+            "specName": "271"
+        },
+        {
+            "type": "1",
+            "specNo": "241",
+            "specName": "241"
+        },
+        {
+            "type": "1",
+            "specNo": "550",
+            "specName": "550"
+        },
+        {
+            "type": "1",
+            "specNo": "278",
+            "specName": "278"
+        },
+        {
+            "type": "1",
+            "specNo": "4片",
+            "specName": "4片"
+        },
+        {
+            "type": "1",
+            "specNo": "1刀+1刀头",
+            "specName": "1刀+1刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "4刀头",
+            "specName": "4刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "1刀头",
+            "specName": "1刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "210g+50g(J)",
+            "specName": "210g+50g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1刀架4刀头",
+            "specName": "1刀架4刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "1刀架1刀头",
+            "specName": "1刀架1刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "3刀头",
+            "specName": "3刀头"
+        },
+        {
+            "type": "3",
+            "specNo": "3刀头",
+            "specName": "3刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "1刀架2刀头",
+            "specName": "1刀架2刀头"
+        },
+        {
+            "type": "1",
+            "specNo": "1刀架4刀头+刀架",
+            "specName": "1刀架4刀头+刀架"
+        },
+        {
+            "type": "1",
+            "specNo": "120g+50g",
+            "specName": "120g+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "150ml+50ml+30ml",
+            "specName": "150ml+50ml+30ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1头1底座",
+            "specName": "1头1底座"
+        },
+        {
+            "type": "1",
+            "specNo": "252g",
+            "specName": "252g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.41kg",
+            "specName": "1.41kg"
+        },
+        {
+            "type": "1",
+            "specNo": "908g",
+            "specName": "908g"
+        },
+        {
+            "type": "1",
+            "specNo": "3.5kg",
+            "specName": "3.5kg"
+        },
+        {
+            "type": "1",
+            "specNo": "508g",
+            "specName": "508g"
+        },
+        {
+            "type": "1",
+            "specNo": "1650g",
+            "specName": "1650g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.15kg",
+            "specName": "1.15kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.18kg*6",
+            "specName": "1.18kg*6"
+        },
+        {
+            "type": "1",
+            "specNo": "4kg",
+            "specName": "4kg"
+        },
+        {
+            "type": "1",
+            "specNo": "5kg",
+            "specName": "5kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.8kg",
+            "specName": "1.8kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.428kg",
+            "specName": "1.428kg"
+        },
+        {
+            "type": "1",
+            "specNo": "950g",
+            "specName": "950g"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg(J)",
+            "specName": "2kg(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1.88kg",
+            "specName": "1.88kg"
+        },
+        {
+            "type": "1",
+            "specNo": "袋",
+            "specName": "袋"
+        },
+        {
+            "type": "1",
+            "specNo": "2.8kg+200g",
+            "specName": "2.8kg+200g"
+        },
+        {
+            "type": "1",
+            "specNo": "3.018kg",
+            "specName": "3.018kg"
+        },
+        {
+            "type": "1",
+            "specNo": "3.2kg",
+            "specName": "3.2kg"
+        },
+        {
+            "type": "1",
+            "specNo": "3kg+1kg+880g+1.12kg+",
+            "specName": "3kg+1kg+880g+1.12kg+"
+        },
+        {
+            "type": "1",
+            "specNo": "4.6kg",
+            "specName": "4.6kg"
+        },
+        {
+            "type": "1",
+            "specNo": "5.018kg",
+            "specName": "5.018kg"
+        },
+        {
+            "type": "1",
+            "specNo": "3.68kg",
+            "specName": "3.68kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.65kg",
+            "specName": "1.65kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.6kg",
+            "specName": "2.6kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.1kg",
+            "specName": "2.1kg"
+        },
+        {
+            "type": "1",
+            "specNo": "3kg",
+            "specName": "3kg"
+        },
+        {
+            "type": "1",
+            "specNo": "5kg+100g",
+            "specName": "5kg+100g"
+        },
+        {
+            "type": "1",
+            "specNo": "300g+200g",
+            "specName": "300g+200g"
+        },
+        {
+            "type": "1",
+            "specNo": "1kg+100g",
+            "specName": "1kg+100g"
+        },
+        {
+            "type": "1",
+            "specNo": "4.1kg",
+            "specName": "4.1kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5kg",
+            "specName": "1.5kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.38kg",
+            "specName": "2.38kg"
+        },
+        {
+            "type": "1",
+            "specNo": "340g",
+            "specName": "340g"
+        },
+        {
+            "type": "3",
+            "specNo": "340g",
+            "specName": "340g"
+        },
+        {
+            "type": "1",
+            "specNo": "3.5kg+300g",
+            "specName": "3.5kg+300g"
+        },
+        {
+            "type": "1",
+            "specNo": "1600g",
+            "specName": "1600g"
+        },
+        {
+            "type": "1",
+            "specNo": "2.258kg",
+            "specName": "2.258kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1008g",
+            "specName": "1008g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.328kg",
+            "specName": "1.328kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.08kg",
+            "specName": "1.08kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.52kg",
+            "specName": "1.52kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.208kg",
+            "specName": "1.208kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.3kg",
+            "specName": "1.3kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.32kg",
+            "specName": "1.32kg"
+        },
+        {
+            "type": "1",
+            "specNo": "600g",
+            "specName": "600g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.68kg",
+            "specName": "1.68kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.6kg+1.65kg+1kg*2",
+            "specName": "2.6kg+1.65kg+1kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2.008kg",
+            "specName": "2.008kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.308kg",
+            "specName": "1.308kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.2kg+308g",
+            "specName": "1.2kg+308g"
+        },
+        {
+            "type": "1",
+            "specNo": "2.2kg",
+            "specName": "2.2kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.43kg",
+            "specName": "1.43kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.018kg",
+            "specName": "2.018kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.26kg",
+            "specName": "2.26kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.018kg",
+            "specName": "1.018kg"
+        },
+        {
+            "type": "1",
+            "specNo": "3kg+1.08kg+1.3kg+1kg",
+            "specName": "3kg+1.08kg+1.3kg+1kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.3kg",
+            "specName": "2.3kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.8kg+658g",
+            "specName": "1.8kg+658g"
+        },
+        {
+            "type": "1",
+            "specNo": "226g*2",
+            "specName": "226g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "200g*2",
+            "specName": "200g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "232g",
+            "specName": "232g"
+        },
+        {
+            "type": "1",
+            "specNo": "190g*2",
+            "specName": "190g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "206g*2",
+            "specName": "206g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "202g*2",
+            "specName": "202g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "218g*2",
+            "specName": "218g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "188g*2",
+            "specName": "188g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*2",
+            "specName": "100g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "166g*3+122g",
+            "specName": "166g*3+122g"
+        },
+        {
+            "type": "1",
+            "specNo": "205g*3",
+            "specName": "205g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "160g*2",
+            "specName": "160g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "（180g＋20g）*2",
+            "specName": "（180g＋20g）*2"
+        },
+        {
+            "type": "1",
+            "specNo": "238g*2",
+            "specName": "238g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "202*2g",
+            "specName": "202*2g"
+        },
+        {
+            "type": "1",
+            "specNo": "202g*4",
+            "specName": "202g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "226g*3",
+            "specName": "226g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "232g*2",
+            "specName": "232g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "300g(J)",
+            "specName": "300g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "108g*4",
+            "specName": "108g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "150g*4",
+            "specName": "150g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "212g*4",
+            "specName": "212g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "150g*4(J)",
+            "specName": "150g*4(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "202g*3+202g",
+            "specName": "202g*3+202g"
+        },
+        {
+            "type": "1",
+            "specNo": "200g*3",
+            "specName": "200g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "128g",
+            "specName": "128g"
+        },
+        {
+            "type": "3",
+            "specNo": "128g",
+            "specName": "128g"
+        },
+        {
+            "type": "1",
+            "specNo": "202g*2*3",
+            "specName": "202g*2*3"
+        },
+        {
+            "type": "3",
+            "specNo": "202g*2*3",
+            "specName": "202g*2*3"
+        },
+        {
+            "type": "1",
+            "specNo": "101g*2",
+            "specName": "101g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg+300g",
+            "specName": "2kg+300g"
+        },
+        {
+            "type": "1",
+            "specNo": "101g*4",
+            "specName": "101g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "110g*3",
+            "specName": "110g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "200g*3(J)",
+            "specName": "200g*3(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg",
+            "specName": "2kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.38kg+2.38kg",
+            "specName": "2.38kg+2.38kg"
+        },
+        {
+            "type": "1",
+            "specNo": "800g+150g",
+            "specName": "800g+150g"
+        },
+        {
+            "type": "1",
+            "specNo": "3.6kg+2kg",
+            "specName": "3.6kg+2kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg*2",
+            "specName": "2kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2.5kg*2",
+            "specName": "2.5kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2.1kg*2",
+            "specName": "2.1kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5kg*2",
+            "specName": "1.5kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "3.5kg*2",
+            "specName": "3.5kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "660g+600g*2+500g",
+            "specName": "660g+600g*2+500g"
+        },
+        {
+            "type": "1",
+            "specNo": "780g+118g",
+            "specName": "780g+118g"
+        },
+        {
+            "type": "1",
+            "specNo": "4.26kg",
+            "specName": "4.26kg"
+        },
+        {
+            "type": "1",
+            "specNo": "3L",
+            "specName": "3L"
+        },
+        {
+            "type": "1",
+            "specNo": "2L",
+            "specName": "2L"
+        },
+        {
+            "type": "1",
+            "specNo": "2L*8",
+            "specName": "2L*8"
+        },
+        {
+            "type": "1",
+            "specNo": "780g",
+            "specName": "780g"
+        },
+        {
+            "type": "1",
+            "specNo": "860g",
+            "specName": "860g"
+        },
+        {
+            "type": "1",
+            "specNo": "12g*42粒",
+            "specName": "12g*42粒"
+        },
+        {
+            "type": "1",
+            "specNo": "1.6L",
+            "specName": "1.6L"
+        },
+        {
+            "type": "1",
+            "specNo": "2.86kg",
+            "specName": "2.86kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.38kg*2",
+            "specName": "2.38kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg*2+1kg*2",
+            "specName": "2kg*2+1kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2.75kg*2",
+            "specName": "2.75kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "5L",
+            "specName": "5L"
+        },
+        {
+            "type": "1",
+            "specNo": "200g（25颗）",
+            "specName": "200g（25颗）"
+        },
+        {
+            "type": "1",
+            "specNo": "2.08kg",
+            "specName": "2.08kg"
+        },
+        {
+            "type": "1",
+            "specNo": "270g",
+            "specName": "270g"
+        },
+        {
+            "type": "1",
+            "specNo": "3.38kg*2",
+            "specName": "3.38kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "600g(J)",
+            "specName": "600g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg*4",
+            "specName": "2kg*4"
+        },
+        {
+            "type": "3",
+            "specNo": "2kg*4",
+            "specName": "2kg*4"
+        },
+        {
+            "type": "1",
+            "specNo": "2.88kg",
+            "specName": "2.88kg"
+        },
+        {
+            "type": "1",
+            "specNo": "189g",
+            "specName": "189g"
+        },
+        {
+            "type": "1",
+            "specNo": "2.5kg",
+            "specName": "2.5kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.58kg",
+            "specName": "2.58kg"
+        },
+        {
+            "type": "1",
+            "specNo": "5kg+180g",
+            "specName": "5kg+180g"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*10",
+            "specName": "100g*10"
+        },
+        {
+            "type": "1",
+            "specNo": "2L*6",
+            "specName": "2L*6"
+        },
+        {
+            "type": "1",
+            "specNo": "2.38kg*4",
+            "specName": "2.38kg*4"
+        },
+        {
+            "type": "1",
+            "specNo": "3.28kg*2",
+            "specName": "3.28kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "4.08kg",
+            "specName": "4.08kg"
+        },
+        {
+            "type": "1",
+            "specNo": "208g",
+            "specName": "208g"
+        },
+        {
+            "type": "1",
+            "specNo": "23颗",
+            "specName": "23颗"
+        },
+        {
+            "type": "1",
+            "specNo": "525g",
+            "specName": "525g"
+        },
+        {
+            "type": "3",
+            "specNo": "525g",
+            "specName": "525g"
+        },
+        {
+            "type": "1",
+            "specNo": "666ml",
+            "specName": "666ml"
+        },
+        {
+            "type": "1",
+            "specNo": "620ml",
+            "specName": "620ml"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg*2+1",
+            "specName": "2kg*2+1"
+        },
+        {
+            "type": "1",
+            "specNo": "3kg*2+1.008kg",
+            "specName": "3kg*2+1.008kg"
+        },
+        {
+            "type": "3",
+            "specNo": "3kg*2+1.008kg",
+            "specName": "3kg*2+1.008kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.25kg",
+            "specName": "1.25kg"
+        },
+        {
+            "type": "3",
+            "specNo": "1.25kg",
+            "specName": "1.25kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2L*2+2.18kg*2",
+            "specName": "2L*2+2.18kg*2"
+        },
+        {
+            "type": "3",
+            "specNo": "2L*2+2.18kg*2",
+            "specName": "2L*2+2.18kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2.18kg",
+            "specName": "2.18kg"
+        },
+        {
+            "type": "3",
+            "specNo": "2.18kg",
+            "specName": "2.18kg"
+        },
+        {
+            "type": "1",
+            "specNo": "8g*30颗",
+            "specName": "8g*30颗"
+        },
+        {
+            "type": "1",
+            "specNo": "1.608kg",
+            "specName": "1.608kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg*2+1.7kg*3",
+            "specName": "2kg*2+1.7kg*3"
+        },
+        {
+            "type": "1",
+            "specNo": "1.7kg+5kg",
+            "specName": "1.7kg+5kg"
+        },
+        {
+            "type": "1",
+            "specNo": "10g*10",
+            "specName": "10g*10"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5kg*2+900g*8",
+            "specName": "1.5kg*2+900g*8"
+        },
+        {
+            "type": "3",
+            "specNo": "1.5kg*2+900g*8",
+            "specName": "1.5kg*2+900g*8"
+        },
+        {
+            "type": "1",
+            "specNo": "1.7kg*6",
+            "specName": "1.7kg*6"
+        },
+        {
+            "type": "1",
+            "specNo": "3kg*4+888g*4",
+            "specName": "3kg*4+888g*4"
+        },
+        {
+            "type": "3",
+            "specNo": "3kg*4+888g*4",
+            "specName": "3kg*4+888g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg*6",
+            "specName": "2kg*6"
+        },
+        {
+            "type": "3",
+            "specNo": "2kg*6",
+            "specName": "2kg*6"
+        },
+        {
+            "type": "1",
+            "specNo": "1kg*2",
+            "specName": "1kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "408g",
+            "specName": "408g"
+        },
+        {
+            "type": "1",
+            "specNo": "2.5L",
+            "specName": "2.5L"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5L",
+            "specName": "1.5L"
+        },
+        {
+            "type": "1",
+            "specNo": "3.6L",
+            "specName": "3.6L"
+        },
+        {
+            "type": "1",
+            "specNo": "248ml(J)",
+            "specName": "248ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "2.8L",
+            "specName": "2.8L"
+        },
+        {
+            "type": "1",
+            "specNo": "500ml*2(J)",
+            "specName": "500ml*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "650g(J)",
+            "specName": "650g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "700g(J)",
+            "specName": "700g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "850克",
+            "specName": "850克"
+        },
+        {
+            "type": "1",
+            "specNo": "3L+400ml",
+            "specName": "3L+400ml"
+        },
+        {
+            "type": "1",
+            "specNo": "2L+300ml",
+            "specName": "2L+300ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1.08L",
+            "specName": "1.08L"
+        },
+        {
+            "type": "1",
+            "specNo": "2kg+600g",
+            "specName": "2kg+600g"
+        },
+        {
+            "type": "1",
+            "specNo": "850g",
+            "specName": "850g"
+        },
+        {
+            "type": "1",
+            "specNo": "2.6kg2",
+            "specName": "2.6kg2"
+        },
+        {
+            "type": "1",
+            "specNo": "1.35kg",
+            "specName": "1.35kg"
+        },
+        {
+            "type": "1",
+            "specNo": "910g",
+            "specName": "910g"
+        },
+        {
+            "type": "1",
+            "specNo": "30p",
+            "specName": "30p"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*2",
+            "specName": "50g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*5",
+            "specName": "50g*5"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*4",
+            "specName": "50g*4"
+        },
+        {
+            "type": "1",
+            "specNo": "600g+600g",
+            "specName": "600g+600g"
+        },
+        {
+            "type": "1",
+            "specNo": "600g*2",
+            "specName": "600g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "50g*2+50g",
+            "specName": "50g*2+50g"
+        },
+        {
+            "type": "1",
+            "specNo": "1板(J)",
+            "specName": "1板(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "10g*3(J)",
+            "specName": "10g*3(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "900g+900g",
+            "specName": "900g+900g"
+        },
+        {
+            "type": "1",
+            "specNo": "525g*2",
+            "specName": "525g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*3袋",
+            "specName": "100g*3袋"
+        },
+        {
+            "type": "3",
+            "specNo": "100g*3袋",
+            "specName": "100g*3袋"
+        },
+        {
+            "type": "1",
+            "specNo": "600ml*2",
+            "specName": "600ml*2"
+        },
+        {
+            "type": "3",
+            "specNo": "600ml*2",
+            "specName": "600ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "40g*5",
+            "specName": "40g*5"
+        },
+        {
+            "type": "1",
+            "specNo": "900g*2",
+            "specName": "900g*2"
+        },
+        {
+            "type": "3",
+            "specNo": "900g*2",
+            "specName": "900g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "518ml",
+            "specName": "518ml"
+        },
+        {
+            "type": "1",
+            "specNo": "1.2L",
+            "specName": "1.2L"
+        },
+        {
+            "type": "1",
+            "specNo": "468g",
+            "specName": "468g"
+        },
+        {
+            "type": "1",
+            "specNo": "500(J)",
+            "specName": "500(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1.25L",
+            "specName": "1.25L"
+        },
+        {
+            "type": "1",
+            "specNo": "500g*2(J)",
+            "specName": "500g*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "960g(J)",
+            "specName": "960g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "503g(J)",
+            "specName": "503g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*3(J)",
+            "specName": "25g*3(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "瓶(J)",
+            "specName": "瓶(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "540g(J)",
+            "specName": "540g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "25g*3",
+            "specName": "25g*3"
+        },
+        {
+            "type": "3",
+            "specNo": "25g*3",
+            "specName": "25g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "500g+420g",
+            "specName": "500g+420g"
+        },
+        {
+            "type": "1",
+            "specNo": "1000g",
+            "specName": "1000g"
+        },
+        {
+            "type": "1",
+            "specNo": "1L+800g",
+            "specName": "1L+800g"
+        },
+        {
+            "type": "1",
+            "specNo": "660g*2",
+            "specName": "660g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "350g(J)",
+            "specName": "350g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "350g*2(J)",
+            "specName": "350g*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "400ml*2",
+            "specName": "400ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "660g+600g",
+            "specName": "660g+600g"
+        },
+        {
+            "type": "1",
+            "specNo": "480g*2",
+            "specName": "480g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "500g+200g",
+            "specName": "500g+200g"
+        },
+        {
+            "type": "1",
+            "specNo": "450g*2",
+            "specName": "450g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "480g*3",
+            "specName": "480g*3"
+        },
+        {
+            "type": "3",
+            "specNo": "480g*3",
+            "specName": "480g*3"
+        },
+        {
+            "type": "1",
+            "specNo": "1.02kg",
+            "specName": "1.02kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.28kg",
+            "specName": "1.28kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.45kg",
+            "specName": "1.45kg"
+        },
+        {
+            "type": "1",
+            "specNo": "470g",
+            "specName": "470g"
+        },
+        {
+            "type": "1",
+            "specNo": "1kg+12g",
+            "specName": "1kg+12g"
+        },
+        {
+            "type": "1",
+            "specNo": "1280g",
+            "specName": "1280g"
+        },
+        {
+            "type": "1",
+            "specNo": "1kg(J)",
+            "specName": "1kg(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1.7kg",
+            "specName": "1.7kg"
+        },
+        {
+            "type": "1",
+            "specNo": "50抽(J)",
+            "specName": "50抽(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1.128kg",
+            "specName": "1.128kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.008kg",
+            "specName": "1.008kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1L*2",
+            "specName": "1L*2"
+        },
+        {
+            "type": "3",
+            "specNo": "1L*2",
+            "specName": "1L*2"
+        },
+        {
+            "type": "1",
+            "specNo": "1.28L",
+            "specName": "1.28L"
+        },
+        {
+            "type": "3",
+            "specNo": "1.28L",
+            "specName": "1.28L"
+        },
+        {
+            "type": "1",
+            "specNo": "125g*3(J)",
+            "specName": "125g*3(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "15g*5(J)",
+            "specName": "15g*5(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "250g(J)",
+            "specName": "250g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "100g*2(J)",
+            "specName": "100g*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "15g*10袋",
+            "specName": "15g*10袋"
+        },
+        {
+            "type": "3",
+            "specNo": "15g*10袋",
+            "specName": "15g*10袋"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5L*6",
+            "specName": "1.5L*6"
+        },
+        {
+            "type": "1",
+            "specNo": "330ml(J)",
+            "specName": "330ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "65g(J)",
+            "specName": "65g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "360ml(J)",
+            "specName": "360ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1盒(J)",
+            "specName": "1盒(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "125g*2(J)",
+            "specName": "125g*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "200g(J)",
+            "specName": "200g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "125g*6",
+            "specName": "125g*6"
+        },
+        {
+            "type": "3",
+            "specNo": "125g*6",
+            "specName": "125g*6"
+        },
+        {
+            "type": "1",
+            "specNo": "125g*2",
+            "specName": "125g*2"
+        },
+        {
+            "type": "3",
+            "specNo": "125g*2",
+            "specName": "125g*2"
+        },
+        {
+            "type": "1",
+            "specNo": "2.2L(J)",
+            "specName": "2.2L(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5L(J)",
+            "specName": "1.5L(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "30片",
+            "specName": "30片"
+        },
+        {
+            "type": "1",
+            "specNo": "400g(J)",
+            "specName": "400g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "2L*2(J)",
+            "specName": "2L*2(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5l3",
+            "specName": "1.5l3"
+        },
+        {
+            "type": "1",
+            "specNo": "360g(J)",
+            "specName": "360g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "320ml(J)",
+            "specName": "320ml(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "10g*（3+1）(J)",
+            "specName": "10g*（3+1）(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "308g(J)",
+            "specName": "308g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "60片",
+            "specName": "60片"
+        },
+        {
+            "type": "1",
+            "specNo": "72片",
+            "specName": "72片"
+        },
+        {
+            "type": "1",
+            "specNo": "40ml*2",
+            "specName": "40ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "10单盘",
+            "specName": "10单盘"
+        },
+        {
+            "type": "1",
+            "specNo": "20双盘",
+            "specName": "20双盘"
+        },
+        {
+            "type": "1",
+            "specNo": "40盘",
+            "specName": "40盘"
+        },
+        {
+            "type": "1",
+            "specNo": "45ml*2",
+            "specName": "45ml*2"
+        },
+        {
+            "type": "1",
+            "specNo": "五双圈",
+            "specName": "五双圈"
+        },
+        {
+            "type": "1",
+            "specNo": "40单盘",
+            "specName": "40单盘"
+        },
+        {
+            "type": "1",
+            "specNo": "30单盘",
+            "specName": "30单盘"
+        },
+        {
+            "type": "1",
+            "specNo": "(2瓶+1蚊香液加热器",
+            "specName": "(2瓶+1蚊香液加热器"
+        },
+        {
+            "type": "1",
+            "specNo": "4g*10",
+            "specName": "4g*10"
+        },
+        {
+            "type": "1",
+            "specNo": "4袋/包(J)",
+            "specName": "4袋/包(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "45ml*3+1器/盒",
+            "specName": "45ml*3+1器/盒"
+        },
+        {
+            "type": "1",
+            "specNo": "36单盘",
+            "specName": "36单盘"
+        },
+        {
+            "type": "3",
+            "specNo": "36单盘",
+            "specName": "36单盘"
+        },
+        {
+            "type": "1",
+            "specNo": "33ml*2+1",
+            "specName": "33ml*2+1"
+        },
+        {
+            "type": "1",
+            "specNo": "420ml+60ml",
+            "specName": "420ml+60ml"
+        },
+        {
+            "type": "1",
+            "specNo": "45ml*2+1器",
+            "specName": "45ml*2+1器"
+        },
+        {
+            "type": "1",
+            "specNo": "36ml",
+            "specName": "36ml"
+        },
+        {
+            "type": "1",
+            "specNo": "40单圈",
+            "specName": "40单圈"
+        },
+        {
+            "type": "1",
+            "specNo": "240段",
+            "specName": "240段"
+        },
+        {
+            "type": "1",
+            "specNo": "200段*10",
+            "specName": "200段*10"
+        },
+        {
+            "type": "1",
+            "specNo": "4.5kg",
+            "specName": "4.5kg"
+        },
+        {
+            "type": "1",
+            "specNo": "145g*12卷",
+            "specName": "145g*12卷"
+        },
+        {
+            "type": "1",
+            "specNo": "2卷",
+            "specName": "2卷"
+        },
+        {
+            "type": "1",
+            "specNo": "1.5kg(J)",
+            "specName": "1.5kg(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "1800g",
+            "specName": "1800g"
+        },
+        {
+            "type": "1",
+            "specNo": "2000g",
+            "specName": "2000g"
+        },
+        {
+            "type": "1",
+            "specNo": "200g*10",
+            "specName": "200g*10"
+        },
+        {
+            "type": "1",
+            "specNo": "3000g",
+            "specName": "3000g"
+        },
+        {
+            "type": "1",
+            "specNo": "1700g",
+            "specName": "1700g"
+        },
+        {
+            "type": "1",
+            "specNo": "1.4kg",
+            "specName": "1.4kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.28kg",
+            "specName": "2.28kg"
+        },
+        {
+            "type": "1",
+            "specNo": "4.75kg",
+            "specName": "4.75kg"
+        },
+        {
+            "type": "1",
+            "specNo": "75g*12卷",
+            "specName": "75g*12卷"
+        },
+        {
+            "type": "3",
+            "specNo": "75g*12卷",
+            "specName": "75g*12卷"
+        },
+        {
+            "type": "1",
+            "specNo": "2.8kg",
+            "specName": "2.8kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.04kg",
+            "specName": "2.04kg"
+        },
+        {
+            "type": "1",
+            "specNo": "1.54kg",
+            "specName": "1.54kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.7kg",
+            "specName": "2.7kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2.25kg",
+            "specName": "2.25kg"
+        },
+        {
+            "type": "1",
+            "specNo": "170g*14卷",
+            "specName": "170g*14卷"
+        },
+        {
+            "type": "1",
+            "specNo": "4.5kg*3",
+            "specName": "4.5kg*3"
+        },
+        {
+            "type": "1",
+            "specNo": "54节*14卷",
+            "specName": "54节*14卷"
+        },
+        {
+            "type": "1",
+            "specNo": "4.8kg",
+            "specName": "4.8kg"
+        },
+        {
+            "type": "1",
+            "specNo": "2002g",
+            "specName": "2002g"
+        },
+        {
+            "type": "1",
+            "specNo": "4.75kg*3",
+            "specName": "4.75kg*3"
+        },
+        {
+            "type": "3",
+            "specNo": "4.75kg*3",
+            "specName": "4.75kg*3"
+        },
+        {
+            "type": "1",
+            "specNo": "3kg*3",
+            "specName": "3kg*3"
+        },
+        {
+            "type": "1",
+            "specNo": "1.8kg*3提",
+            "specName": "1.8kg*3提"
+        },
+        {
+            "type": "1",
+            "specNo": "2.5kg*3+8连包+80p",
+            "specName": "2.5kg*3+8连包+80p"
+        },
+        {
+            "type": "1",
+            "specNo": "120g*14粒",
+            "specName": "120g*14粒"
+        },
+        {
+            "type": "1",
+            "specNo": "4.8kg*2",
+            "specName": "4.8kg*2"
+        },
+        {
+            "type": "3",
+            "specNo": "4.8kg*2",
+            "specName": "4.8kg*2"
+        },
+        {
+            "type": "1",
+            "specNo": "66抽*3包",
+            "specName": "66抽*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "12包",
+            "specName": "12包"
+        },
+        {
+            "type": "1",
+            "specNo": "1*10*48",
+            "specName": "1*10*48"
+        },
+        {
+            "type": "1",
+            "specNo": "18包",
+            "specName": "18包"
+        },
+        {
+            "type": "1",
+            "specNo": "24包",
+            "specName": "24包"
+        },
+        {
+            "type": "1",
+            "specNo": "4层*7张*12包",
+            "specName": "4层*7张*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "7张*12包",
+            "specName": "7张*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "6张*12包",
+            "specName": "6张*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "200抽",
+            "specName": "200抽"
+        },
+        {
+            "type": "1",
+            "specNo": "6连包",
+            "specName": "6连包"
+        },
+        {
+            "type": "1",
+            "specNo": "8张*10包",
+            "specName": "8张*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "400张",
+            "specName": "400张"
+        },
+        {
+            "type": "1",
+            "specNo": "130抽",
+            "specName": "130抽"
+        },
+        {
+            "type": "1",
+            "specNo": "180抽*6",
+            "specName": "180抽*6"
+        },
+        {
+            "type": "1",
+            "specNo": "360张",
+            "specName": "360张"
+        },
+        {
+            "type": "1",
+            "specNo": "50张",
+            "specName": "50张"
+        },
+        {
+            "type": "1",
+            "specNo": "130抽*6包",
+            "specName": "130抽*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "400张*6",
+            "specName": "400张*6"
+        },
+        {
+            "type": "1",
+            "specNo": "8连包",
+            "specName": "8连包"
+        },
+        {
+            "type": "1",
+            "specNo": "120抽*4包",
+            "specName": "120抽*4包"
+        },
+        {
+            "type": "1",
+            "specNo": "360张*6*15",
+            "specName": "360张*6*15"
+        },
+        {
+            "type": "1",
+            "specNo": "360张*6",
+            "specName": "360张*6"
+        },
+        {
+            "type": "1",
+            "specNo": "100抽*8",
+            "specName": "100抽*8"
+        },
+        {
+            "type": "1",
+            "specNo": "360张*12包",
+            "specName": "360张*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "120抽*8",
+            "specName": "120抽*8"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*12包",
+            "specName": "90抽*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "390张*6",
+            "specName": "390张*6"
+        },
+        {
+            "type": "1",
+            "specNo": "40抽",
+            "specName": "40抽"
+        },
+        {
+            "type": "1",
+            "specNo": "88抽*8包",
+            "specName": "88抽*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "420张*10",
+            "specName": "420张*10"
+        },
+        {
+            "type": "1",
+            "specNo": "100抽*8包",
+            "specName": "100抽*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "360张*6包",
+            "specName": "360张*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "300张*10包",
+            "specName": "300张*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "200张*6包",
+            "specName": "200张*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "76抽*10包",
+            "specName": "76抽*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "110抽*12包",
+            "specName": "110抽*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "120抽*8包",
+            "specName": "120抽*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "100抽*6包",
+            "specName": "100抽*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*8包",
+            "specName": "90抽*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "100抽*10包",
+            "specName": "100抽*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "300张*8",
+            "specName": "300张*8"
+        },
+        {
+            "type": "1",
+            "specNo": "300张*6包",
+            "specName": "300张*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "72抽*6",
+            "specName": "72抽*6"
+        },
+        {
+            "type": "1",
+            "specNo": "120抽*3包",
+            "specName": "120抽*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "360张*8包",
+            "specName": "360张*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "1400张",
+            "specName": "1400张"
+        },
+        {
+            "type": "1",
+            "specNo": "26抽*10包",
+            "specName": "26抽*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "20抽",
+            "specName": "20抽"
+        },
+        {
+            "type": "1",
+            "specNo": "26抽",
+            "specName": "26抽"
+        },
+        {
+            "type": "1",
+            "specNo": "80抽*4层*8包",
+            "specName": "80抽*4层*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*3层*10包",
+            "specName": "90抽*3层*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "28张*10包",
+            "specName": "28张*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "28张",
+            "specName": "28张"
+        },
+        {
+            "type": "1",
+            "specNo": "80抽",
+            "specName": "80抽"
+        },
+        {
+            "type": "1",
+            "specNo": "80抽*8包",
+            "specName": "80抽*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "150抽*3包",
+            "specName": "150抽*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "110抽*8连包",
+            "specName": "110抽*8连包"
+        },
+        {
+            "type": "1",
+            "specNo": "110抽*3层*10包",
+            "specName": "110抽*3层*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "320抽",
+            "specName": "320抽"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*10包",
+            "specName": "90抽*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*（8包送2包）",
+            "specName": "90抽*（8包送2包）"
+        },
+        {
+            "type": "1",
+            "specNo": "80抽*4包",
+            "specName": "80抽*4包"
+        },
+        {
+            "type": "1",
+            "specNo": "76抽*16",
+            "specName": "76抽*16"
+        },
+        {
+            "type": "1",
+            "specNo": "5包*40抽",
+            "specName": "5包*40抽"
+        },
+        {
+            "type": "1",
+            "specNo": "20张",
+            "specName": "20张"
+        },
+        {
+            "type": "1",
+            "specNo": "264张*14包",
+            "specName": "264张*14包"
+        },
+        {
+            "type": "1",
+            "specNo": "120抽*10包",
+            "specName": "120抽*10包"
+        },
+        {
+            "type": "1",
+            "specNo": "136抽*3包",
+            "specName": "136抽*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "260张*8包",
+            "specName": "260张*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "200张",
+            "specName": "200张"
+        },
+        {
+            "type": "1",
+            "specNo": "320抽*2",
+            "specName": "320抽*2"
+        },
+        {
+            "type": "3",
+            "specNo": "320抽*2",
+            "specName": "320抽*2"
+        },
+        {
+            "type": "1",
+            "specNo": "100抽*12包",
+            "specName": "100抽*12包"
+        },
+        {
+            "type": "1",
+            "specNo": "100抽",
+            "specName": "100抽"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*10提",
+            "specName": "90抽*10提"
+        },
+        {
+            "type": "1",
+            "specNo": "300张*10",
+            "specName": "300张*10"
+        },
+        {
+            "type": "1",
+            "specNo": "80p",
+            "specName": "80p"
+        },
+        {
+            "type": "1",
+            "specNo": "60p",
+            "specName": "60p"
+        },
+        {
+            "type": "1",
+            "specNo": "220g(J)",
+            "specName": "220g(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "60p(J)",
+            "specName": "60p(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "70抽",
+            "specName": "70抽"
+        },
+        {
+            "type": "1",
+            "specNo": "70p",
+            "specName": "70p"
+        },
+        {
+            "type": "1",
+            "specNo": "60节*3包",
+            "specName": "60节*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "60抽",
+            "specName": "60抽"
+        },
+        {
+            "type": "1",
+            "specNo": "160张",
+            "specName": "160张"
+        },
+        {
+            "type": "1",
+            "specNo": "1p",
+            "specName": "1p"
+        },
+        {
+            "type": "1",
+            "specNo": "128张",
+            "specName": "128张"
+        },
+        {
+            "type": "1",
+            "specNo": "20p",
+            "specName": "20p"
+        },
+        {
+            "type": "1",
+            "specNo": "60抽*2包",
+            "specName": "60抽*2包"
+        },
+        {
+            "type": "3",
+            "specNo": "60抽*2包",
+            "specName": "60抽*2包"
+        },
+        {
+            "type": "1",
+            "specNo": "150节",
+            "specName": "150节"
+        },
+        {
+            "type": "1",
+            "specNo": "75节*2卷",
+            "specName": "75节*2卷"
+        },
+        {
+            "type": "1",
+            "specNo": "70节*2卷",
+            "specName": "70节*2卷"
+        },
+        {
+            "type": "1",
+            "specNo": "2层*80抽*3包",
+            "specName": "2层*80抽*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "50节*3卷(J)",
+            "specName": "50节*3卷(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "75节*2层*2卷装",
+            "specName": "75节*2层*2卷装"
+        },
+        {
+            "type": "1",
+            "specNo": "90抽*3包",
+            "specName": "90抽*3包"
+        },
+        {
+            "type": "1",
+            "specNo": "60抽*6包",
+            "specName": "60抽*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "85节",
+            "specName": "85节"
+        },
+        {
+            "type": "1",
+            "specNo": "2包",
+            "specName": "2包"
+        },
+        {
+            "type": "1",
+            "specNo": "16P",
+            "specName": "16P"
+        },
+        {
+            "type": "1",
+            "specNo": "8p",
+            "specName": "8p"
+        },
+        {
+            "type": "1",
+            "specNo": "10P(J)",
+            "specName": "10P(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "10P+5P",
+            "specName": "10P+5P"
+        },
+        {
+            "type": "1",
+            "specNo": "22P",
+            "specName": "22P"
+        },
+        {
+            "type": "1",
+            "specNo": "64片",
+            "specName": "64片"
+        },
+        {
+            "type": "1",
+            "specNo": "10p+10p",
+            "specName": "10p+10p"
+        },
+        {
+            "type": "1",
+            "specNo": "16P(J)",
+            "specName": "16P(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "12pcs(J)",
+            "specName": "12pcs(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "80p(J)",
+            "specName": "80p(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "7p*8包",
+            "specName": "7p*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "8片*8包+8片",
+            "specName": "8片*8包+8片"
+        },
+        {
+            "type": "1",
+            "specNo": "40片",
+            "specName": "40片"
+        },
+        {
+            "type": "1",
+            "specNo": "160mm*180mm*20片(J)",
+            "specName": "160mm*180mm*20片(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "180mm*200mm*80片",
+            "specName": "180mm*200mm*80片"
+        },
+        {
+            "type": "1",
+            "specNo": "40片(J)",
+            "specName": "40片(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "80p*6包",
+            "specName": "80p*6包"
+        },
+        {
+            "type": "1",
+            "specNo": "80片",
+            "specName": "80片"
+        },
+        {
+            "type": "1",
+            "specNo": "10包*10p",
+            "specName": "10包*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "24P(J)",
+            "specName": "24P(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "90p",
+            "specName": "90p"
+        },
+        {
+            "type": "1",
+            "specNo": "25p",
+            "specName": "25p"
+        },
+        {
+            "type": "1",
+            "specNo": "30抽",
+            "specName": "30抽"
+        },
+        {
+            "type": "1",
+            "specNo": "200张*5包",
+            "specName": "200张*5包"
+        },
+        {
+            "type": "1",
+            "specNo": "5连包",
+            "specName": "5连包"
+        },
+        {
+            "type": "1",
+            "specNo": "100p",
+            "specName": "100p"
+        },
+        {
+            "type": "1",
+            "specNo": "100p*2",
+            "specName": "100p*2"
+        },
+        {
+            "type": "1",
+            "specNo": "80p*5包",
+            "specName": "80p*5包"
+        },
+        {
+            "type": "1",
+            "specNo": "8p(J)",
+            "specName": "8p(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "40p",
+            "specName": "40p"
+        },
+        {
+            "type": "1",
+            "specNo": "7片*8包",
+            "specName": "7片*8包"
+        },
+        {
+            "type": "1",
+            "specNo": "15p(J)",
+            "specName": "15p(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "14片",
+            "specName": "14片"
+        },
+        {
+            "type": "1",
+            "specNo": "12片",
+            "specName": "12片"
+        },
+        {
+            "type": "1",
+            "specNo": "8片",
+            "specName": "8片"
+        },
+        {
+            "type": "1",
+            "specNo": "20片",
+            "specName": "20片"
+        },
+        {
+            "type": "1",
+            "specNo": "3片",
+            "specName": "3片"
+        },
+        {
+            "type": "1",
+            "specNo": "6片",
+            "specName": "6片"
+        },
+        {
+            "type": "1",
+            "specNo": "18P",
+            "specName": "18P"
+        },
+        {
+            "type": "1",
+            "specNo": "3P",
+            "specName": "3P"
+        },
+        {
+            "type": "1",
+            "specNo": "4p",
+            "specName": "4p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm3p",
+            "specName": "420mm3p"
+        },
+        {
+            "type": "1",
+            "specNo": "10+2p",
+            "specName": "10+2p"
+        },
+        {
+            "type": "1",
+            "specNo": "5+1p",
+            "specName": "5+1p"
+        },
+        {
+            "type": "1",
+            "specNo": "M2p",
+            "specName": "M2p"
+        },
+        {
+            "type": "1",
+            "specNo": "14p",
+            "specName": "14p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm",
+            "specName": "420mm"
+        },
+        {
+            "type": "1",
+            "specNo": "2p",
+            "specName": "2p"
+        },
+        {
+            "type": "1",
+            "specNo": "LR8510",
+            "specName": "LR8510"
+        },
+        {
+            "type": "1",
+            "specNo": "LS8508",
+            "specName": "LS8508"
+        },
+        {
+            "type": "1",
+            "specNo": "YT8103",
+            "specName": "YT8103"
+        },
+        {
+            "type": "1",
+            "specNo": "CS8820",
+            "specName": "CS8820"
+        },
+        {
+            "type": "1",
+            "specNo": "CS8920",
+            "specName": "CS8920"
+        },
+        {
+            "type": "1",
+            "specNo": "15片",
+            "specName": "15片"
+        },
+        {
+            "type": "1",
+            "specNo": "13p",
+            "specName": "13p"
+        },
+        {
+            "type": "1",
+            "specNo": "12p",
+            "specName": "12p"
+        },
+        {
+            "type": "1",
+            "specNo": "15p",
+            "specName": "15p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*10p",
+            "specName": "240mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "265mm*8p+355mm*2p",
+            "specName": "265mm*8p+355mm*2p"
+        },
+        {
+            "type": "1",
+            "specNo": "355mm*6p",
+            "specName": "355mm*6p"
+        },
+        {
+            "type": "1",
+            "specNo": "410mm*6p",
+            "specName": "410mm*6p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*13p",
+            "specName": "240mm*13p"
+        },
+        {
+            "type": "1",
+            "specNo": "180mm*10p",
+            "specName": "180mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "2片",
+            "specName": "2片"
+        },
+        {
+            "type": "1",
+            "specNo": "20p+5p+2p",
+            "specName": "20p+5p+2p"
+        },
+        {
+            "type": "1",
+            "specNo": "18p*245mm+8p*320mm",
+            "specName": "18p*245mm+8p*320mm"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*5P",
+            "specName": "360mm*5P"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*10p",
+            "specName": "360mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "425mm*8P",
+            "specName": "425mm*8P"
+        },
+        {
+            "type": "1",
+            "specNo": "260mm",
+            "specName": "260mm"
+        },
+        {
+            "type": "1",
+            "specNo": "18+4片240mm",
+            "specName": "18+4片240mm"
+        },
+        {
+            "type": "1",
+            "specNo": "9p",
+            "specName": "9p"
+        },
+        {
+            "type": "1",
+            "specNo": "284mm*7p",
+            "specName": "284mm*7p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*12p",
+            "specName": "290mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*4p",
+            "specName": "420mm*4p"
+        },
+        {
+            "type": "1",
+            "specNo": "32p",
+            "specName": "32p"
+        },
+        {
+            "type": "1",
+            "specNo": "350mm*4p",
+            "specName": "350mm*4p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm8p",
+            "specName": "240mm8p"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm8p",
+            "specName": "280mm8p"
+        },
+        {
+            "type": "1",
+            "specNo": "(4+1)p",
+            "specName": "(4+1)p"
+        },
+        {
+            "type": "1",
+            "specNo": "8+2p",
+            "specName": "8+2p"
+        },
+        {
+            "type": "1",
+            "specNo": "4+1p",
+            "specName": "4+1p"
+        },
+        {
+            "type": "1",
+            "specNo": "24cm*20p",
+            "specName": "24cm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "29cm*16p",
+            "specName": "29cm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "18cm*18p",
+            "specName": "18cm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "245cm*10p",
+            "specName": "245cm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "290cm*8",
+            "specName": "290cm*8"
+        },
+        {
+            "type": "1",
+            "specNo": "26cm*8p",
+            "specName": "26cm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "42cm*3p",
+            "specName": "42cm*3p"
+        },
+        {
+            "type": "1",
+            "specNo": "24cm*8p",
+            "specName": "24cm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "285cm*5p",
+            "specName": "285cm*5p"
+        },
+        {
+            "type": "1",
+            "specNo": "240cm*18p",
+            "specName": "240cm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm9P",
+            "specName": "290mm9P"
+        },
+        {
+            "type": "1",
+            "specNo": "350mm*12p",
+            "specName": "350mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*8p",
+            "specName": "420mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*16p",
+            "specName": "290mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*20p",
+            "specName": "240mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "6P",
+            "specName": "6P"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*16p",
+            "specName": "240mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm(8+2)片",
+            "specName": "240mm(8+2)片"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*9p",
+            "specName": "280mm*9p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*8p",
+            "specName": "360mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*18p",
+            "specName": "240mm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "270mm*12p",
+            "specName": "270mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "18mm*10p",
+            "specName": "18mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "18mm*18p",
+            "specName": "18mm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "275mm*12p",
+            "specName": "275mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "350mm*10p",
+            "specName": "350mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*8p",
+            "specName": "245mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "275mm*8p",
+            "specName": "275mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*12p",
+            "specName": "245mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "18片",
+            "specName": "18片"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*10p",
+            "specName": "245mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*5p",
+            "specName": "245mm*5p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*10p",
+            "specName": "290mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*8p",
+            "specName": "290mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "190mm*12p",
+            "specName": "190mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*12片",
+            "specName": "240mm*12片"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*10片",
+            "specName": "280mm*10片"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*20p",
+            "specName": "245mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*18p",
+            "specName": "290mm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*14p",
+            "specName": "360mm*14p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*30p",
+            "specName": "240mm*30p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*22p",
+            "specName": "290mm*22p"
+        },
+        {
+            "type": "1",
+            "specNo": "425mm*3p+1p",
+            "specName": "425mm*3p+1p"
+        },
+        {
+            "type": "1",
+            "specNo": "10p+2p",
+            "specName": "10p+2p"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*9p",
+            "specName": "245mm*9p"
+        },
+        {
+            "type": "1",
+            "specNo": "338mm*7p",
+            "specName": "338mm*7p"
+        },
+        {
+            "type": "1",
+            "specNo": "（15+3）片",
+            "specName": "（15+3）片"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm",
+            "specName": "245mm"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm",
+            "specName": "290mm"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*8片",
+            "specName": "240mm*8片"
+        },
+        {
+            "type": "1",
+            "specNo": "270mm*8片",
+            "specName": "270mm*8片"
+        },
+        {
+            "type": "1",
+            "specNo": "300mm*6片",
+            "specName": "300mm*6片"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*17p",
+            "specName": "245mm*17p"
+        },
+        {
+            "type": "1",
+            "specNo": "8+1P",
+            "specName": "8+1P"
+        },
+        {
+            "type": "1",
+            "specNo": "7P",
+            "specName": "7P"
+        },
+        {
+            "type": "1",
+            "specNo": "150mm*2+245mm*2",
+            "specName": "150mm*2+245mm*2"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*12p",
+            "specName": "240mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "180mm*12p",
+            "specName": "180mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*12p",
+            "specName": "360mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*10p",
+            "specName": "420mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*8p",
+            "specName": "240mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*6p",
+            "specName": "280mm*6p"
+        },
+        {
+            "type": "1",
+            "specNo": "180mm*20p",
+            "specName": "180mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*6p",
+            "specName": "360mm*6p"
+        },
+        {
+            "type": "1",
+            "specNo": "190cm",
+            "specName": "190cm"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm10+1p",
+            "specName": "240mm10+1p"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*8p",
+            "specName": "280mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*4p",
+            "specName": "360mm*4p"
+        },
+        {
+            "type": "1",
+            "specNo": "250mm*12p",
+            "specName": "250mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm5p+2p",
+            "specName": "420mm5p+2p"
+        },
+        {
+            "type": "1",
+            "specNo": "295mm*9p",
+            "specName": "295mm*9p"
+        },
+        {
+            "type": "1",
+            "specNo": "260mm*(8+1)p",
+            "specName": "260mm*(8+1)p"
+        },
+        {
+            "type": "1",
+            "specNo": "350mm*（6+1）p",
+            "specName": "350mm*（6+1）p"
+        },
+        {
+            "type": "1",
+            "specNo": "190mm*10p",
+            "specName": "190mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "300mm*10p",
+            "specName": "300mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "11片",
+            "specName": "11片"
+        },
+        {
+            "type": "1",
+            "specNo": "16片",
+            "specName": "16片"
+        },
+        {
+            "type": "1",
+            "specNo": "7片",
+            "specName": "7片"
+        },
+        {
+            "type": "1",
+            "specNo": "250mm*8p",
+            "specName": "250mm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*7p",
+            "specName": "290mm*7p"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*26p",
+            "specName": "245mm*26p"
+        },
+        {
+            "type": "1",
+            "specNo": "250mm*10p",
+            "specName": "250mm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*25p",
+            "specName": "290mm*25p"
+        },
+        {
+            "type": "1",
+            "specNo": "245mm*30p",
+            "specName": "245mm*30p"
+        },
+        {
+            "type": "1",
+            "specNo": "28p",
+            "specName": "28p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*5p",
+            "specName": "420mm*5p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*14p",
+            "specName": "290mm*14p"
+        },
+        {
+            "type": "1",
+            "specNo": "18cm*10p",
+            "specName": "18cm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "35cm*8p",
+            "specName": "35cm*8p"
+        },
+        {
+            "type": "1",
+            "specNo": "25cm*16p",
+            "specName": "25cm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "28cm*10p",
+            "specName": "28cm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "42cm*4p",
+            "specName": "42cm*4p"
+        },
+        {
+            "type": "1",
+            "specNo": "350mm*9p",
+            "specName": "350mm*9p"
+        },
+        {
+            "type": "1",
+            "specNo": "185mm*20p",
+            "specName": "185mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*5p+420mm*3p",
+            "specName": "360mm*5p+420mm*3p"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*7p",
+            "specName": "280mm*7p"
+        },
+        {
+            "type": "1",
+            "specNo": "430mm*4p",
+            "specName": "430mm*4p"
+        },
+        {
+            "type": "1",
+            "specNo": "箱",
+            "specName": "箱"
+        },
+        {
+            "type": "3",
+            "specNo": "箱",
+            "specName": "箱"
+        },
+        {
+            "type": "1",
+            "specNo": "25p+4p",
+            "specName": "25p+4p"
+        },
+        {
+            "type": "1",
+            "specNo": "180mm*16p",
+            "specName": "180mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "425mm*4p",
+            "specName": "425mm*4p"
+        },
+        {
+            "type": "1",
+            "specNo": "190mm*20p",
+            "specName": "190mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*16p",
+            "specName": "360mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*12p",
+            "specName": "420mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "320mm*16p",
+            "specName": "320mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "23p",
+            "specName": "23p"
+        },
+        {
+            "type": "1",
+            "specNo": "360mm*15p",
+            "specName": "360mm*15p"
+        },
+        {
+            "type": "1",
+            "specNo": "255mm*16p",
+            "specName": "255mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*15p",
+            "specName": "290mm*15p"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*6p",
+            "specName": "420mm*6p"
+        },
+        {
+            "type": "1",
+            "specNo": "200mm*12p",
+            "specName": "200mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "180mm*18p",
+            "specName": "180mm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "6包",
+            "specName": "6包"
+        },
+        {
+            "type": "1",
+            "specNo": "420mm*16p",
+            "specName": "420mm*16p"
+        },
+        {
+            "type": "1",
+            "specNo": "250mm*109",
+            "specName": "250mm*109"
+        },
+        {
+            "type": "1",
+            "specNo": "290mm*9p",
+            "specName": "290mm*9p"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*13p",
+            "specName": "280mm*13p"
+        },
+        {
+            "type": "1",
+            "specNo": "25cm*6p",
+            "specName": "25cm*6p"
+        },
+        {
+            "type": "1",
+            "specNo": "240mm*11片",
+            "specName": "240mm*11片"
+        },
+        {
+            "type": "1",
+            "specNo": "M-L*10包+L*2包",
+            "specName": "M-L*10包+L*2包"
+        },
+        {
+            "type": "1",
+            "specNo": "250mm*8包+290mm*4包",
+            "specName": "250mm*8包+290mm*4包"
+        },
+        {
+            "type": "1",
+            "specNo": "280mm*12p",
+            "specName": "280mm*12p"
+        },
+        {
+            "type": "1",
+            "specNo": "155mm*28p",
+            "specName": "155mm*28p"
+        },
+        {
+            "type": "1",
+            "specNo": "155mm*40p",
+            "specName": "155mm*40p"
+        },
+        {
+            "type": "1",
+            "specNo": "18mm*20p",
+            "specName": "18mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "150mm*20p+20p",
+            "specName": "150mm*20p+20p"
+        },
+        {
+            "type": "1",
+            "specNo": "22片",
+            "specName": "22片"
+        },
+        {
+            "type": "1",
+            "specNo": "140mm*18p",
+            "specName": "140mm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "155mm*35p",
+            "specName": "155mm*35p"
+        },
+        {
+            "type": "1",
+            "specNo": "175mm*20p",
+            "specName": "175mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "155mm*20p",
+            "specName": "155mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "190mm*25p",
+            "specName": "190mm*25p"
+        },
+        {
+            "type": "1",
+            "specNo": "160mm*35p",
+            "specName": "160mm*35p"
+        },
+        {
+            "type": "1",
+            "specNo": "155mm*18p",
+            "specName": "155mm*18p"
+        },
+        {
+            "type": "1",
+            "specNo": "163mm*20p",
+            "specName": "163mm*20p"
+        },
+        {
+            "type": "1",
+            "specNo": "7支",
+            "specName": "7支"
+        },
+        {
+            "type": "1",
+            "specNo": "440mm",
+            "specName": "440mm"
+        },
+        {
+            "type": "1",
+            "specNo": "98-141cm*10p",
+            "specName": "98-141cm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "80-122cm*10p",
+            "specName": "80-122cm*10p"
+        },
+        {
+            "type": "1",
+            "specNo": "60-102CM*10P",
+            "specName": "60-102CM*10P"
+        },
+        {
+            "type": "1",
+            "specNo": "L/XL",
+            "specName": "L/XL"
+        },
+        {
+            "type": "1",
+            "specNo": "18P+3P",
+            "specName": "18P+3P"
+        },
+        {
+            "type": "1",
+            "specNo": "15P+3P",
+            "specName": "15P+3P"
+        },
+        {
+            "type": "1",
+            "specNo": "11P+3P",
+            "specName": "11P+3P"
+        },
+        {
+            "type": "1",
+            "specNo": "42P",
+            "specName": "42P"
+        },
+        {
+            "type": "1",
+            "specNo": "76P",
+            "specName": "76P"
+        },
+        {
+            "type": "1",
+            "specNo": "52P",
+            "specName": "52P"
+        },
+        {
+            "type": "1",
+            "specNo": "32P+4P",
+            "specName": "32P+4P"
+        },
+        {
+            "type": "1",
+            "specNo": "46P",
+            "specName": "46P"
+        },
+        {
+            "type": "1",
+            "specNo": "42片",
+            "specName": "42片"
+        },
+        {
+            "type": "1",
+            "specNo": "28片",
+            "specName": "28片"
+        },
+        {
+            "type": "1",
+            "specNo": "50片",
+            "specName": "50片"
+        },
+        {
+            "type": "1",
+            "specNo": "46片",
+            "specName": "46片"
+        },
+        {
+            "type": "1",
+            "specNo": "38片",
+            "specName": "38片"
+        },
+        {
+            "type": "1",
+            "specNo": "54片",
+            "specName": "54片"
+        },
+        {
+            "type": "1",
+            "specNo": "36p",
+            "specName": "36p"
+        },
+        {
+            "type": "1",
+            "specNo": "68片",
+            "specName": "68片"
+        },
+        {
+            "type": "1",
+            "specNo": "58片",
+            "specName": "58片"
+        },
+        {
+            "type": "1",
+            "specNo": "48片",
+            "specName": "48片"
+        },
+        {
+            "type": "1",
+            "specNo": "34片",
+            "specName": "34片"
+        },
+        {
+            "type": "1",
+            "specNo": "50P",
+            "specName": "50P"
+        },
+        {
+            "type": "1",
+            "specNo": "56P",
+            "specName": "56P"
+        },
+        {
+            "type": "1",
+            "specNo": "38P",
+            "specName": "38P"
+        },
+        {
+            "type": "1",
+            "specNo": "58P",
+            "specName": "58P"
+        },
+        {
+            "type": "1",
+            "specNo": "34P",
+            "specName": "34P"
+        },
+        {
+            "type": "1",
+            "specNo": "26p",
+            "specName": "26p"
+        },
+        {
+            "type": "1",
+            "specNo": "20p(J)",
+            "specName": "20p(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "6片(J)",
+            "specName": "6片(J)"
+        },
+        {
+            "type": "1",
+            "specNo": "600*900",
+            "specName": "600*900"
+        },
+        {
+            "type": "1",
+            "specNo": "800*900",
+            "specName": "800*900"
+        },
+        {
+            "type": "1",
+            "specNo": "3+1p",
+            "specName": "3+1p"
+        },
+        {
+            "type": "1",
+            "specNo": "M-L4片",
+            "specName": "M-L4片"
+        },
+        {
+            "type": "3",
+            "specNo": "M-L4片",
+            "specName": "M-L4片"
+        },
+        {
+            "type": "1",
+            "specNo": "3P+1P",
+            "specName": "3P+1P"
+        },
+        {
+            "type": "1",
+            "specNo": "5P*XL",
+            "specName": "5P*XL"
+        },
+        {
+            "type": "1",
+            "specNo": "M-L*5p",
+            "specName": "M-L*5p"
+        },
+        {
+            "type": "1",
+            "specNo": "3+1片",
+            "specName": "3+1片"
+        },
+        {
+            "type": "1",
+            "specNo": "5+1片",
+            "specName": "5+1片"
+        },
+        {
+            "type": "1",
+            "specNo": "2+1p",
+            "specName": "2+1p"
+        },
+        {
+            "type": "1",
+            "specNo": "4p+2p",
+            "specName": "4p+2p"
+        },
+        {
+            "type": "1",
+            "specNo": "L-XL*5p",
+            "specName": "L-XL*5p"
+        },
+        {
+            "type": "1",
+            "specNo": "3p*XL",
+            "specName": "3p*XL"
+        },
+        {
+            "type": "1",
+            "specNo": "5p*L",
+            "specName": "5p*L"
+        },
+        {
+            "type": "1",
+            "specNo": "1条+4p",
+            "specName": "1条+4p"
+        },
+        {
+            "type": "1",
+            "specNo": "M-L*2p",
+            "specName": "M-L*2p"
+        },
+        {
+            "type": "1",
+            "specNo": "26片",
+            "specName": "26片"
+        },
+        {
+            "type": "1",
+            "specNo": "12只",
+            "specName": "12只"
+        },
+        {
+            "type": "1",
+            "specNo": "10只",
+            "specName": "10只"
+        },
+        {
+            "type": "1",
+            "specNo": "8只",
+            "specName": "8只"
+        }
+    ],
+    "timestamp": 1776308598885
+}

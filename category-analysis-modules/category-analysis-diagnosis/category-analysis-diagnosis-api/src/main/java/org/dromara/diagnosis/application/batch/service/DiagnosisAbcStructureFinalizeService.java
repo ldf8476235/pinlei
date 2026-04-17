@@ -30,6 +30,7 @@ public class DiagnosisAbcStructureFinalizeService {
 
     private static final String TENANT_ID = "000000";
     private static final List<String> ABC_TYPES = List.of("sales", "gross", "contribution");
+    private static final int SKU_INSERT_BATCH_SIZE = 30;
 
     private final DiagnosisBatchSourceMapper batchSourceMapper;
     private final DiagnosisAbcStructureMapper abcStructureMapper;
@@ -74,7 +75,7 @@ public class DiagnosisAbcStructureFinalizeService {
             abcStructureMapper.insertMatrix(row);
         }
         if (!skuRows.isEmpty()) {
-            abcStructureMapper.batchInsertSku(skuRows);
+            batchInsertSkuRows(skuRows);
         }
 
         return DiagnosisAbcFinalizeResult.builder()
@@ -83,6 +84,13 @@ public class DiagnosisAbcStructureFinalizeService {
             .matrixRows(matrixRows.size())
             .skuRows(skuRows.size())
             .build();
+    }
+
+    private void batchInsertSkuRows(List<DiagnosisAbcSkuRow> rows) {
+        for (int start = 0; start < rows.size(); start += SKU_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + SKU_INSERT_BATCH_SIZE, rows.size());
+            abcStructureMapper.batchInsertSku(rows.subList(start, end));
+        }
     }
 
     private List<DiagnosisAbcParamConfigRow> loadParamConfig() {

@@ -879,6 +879,449 @@
         GROUP BY p.product_no
     </select>
 
+    <select id="aggregateBrandMetrics" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandAggRow">
+        WITH brand_dim AS (
+            SELECT
+                p.product_no AS productNo,
+                MAX(NULLIF(LTRIM(RTRIM(p.product_brand)), '')) AS productBrand
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY p.product_no
+        ),
+        sales_base AS (
+            SELECT
+                ISNULL(NULLIF(LTRIM(RTRIM(d.productBrand)), ''), N'/') AS brandNo,
+                MAX(NULLIF(LTRIM(RTRIM(d.productBrand)), '')) AS productBrand,
+                COUNT(DISTINCT CASE WHEN sales &gt; 0 THEN fact_sales_day.product_no ELSE NULL END) AS skuCount,
+                COUNT(DISTINCT CASE WHEN sales &gt; 0 THEN fact_sales_day.store_no ELSE NULL END) AS activeStoreCount,
+                ISNULL(SUM(CAST(sale_quantity AS DECIMAL(20, 6))), 0) AS saleQuantity,
+                ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS sales,
+                ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS gross,
+                ISNULL(SUM(CAST(sale_cost AS DECIMAL(20, 6))), 0) AS saleCost,
+                COUNT(DISTINCT CASE WHEN ISNULL(LTRIM(RTRIM(cx_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN fact_sales_day.product_no ELSE NULL END) AS activitySku
+            FROM fact_sales_day
+            LEFT JOIN brand_dim d
+              ON d.productNo = fact_sales_day.product_no
+            WHERE sale_date &gt;= #{param.periodStart}
+              AND sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+            GROUP BY ISNULL(NULLIF(LTRIM(RTRIM(d.productBrand)), ''), N'/')
+        ),
+        brand_meta AS (
+            SELECT
+                ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/') AS brandNo,
+                CASE
+                    WHEN MAX(CASE WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/') = N'/' THEN 1 ELSE 0 END) = 1 THEN N'/'
+                    ELSE N'1'
+                END AS brandType,
+                CASE
+                    WHEN MAX(CASE WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/') = N'/' THEN 1 ELSE 0 END) = 1 THEN N'无品牌'
+                    ELSE N'其他品牌'
+                END AS brandTypeName
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/')
+        )
+        SELECT
+            s.brandNo,
+            ISNULL(s.productBrand, CASE WHEN s.brandNo = N'/' THEN N'无品牌' ELSE s.brandNo END) AS productBrand,
+            ISNULL(m.brandType, CASE WHEN s.brandNo = N'/' THEN N'/' ELSE N'1' END) AS brandType,
+            ISNULL(m.brandTypeName, CASE WHEN s.brandNo = N'/' THEN N'无品牌' ELSE N'其他品牌' END) AS brandTypeName,
+            CAST(ISNULL(s.skuCount, 0) AS INT) AS skuCount,
+            CAST(ISNULL(s.activeStoreCount, 0) AS INT) AS activeStoreCount,
+            ISNULL(s.saleQuantity, 0) AS saleQuantity,
+            ISNULL(s.sales, 0) AS sales,
+            ISNULL(s.gross, 0) AS gross,
+            ISNULL(s.saleCost, 0) AS saleCost,
+            CAST(ISNULL(s.activitySku, 0) AS INT) AS activitySku
+        FROM sales_base s
+        LEFT JOIN brand_meta m
+          ON m.brandNo = s.brandNo
+        ORDER BY s.sales DESC, s.brandNo ASC
+    </select>
+
+    <select id="aggregateBrandStock" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandStockRow">
+        WITH brand_dim AS (
+            SELECT
+                p.product_no AS productNo,
+                MAX(NULLIF(LTRIM(RTRIM(p.product_brand)), '')) AS productBrand
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY p.product_no
+        ),
+        daily_stock AS (
+            SELECT
+                stock_date,
+                ISNULL(NULLIF(LTRIM(RTRIM(d.productBrand)), ''), N'/') AS brandNo,
+                ISNULL(SUM(CAST(stock_quantity AS DECIMAL(20, 6))), 0) AS dayStockQuantity
+            FROM fact_stock_day
+            LEFT JOIN brand_dim d
+              ON d.productNo = fact_stock_day.product_no
+            WHERE stock_date &gt;= #{param.periodStart}
+              AND stock_date &lt;= #{param.periodEnd}
+              <include refid="classFilterStock"/>
+              <include refid="storeFilterStock"/>
+            GROUP BY stock_date, ISNULL(NULLIF(LTRIM(RTRIM(d.productBrand)), ''), N'/')
+        )
+        SELECT
+            brandNo,
+            ISNULL(AVG(CAST(dayStockQuantity AS DECIMAL(20, 6))), 0) AS avgStockQuantity
+        FROM daily_stock
+        GROUP BY brandNo
+    </select>
+
+    <select id="selectBrandMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandMetaRow">
+        SELECT
+            ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/') AS brandNo,
+            MAX(NULLIF(LTRIM(RTRIM(p.product_brand)), '')) AS productBrand,
+            CASE
+                WHEN MAX(CASE WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/') = N'/' THEN 1 ELSE 0 END) = 1 THEN N'/'
+                ELSE N'1'
+            END AS brandType,
+            CASE
+                WHEN MAX(CASE WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/') = N'/' THEN 1 ELSE 0 END) = 1 THEN N'无品牌'
+                ELSE N'其他品牌'
+            END AS brandTypeName,
+            CAST(NULL AS NVARCHAR(128)) AS ownBrandNo,
+            CAST(NULL AS NVARCHAR(255)) AS ownBrandName,
+            MIN(CAST(p.first_order_date AS DATE)) AS firstSaleDate
+        FROM base_dept_products p
+        WHERE 1 = 1
+          <include refid="classFilterDeptProducts"/>
+          <include refid="storeFilterDeptProducts"/>
+        GROUP BY ISNULL(NULLIF(LTRIM(RTRIM(p.product_brand)), ''), N'/')
+    </select>
+
+    <select id="aggregateSpecMetrics" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecAggRow">
+        WITH spec_meta AS (
+            SELECT
+                p.product_no AS productNo,
+                ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') AS specNo,
+                ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') AS specName,
+                CASE
+                    WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') = N'/' THEN N'/'
+                    ELSE N'1'
+                END AS specType,
+                CASE
+                    WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') = N'/' THEN N'无规格'
+                    ELSE N'其他规格'
+                END AS specTypeName
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY p.product_no, ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/')
+        ),
+        sales_base AS (
+            SELECT
+                m.specNo AS specNo,
+                MAX(m.specName) AS specName,
+                MAX(m.specType) AS specType,
+                MAX(m.specTypeName) AS specTypeName,
+                COUNT(DISTINCT CASE WHEN s.sales &gt; 0 THEN s.product_no ELSE NULL END) AS skuCount,
+                COUNT(DISTINCT CASE WHEN s.sales &gt; 0 THEN s.store_no ELSE NULL END) AS activeStoreCount,
+                ISNULL(SUM(CAST(s.sale_quantity AS DECIMAL(20, 6))), 0) AS saleQuantity,
+                ISNULL(SUM(CAST(s.sales AS DECIMAL(20, 6))), 0) AS sales,
+                ISNULL(SUM(CAST(s.gross AS DECIMAL(20, 6))), 0) AS gross,
+                ISNULL(SUM(CAST(s.sale_cost AS DECIMAL(20, 6))), 0) AS saleCost,
+                COUNT(DISTINCT CASE WHEN ISNULL(LTRIM(RTRIM(s.cx_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN s.product_no ELSE NULL END) AS activitySku
+            FROM fact_sales_day s
+            INNER JOIN spec_meta m
+              ON m.productNo = s.product_no
+            WHERE s.sale_date &gt;= #{param.periodStart}
+              AND s.sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+            GROUP BY m.specNo
+        )
+        SELECT
+            specNo,
+            specName,
+            specType,
+            specTypeName,
+            CAST(ISNULL(skuCount, 0) AS INT) AS skuCount,
+            CAST(ISNULL(activeStoreCount, 0) AS INT) AS activeStoreCount,
+            ISNULL(saleQuantity, 0) AS saleQuantity,
+            ISNULL(sales, 0) AS sales,
+            ISNULL(gross, 0) AS gross,
+            ISNULL(saleCost, 0) AS saleCost,
+            CAST(ISNULL(activitySku, 0) AS INT) AS activitySku
+        FROM sales_base
+        ORDER BY sales DESC, specNo ASC
+    </select>
+
+    <select id="aggregateSpecStock" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecStockRow">
+        WITH spec_meta AS (
+            SELECT
+                p.product_no AS productNo,
+                ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') AS specNo
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY p.product_no, ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/')
+        ),
+        daily_stock AS (
+            SELECT
+                s.stock_date AS stockDate,
+                m.specNo AS specNo,
+                ISNULL(SUM(CAST(s.stock_quantity AS DECIMAL(20, 6))), 0) AS dayStockQuantity
+            FROM fact_stock_day s
+            INNER JOIN spec_meta m
+              ON m.productNo = s.product_no
+            WHERE s.stock_date &gt;= #{param.periodStart}
+              AND s.stock_date &lt;= #{param.periodEnd}
+              <include refid="classFilterStock"/>
+              <include refid="storeFilterStock"/>
+            GROUP BY s.stock_date, m.specNo
+        )
+        SELECT
+            specNo,
+            ISNULL(AVG(CAST(dayStockQuantity AS DECIMAL(20, 6))), 0) AS avgStockQuantity
+        FROM daily_stock
+        GROUP BY specNo
+    </select>
+
+    <select id="selectSpecMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecMetaRow">
+        SELECT
+            ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') AS specNo,
+            ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') AS specName,
+            CASE
+                WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') = N'/' THEN N'/'
+                ELSE N'1'
+            END AS specType,
+            CASE
+                WHEN ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/') = N'/' THEN N'无规格'
+                ELSE N'其他规格'
+            END AS specTypeName,
+            MIN(CAST(p.first_order_date AS DATE)) AS firstSaleDate
+        FROM base_dept_products p
+        WHERE 1 = 1
+          <include refid="classFilterDeptProducts"/>
+          <include refid="storeFilterDeptProducts"/>
+        GROUP BY ISNULL(NULLIF(LTRIM(RTRIM(p.product_spec)), ''), N'/')
+    </select>
+
+    <select id="aggregateTagMetrics" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagAggRow">
+        WITH product_scope AS (
+            SELECT DISTINCT p.product_no AS productNo
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+        ),
+        tag_scope AS (
+            SELECT
+                t.product_no AS productNo,
+                t.tag_type_no AS tagType,
+                MAX(t.tag_type_name) AS tagTypeName,
+                t.tag_no AS tagNo,
+                MAX(t.tag_name) AS tagName,
+                CONCAT(t.tag_type_no, N'|', t.tag_no) AS metricKey,
+                CAST(0 AS BIT) AS isUntagged
+            FROM product_tag_info t
+            INNER JOIN product_scope p
+              ON p.productNo = t.product_no
+            GROUP BY t.product_no, t.tag_type_no, t.tag_no
+        ),
+        tag_sales AS (
+            SELECT
+                ts.tagType,
+                MAX(ts.tagTypeName) AS tagTypeName,
+                ts.tagNo,
+                MAX(ts.tagName) AS tagName,
+                ts.metricKey,
+                CAST(0 AS BIT) AS isUntagged,
+                COUNT(DISTINCT CASE WHEN s.sales &gt; 0 THEN s.product_no ELSE NULL END) AS skuCount,
+                COUNT(DISTINCT CASE WHEN s.sales &gt; 0 THEN s.store_no ELSE NULL END) AS activeStoreCount,
+                ISNULL(SUM(CAST(s.sale_quantity AS DECIMAL(20, 6))), 0) AS saleQuantity,
+                ISNULL(SUM(CAST(s.sales AS DECIMAL(20, 6))), 0) AS sales,
+                ISNULL(SUM(CAST(s.gross AS DECIMAL(20, 6))), 0) AS gross,
+                ISNULL(SUM(CAST(s.sale_cost AS DECIMAL(20, 6))), 0) AS saleCost,
+                COUNT(DISTINCT CASE WHEN ISNULL(LTRIM(RTRIM(s.cx_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN s.product_no ELSE NULL END) AS activitySku
+            FROM fact_sales_day s
+            INNER JOIN tag_scope ts
+              ON ts.productNo = s.product_no
+            WHERE s.sale_date &gt;= #{param.periodStart}
+              AND s.sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+            GROUP BY ts.tagType, ts.tagNo, ts.metricKey
+        ),
+        untagged_sales AS (
+            SELECT
+                N'*' AS tagType,
+                N'无标签' AS tagTypeName,
+                CAST(NULL AS NVARCHAR(128)) AS tagNo,
+                N'无标签' AS tagName,
+                N'__UNTAGGED__' AS metricKey,
+                CAST(1 AS BIT) AS isUntagged,
+                COUNT(DISTINCT CASE WHEN s.sales &gt; 0 THEN s.product_no ELSE NULL END) AS skuCount,
+                COUNT(DISTINCT CASE WHEN s.sales &gt; 0 THEN s.store_no ELSE NULL END) AS activeStoreCount,
+                ISNULL(SUM(CAST(s.sale_quantity AS DECIMAL(20, 6))), 0) AS saleQuantity,
+                ISNULL(SUM(CAST(s.sales AS DECIMAL(20, 6))), 0) AS sales,
+                ISNULL(SUM(CAST(s.gross AS DECIMAL(20, 6))), 0) AS gross,
+                ISNULL(SUM(CAST(s.sale_cost AS DECIMAL(20, 6))), 0) AS saleCost,
+                COUNT(DISTINCT CASE WHEN ISNULL(LTRIM(RTRIM(s.cx_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN s.product_no ELSE NULL END) AS activitySku
+            FROM fact_sales_day s
+            INNER JOIN product_scope p
+              ON p.productNo = s.product_no
+            WHERE s.sale_date &gt;= #{param.periodStart}
+              AND s.sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+              AND NOT EXISTS (
+                  SELECT 1
+                  FROM product_tag_info t
+                  WHERE t.product_no = s.product_no
+              )
+        )
+        SELECT
+            tagType,
+            tagTypeName,
+            tagNo,
+            tagName,
+            metricKey,
+            isUntagged,
+            CAST(ISNULL(skuCount, 0) AS INT) AS skuCount,
+            CAST(ISNULL(activeStoreCount, 0) AS INT) AS activeStoreCount,
+            ISNULL(saleQuantity, 0) AS saleQuantity,
+            ISNULL(sales, 0) AS sales,
+            ISNULL(gross, 0) AS gross,
+            ISNULL(saleCost, 0) AS saleCost,
+            CAST(ISNULL(activitySku, 0) AS INT) AS activitySku
+        FROM (
+            SELECT * FROM tag_sales
+            UNION ALL
+            SELECT * FROM untagged_sales
+        ) x
+        ORDER BY sales DESC, metricKey ASC
+    </select>
+
+    <select id="aggregateTagStock" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagStockRow">
+        WITH product_scope AS (
+            SELECT DISTINCT p.product_no AS productNo
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+        ),
+        tag_scope AS (
+            SELECT
+                t.product_no AS productNo,
+                CONCAT(t.tag_type_no, N'|', t.tag_no) AS metricKey
+            FROM product_tag_info t
+            INNER JOIN product_scope p
+              ON p.productNo = t.product_no
+            GROUP BY t.product_no, t.tag_type_no, t.tag_no
+        ),
+        tag_daily_stock AS (
+            SELECT
+                s.stock_date AS stockDate,
+                ts.metricKey AS metricKey,
+                ISNULL(SUM(CAST(s.stock_quantity AS DECIMAL(20, 6))), 0) AS dayStockQuantity
+            FROM fact_stock_day s
+            INNER JOIN tag_scope ts
+              ON ts.productNo = s.product_no
+            WHERE s.stock_date &gt;= #{param.periodStart}
+              AND s.stock_date &lt;= #{param.periodEnd}
+              <include refid="classFilterStock"/>
+              <include refid="storeFilterStock"/>
+            GROUP BY s.stock_date, ts.metricKey
+        ),
+        untagged_daily_stock AS (
+            SELECT
+                s.stock_date AS stockDate,
+                N'__UNTAGGED__' AS metricKey,
+                ISNULL(SUM(CAST(s.stock_quantity AS DECIMAL(20, 6))), 0) AS dayStockQuantity
+            FROM fact_stock_day s
+            INNER JOIN product_scope p
+              ON p.productNo = s.product_no
+            WHERE s.stock_date &gt;= #{param.periodStart}
+              AND s.stock_date &lt;= #{param.periodEnd}
+              <include refid="classFilterStock"/>
+              <include refid="storeFilterStock"/>
+              AND NOT EXISTS (
+                  SELECT 1
+                  FROM product_tag_info t
+                  WHERE t.product_no = s.product_no
+              )
+            GROUP BY s.stock_date
+        )
+        SELECT
+            metricKey,
+            ISNULL(AVG(CAST(dayStockQuantity AS DECIMAL(20, 6))), 0) AS avgStockQuantity
+        FROM (
+            SELECT * FROM tag_daily_stock
+            UNION ALL
+            SELECT * FROM untagged_daily_stock
+        ) x
+        GROUP BY metricKey
+    </select>
+
+    <select id="selectTagMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagMetaRow">
+        WITH product_scope AS (
+            SELECT
+                p.product_no AS productNo,
+                MIN(CAST(p.first_order_date AS DATE)) AS firstSaleDate
+            FROM base_dept_products p
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY p.product_no
+        ),
+        tag_meta AS (
+            SELECT
+                t.tag_type_no AS tagType,
+                MAX(t.tag_type_name) AS tagTypeName,
+                t.tag_no AS tagNo,
+                MAX(t.tag_name) AS tagName,
+                CONCAT(t.tag_type_no, N'|', t.tag_no) AS metricKey,
+                CAST(0 AS BIT) AS isUntagged,
+                MIN(p.firstSaleDate) AS firstSaleDate
+            FROM product_tag_info t
+            INNER JOIN product_scope p
+              ON p.productNo = t.product_no
+            GROUP BY t.tag_type_no, t.tag_no
+        ),
+        untagged_meta AS (
+            SELECT
+                N'*' AS tagType,
+                N'无标签' AS tagTypeName,
+                CAST(NULL AS NVARCHAR(128)) AS tagNo,
+                N'无标签' AS tagName,
+                N'__UNTAGGED__' AS metricKey,
+                CAST(1 AS BIT) AS isUntagged,
+                MIN(p.firstSaleDate) AS firstSaleDate
+            FROM product_scope p
+            WHERE NOT EXISTS (
+                SELECT 1
+                FROM product_tag_info t
+                WHERE t.product_no = p.productNo
+            )
+        )
+        SELECT
+            tagType,
+            tagTypeName,
+            tagNo,
+            tagName,
+            metricKey,
+            isUntagged,
+            firstSaleDate
+        FROM (
+            SELECT * FROM tag_meta
+            UNION ALL
+            SELECT * FROM untagged_meta
+        ) x
+    </select>
+
     <select id="selectOnlineChannelDictRows" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow">
         SELECT
             d.dict_code AS dictCode,

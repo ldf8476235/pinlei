@@ -1,0 +1,3048 @@
+请求地址：/api/classDoctorTag/queryTagSalesPer
+请求参数（我们就使用sessionId）：{"id":118,"tagType":"001"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "salesAndSkuList": [
+            {
+                "tagName": "植物精华",
+                "sales": 168445.10,
+                "salesPer": 2.22,
+                "sku": 61,
+                "skuPer": 1.29
+            },
+            {
+                "tagName": "熏香配方",
+                "sales": 91004.77,
+                "salesPer": 1.20,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "自然配方",
+                "sales": 88247.68,
+                "salesPer": 1.16,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "天然配方",
+                "sales": 84688.49,
+                "salesPer": 1.12,
+                "sku": 10,
+                "skuPer": 0.21
+            },
+            {
+                "tagName": "香氛配方",
+                "sales": 61793.66,
+                "salesPer": 0.81,
+                "sku": 14,
+                "skuPer": 0.30
+            },
+            {
+                "tagName": "椰油配方",
+                "sales": 51075.98,
+                "salesPer": 0.67,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "除菌成分",
+                "sales": 48489.98,
+                "salesPer": 0.64,
+                "sku": 9,
+                "skuPer": 0.19
+            },
+            {
+                "tagName": "海洋精华配方",
+                "sales": 43743.46,
+                "salesPer": 0.58,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "全效配方",
+                "sales": 42187.79,
+                "salesPer": 0.56,
+                "sku": 11,
+                "skuPer": 0.23
+            },
+            {
+                "tagName": "蚕丝",
+                "sales": 40482.43,
+                "salesPer": 0.53,
+                "sku": 11,
+                "skuPer": 0.23
+            },
+            {
+                "tagName": "超洁配方",
+                "sales": 31457.39,
+                "salesPer": 0.41,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "兰花提取物",
+                "sales": 30062.18,
+                "salesPer": 0.40,
+                "sku": 10,
+                "skuPer": 0.21
+            },
+            {
+                "tagName": "丝蛋白",
+                "sales": 27971.28,
+                "salesPer": 0.37,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "深层洁净技术",
+                "sales": 26058.89,
+                "salesPer": 0.34,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "果油配方",
+                "sales": 24537.44,
+                "salesPer": 0.32,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "薄荷成分",
+                "sales": 23778.01,
+                "salesPer": 0.31,
+                "sku": 9,
+                "skuPer": 0.19
+            },
+            {
+                "tagName": "植物配方",
+                "sales": 23721.71,
+                "salesPer": 0.31,
+                "sku": 10,
+                "skuPer": 0.21
+            },
+            {
+                "tagName": "增白配方",
+                "sales": 22924.10,
+                "salesPer": 0.30,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "透明配方",
+                "sales": 22731.45,
+                "salesPer": 0.30,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "丝质精华",
+                "sales": 22201.99,
+                "salesPer": 0.29,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "无磷配方",
+                "sales": 22002.85,
+                "salesPer": 0.29,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "大师香氛配方",
+                "sales": 21712.61,
+                "salesPer": 0.29,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "乳液",
+                "sales": 20513.77,
+                "salesPer": 0.27,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "玻尿酸配方",
+                "sales": 19942.60,
+                "salesPer": 0.26,
+                "sku": 13,
+                "skuPer": 0.27
+            },
+            {
+                "tagName": "APG配方",
+                "sales": 19487.90,
+                "salesPer": 0.26,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "亲肤配方",
+                "sales": 18115.79,
+                "salesPer": 0.24,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "爆炸盐配方",
+                "sales": 17799.60,
+                "salesPer": 0.23,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "橄榄油",
+                "sales": 17510.18,
+                "salesPer": 0.23,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "植萃配方",
+                "sales": 17429.05,
+                "salesPer": 0.23,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "小苏打配方",
+                "sales": 16862.93,
+                "salesPer": 0.22,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "酵素配方",
+                "sales": 16816.24,
+                "salesPer": 0.22,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "生姜提取物",
+                "sales": 16451.36,
+                "salesPer": 0.22,
+                "sku": 18,
+                "skuPer": 0.38
+            },
+            {
+                "tagName": "山茶花精华",
+                "sales": 16213.34,
+                "salesPer": 0.21,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "草本配方",
+                "sales": 15918.07,
+                "salesPer": 0.21,
+                "sku": 16,
+                "skuPer": 0.34
+            },
+            {
+                "tagName": "女神节专享配方",
+                "sales": 15287.75,
+                "salesPer": 0.20,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "加酶配方",
+                "sales": 15279.00,
+                "salesPer": 0.20,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "低敏配方",
+                "sales": 14318.73,
+                "salesPer": 0.19,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "亮白配方",
+                "sales": 13748.92,
+                "salesPer": 0.18,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "表面活性剂、除菌因子",
+                "sales": 13303.71,
+                "salesPer": 0.18,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "抗菌配方",
+                "sales": 13053.93,
+                "salesPer": 0.17,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "山茶花香氛",
+                "sales": 12683.95,
+                "salesPer": 0.17,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "氨基酸配方",
+                "sales": 12506.90,
+                "salesPer": 0.16,
+                "sku": 14,
+                "skuPer": 0.30
+            },
+            {
+                "tagName": "活性炭",
+                "sales": 11834.18,
+                "salesPer": 0.16,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "薰衣草柔顺配方",
+                "sales": 11812.14,
+                "salesPer": 0.16,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "樱花提取物",
+                "sales": 11619.73,
+                "salesPer": 0.15,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "婴幼儿专用",
+                "sales": 11068.86,
+                "salesPer": 0.15,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "冷水速洁技术",
+                "sales": 10986.17,
+                "salesPer": 0.14,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "精油成分",
+                "sales": 10599.00,
+                "salesPer": 0.14,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "时尚优家套装",
+                "sales": 10046.32,
+                "salesPer": 0.13,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "抑菌配方",
+                "sales": 9704.41,
+                "salesPer": 0.13,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "水润精华",
+                "sales": 9680.63,
+                "salesPer": 0.13,
+                "sku": 14,
+                "skuPer": 0.30
+            },
+            {
+                "tagName": "绿茶提取物",
+                "sales": 9241.87,
+                "salesPer": 0.12,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "御品海洋精华",
+                "sales": 9040.59,
+                "salesPer": 0.12,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "柠檬配方",
+                "sales": 8977.69,
+                "salesPer": 0.12,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "人参",
+                "sales": 8631.43,
+                "salesPer": 0.11,
+                "sku": 11,
+                "skuPer": 0.23
+            },
+            {
+                "tagName": "防脱配方",
+                "sales": 8431.12,
+                "salesPer": 0.11,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "有氧配方",
+                "sales": 8287.81,
+                "salesPer": 0.11,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "花卉提取物",
+                "sales": 8141.12,
+                "salesPer": 0.11,
+                "sku": 12,
+                "skuPer": 0.25
+            },
+            {
+                "tagName": "智净护衣套装",
+                "sales": 7958.20,
+                "salesPer": 0.10,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "丝毛净技术",
+                "sales": 7433.55,
+                "salesPer": 0.10,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "芦荟精华",
+                "sales": 7387.21,
+                "salesPer": 0.10,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "洁多芬香氛",
+                "sales": 7086.61,
+                "salesPer": 0.09,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "怡神薰衣草配方",
+                "sales": 7026.44,
+                "salesPer": 0.09,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "控油配方",
+                "sales": 6885.08,
+                "salesPer": 0.09,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "茶树精油",
+                "sales": 6877.17,
+                "salesPer": 0.09,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "无硅油配方",
+                "sales": 6584.26,
+                "salesPer": 0.09,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "清爽成分",
+                "sales": 6556.65,
+                "salesPer": 0.09,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "黑芝麻",
+                "sales": 6391.13,
+                "salesPer": 0.08,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "防断配方",
+                "sales": 6366.60,
+                "salesPer": 0.08,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "樱香配方",
+                "sales": 6265.94,
+                "salesPer": 0.08,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "羽绒服专用配方",
+                "sales": 6030.58,
+                "salesPer": 0.08,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "活炭成分",
+                "sales": 5863.82,
+                "salesPer": 0.08,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "小苍兰配方",
+                "sales": 5800.46,
+                "salesPer": 0.08,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "安护配方",
+                "sales": 5537.86,
+                "salesPer": 0.07,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "茶麸成分",
+                "sales": 5446.40,
+                "salesPer": 0.07,
+                "sku": 15,
+                "skuPer": 0.32
+            },
+            {
+                "tagName": "柔顺护理技术",
+                "sales": 5324.76,
+                "salesPer": 0.07,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "便携装技术",
+                "sales": 5303.63,
+                "salesPer": 0.07,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "香氛精油",
+                "sales": 5236.85,
+                "salesPer": 0.07,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香皂配方",
+                "sales": 5226.68,
+                "salesPer": 0.07,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "洗护沐套装",
+                "sales": 5140.95,
+                "salesPer": 0.07,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": " 控油配方 ",
+                "sales": 5094.55,
+                "salesPer": 0.07,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "红藻提取物",
+                "sales": 5054.71,
+                "salesPer": 0.07,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "升级配方",
+                "sales": 5030.18,
+                "salesPer": 0.07,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "基础配方",
+                "sales": 4850.25,
+                "salesPer": 0.06,
+                "sku": 8,
+                "skuPer": 0.17
+            },
+            {
+                "tagName": "浓缩配方",
+                "sales": 4850.08,
+                "salesPer": 0.06,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "冰爽因子",
+                "sales": 4802.24,
+                "salesPer": 0.06,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "怡神薰衣草促销装",
+                "sales": 4701.52,
+                "salesPer": 0.06,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香氛微胶囊",
+                "sales": 4598.11,
+                "salesPer": 0.06,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "洗护套装",
+                "sales": 4530.47,
+                "salesPer": 0.06,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "羊绒羊毛专用配方",
+                "sales": 4427.46,
+                "salesPer": 0.06,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "蓬松配方",
+                "sales": 4253.07,
+                "salesPer": 0.06,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "净蓝配方",
+                "sales": 4182.65,
+                "salesPer": 0.06,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "PRO-V",
+                "sales": 4024.88,
+                "salesPer": 0.05,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "珍珠精华",
+                "sales": 4013.41,
+                "salesPer": 0.05,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "去渍复合酶",
+                "sales": 3778.29,
+                "salesPer": 0.05,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "天然植物配方",
+                "sales": 3765.58,
+                "salesPer": 0.05,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "深透净爽成分",
+                "sales": 3717.32,
+                "salesPer": 0.05,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "强韧配方",
+                "sales": 3708.98,
+                "salesPer": 0.05,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "透明质酸",
+                "sales": 3648.80,
+                "salesPer": 0.05,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "清新柠檬配方",
+                "sales": 3582.45,
+                "salesPer": 0.05,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "藏红花精华",
+                "sales": 3561.82,
+                "salesPer": 0.05,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "淡雅樱花配方",
+                "sales": 3498.00,
+                "salesPer": 0.05,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "内衣专用",
+                "sales": 3438.42,
+                "salesPer": 0.05,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "大师香氛柔顺剂",
+                "sales": 3422.04,
+                "salesPer": 0.05,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "PRO-V乳液",
+                "sales": 3370.50,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "净白配方",
+                "sales": 3364.85,
+                "salesPer": 0.04,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "马赛椰油配方",
+                "sales": 3350.96,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "清新柔顺配方",
+                "sales": 3306.94,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "复合酶制剂",
+                "sales": 3306.30,
+                "salesPer": 0.04,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "鲜榨姜汁",
+                "sales": 3306.21,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "活氧成分",
+                "sales": 3283.79,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "深度除菌配方",
+                "sales": 3211.38,
+                "salesPer": 0.04,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "补水因子",
+                "sales": 3203.38,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "植物基配方",
+                "sales": 3190.52,
+                "salesPer": 0.04,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "高奢香氛配方",
+                "sales": 3056.12,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "薰衣草柔顺促销装",
+                "sales": 3004.11,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "去屑配方",
+                "sales": 3000.54,
+                "salesPer": 0.04,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "鲜姜汁",
+                "sales": 2999.91,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "本草",
+                "sales": 2945.69,
+                "salesPer": 0.04,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "汉草精华",
+                "sales": 2937.75,
+                "salesPer": 0.04,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "首乌",
+                "sales": 2912.92,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "柔顺成分",
+                "sales": 2818.33,
+                "salesPer": 0.04,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "天然皂基",
+                "sales": 2775.73,
+                "salesPer": 0.04,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "轻盈配方",
+                "sales": 2748.26,
+                "salesPer": 0.04,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "彩漂技术",
+                "sales": 2669.03,
+                "salesPer": 0.04,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "顺柔配方",
+                "sales": 2623.52,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "海洋矿物质",
+                "sales": 2525.22,
+                "salesPer": 0.03,
+                "sku": 7,
+                "skuPer": 0.15
+            },
+            {
+                "tagName": "天然除菌配方",
+                "sales": 2516.44,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "薰衣草促销装",
+                "sales": 2503.76,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "新年超值礼包",
+                "sales": 2477.48,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "手洗配方",
+                "sales": 2477.18,
+                "salesPer": 0.03,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "红石榴香氛",
+                "sales": 2475.06,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "微米净澈成分",
+                "sales": 2446.65,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "清新柔顺促销装",
+                "sales": 2370.96,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "茉莉清香配方",
+                "sales": 2361.27,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "薰衣草",
+                "sales": 2335.75,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "亮洁成分",
+                "sales": 2306.45,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "专研配方",
+                "sales": 2264.44,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "机洗配方",
+                "sales": 2255.68,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "精油香氛配方",
+                "sales": 2249.99,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "首乌精华",
+                "sales": 2207.70,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "无患子精华",
+                "sales": 2171.84,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "止痒成分",
+                "sales": 2169.10,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "多效水润成分",
+                "sales": 2163.00,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "沁润水养技术",
+                "sales": 2158.59,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "无患子提取物",
+                "sales": 2148.32,
+                "salesPer": 0.03,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "植物亲肤配方",
+                "sales": 2135.61,
+                "salesPer": 0.03,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "鲜姜提取物",
+                "sales": 2133.06,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "超效配方",
+                "sales": 2081.79,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "凝萃配方",
+                "sales": 2031.03,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "三合一配方",
+                "sales": 1923.74,
+                "salesPer": 0.03,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "石榴提取物",
+                "sales": 1869.21,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "樱香精华",
+                "sales": 1834.71,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "3X除菌技术",
+                "sales": 1779.83,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "维多利亚玫瑰香氛",
+                "sales": 1770.12,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "除菌去味技术",
+                "sales": 1745.56,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "去渍配方",
+                "sales": 1682.14,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "茶籽精华",
+                "sales": 1670.58,
+                "salesPer": 0.02,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "风铃熏衣香氛",
+                "sales": 1663.93,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "衣领净技术",
+                "sales": 1658.21,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "墨藻提取物",
+                "sales": 1611.95,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "羽绒服干洗技术",
+                "sales": 1585.97,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "多用途消毒配方",
+                "sales": 1582.23,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "香氛赠礼配方",
+                "sales": 1581.31,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "蓝风铃香氛",
+                "sales": 1546.84,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "扁桃油",
+                "sales": 1520.95,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "二硫化硒",
+                "sales": 1507.83,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "奇迹臻养技术",
+                "sales": 1461.56,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "精油配方",
+                "sales": 1408.72,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "柔顺因子",
+                "sales": 1388.61,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "霍霍巴油",
+                "sales": 1370.87,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "清新消毒配方",
+                "sales": 1367.43,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "SPA水疗成分",
+                "sales": 1357.92,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "全效馨香配方",
+                "sales": 1314.58,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "羽绒服泡沫技术",
+                "sales": 1301.25,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "消毒配方",
+                "sales": 1289.27,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "女士专用",
+                "sales": 1265.52,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "酶制剂",
+                "sales": 1264.77,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "润护配方",
+                "sales": 1260.42,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "花香除菌配方",
+                "sales": 1226.60,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "复合配方",
+                "sales": 1175.22,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "漂白技术",
+                "sales": 1173.89,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "除菌除螨配方",
+                "sales": 1163.40,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "活力配方",
+                "sales": 1161.40,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "奇幻精油",
+                "sales": 1151.04,
+                "salesPer": 0.02,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "薰衣草精油",
+                "sales": 1146.20,
+                "salesPer": 0.02,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "郁金香精华",
+                "sales": 1142.28,
+                "salesPer": 0.02,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "柔护配方",
+                "sales": 1126.94,
+                "salesPer": 0.01,
+                "sku": 5,
+                "skuPer": 0.11
+            },
+            {
+                "tagName": "山姜配方",
+                "sales": 1112.27,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "水凝精华",
+                "sales": 1104.10,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "卫诺消毒技术",
+                "sales": 1102.57,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "多效配方",
+                "sales": 1083.11,
+                "salesPer": 0.01,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "贴身专用",
+                "sales": 1062.30,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "鲜奶精华",
+                "sales": 1055.67,
+                "salesPer": 0.01,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "洋甘菊配方",
+                "sales": 1025.58,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "护衣留香珠技术",
+                "sales": 1011.04,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "尿布专用",
+                "sales": 1007.63,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "优护配方",
+                "sales": 944.53,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "天然熏香配方",
+                "sales": 940.50,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "裸感配方",
+                "sales": 929.57,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "浪漫玫瑰配方",
+                "sales": 926.65,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "柠檬除菌配方",
+                "sales": 905.21,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "校服净技术",
+                "sales": 878.97,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "宝宝专用配方",
+                "sales": 867.28,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "三重配方",
+                "sales": 857.20,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "沁润配方",
+                "sales": 855.58,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "山竹精华",
+                "sales": 845.96,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "泡沫技术",
+                "sales": 829.53,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "彩衣漂净技术",
+                "sales": 823.42,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "臻养成分",
+                "sales": 795.63,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香氛精华",
+                "sales": 794.32,
+                "salesPer": 0.01,
+                "sku": 4,
+                "skuPer": 0.08
+            },
+            {
+                "tagName": "生物酶配方",
+                "sales": 789.86,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "洁净配方",
+                "sales": 789.79,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "3D炫彩技术",
+                "sales": 780.03,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "百合花香氛",
+                "sales": 769.61,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "牛奶精华",
+                "sales": 761.97,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "质感垂坠成分",
+                "sales": 751.03,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "浓缩香氛配方",
+                "sales": 739.01,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "超值套装",
+                "sales": 731.33,
+                "salesPer": 0.01,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "旅行套装",
+                "sales": 724.59,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "四块装",
+                "sales": 712.99,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "日本抑菌科技",
+                "sales": 705.76,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "有氧洁净技术",
+                "sales": 696.78,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "预涂技术配方",
+                "sales": 676.74,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "白衣漂净技术",
+                "sales": 668.44,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "低泡配方",
+                "sales": 666.78,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "大公鸡皂液配方",
+                "sales": 665.29,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "多效修复配方",
+                "sales": 664.79,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "护头皮配方",
+                "sales": 660.77,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "活花水凝",
+                "sales": 657.12,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "女神节清洁套装",
+                "sales": 655.09,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "纯净温和配方",
+                "sales": 646.99,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "熏香组合配方",
+                "sales": 619.23,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "supnice技术",
+                "sales": 608.38,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "魔法香珠配方",
+                "sales": 604.50,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "粉漾玫瑰香氛",
+                "sales": 601.27,
+                "salesPer": 0.01,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "强效去渍酶",
+                "sales": 597.31,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "银杏提取物",
+                "sales": 595.04,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "米萃配方",
+                "sales": 583.95,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "植物酵素配方",
+                "sales": 579.49,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "小苍兰促销装",
+                "sales": 572.45,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "衣物除异味喷雾",
+                "sales": 554.46,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "养根配方",
+                "sales": 545.53,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "全效复合酶",
+                "sales": 544.83,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "焕新护衣留香珠",
+                "sales": 544.23,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "经典薰衣草配方",
+                "sales": 535.05,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "丰盈配方",
+                "sales": 534.44,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "7天抑菌技术",
+                "sales": 531.80,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "植润配方",
+                "sales": 528.04,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "黑亮滋养成分",
+                "sales": 527.98,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "专业配方",
+                "sales": 522.91,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "滋养成分",
+                "sales": 522.52,
+                "salesPer": 0.01,
+                "sku": 6,
+                "skuPer": 0.13
+            },
+            {
+                "tagName": "淡雅熏香技术",
+                "sales": 484.26,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "椰油皂促销装",
+                "sales": 480.99,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "三联装",
+                "sales": 475.44,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "皂角提取物",
+                "sales": 474.21,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "色渍净技术",
+                "sales": 472.69,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "发芯强化",
+                "sales": 472.26,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "植物除菌配方",
+                "sales": 434.87,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "清莲馨香配方",
+                "sales": 429.65,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香氛套装",
+                "sales": 429.48,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "修护成分",
+                "sales": 422.25,
+                "salesPer": 0.01,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "蓬湃配方",
+                "sales": 420.27,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "防串色柔顺技术",
+                "sales": 408.67,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "二合一配方",
+                "sales": 408.25,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "缤纷落樱配方",
+                "sales": 402.69,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "净澈配方",
+                "sales": 401.92,
+                "salesPer": 0.01,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "除螨配方",
+                "sales": 398.21,
+                "salesPer": 0.01,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "天然酵素配方",
+                "sales": 372.41,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "摩擦生香技术",
+                "sales": 365.98,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "两联装",
+                "sales": 337.51,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "多巴胺旋风技术",
+                "sales": 334.36,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "营养配方",
+                "sales": 331.72,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "留香柔顺技术",
+                "sales": 329.11,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "护色因子",
+                "sales": 321.53,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "小雏菊香氛",
+                "sales": 319.14,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "淘米水成分",
+                "sales": 318.93,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "光耀莹润技术",
+                "sales": 318.56,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "草莓精华",
+                "sales": 311.26,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "PRO-V修护技术",
+                "sales": 301.16,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "洁雅百合香氛",
+                "sales": 298.90,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "甜睡配方",
+                "sales": 294.87,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "马油成分",
+                "sales": 292.40,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "青柠消毒配方",
+                "sales": 288.29,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "亲护配方",
+                "sales": 288.12,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "烫染修护",
+                "sales": 272.76,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "头皮净化",
+                "sales": 260.51,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "除菌柔顺二合一",
+                "sales": 258.03,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "玫瑰果提取物",
+                "sales": 257.18,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "洗衣防染巾",
+                "sales": 251.22,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "风清配方",
+                "sales": 249.54,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "植翠喷雾技术",
+                "sales": 245.96,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "鲜奶蛋白",
+                "sales": 242.42,
+                "salesPer": 0.00,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "控油成分",
+                "sales": 242.06,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "铃兰香氛",
+                "sales": 241.32,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "水果精华",
+                "sales": 238.19,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "山羊奶精华",
+                "sales": 226.40,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "羊绒脂成分",
+                "sales": 225.51,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "倍润配方",
+                "sales": 220.61,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "加强配方",
+                "sales": 210.84,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "密集滋养配方",
+                "sales": 207.54,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "运动配方",
+                "sales": 203.99,
+                "salesPer": 0.00,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "去油配方",
+                "sales": 199.34,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "桂花留香珠",
+                "sales": 198.17,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "女神节呵护套装",
+                "sales": 193.12,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "茶树精油配方",
+                "sales": 190.93,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "柔净配方",
+                "sales": 187.62,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "男士专用配方",
+                "sales": 187.53,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "古龙香氛",
+                "sales": 177.15,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香薰洗衣液套装",
+                "sales": 175.23,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "经典薰衣草促销装",
+                "sales": 171.41,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "玉铃兰柔顺配方",
+                "sales": 170.57,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "带出液口设计",
+                "sales": 169.22,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "三腔复合配方",
+                "sales": 168.16,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "大公鸡清洁套装",
+                "sales": 160.53,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "征服配方",
+                "sales": 159.47,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "蛇胆精华",
+                "sales": 155.58,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "乳清蛋白",
+                "sales": 151.24,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "水光弹润技术",
+                "sales": 149.33,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "消臭除菌技术",
+                "sales": 148.21,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "敏感护理",
+                "sales": 134.64,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "墨藻精华",
+                "sales": 132.66,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "金纯精油",
+                "sales": 129.48,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "植萃成分",
+                "sales": 128.16,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "除味除菌喷雾",
+                "sales": 124.91,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "免水洗喷渍技术",
+                "sales": 122.19,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "洗香香配方",
+                "sales": 118.19,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "鹅梨沉香留香珠",
+                "sales": 114.89,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "纺优美洗衣珠",
+                "sales": 111.48,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "清润成分",
+                "sales": 108.78,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "椰油精华",
+                "sales": 108.02,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "净屑配方",
+                "sales": 107.91,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "排浊配方",
+                "sales": 106.00,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "舒缓配方",
+                "sales": 105.93,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "智能洁净因子",
+                "sales": 100.97,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "光泽成分",
+                "sales": 91.64,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "速干面料专用技术",
+                "sales": 85.57,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "植沐悦色护理液",
+                "sales": 83.12,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "精华",
+                "sales": 80.58,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "多效除螨配方",
+                "sales": 80.37,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "蔷薇花香氛",
+                "sales": 79.90,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "3X消臭技术",
+                "sales": 75.36,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "热情配方",
+                "sales": 70.21,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "水晶配方",
+                "sales": 67.27,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "粉色金典配方",
+                "sales": 66.93,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "清柚玫瑰补充装",
+                "sales": 59.51,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "威洁士技术",
+                "sales": 57.40,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "纺优美留香珠",
+                "sales": 53.22,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "女神节超值套装",
+                "sales": 52.50,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "舒爽成分",
+                "sales": 51.90,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "浓缩精华",
+                "sales": 51.80,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "青花椒提取物",
+                "sales": 44.30,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "快洗技术",
+                "sales": 38.87,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "真丝羊绒护理液",
+                "sales": 25.50,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "云感泡沫技术",
+                "sales": 24.80,
+                "salesPer": 0.00,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "栀子花香",
+                "sales": 18.92,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "生物酶香氛",
+                "sales": 17.90,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "衣物柔顺技术",
+                "sales": 12.90,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "柔顺剂换购码",
+                "sales": 11.68,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香氛浓缩配方",
+                "sales": 10.59,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "洗白白配方",
+                "sales": 10.01,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "香氛喷雾技术",
+                "sales": 2.21,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "柔光滋养精华",
+                "sales": -8.09,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "环保浓缩配方",
+                "sales": -14.16,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "甜橙精油",
+                "sales": -42.40,
+                "salesPer": 0.00,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "姜汁精华",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "菁萃精华",
+                "sales": null,
+                "salesPer": null,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "蛋白",
+                "sales": null,
+                "salesPer": null,
+                "sku": 3,
+                "skuPer": 0.06
+            },
+            {
+                "tagName": "衣物护理剂",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "泡泡配方",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "深海配方",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "强效配方",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "表面活性剂、酶",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "茶萃提取物",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "运动型配方",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "母婴酵素配方",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "玫瑰留香技术",
+                "sales": null,
+                "salesPer": null,
+                "sku": 2,
+                "skuPer": 0.04
+            },
+            {
+                "tagName": "杀菌留香珠",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            },
+            {
+                "tagName": "小苍兰香氛",
+                "sales": null,
+                "salesPer": null,
+                "sku": 1,
+                "skuPer": 0.02
+            }
+        ],
+        "goodTagList": [
+            "植物精华",
+            "熏香配方",
+            "自然配方",
+            "天然配方",
+            "香氛配方",
+            "椰油配方",
+            "除菌成分",
+            "海洋精华配方",
+            "全效配方",
+            "蚕丝",
+            "超洁配方",
+            "兰花提取物",
+            "丝蛋白",
+            "深层洁净技术",
+            "果油配方",
+            "薄荷成分",
+            "植物配方",
+            "增白配方",
+            "透明配方",
+            "丝质精华",
+            "无磷配方",
+            "大师香氛配方",
+            "乳液"
+        ],
+        "badTagList": [
+            "小苍兰香氛",
+            "杀菌留香珠",
+            "玫瑰留香技术",
+            "母婴酵素配方",
+            "运动型配方",
+            "茶萃提取物",
+            "表面活性剂、酶",
+            "强效配方",
+            "深海配方",
+            "泡泡配方",
+            "衣物护理剂",
+            "蛋白",
+            "菁萃精华",
+            "姜汁精华",
+            "甜橙精油",
+            "环保浓缩配方",
+            "柔光滋养精华",
+            "香氛喷雾技术",
+            "洗白白配方",
+            "香氛浓缩配方",
+            "柔顺剂换购码",
+            "衣物柔顺技术",
+            "生物酶香氛",
+            "栀子花香",
+            "云感泡沫技术",
+            "真丝羊绒护理液",
+            "快洗技术",
+            "青花椒提取物",
+            "浓缩精华",
+            "舒爽成分",
+            "女神节超值套装",
+            "纺优美留香珠",
+            "威洁士技术",
+            "清柚玫瑰补充装",
+            "粉色金典配方",
+            "水晶配方",
+            "热情配方",
+            "3X消臭技术",
+            "蔷薇花香氛",
+            "多效除螨配方",
+            "精华",
+            "植沐悦色护理液",
+            "速干面料专用技术",
+            "光泽成分",
+            "智能洁净因子",
+            "舒缓配方",
+            "排浊配方",
+            "净屑配方",
+            "椰油精华",
+            "清润成分",
+            "纺优美洗衣珠",
+            "鹅梨沉香留香珠",
+            "洗香香配方",
+            "免水洗喷渍技术",
+            "除味除菌喷雾",
+            "植萃成分",
+            "金纯精油",
+            "墨藻精华",
+            "敏感护理",
+            "消臭除菌技术",
+            "水光弹润技术",
+            "乳清蛋白",
+            "蛇胆精华",
+            "征服配方",
+            "大公鸡清洁套装",
+            "三腔复合配方",
+            "带出液口设计",
+            "玉铃兰柔顺配方",
+            "经典薰衣草促销装",
+            "香薰洗衣液套装",
+            "古龙香氛",
+            "男士专用配方",
+            "柔净配方",
+            "茶树精油配方",
+            "女神节呵护套装",
+            "桂花留香珠",
+            "去油配方",
+            "运动配方",
+            "密集滋养配方",
+            "加强配方",
+            "倍润配方",
+            "羊绒脂成分",
+            "山羊奶精华",
+            "水果精华",
+            "铃兰香氛",
+            "控油成分",
+            "鲜奶蛋白",
+            "植翠喷雾技术",
+            "风清配方",
+            "洗衣防染巾",
+            "玫瑰果提取物",
+            "除菌柔顺二合一",
+            "头皮净化",
+            "烫染修护",
+            "亲护配方",
+            "青柠消毒配方",
+            "马油成分",
+            "甜睡配方",
+            "洁雅百合香氛",
+            "PRO-V修护技术",
+            "草莓精华",
+            "光耀莹润技术",
+            "淘米水成分",
+            "小雏菊香氛",
+            "护色因子",
+            "留香柔顺技术",
+            "营养配方",
+            "多巴胺旋风技术",
+            "两联装",
+            "摩擦生香技术",
+            "天然酵素配方",
+            "除螨配方",
+            "净澈配方",
+            "缤纷落樱配方",
+            "二合一配方",
+            "防串色柔顺技术",
+            "蓬湃配方",
+            "修护成分",
+            "香氛套装",
+            "清莲馨香配方",
+            "植物除菌配方",
+            "发芯强化",
+            "色渍净技术",
+            "皂角提取物",
+            "三联装",
+            "椰油皂促销装",
+            "淡雅熏香技术",
+            "滋养成分",
+            "专业配方",
+            "黑亮滋养成分",
+            "植润配方",
+            "7天抑菌技术",
+            "丰盈配方",
+            "经典薰衣草配方",
+            "焕新护衣留香珠",
+            "全效复合酶",
+            "养根配方",
+            "衣物除异味喷雾",
+            "小苍兰促销装",
+            "植物酵素配方",
+            "米萃配方",
+            "银杏提取物",
+            "强效去渍酶",
+            "粉漾玫瑰香氛",
+            "魔法香珠配方",
+            "supnice技术",
+            "熏香组合配方",
+            "纯净温和配方",
+            "女神节清洁套装",
+            "活花水凝",
+            "护头皮配方",
+            "多效修复配方",
+            "大公鸡皂液配方",
+            "低泡配方",
+            "白衣漂净技术",
+            "预涂技术配方",
+            "有氧洁净技术",
+            "日本抑菌科技",
+            "四块装",
+            "旅行套装",
+            "超值套装",
+            "浓缩香氛配方",
+            "质感垂坠成分",
+            "牛奶精华",
+            "百合花香氛",
+            "3D炫彩技术",
+            "洁净配方",
+            "生物酶配方",
+            "香氛精华",
+            "臻养成分",
+            "彩衣漂净技术",
+            "泡沫技术",
+            "山竹精华",
+            "沁润配方",
+            "三重配方",
+            "宝宝专用配方",
+            "校服净技术",
+            "柠檬除菌配方",
+            "浪漫玫瑰配方",
+            "裸感配方",
+            "天然熏香配方",
+            "优护配方",
+            "尿布专用",
+            "护衣留香珠技术",
+            "洋甘菊配方",
+            "鲜奶精华",
+            "贴身专用",
+            "多效配方",
+            "卫诺消毒技术",
+            "水凝精华",
+            "山姜配方",
+            "柔护配方",
+            "郁金香精华",
+            "薰衣草精油",
+            "奇幻精油",
+            "活力配方",
+            "除菌除螨配方",
+            "漂白技术",
+            "复合配方",
+            "花香除菌配方",
+            "润护配方",
+            "酶制剂",
+            "女士专用",
+            "消毒配方",
+            "羽绒服泡沫技术",
+            "全效馨香配方",
+            "SPA水疗成分",
+            "清新消毒配方",
+            "霍霍巴油",
+            "柔顺因子",
+            "精油配方",
+            "奇迹臻养技术",
+            "二硫化硒",
+            "扁桃油",
+            "蓝风铃香氛",
+            "香氛赠礼配方",
+            "多用途消毒配方",
+            "羽绒服干洗技术",
+            "墨藻提取物",
+            "衣领净技术",
+            "风铃熏衣香氛",
+            "茶籽精华",
+            "去渍配方",
+            "除菌去味技术",
+            "维多利亚玫瑰香氛",
+            "3X除菌技术",
+            "樱香精华",
+            "石榴提取物",
+            "三合一配方",
+            "凝萃配方",
+            "超效配方",
+            "鲜姜提取物",
+            "植物亲肤配方",
+            "无患子提取物",
+            "沁润水养技术",
+            "多效水润成分",
+            "止痒成分",
+            "无患子精华",
+            "首乌精华",
+            "精油香氛配方",
+            "机洗配方",
+            "专研配方",
+            "亮洁成分",
+            "薰衣草",
+            "茉莉清香配方",
+            "清新柔顺促销装",
+            "微米净澈成分",
+            "红石榴香氛",
+            "手洗配方",
+            "新年超值礼包",
+            "薰衣草促销装",
+            "天然除菌配方",
+            "海洋矿物质",
+            "顺柔配方",
+            "彩漂技术",
+            "轻盈配方",
+            "天然皂基",
+            "柔顺成分",
+            "首乌",
+            "汉草精华",
+            "本草",
+            "鲜姜汁",
+            "去屑配方",
+            "薰衣草柔顺促销装",
+            "高奢香氛配方",
+            "植物基配方",
+            "补水因子",
+            "深度除菌配方",
+            "活氧成分",
+            "鲜榨姜汁",
+            "复合酶制剂",
+            "清新柔顺配方",
+            "马赛椰油配方",
+            "净白配方",
+            "PRO-V乳液",
+            "大师香氛柔顺剂",
+            "内衣专用",
+            "淡雅樱花配方",
+            "藏红花精华",
+            "清新柠檬配方",
+            "透明质酸",
+            "强韧配方",
+            "深透净爽成分",
+            "天然植物配方",
+            "去渍复合酶",
+            "珍珠精华",
+            "PRO-V",
+            "净蓝配方",
+            "蓬松配方",
+            "羊绒羊毛专用配方",
+            "洗护套装",
+            "香氛微胶囊",
+            "怡神薰衣草促销装",
+            "冰爽因子",
+            "浓缩配方",
+            "基础配方",
+            "升级配方",
+            "红藻提取物",
+            " 控油配方 ",
+            "洗护沐套装",
+            "香皂配方",
+            "香氛精油",
+            "便携装技术",
+            "柔顺护理技术",
+            "茶麸成分",
+            "安护配方",
+            "小苍兰配方",
+            "活炭成分",
+            "羽绒服专用配方",
+            "樱香配方",
+            "防断配方",
+            "黑芝麻",
+            "清爽成分",
+            "无硅油配方",
+            "茶树精油",
+            "控油配方",
+            "怡神薰衣草配方",
+            "洁多芬香氛",
+            "芦荟精华",
+            "丝毛净技术",
+            "智净护衣套装",
+            "花卉提取物",
+            "有氧配方",
+            "防脱配方",
+            "人参",
+            "柠檬配方",
+            "御品海洋精华",
+            "绿茶提取物",
+            "水润精华",
+            "抑菌配方",
+            "时尚优家套装",
+            "精油成分",
+            "冷水速洁技术",
+            "婴幼儿专用",
+            "樱花提取物",
+            "薰衣草柔顺配方",
+            "活性炭",
+            "氨基酸配方",
+            "山茶花香氛",
+            "抗菌配方",
+            "表面活性剂、除菌因子",
+            "亮白配方",
+            "低敏配方",
+            "加酶配方",
+            "女神节专享配方",
+            "草本配方",
+            "山茶花精华",
+            "生姜提取物",
+            "酵素配方",
+            "小苏打配方",
+            "植萃配方",
+            "橄榄油",
+            "爆炸盐配方",
+            "亲肤配方",
+            "APG配方",
+            "玻尿酸配方"
+        ]
+    },
+    "timestamp": 1776320462684
+}

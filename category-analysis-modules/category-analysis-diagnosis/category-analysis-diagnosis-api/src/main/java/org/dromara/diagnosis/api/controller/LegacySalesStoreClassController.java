@@ -27,6 +27,9 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 子类贡献
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/salesStoreClass")
