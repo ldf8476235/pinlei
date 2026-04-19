@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisVendorMapper">
+
+    <delete id="deleteByVersion">
+        DELETE FROM diag_result_vendor_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion};
+
+        DELETE FROM diag_result_vendor_json
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsertMetrics">
+        INSERT INTO diag_result_vendor_metric
+        (
+            tenant_id, query_hash, data_version, product_vendor_no, product_vendor_name, product_vendor_no_name,
+            product_vendor_status_no, product_vendor_status_name, sku_count, new_sku_count,
+            sales, sales_per, gross, gross_rate, oi_amount, all_gross, all_gross_rate,
+            net_order_amount, diff_order_amount, diff_order_amount_rate, unit_output, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.productVendorNo}, #{row.productVendorName}, #{row.productVendorNoName},
+                #{row.productVendorStatusNo}, #{row.productVendorStatusName}, #{row.skuCount}, #{row.newSkuCount},
+                #{row.sales}, #{row.salesPer}, #{row.gross}, #{row.grossRate}, #{row.oiAmount}, #{row.allGross}, #{row.allGrossRate},
+                #{row.netOrderAmount}, #{row.diffOrderAmount}, #{row.diffOrderAmountRate}, #{row.unitOutput}, #{row.snapshotTime}
+            )
+        </foreach>
+    </insert>
+
+    <insert id="batchInsertJson">
+        INSERT INTO diag_result_vendor_json
+        (
+            tenant_id, query_hash, data_version, payload_code, payload_name, payload_json, snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.payloadCode}, #{row.payloadName}, #{row.payloadJson}, #{row.snapshotTime}
+            )
+        </foreach>
+    </insert>
+
+    <select id="selectRankingSummaryByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisVendorRankingSummaryRow">
+        SELECT
+            AVG(CAST(${metricColumn} AS DECIMAL(18, 6))) AS ave,
+            MAX(${metricColumn}) AS maxData,
+            MIN(${metricColumn}) AS minData,
+            COUNT(1) AS total
+        FROM diag_result_vendor_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </select>
+
+    <select id="selectRankingPageByVersion" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisVendorRankingItemRow">
+        SELECT
+            product_vendor_no AS productVendorNo,
+            product_vendor_name AS productVendorName,
+            ${metricColumn} AS data
+        FROM diag_result_vendor_metric
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+        ORDER BY ${metricColumn} ${orderType}, product_vendor_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    </select>
+
+    <select id="selectJsonByCode" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisVendorJsonRow">
+        SELECT
+            id, tenant_id AS tenantId, query_hash AS queryHash, data_version AS dataVersion,
+            payload_code AS payloadCode, payload_name AS payloadName, payload_json AS payloadJson,
+            snapshot_time AS snapshotTime, create_time AS createTime, update_time AS updateTime
+        FROM diag_result_vendor_json
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          AND payload_code = #{payloadCode}
+    </select>
+
+</mapper>

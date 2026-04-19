@@ -1,0 +1,172 @@
+接口地址：我们自己取
+请求参数：
+class_no: 004010101,004010102
+class_level: 4
+start_date: 2024-09-27
+end_date: 2024-12-08
+dept_id: 1
+retail_type_id: 0
+business_circle_id: 0
+product_vendor_no: 1030000001
+totalData[product_vendor_no]: 1030000001
+totalData[new_sku]: 0
+totalData[net_order_amount]: 14829043.78
+totalData[diff_order_amount]: 738062.94
+totalData[diff_order_amount_rate]: 4.741170
+totalData[sales]: 1453277.60
+totalData[sales_per]: 100.00
+totalData[l_year_tongqi_sales]: 95546.82
+totalData[sales_tb]: 1421.010956
+totalData[gross]: 240068.36
+totalData[gross_per]: 100.00
+totalData[l_year_tongqi_gross]: 16922.15
+totalData[gross_tb]: 1318.663468
+totalData[gross_rate]: 16.519099
+totalData[l_year_tongqi_gross_rate]: 17.710846
+totalData[sale_cost]: 1213204.10
+totalData[oi_amount]: 16611.30
+totalData[all_gross]: 256679.66
+totalData[all_gross_rate]: 17.662122
+totalData[product_vendor_name]: 1030000001有限公司
+totalData[product_vendor_status]: 1
+totalData[all_sku]: 1190
+totalData[all_sku_per]: 23.75
+totalData[stock_sale_money_today]: 3104811.18
+totalData[stock_sale_money_today_per]: 38.94
+totalData[min_division_num]: 81
+totalData[end_stock_cost]: 2328820.48
+totalData[open_stock_cost]: 0
+totalData[days]: 73
+totalData[brank_num]: 60
+totalData[stock_turnover]: 1.04
+totalData[stock_turnover_days]: 70.19
+totalData[date_year_month]: 汇总
+prop: date_year_month
+order: asc
+sqlStr: 
+pageSize: 10
+pageIndex: 1
+
+返回参数：
+{
+    "status": "succ",
+    "message": null,
+    "data": {
+        "total": "3",
+        "rows": [
+            {
+                "date_year_month": "202410",
+                "data_date": "2024-10-26",
+                "all_sku": "1141",
+                "new_sku": "0",
+                "net_order_amount": "3845509.63",
+                "diff_order_amount": "190082.93",
+                "diff_order_amount_rate": "4.710162",
+                "sales": "677663.78",
+                "sales_per": "46.63",
+                "l_year_tongqi_sales": null,
+                "sales_tb": null,
+                "gross": "105581.58",
+                "gross_per": "43.98",
+                "l_year_tongqi_gross": null,
+                "gross_tb": null,
+                "gross_rate": "15.580231",
+                "l_year_tongqi_gross_rate": null,
+                "sale_cost": "572079.20",
+                "days": "30",
+                "oi_amount": "4558.63",
+                "all_gross": "110140.21",
+                "all_gross_rate": "16.252929",
+                "stock_turnover": null,
+                "stock_turnover_days": null
+            },
+            {
+                "date_year_month": "202411",
+                "data_date": "2024-11-26",
+                "all_sku": "1145",
+                "new_sku": "0",
+                "net_order_amount": "8002118.87",
+                "diff_order_amount": "398936.27",
+                "diff_order_amount_rate": "4.748645",
+                "sales": "565822.41",
+                "sales_per": "38.93",
+                "l_year_tongqi_sales": null,
+                "sales_tb": null,
+                "gross": "97334.35",
+                "gross_per": "40.54",
+                "l_year_tongqi_gross": null,
+                "gross_tb": null,
+                "gross_rate": "17.202279",
+                "l_year_tongqi_gross_rate": null,
+                "sale_cost": "468486.16",
+                "days": "31",
+                "oi_amount": "8684.66",
+                "all_gross": "106019.01",
+                "all_gross_rate": "18.737153",
+                "stock_turnover": null,
+                "stock_turnover_days": null
+            },
+            {
+                "date_year_month": "202412",
+                "data_date": "2024-12-08",
+                "all_sku": "1139",
+                "new_sku": "0",
+                "net_order_amount": "2981415.28",
+                "diff_order_amount": "149043.74",
+                "diff_order_amount_rate": "4.761083",
+                "sales": "209791.41",
+                "sales_per": "14.44",
+                "l_year_tongqi_sales": "95546.82",
+                "sales_tb": "119.569223",
+                "gross": "37152.43",
+                "gross_per": "15.48",
+                "l_year_tongqi_gross": "16922.15",
+                "gross_tb": "119.549112",
+                "gross_rate": "17.709224",
+                "l_year_tongqi_gross_rate": "17.710846",
+                "sale_cost": "172638.74",
+                "days": "12",
+                "oi_amount": "3368.01",
+                "all_gross": "40520.44",
+                "all_gross_rate": "19.314633",
+                "stock_turnover": "0.0370657038",
+                "stock_turnover_days": "323.7494"
+            }
+        ]
+    },
+    "data1": {
+        "product_vendor_no": "1030000001",
+        "new_sku": "0",
+        "net_order_amount": "14829043.78",
+        "diff_order_amount": "738062.94",
+        "diff_order_amount_rate": "4.741170",
+        "sales": "1453277.60",
+        "sales_per": "100.00",
+        "l_year_tongqi_sales": "95546.82",
+        "sales_tb": "1421.010956",
+        "gross": "240068.36",
+        "gross_per": "100.00",
+        "l_year_tongqi_gross": "16922.15",
+        "gross_tb": "1318.663468",
+        "gross_rate": "16.519099",
+        "l_year_tongqi_gross_rate": "17.710846",
+        "sale_cost": "1213204.10",
+        "oi_amount": "16611.30",
+        "all_gross": "256679.66",
+        "all_gross_rate": "17.662122",
+        "product_vendor_name": "1030000001有限公司",
+        "product_vendor_status": "1",
+        "all_sku": "1190",
+        "all_sku_per": "23.75",
+        "stock_sale_money_today": "3104811.18",
+        "stock_sale_money_today_per": "38.94",
+        "min_division_num": "81",
+        "end_stock_cost": "2328820.48",
+        "open_stock_cost": "0",
+        "days": "73",
+        "brank_num": "60",
+        "stock_turnover": "1.04",
+        "stock_turnover_days": "70.19",
+        "date_year_month": "汇总"
+    }
+}

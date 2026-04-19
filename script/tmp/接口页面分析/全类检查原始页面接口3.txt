@@ -1,0 +1,156 @@
+接口地址：/api/salesStoreClass/findClassSkuDiffer
+接口参数：{"deptId":1,"retailTypeId":"0","businessCircleId":"0","deptGroupId":"0","storeNo":"0","classLevel":1,"classNo":["001","002","003","004","005","006","007","008","009","010","011"],"currentStartDate":"2024-10-01","currentEndDate":"2024-12-08","compareStartDate":"2023-10-01","compareEndDate":"2023-12-08"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "warn": 11,
+        "list": [
+            {
+                "classNo": "001",
+                "className": "生鲜日配",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 7470,
+                "saleSku": 7177,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -293,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "002",
+                "className": "粮油调味",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 1933,
+                "saleSku": 1906,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -27,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "003",
+                "className": "食品杂货",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 8274,
+                "saleSku": 8075,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -199,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "004",
+                "className": "洗化部",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 4319,
+                "saleSku": 4342,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": 23,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "005",
+                "className": "百货部",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 9519,
+                "saleSku": 9647,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": 128,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "006",
+                "className": "针纺服饰部",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 3182,
+                "saleSku": 3163,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -19,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "007",
+                "className": "家电部",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 275,
+                "saleSku": 264,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -11,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "008",
+                "className": "精品部",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 34,
+                "saleSku": 26,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -8,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "009",
+                "className": "进口商品",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 548,
+                "saleSku": 546,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -2,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "010",
+                "className": "优惠卡",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 187,
+                "saleSku": 180,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -7,
+                "sysSuggestSaleSku": null
+            },
+            {
+                "classNo": "011",
+                "className": "充值卡",
+                "parentClassNo": "0",
+                "classLevel": null,
+                "suggestSaleSku": 10,
+                "saleSku": 1,
+                "roleNo": null,
+                "roleType": null,
+                "subClass": null,
+                "skuDiffer": -9,
+                "sysSuggestSaleSku": null
+            }
+        ]
+    },
+    "timestamp": 1776600449249
+}

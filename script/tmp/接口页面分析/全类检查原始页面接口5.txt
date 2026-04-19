@@ -1,0 +1,41 @@
+接口地址：/api/dict/findClassTreeRoleType
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": [
+        {
+            "id": 161,
+            "label": "明星品类",
+            "value": "1",
+            "sort": "1",
+            "dictId": 222,
+            "createTime": "2025-02-14 02:49:10"
+        },
+        {
+            "id": 162,
+            "label": "幼童品类",
+            "value": "2",
+            "sort": "2",
+            "dictId": 222,
+            "createTime": "2025-02-14 02:49:10"
+        },
+        {
+            "id": 163,
+            "label": "结构品类",
+            "value": "3",
+            "sort": "3",
+            "dictId": 222,
+            "createTime": "2025-02-14 02:49:10"
+        },
+        {
+            "id": 164,
+            "label": "金牛品类",
+            "value": "4",
+            "sort": "4",
+            "dictId": 222,
+            "createTime": "2025-02-14 02:49:10"
+        }
+    ],
+    "timestamp": 1776600449252
+}

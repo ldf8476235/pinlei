@@ -15,6 +15,7 @@ import org.dromara.diagnosis.application.batch.model.DiagnosisSpecFinalizeResult
 import org.dromara.diagnosis.application.batch.model.DiagnosisTagFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisSubclassFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisTrendFinalizeResult;
+import org.dromara.diagnosis.application.batch.model.DiagnosisVendorFinalizeResult;
 import org.dromara.diagnosis.application.batch.model.DiagnosisVipFinalizeResult;
 import org.dromara.diagnosis.application.batch.service.DiagnosisChannelPerformanceFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisAbcStructureFinalizeService;
@@ -29,6 +30,7 @@ import org.dromara.diagnosis.application.batch.service.DiagnosisSpecFinalizeServ
 import org.dromara.diagnosis.application.batch.service.DiagnosisTagFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisSubclassContributionFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisTrendFinalizeService;
+import org.dromara.diagnosis.application.batch.service.DiagnosisVendorFinalizeService;
 import org.dromara.diagnosis.application.batch.service.DiagnosisVipAnalysisFinalizeService;
 import org.dromara.diagnosis.application.service.DiagnosisAsyncOrchestratorService;
 import org.dromara.diagnosis.application.service.DiagnosisProgressCacheService;
@@ -88,6 +90,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
     private final DiagnosisBrandFinalizeService brandFinalizeService;
     private final DiagnosisSpecFinalizeService specFinalizeService;
     private final DiagnosisTagFinalizeService tagFinalizeService;
+    private final DiagnosisVendorFinalizeService vendorFinalizeService;
     private final DiagnosisAsyncOrchestratorService asyncOrchestratorService;
 
     @Override
@@ -162,6 +165,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         AtomicReference<DiagnosisBrandFinalizeResult> brandResultRef = new AtomicReference<>();
         AtomicReference<DiagnosisSpecFinalizeResult> specResultRef = new AtomicReference<>();
         AtomicReference<DiagnosisTagFinalizeResult> tagResultRef = new AtomicReference<>();
+        AtomicReference<DiagnosisVendorFinalizeResult> vendorResultRef = new AtomicReference<>();
 
         Map<String, Supplier<Long>> moduleSuppliers = new LinkedHashMap<>();
         moduleSuppliers.put("overview", () -> {
@@ -228,6 +232,11 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
             DiagnosisTagFinalizeResult tagResult = tagFinalizeService.finalizeTag(finalizeContext);
             tagResultRef.set(tagResult);
             return tagResult.getMetricRows() + tagResult.getJsonRows();
+        });
+        moduleSuppliers.put("vendor", () -> {
+            DiagnosisVendorFinalizeResult vendorResult = vendorFinalizeService.finalizeVendor(finalizeContext);
+            vendorResultRef.set(vendorResult);
+            return vendorResult.getMetricRows() + vendorResult.getJsonRows();
         });
 
         DiagnosisAsyncOrchestratorRequest orchestratorRequest = DiagnosisAsyncOrchestratorRequest.builder()
@@ -298,6 +307,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
             DiagnosisBrandFinalizeResult brandResult = brandResultRef.get();
             DiagnosisSpecFinalizeResult specResult = specResultRef.get();
             DiagnosisTagFinalizeResult tagResult = tagResultRef.get();
+            DiagnosisVendorFinalizeResult vendorResult = vendorResultRef.get();
 
             Long totalRows = batchSourceMapper.countRows(param);
             long windowRowsRead = totalRows == null ? 0L : totalRows;
@@ -333,6 +343,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                 brandResult,
                 specResult,
                 tagResult,
+                vendorResult,
                 windowRowsRead,
                 windowRowsWritten,
                 job
@@ -458,6 +469,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("brand", moduleNode(statusMap, errorMap, "brand"));
         payload.put("spec", moduleNode(statusMap, errorMap, "spec"));
         payload.put("tag", moduleNode(statusMap, errorMap, "tag"));
+        payload.put("vendor", moduleNode(statusMap, errorMap, "vendor"));
         return JsonUtils.toJsonString(payload);
     }
 
@@ -487,6 +499,7 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                                      DiagnosisBrandFinalizeResult brandResult,
                                      DiagnosisSpecFinalizeResult specResult,
                                      DiagnosisTagFinalizeResult tagResult,
+                                     DiagnosisVendorFinalizeResult vendorResult,
                                      long windowRowsRead,
                                      long windowRowsWritten,
                                      DiagnosisPrecomputeJobRow job) {
@@ -528,6 +541,8 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
         payload.put("specJsonRows", specResult == null ? 0L : specResult.getJsonRows());
         payload.put("tagMetricRows", tagResult == null ? 0L : tagResult.getMetricRows());
         payload.put("tagJsonRows", tagResult == null ? 0L : tagResult.getJsonRows());
+        payload.put("vendorMetricRows", vendorResult == null ? 0L : vendorResult.getMetricRows());
+        payload.put("vendorJsonRows", vendorResult == null ? 0L : vendorResult.getJsonRows());
         payload.put("windowRowsRead", windowRowsRead);
         payload.put("windowRowsWritten", windowRowsWritten);
         payload.put("jobDoneWindows", job.getDoneWindows());

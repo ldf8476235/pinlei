@@ -1,0 +1,49 @@
+接口地址：我们自己取
+接口参数：
+class_no: 004010101,004010102,004010103,004010104
+start_date: 2024-09-27
+end_date: 2024-12-08
+dept_id: 1
+retail_type_id: 0
+business_circle_id: 0
+product_vendor_no: 1080000312
+product_vendor_status: 全部,0,1
+
+返回参数：{
+    "status": "succ",
+    "message": null,
+    "data": [
+        {
+            "data_date": "2024-10-26",
+            "date_year_month": "202410",
+            "vendor_num": "74",
+            "sales": "366.112404",
+            "net_order_amount": "1006.412924"
+        },
+        {
+            "data_date": "2024-11-26",
+            "date_year_month": "202411",
+            "vendor_num": "70",
+            "sales": "305.906017",
+            "net_order_amount": "2044.640738"
+        },
+        {
+            "data_date": "2024-12-08",
+            "date_year_month": "202412",
+            "vendor_num": "69",
+            "sales": "126.662680",
+            "net_order_amount": "772.869891"
+        }
+    ],
+    "data1": [
+        {
+            "date_year_month": "202410"
+        },
+        {
+            "date_year_month": "202411"
+        },
+        {
+            "date_year_month": "202412"
+        }
+    ]
+}

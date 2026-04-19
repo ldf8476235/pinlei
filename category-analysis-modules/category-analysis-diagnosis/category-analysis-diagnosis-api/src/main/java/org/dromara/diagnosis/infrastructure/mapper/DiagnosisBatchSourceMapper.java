@@ -25,6 +25,7 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecStockRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagMetaRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTagStockRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceVendorAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow;
 
 import java.math.BigDecimal;
@@ -67,5 +68,6 @@ public interface DiagnosisBatchSourceMapper {
     List<DiagnosisSourceTagAggRow> aggregateTagMetrics(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceTagStockRow> aggregateTagStock(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceTagMetaRow> selectTagMeta(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceVendorAggRow> aggregateVendorMetrics(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisDictRow> selectOnlineChannelDictRows(@Param("dictTypes") List<String> dictTypes);
 }

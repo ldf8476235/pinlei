@@ -1,0 +1,396 @@
+接口地址：我们自己取
+请求参数：
+start_date: 2024-09-27
+end_date: 2024-12-08
+dept_id: 1
+retail_type_id: 0
+business_circle_id: 0
+class_no（品类）: 001010101,001010102,001010201,001010202
+product_vendor_no（供应商）: 全部,1080000312,1010000051
+返回参数：
+{
+    "status": "succ",
+    "message": null,
+    "data": [
+        {
+            "product_vendor_no": "1030000001",
+            "product_vendor_name": "1030000001有限公司",
+            "diff_order_amount_rate": "4.741170"
+        },
+        {
+            "product_vendor_no": "1030000006",
+            "product_vendor_name": "1030000006有限公司",
+            "diff_order_amount_rate": "4.750779"
+        },
+        {
+            "product_vendor_no": "1030000023",
+            "product_vendor_name": "1030000023有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1030000026",
+            "product_vendor_name": "1030000026有限公司",
+            "diff_order_amount_rate": "4.708818"
+        },
+        {
+            "product_vendor_no": "1030000044",
+            "product_vendor_name": "1030000044有限公司",
+            "diff_order_amount_rate": "4.563131"
+        },
+        {
+            "product_vendor_no": "1040000086",
+            "product_vendor_name": "1040000086有限公司",
+            "diff_order_amount_rate": "4.758601"
+        },
+        {
+            "product_vendor_no": "1080000080",
+            "product_vendor_name": "1080000080有限公司",
+            "diff_order_amount_rate": "2.888929"
+        },
+        {
+            "product_vendor_no": "1080000262",
+            "product_vendor_name": "1080000262有限公司",
+            "diff_order_amount_rate": "5.203008"
+        },
+        {
+            "product_vendor_no": "1080000393",
+            "product_vendor_name": "1080000393有限公司",
+            "diff_order_amount_rate": "4.196317"
+        },
+        {
+            "product_vendor_no": "1080000508",
+            "product_vendor_name": "1080000508有限公司",
+            "diff_order_amount_rate": "3.487773"
+        },
+        {
+            "product_vendor_no": "1080000512",
+            "product_vendor_name": "1080000512有限公司",
+            "diff_order_amount_rate": "4.712573"
+        },
+        {
+            "product_vendor_no": "1090000232",
+            "product_vendor_name": "1090000232有限公司",
+            "diff_order_amount_rate": "4.595147"
+        },
+        {
+            "product_vendor_no": "1090000673",
+            "product_vendor_name": "1090000673有限公司",
+            "diff_order_amount_rate": "4.802088"
+        },
+        {
+            "product_vendor_no": "1040000078",
+            "product_vendor_name": "1040000078有限公司",
+            "diff_order_amount_rate": "4.843972"
+        },
+        {
+            "product_vendor_no": "1090000525",
+            "product_vendor_name": "1090000525有限公司",
+            "diff_order_amount_rate": "7.646195"
+        },
+        {
+            "product_vendor_no": "1090000733",
+            "product_vendor_name": "1090000733有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1040000087",
+            "product_vendor_name": "1040000087有限公司",
+            "diff_order_amount_rate": "4.589437"
+        },
+        {
+            "product_vendor_no": "1090000352",
+            "product_vendor_name": "1090000352有限公司",
+            "diff_order_amount_rate": "5.483485"
+        },
+        {
+            "product_vendor_no": "1080000027",
+            "product_vendor_name": "1080000027有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1030000016",
+            "product_vendor_name": "1030000016有限公司",
+            "diff_order_amount_rate": "4.679691"
+        },
+        {
+            "product_vendor_no": "1030000025",
+            "product_vendor_name": "1030000025有限公司",
+            "diff_order_amount_rate": "4.717176"
+        },
+        {
+            "product_vendor_no": "1030000027",
+            "product_vendor_name": "1030000027有限公司",
+            "diff_order_amount_rate": "4.799184"
+        },
+        {
+            "product_vendor_no": "1030000039",
+            "product_vendor_name": "1030000039有限公司",
+            "diff_order_amount_rate": "4.768657"
+        },
+        {
+            "product_vendor_no": "1040000080",
+            "product_vendor_name": "1040000080有限公司",
+            "diff_order_amount_rate": "4.682594"
+        },
+        {
+            "product_vendor_no": "1080000103",
+            "product_vendor_name": "1080000103有限公司",
+            "diff_order_amount_rate": "2.166667"
+        },
+        {
+            "product_vendor_no": "1080000414",
+            "product_vendor_name": "1080000414有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1090000171",
+            "product_vendor_name": "1090000171有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1030000046",
+            "product_vendor_name": "1030000046有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1080000316",
+            "product_vendor_name": "1080000316有限公司",
+            "diff_order_amount_rate": "7.999439"
+        },
+        {
+            "product_vendor_no": "1090000461",
+            "product_vendor_name": "1090000461有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1090000172",
+            "product_vendor_name": "1090000172有限公司",
+            "diff_order_amount_rate": "4.623638"
+        },
+        {
+            "product_vendor_no": "1090000462",
+            "product_vendor_name": "1090000462有限公司",
+            "diff_order_amount_rate": "4.774004"
+        },
+        {
+            "product_vendor_no": "1030000038",
+            "product_vendor_name": "1030000038有限公司",
+            "diff_order_amount_rate": "4.773552"
+        },
+        {
+            "product_vendor_no": "1090000277",
+            "product_vendor_name": "1090000277有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1090000297",
+            "product_vendor_name": "1090000297有限公司",
+            "diff_order_amount_rate": "4.835279"
+        },
+        {
+            "product_vendor_no": "1090000715",
+            "product_vendor_name": "1090000715有限公司",
+            "diff_order_amount_rate": "4.934955"
+        },
+        {
+            "product_vendor_no": "1090000265",
+            "product_vendor_name": "1090000265有限公司",
+            "diff_order_amount_rate": "4.652778"
+        },
+        {
+            "product_vendor_no": "1090000075",
+            "product_vendor_name": "1090000075有限公司",
+            "diff_order_amount_rate": "4.612062"
+        },
+        {
+            "product_vendor_no": "1090000450",
+            "product_vendor_name": "1090000450有限公司",
+            "diff_order_amount_rate": "5.724035"
+        },
+        {
+            "product_vendor_no": "1090000579",
+            "product_vendor_name": "1090000579有限公司",
+            "diff_order_amount_rate": "3.332720"
+        },
+        {
+            "product_vendor_no": "1040000008",
+            "product_vendor_name": "1040000008有限公司",
+            "diff_order_amount_rate": "4.182484"
+        },
+        {
+            "product_vendor_no": "1040000046",
+            "product_vendor_name": "1040000046有限公司",
+            "diff_order_amount_rate": "4.827068"
+        },
+        {
+            "product_vendor_no": "1090000746",
+            "product_vendor_name": "1090000746有限公司",
+            "diff_order_amount_rate": "5.265962"
+        },
+        {
+            "product_vendor_no": "1080000350",
+            "product_vendor_name": "1080000350有限公司",
+            "diff_order_amount_rate": "4.778976"
+        },
+        {
+            "product_vendor_no": "1080000423",
+            "product_vendor_name": "1080000423有限公司",
+            "diff_order_amount_rate": "4.504213"
+        },
+        {
+            "product_vendor_no": "1080000493",
+            "product_vendor_name": "1080000493有限公司",
+            "diff_order_amount_rate": "3.033708"
+        },
+        {
+            "product_vendor_no": "1031000000",
+            "product_vendor_name": "1031000000有限公司",
+            "diff_order_amount_rate": "5.242010"
+        },
+        {
+            "product_vendor_no": "1040000063",
+            "product_vendor_name": "1040000063有限公司",
+            "diff_order_amount_rate": "1.459845"
+        },
+        {
+            "product_vendor_no": "1080000516",
+            "product_vendor_name": "1080000516有限公司",
+            "diff_order_amount_rate": "4.951787"
+        },
+        {
+            "product_vendor_no": "1090000070",
+            "product_vendor_name": "1090000070有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1090000614",
+            "product_vendor_name": "1090000614有限公司",
+            "diff_order_amount_rate": "4.348739"
+        },
+        {
+            "product_vendor_no": "1090000626",
+            "product_vendor_name": "1090000626有限公司",
+            "diff_order_amount_rate": "5.613062"
+        },
+        {
+            "product_vendor_no": "1090000080",
+            "product_vendor_name": "1090000080有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1090000640",
+            "product_vendor_name": "1090000640有限公司",
+            "diff_order_amount_rate": "5.185246"
+        },
+        {
+            "product_vendor_no": "1090000719",
+            "product_vendor_name": "1090000719有限公司",
+            "diff_order_amount_rate": "5.107030"
+        },
+        {
+            "product_vendor_no": "1090000453",
+            "product_vendor_name": "1090000453有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1090000580",
+            "product_vendor_name": "1090000580有限公司",
+            "diff_order_amount_rate": "4.000000"
+        },
+        {
+            "product_vendor_no": "1090000638",
+            "product_vendor_name": "1090000638有限公司",
+            "diff_order_amount_rate": "3.688192"
+        },
+        {
+            "product_vendor_no": "1090000454",
+            "product_vendor_name": "1090000454有限公司",
+            "diff_order_amount_rate": "4.391577"
+        },
+        {
+            "product_vendor_no": "1090000621",
+            "product_vendor_name": "1090000621有限公司",
+            "diff_order_amount_rate": "4.844978"
+        },
+        {
+            "product_vendor_no": "1090000562",
+            "product_vendor_name": "1090000562有限公司",
+            "diff_order_amount_rate": "4.710684"
+        },
+        {
+            "product_vendor_no": "1090000604",
+            "product_vendor_name": "1090000604有限公司",
+            "diff_order_amount_rate": "4.579927"
+        },
+        {
+            "product_vendor_no": "1030000024",
+            "product_vendor_name": "1030000024有限公司",
+            "diff_order_amount_rate": "4.753139"
+        },
+        {
+            "product_vendor_no": "1040000058",
+            "product_vendor_name": "1040000058有限公司",
+            "diff_order_amount_rate": "4.741773"
+        },
+        {
+            "product_vendor_no": "1090000076",
+            "product_vendor_name": "1090000076有限公司",
+            "diff_order_amount_rate": "4.688391"
+        },
+        {
+            "product_vendor_no": "1090000418",
+            "product_vendor_name": "1090000418有限公司",
+            "diff_order_amount_rate": "5.121403"
+        },
+        {
+            "product_vendor_no": "1090000537",
+            "product_vendor_name": "1090000537有限公司",
+            "diff_order_amount_rate": "5.067086"
+        },
+        {
+            "product_vendor_no": "1090000575",
+            "product_vendor_name": "1090000575有限公司",
+            "diff_order_amount_rate": "4.884615"
+        },
+        {
+            "product_vendor_no": "1090000636",
+            "product_vendor_name": "1090000636有限公司",
+            "diff_order_amount_rate": "4.649361"
+        },
+        {
+            "product_vendor_no": "1090000694",
+            "product_vendor_name": "1090000694有限公司",
+            "diff_order_amount_rate": "4.497363"
+        },
+        {
+            "product_vendor_no": "1090000457",
+            "product_vendor_name": "1090000457有限公司",
+            "diff_order_amount_rate": null
+        },
+        {
+            "product_vendor_no": "1040000066",
+            "product_vendor_name": "1040000066有限公司",
+            "diff_order_amount_rate": "3.421053"
+        },
+        {
+            "product_vendor_no": "1090000658",
+            "product_vendor_name": "1090000658有限公司",
+            "diff_order_amount_rate": "4.332141"
+        },
+        {
+            "product_vendor_no": "1030000045",
+            "product_vendor_name": "1030000045有限公司",
+            "diff_order_amount_rate": "4.700930"
+        },
+        {
+            "product_vendor_no": "1040000075",
+            "product_vendor_name": "1040000075有限公司",
+            "diff_order_amount_rate": "6.600917"
+        },
+        {
+            "product_vendor_no": "1040000076",
+            "product_vendor_name": "1040000076有限公司",
+            "diff_order_amount_rate": "4.726205"
+        }
+    ]
+}

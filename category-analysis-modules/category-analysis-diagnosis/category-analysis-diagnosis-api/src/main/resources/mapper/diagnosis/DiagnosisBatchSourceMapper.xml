@@ -1322,6 +1322,118 @@
         ) x
     </select>
 
+    <select id="aggregateVendorMetrics" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceVendorAggRow">
+        WITH scoped_products AS (
+            SELECT DISTINCT
+                v.vendor_no AS vendorNo,
+                MAX(v.vendor_name) AS vendorName,
+                MAX(v.status_no) AS statusNo,
+                MAX(v.status_name) AS statusName,
+                p.product_no AS productNo,
+                p.store_no AS storeNo,
+                MAX(CAST(ISNULL(p.product_taxin_inprice, 0) AS DECIMAL(20, 6))) AS inPrice,
+                MIN(CAST(p.first_order_date AS DATE)) AS firstOrderDate
+            FROM base_dept_products p
+            INNER JOIN base_vendor_product_info v
+              ON v.product_no = p.product_no
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+            GROUP BY v.vendor_no, p.product_no, p.store_no
+        ),
+        vendor_scope AS (
+            SELECT
+                vendorNo,
+                MAX(vendorName) AS vendorName,
+                MAX(statusNo) AS statusNo,
+                MAX(statusName) AS statusName,
+                COUNT(DISTINCT productNo) AS skuCount,
+                COUNT(DISTINCT CASE
+                    WHEN firstOrderDate IS NOT NULL
+                     AND firstOrderDate &gt;= #{param.periodStart}
+                     AND firstOrderDate &lt;= #{param.periodEnd}
+                    THEN productNo ELSE NULL END) AS newSkuCount
+            FROM scoped_products
+            GROUP BY vendorNo
+        ),
+        sales_agg AS (
+            SELECT
+                sp.vendorNo AS vendorNo,
+                ISNULL(SUM(CAST(fact_sales_day.sales AS DECIMAL(20, 6))), 0) AS sales,
+                ISNULL(SUM(CAST(fact_sales_day.gross AS DECIMAL(20, 6))), 0) AS gross
+            FROM fact_sales_day
+            INNER JOIN (
+                SELECT DISTINCT vendorNo, productNo
+                FROM scoped_products
+            ) sp
+              ON sp.productNo = fact_sales_day.product_no
+            WHERE fact_sales_day.sale_date &gt;= #{param.periodStart}
+              AND fact_sales_day.sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+            GROUP BY sp.vendorNo
+        ),
+        order_agg AS (
+            SELECT
+                sp.vendorNo AS vendorNo,
+                ISNULL(SUM(CAST(ISNULL(vo.arrival_quantity, 0) * ISNULL(sp.inPrice, 0) AS DECIMAL(20, 6))), 0) AS netOrderAmount,
+                ISNULL(SUM(CAST(CASE
+                    WHEN ISNULL(vo.order_quantity, 0) &gt; ISNULL(vo.arrival_quantity, 0)
+                        THEN (ISNULL(vo.order_quantity, 0) - ISNULL(vo.arrival_quantity, 0)) * ISNULL(sp.inPrice, 0)
+                    ELSE 0
+                END AS DECIMAL(20, 6))), 0) AS diffOrderAmount,
+                ISNULL(SUM(CAST(ISNULL(vo.order_quantity, 0) * ISNULL(sp.inPrice, 0) AS DECIMAL(20, 6))), 0) AS baseOrderAmount
+            FROM fact_vendor_order_month vo
+            INNER JOIN (
+                SELECT DISTINCT vendorNo, productNo, storeNo, inPrice
+                FROM scoped_products
+            ) sp
+              ON sp.vendorNo = vo.vendor_no
+             AND sp.productNo = vo.product_no
+             AND sp.storeNo = vo.final_store_no
+            WHERE vo.order_date &gt;= #{param.periodStart}
+              AND vo.order_date &lt;= #{param.periodEnd}
+            GROUP BY sp.vendorNo
+        ),
+        cost_agg AS (
+            SELECT
+                sp.vendorNo AS vendorNo,
+                ISNULL(SUM(CAST(pvc.cost_money AS DECIMAL(20, 6))), 0) AS oiAmount
+            FROM product_vendor_cost_info pvc
+            INNER JOIN (
+                SELECT DISTINCT vendorNo, productNo, storeNo
+                FROM scoped_products
+            ) sp
+              ON sp.vendorNo = pvc.vendor_no
+             AND sp.productNo = pvc.product_no
+             AND sp.storeNo = pvc.final_store_no
+            WHERE pvc.cost_date &gt;= #{param.periodStart}
+              AND pvc.cost_date &lt;= #{param.periodEnd}
+            GROUP BY sp.vendorNo
+        )
+        SELECT
+            vs.vendorNo,
+            vs.vendorName,
+            vs.statusNo,
+            vs.statusName,
+            CAST(ISNULL(vs.skuCount, 0) AS INT) AS skuCount,
+            CAST(ISNULL(vs.newSkuCount, 0) AS INT) AS newSkuCount,
+            ISNULL(sa.sales, 0) AS sales,
+            ISNULL(sa.gross, 0) AS gross,
+            ISNULL(ca.oiAmount, 0) AS oiAmount,
+            ISNULL(oa.netOrderAmount, 0) AS netOrderAmount,
+            ISNULL(oa.diffOrderAmount, 0) AS diffOrderAmount,
+            ISNULL(oa.baseOrderAmount, 0) AS baseOrderAmount
+        FROM vendor_scope vs
+        LEFT JOIN sales_agg sa
+          ON sa.vendorNo = vs.vendorNo
+        LEFT JOIN order_agg oa
+          ON oa.vendorNo = vs.vendorNo
+        LEFT JOIN cost_agg ca
+          ON ca.vendorNo = vs.vendorNo
+        ORDER BY ISNULL(sa.sales, 0) DESC, vs.vendorNo ASC
+    </select>
+
     <select id="selectOnlineChannelDictRows" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow">
         SELECT
             d.dict_code AS dictCode,

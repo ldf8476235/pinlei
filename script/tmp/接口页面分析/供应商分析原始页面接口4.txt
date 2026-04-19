@@ -1,0 +1,59 @@
+接口地址（这个接口就是返回商圈枚举类型，这个接口名字我们重新取）：/api/businessCircle/findAll
+返回参数：[
+    {
+        "id": 1,
+        "businessCircleNo": "1",
+        "businessCircleName": "商业街型",
+        "status": 1,
+        "createTime": "2021-11-22 09:42:49",
+        "updatetime": "2024-12-25 15:54:15"
+    },
+    {
+        "id": 2,
+        "businessCircleNo": "2",
+        "businessCircleName": "办公型",
+        "status": 1,
+        "createTime": "2021-11-22 09:43:02",
+        "updatetime": "2024-12-25 15:54:25"
+    },
+    {
+        "id": 3,
+        "businessCircleNo": "3",
+        "businessCircleName": "学校型",
+        "status": 1,
+        "createTime": "2021-11-22 09:43:13",
+        "updatetime": "2024-12-25 16:30:53"
+    },
+    {
+        "id": 4,
+        "businessCircleNo": "4",
+        "businessCircleName": "医院型",
+        "status": 1,
+        "createTime": "2021-11-22 09:43:31",
+        "updatetime": "2024-12-25 16:30:53"
+    },
+    {
+        "id": 5,
+        "businessCircleNo": "5",
+        "businessCircleName": "交通枢纽型",
+        "status": 1,
+        "createTime": "2021-11-22 09:43:39",
+        "updatetime": "2024-12-25 16:30:53"
+    },
+    {
+        "id": 6,
+        "businessCircleNo": "6",
+        "businessCircleName": "地铁型",
+        "status": 1,
+        "createTime": "2021-11-22 09:43:55",
+        "updatetime": "2024-12-25 16:30:54"
+    },
+    {
+        "id": 7,
+        "businessCircleNo": "7",
+        "businessCircleName": "封闭型",
+        "status": 1,
+        "createTime": "2022-09-14 11:24:34",
+        "updatetime": "2024-12-25 16:30:54"
+    }
+]
