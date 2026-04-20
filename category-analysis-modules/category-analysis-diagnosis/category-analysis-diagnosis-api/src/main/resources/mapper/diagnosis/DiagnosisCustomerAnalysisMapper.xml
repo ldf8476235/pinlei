@@ -133,7 +133,14 @@
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
           AND data_version = #{dataVersion}
-        ORDER BY ${orderBy} ${orderType}, age_order ASC, id ASC
+        <choose>
+            <when test="orderBy == 'age_order'">
+                ORDER BY age_order ${orderType}, id ASC
+            </when>
+            <otherwise>
+                ORDER BY ${orderBy} ${orderType}, age_order ASC, id ASC
+            </otherwise>
+        </choose>
         OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
     </select>
 
