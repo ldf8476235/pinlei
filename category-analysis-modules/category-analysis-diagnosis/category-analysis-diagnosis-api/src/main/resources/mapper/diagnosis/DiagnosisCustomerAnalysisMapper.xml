@@ -275,7 +275,14 @@
         )
         SELECT <include refid="customerSummarySelectColumns"/>
         FROM agg
-        ORDER BY ${orderBy} ${orderType}, age_order ASC
+        <choose>
+            <when test="orderBy == 'age_order'">
+                ORDER BY age_order ${orderType}, ageCode ASC
+            </when>
+            <otherwise>
+                ORDER BY ${orderBy} ${orderType}, age_order ASC
+            </otherwise>
+        </choose>
         OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
     </select>
 

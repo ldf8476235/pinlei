@@ -291,19 +291,20 @@ public class DiagnosisSessionService {
         return response;
     }
 
-    public DiagnosisTrendsResponse getTrends(String sessionId, String metricCode) {
+    public DiagnosisTrendsResponse getTrends(String sessionId, String metricCode, String tabType) {
         DiagnosisSessionCacheModel session = getSession(sessionId);
         DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(sessionId, session);
         if (overview == null) {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "no diagnosis snapshot found for current query; trigger precompute first");
         }
 
+        String actualMetricCode = resolveTrendMetricCode(metricCode, tabType);
         List<DiagnosisTrendSnapshotRow> trends = snapshotMapper.selectTrendsByQueryAndVersion(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), metricCode);
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), actualMetricCode);
 
         DiagnosisTrendsResponse response = new DiagnosisTrendsResponse();
         response.setSessionId(sessionId);
-        response.setMetricCode(metricCode);
+        response.setMetricCode(actualMetricCode);
         response.setDataVersion(session.getDataVersion());
         response.setCacheHit(Boolean.TRUE);
         response.setTrends(trends);
@@ -442,6 +443,32 @@ public class DiagnosisSessionService {
             return null;
         }
         return dividend.divide(divisor, 6, RoundingMode.HALF_UP);
+    }
+
+    private String resolveTrendMetricCode(String metricCode, String tabType) {
+        if (hasText(metricCode)) {
+            return normalizeTrendMetricCode(metricCode);
+        }
+        if (!hasText(tabType)) {
+            return "sales";
+        }
+        return switch (tabType) {
+            case "0" -> "sales";
+            case "1" -> "salesQuantity";
+            case "2" -> "gross";
+            case "3" -> "grossRate";
+            case "4" -> "customerCount";
+            case "5" -> "customerPrice";
+            case "6" -> "inventorySales";
+            default -> normalizeTrendMetricCode(tabType);
+        };
+    }
+
+    private String normalizeTrendMetricCode(String code) {
+        if ("saleQuantity".equalsIgnoreCase(code)) {
+            return "salesQuantity";
+        }
+        return code;
     }
 
     private String buildRequestJson(DiagnosisSessionCreateRequest request) {

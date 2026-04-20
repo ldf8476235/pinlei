@@ -9,7 +9,6 @@ import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisCategoryPerformanceTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceDailyTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceShardParam;
-import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceTrendAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow;
 import org.springframework.stereotype.Service;
 
@@ -44,40 +43,102 @@ public class DiagnosisTrendFinalizeService {
 
     private long finalizeBasicTrends(DiagnosisFinalizeContext context) {
         snapshotMapper.deleteTrendsByVersion(TENANT_ID, context.getQueryHash(), context.getDataVersion());
-        List<DiagnosisSourceTrendAggRow> trendRows = batchSourceMapper.aggregateTrendsByDate(context.getParam());
-        if (trendRows == null || trendRows.isEmpty()) {
+        List<DiagnosisSourceDailyTrendRow> salesRows = batchSourceMapper.aggregateDailySalesFacts(context.getParam());
+        if (salesRows == null || salesRows.isEmpty()) {
             return 0L;
         }
 
-        Map<LocalDate, DiagnosisSourceTrendAggRow> compareByDate = new HashMap<>();
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> currentCustomerByDate = finalizeSupport.toDailyMap(batchSourceMapper.aggregateDailyCustomerCounts(context.getParam()));
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> currentStockByDate = finalizeSupport.toDailyMap(batchSourceMapper.aggregateDailyStockCosts(context.getParam()));
+
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> compareSalesByDate = new HashMap<>();
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> compareCustomerByDate = new HashMap<>();
+        Map<LocalDate, DiagnosisSourceDailyTrendRow> compareStockByDate = new HashMap<>();
         if (context.getCompareParam() != null) {
-            List<DiagnosisSourceTrendAggRow> compareRows = batchSourceMapper.aggregateTrendsByDate(context.getCompareParam());
             long offsetDays = ChronoUnit.DAYS.between(context.getCompareStart(), context.getPeriodStart());
-            if (compareRows != null) {
-                for (DiagnosisSourceTrendAggRow compareRow : compareRows) {
-                    if (compareRow.getSaleDate() == null) {
+            List<DiagnosisSourceDailyTrendRow> compareSalesRows = batchSourceMapper.aggregateDailySalesFacts(context.getCompareParam());
+            List<DiagnosisSourceDailyTrendRow> compareCustomerRows = batchSourceMapper.aggregateDailyCustomerCounts(context.getCompareParam());
+            List<DiagnosisSourceDailyTrendRow> compareStockRows = batchSourceMapper.aggregateDailyStockCosts(context.getCompareParam());
+            if (compareSalesRows != null) {
+                for (DiagnosisSourceDailyTrendRow compareRow : compareSalesRows) {
+                    if (compareRow == null || compareRow.getPointDate() == null) {
                         continue;
                     }
-                    compareByDate.put(compareRow.getSaleDate().plusDays(offsetDays), compareRow);
+                    compareSalesByDate.put(compareRow.getPointDate().plusDays(offsetDays), compareRow);
+                }
+            }
+            if (compareCustomerRows != null) {
+                for (DiagnosisSourceDailyTrendRow compareRow : compareCustomerRows) {
+                    if (compareRow == null || compareRow.getPointDate() == null) {
+                        continue;
+                    }
+                    compareCustomerByDate.put(compareRow.getPointDate().plusDays(offsetDays), compareRow);
+                }
+            }
+            if (compareStockRows != null) {
+                for (DiagnosisSourceDailyTrendRow compareRow : compareStockRows) {
+                    if (compareRow == null || compareRow.getPointDate() == null) {
+                        continue;
+                    }
+                    compareStockByDate.put(compareRow.getPointDate().plusDays(offsetDays), compareRow);
                 }
             }
         }
 
-        List<DiagnosisTrendSnapshotRow> salesTrend = trendRows.stream().map(r -> buildTrendRow(
-            context, "sales", r.getSaleDate(),
-            finalizeSupport.nvl(r.getTotalSales()),
-            compareByDate.get(r.getSaleDate()) == null ? null : finalizeSupport.nvl(compareByDate.get(r.getSaleDate()).getTotalSales())
-        )).toList();
+        List<DiagnosisTrendSnapshotRow> salesTrend = new ArrayList<>(salesRows.size());
+        List<DiagnosisTrendSnapshotRow> saleQuantityTrend = new ArrayList<>(salesRows.size());
+        List<DiagnosisTrendSnapshotRow> grossTrend = new ArrayList<>(salesRows.size());
+        List<DiagnosisTrendSnapshotRow> grossRateTrend = new ArrayList<>(salesRows.size());
+        List<DiagnosisTrendSnapshotRow> customerCountTrend = new ArrayList<>(salesRows.size());
+        List<DiagnosisTrendSnapshotRow> customerPriceTrend = new ArrayList<>(salesRows.size());
+        List<DiagnosisTrendSnapshotRow> inventorySalesTrend = new ArrayList<>(salesRows.size());
 
-        List<DiagnosisTrendSnapshotRow> grossTrend = trendRows.stream().map(r -> buildTrendRow(
-            context, "gross", r.getSaleDate(),
-            finalizeSupport.nvl(r.getTotalGross()),
-            compareByDate.get(r.getSaleDate()) == null ? null : finalizeSupport.nvl(compareByDate.get(r.getSaleDate()).getTotalGross())
-        )).toList();
+        for (DiagnosisSourceDailyTrendRow currentSalesRow : salesRows) {
+            if (currentSalesRow == null || currentSalesRow.getPointDate() == null) {
+                continue;
+            }
+            LocalDate pointDate = currentSalesRow.getPointDate();
+            DiagnosisSourceDailyTrendRow currentCustomerRow = currentCustomerByDate.get(pointDate);
+            DiagnosisSourceDailyTrendRow currentStockRow = currentStockByDate.get(pointDate);
+            DiagnosisSourceDailyTrendRow compareSalesRow = compareSalesByDate.get(pointDate);
+            DiagnosisSourceDailyTrendRow compareCustomerRow = compareCustomerByDate.get(pointDate);
+            DiagnosisSourceDailyTrendRow compareStockRow = compareStockByDate.get(pointDate);
+
+            BigDecimal currentSales = finalizeSupport.round2(finalizeSupport.nvl(currentSalesRow.getTotalSales()));
+            BigDecimal currentSaleQuantity = finalizeSupport.round2(finalizeSupport.nvl(currentSalesRow.getTotalSaleQuantity()));
+            BigDecimal currentGross = finalizeSupport.round2(finalizeSupport.nvl(currentSalesRow.getTotalGross()));
+            BigDecimal currentCustomerCount = finalizeSupport.round2(finalizeSupport.toDecimal(currentCustomerRow == null ? null : currentCustomerRow.getTotalCustomerCount()));
+            BigDecimal currentStockCost = finalizeSupport.round2(finalizeSupport.nvl(currentStockRow == null ? null : currentStockRow.getTotalStockCost()));
+
+            BigDecimal compareSales = compareSalesRow == null ? null : finalizeSupport.round2(finalizeSupport.nvl(compareSalesRow.getTotalSales()));
+            BigDecimal compareSaleQuantity = compareSalesRow == null ? null : finalizeSupport.round2(finalizeSupport.nvl(compareSalesRow.getTotalSaleQuantity()));
+            BigDecimal compareGross = compareSalesRow == null ? null : finalizeSupport.round2(finalizeSupport.nvl(compareSalesRow.getTotalGross()));
+            BigDecimal compareCustomerCount = compareCustomerRow == null ? null : finalizeSupport.round2(finalizeSupport.toDecimal(compareCustomerRow.getTotalCustomerCount()));
+            BigDecimal compareStockCost = compareStockRow == null ? null : finalizeSupport.round2(finalizeSupport.nvl(compareStockRow.getTotalStockCost()));
+
+            salesTrend.add(buildTrendRow(context, "sales", pointDate, currentSales, compareSales));
+            saleQuantityTrend.add(buildTrendRow(context, "salesQuantity", pointDate, currentSaleQuantity, compareSaleQuantity));
+            grossTrend.add(buildTrendRow(context, "gross", pointDate, currentGross, compareGross));
+            grossRateTrend.add(buildTrendRow(context, "grossRate", pointDate,
+                finalizeSupport.round2(finalizeSupport.ratioPercentOrZero(currentGross, currentSales)),
+                compareGross == null || compareSales == null ? null : finalizeSupport.round2(finalizeSupport.ratioPercentOrZero(compareGross, compareSales))));
+            customerCountTrend.add(buildTrendRow(context, "customerCount", pointDate, currentCustomerCount, compareCustomerCount));
+            customerPriceTrend.add(buildTrendRow(context, "customerPrice", pointDate,
+                finalizeSupport.round2(finalizeSupport.divideOrZero(currentSales, currentCustomerCount)),
+                compareSales == null || compareCustomerCount == null ? null : finalizeSupport.round2(finalizeSupport.divideOrZero(compareSales, compareCustomerCount))));
+            inventorySalesTrend.add(buildTrendRow(context, "inventorySales", pointDate,
+                finalizeSupport.round2(finalizeSupport.divideOrZero(currentStockCost, currentSales)),
+                compareStockCost == null || compareSales == null ? null : finalizeSupport.round2(finalizeSupport.divideOrZero(compareStockCost, compareSales))));
+        }
 
         snapshotMapper.batchInsertTrends(salesTrend);
+        snapshotMapper.batchInsertTrends(saleQuantityTrend);
         snapshotMapper.batchInsertTrends(grossTrend);
-        return trendRows.size() * 2L;
+        snapshotMapper.batchInsertTrends(grossRateTrend);
+        snapshotMapper.batchInsertTrends(customerCountTrend);
+        snapshotMapper.batchInsertTrends(customerPriceTrend);
+        snapshotMapper.batchInsertTrends(inventorySalesTrend);
+        return salesTrend.size() * 7L;
     }
 
     private long finalizeCategoryPerformanceTrends(DiagnosisFinalizeContext context) {

@@ -53,8 +53,9 @@ public class DiagnosisQueryController {
 
     @GetMapping("/trends")
     public DiagnosisApiResponse<DiagnosisTrendsResponse> getTrends(@RequestParam("sessionId") String sessionId,
-                                                                   @RequestParam(value = "metricCode", required = false) String metricCode) {
-        return DiagnosisApiResponse.ok(diagnosisSessionService.getTrends(sessionId, metricCode), nextRequestId());
+                                                                   @RequestParam(value = "metricCode", required = false) String metricCode,
+                                                                   @RequestParam(value = "tabType", required = false) String tabType) {
+        return DiagnosisApiResponse.ok(diagnosisSessionService.getTrends(sessionId, metricCode, tabType), nextRequestId());
     }
 
     @GetMapping("/trend-changes")
