@@ -188,7 +188,7 @@ public class AbcStructureService {
         String actualOrderBy = ORDER_BY_MAPPING.getOrDefault(order, "sales");
         String actualOrderType = "asc".equalsIgnoreCase(orderType) ? "ASC" : "DESC";
 
-        List<String> statusList = status == null ? List.of() : new ArrayList<>(status);
+        List<String> statusList = status == null ? new ArrayList<>() : new ArrayList<>(status);
         statusList.remove("-1");
         Long total = abcStructureMapper.countSku(TENANT_ID, session.getQueryHash(), overview.getDataVersion(), abcType, currentAbc, compareAbc, promotion, statusList);
         List<DiagnosisAbcSkuRow> rows = abcStructureMapper.selectSkuPage(

@@ -1,0 +1,17 @@
+需要请求
+渠道业绩原始页面接口1.txt
+ABC结构分析原始页面接口1.txt
+标签分析原始页面接口1.txt
+价格带分析原始页面接口1.txt
+价格带分析原始页面接口2.txt
+品牌分析原始页面接口4.txt
+规格分析原始页面接口4.txt
+ABC结构分析原始页面接口2.txt
+ABC结构分析原始页面接口3.txt
+标签分析原始页面接口2.txt
+供应商分析原始页面接口3.txt
+后端接口 /classDoctorGross/queryGrossSkuPer
+后端接口 /classDoctorGross//queryGrossSkuChange
+后端接口 /classDoctorGmroi/queryGmroiSkuPer
+后端接口 /classDoctorGmroi/queryGmroiSkuChange
+后端接口 /classDoctorGmroi/queryGmroiSkuNum

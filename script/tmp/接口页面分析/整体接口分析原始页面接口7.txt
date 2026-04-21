@@ -1,0 +1,16 @@
+请求地址：/api/classDoctorSummary/queryVipSales
+请求参数：{"id":118,"maxLevel":"4"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "type": "3",
+        "data": {
+            "ageVip": "20岁及以下",
+            "sexVip": "男性",
+            "ageAndSexVip": "20岁及以下、男性"
+        }
+    },
+    "timestamp": 1776749563094
+}

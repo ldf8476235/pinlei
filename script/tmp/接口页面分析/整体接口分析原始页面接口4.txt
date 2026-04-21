@@ -1,0 +1,16 @@
+请求地址：/api/classDoctorSummary/queryTurnoverDaysAndStock
+请求参数：{"id":118,"maxLevel":"4"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "turnoverType": "1",
+        "stockType": "1",
+        "turnoverDays": 65.54,
+        "turnoverDaysInc": -6.33,
+        "turnoverAveInc": 3.54,
+        "stockSales": 0.95
+    },
+    "timestamp": 1776749563339
+}

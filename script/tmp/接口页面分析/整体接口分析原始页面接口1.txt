@@ -1,0 +1,18 @@
+请求地址：/api/classDoctorSummary/querySkuSet
+请求参数：{"id":118,"maxLevel":"4"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "type": "2",
+        "data": {
+            "roleFlag": null,
+            "roleNow": null,
+            "roleSet": null,
+            "skuNow": "4735",
+            "skuSet": "4319"
+        }
+    },
+    "timestamp": 1776749562702
+}

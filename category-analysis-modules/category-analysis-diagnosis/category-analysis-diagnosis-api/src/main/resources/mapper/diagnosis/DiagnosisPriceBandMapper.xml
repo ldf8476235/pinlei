@@ -118,7 +118,7 @@
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
           AND data_version = #{dataVersion}
-        ORDER BY ${orderBy} ${orderType}, price_band_min ASC
+        ORDER BY ${orderBy} ${orderType}
     </select>
 
     <select id="selectRangeByBandLevel" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPriceBandRangeRow">

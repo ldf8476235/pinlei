@@ -1,0 +1,37 @@
+请求地址：/api/classDoctorSummary/querySonClassSales
+请求参数：{"id":118,"maxLevel":"4"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "type": "3",
+        "data": {
+            "maxClass": {
+                "classNo": null,
+                "className": "00401个人护理",
+                "classLevel": null,
+                "parentClassNo": null,
+                "sales": null,
+                "salesPer": 43.1300,
+                "dataDate": null
+            },
+            "minClass": {
+                "classNo": null,
+                "className": "00402清洁用品",
+                "classLevel": null,
+                "parentClassNo": null,
+                "sales": null,
+                "salesPer": 22.4300,
+                "dataDate": null
+            },
+            "top": [
+                "00401个人护理",
+                "00403卫生用品",
+                "00402清洁用品"
+            ],
+            "down": []
+        }
+    },
+    "timestamp": 1776749563440
+}

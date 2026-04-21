@@ -1,0 +1,24 @@
+请求地址：/api/classDoctorSummary/querySalesAndGross
+请求参数：{"id":118,"maxLevel":"4"}
+返回参数：{
+    "success": true,
+    "message": "",
+    "code": 200,
+    "result": {
+        "salesType": "1",
+        "grossType": "1",
+        "penetrateRateType": "1",
+        "sales": 7585282.91,
+        "salesInc": 10.84,
+        "gross": 1257694.67,
+        "grossInc": 12.44,
+        "grossRateInc": 0.24,
+        "penetrateRate": 1.1500,
+        "penetrateRateInc": 0.0300,
+        "customerCountInc": 49.78,
+        "customerPriceInc": -26.00,
+        "customerAvgQuantityInc": -28.98,
+        "pieceAvgPriceInc": 4.20
+    },
+    "timestamp": 1776749563329
+}
