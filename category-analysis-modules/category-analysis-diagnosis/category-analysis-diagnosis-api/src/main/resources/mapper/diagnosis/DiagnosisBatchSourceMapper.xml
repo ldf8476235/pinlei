@@ -573,7 +573,28 @@
     <select id="aggregateSubclassContribution" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSubclassContributionAggRow">
         WITH sales_agg AS (
             SELECT
-                <include refid="directSubclassSelectSales"/>,
+                <choose>
+                    <when test="param.classLevel == 1">
+                        2 AS subClassLevel,
+                        two_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(two_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 2">
+                        3 AS subClassLevel,
+                        three_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(three_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 3">
+                        4 AS subClassLevel,
+                        four_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(four_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 4">
+                        5 AS subClassLevel,
+                        five_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(five_class_name)), '')) AS subClassName
+                    </when>
+                </choose>,
                 ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales,
                 ISNULL(SUM(CAST(gross AS DECIMAL(20, 6))), 0) AS totalGross,
                 ISNULL(SUM(CAST(sale_quantity AS DECIMAL(20, 6))), 0) AS totalSaleQuantity,
@@ -584,15 +605,36 @@
             <include refid="requireDirectSubclassSales"/>
             GROUP BY
             <choose>
-                <when test="param.classLevel == 1">two_class_no, two_class_name</when>
-                <when test="param.classLevel == 2">three_class_no, three_class_name</when>
-                <when test="param.classLevel == 3">four_class_no, four_class_name</when>
-                <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+                <when test="param.classLevel == 1">two_class_no</when>
+                <when test="param.classLevel == 2">three_class_no</when>
+                <when test="param.classLevel == 3">four_class_no</when>
+                <when test="param.classLevel == 4">five_class_no</when>
             </choose>
         ),
         customer_agg AS (
             SELECT
-                <include refid="directSubclassSelectSh7"/>,
+                <choose>
+                    <when test="param.classLevel == 1">
+                        2 AS subClassLevel,
+                        two_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(two_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 2">
+                        3 AS subClassLevel,
+                        three_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(three_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 3">
+                        4 AS subClassLevel,
+                        four_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(four_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 4">
+                        5 AS subClassLevel,
+                        five_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(five_class_name)), '')) AS subClassName
+                    </when>
+                </choose>,
                 COUNT(DISTINCT sale_no) AS totalCustomerCount
             FROM sh7_saleplu
             WHERE CAST(xsdate AS DATE) &gt;= #{param.periodStart}
@@ -601,16 +643,37 @@
               <include refid="requireDirectSubclassSh7"/>
             GROUP BY
             <choose>
-                <when test="param.classLevel == 1">two_class_no, two_class_name</when>
-                <when test="param.classLevel == 2">three_class_no, three_class_name</when>
-                <when test="param.classLevel == 3">four_class_no, four_class_name</when>
-                <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+                <when test="param.classLevel == 1">two_class_no</when>
+                <when test="param.classLevel == 2">three_class_no</when>
+                <when test="param.classLevel == 3">four_class_no</when>
+                <when test="param.classLevel == 4">five_class_no</when>
             </choose>
         ),
         inventory_daily AS (
             SELECT
                 stock_date,
-                <include refid="directSubclassSelectStock"/>,
+                <choose>
+                    <when test="param.classLevel == 1">
+                        2 AS subClassLevel,
+                        two_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(two_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 2">
+                        3 AS subClassLevel,
+                        three_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(three_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 3">
+                        4 AS subClassLevel,
+                        four_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(four_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 4">
+                        5 AS subClassLevel,
+                        five_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(five_class_name)), '')) AS subClassName
+                    </when>
+                </choose>,
                 ISNULL(SUM(CAST(stock_sale_money AS DECIMAL(20, 6))), 0) AS dayStockSaleMoney
             FROM fact_stock_day
             WHERE stock_date &gt;= #{param.periodStart}
@@ -619,10 +682,10 @@
               <include refid="requireDirectSubclassStock"/>
             GROUP BY stock_date,
             <choose>
-                <when test="param.classLevel == 1">two_class_no, two_class_name</when>
-                <when test="param.classLevel == 2">three_class_no, three_class_name</when>
-                <when test="param.classLevel == 3">four_class_no, four_class_name</when>
-                <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+                <when test="param.classLevel == 1">two_class_no</when>
+                <when test="param.classLevel == 2">three_class_no</when>
+                <when test="param.classLevel == 3">four_class_no</when>
+                <when test="param.classLevel == 4">five_class_no</when>
             </choose>
         ),
         inventory_agg AS (
@@ -636,7 +699,28 @@
         ),
         sku_agg AS (
             SELECT
-                <include refid="directSubclassSelectDeptProducts"/>,
+                <choose>
+                    <when test="param.classLevel == 1">
+                        2 AS subClassLevel,
+                        p.two_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(p.two_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 2">
+                        3 AS subClassLevel,
+                        p.three_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(p.three_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 3">
+                        4 AS subClassLevel,
+                        p.four_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(p.four_class_name)), '')) AS subClassName
+                    </when>
+                    <when test="param.classLevel == 4">
+                        5 AS subClassLevel,
+                        p.five_class_no AS subClassNo,
+                        MAX(NULLIF(LTRIM(RTRIM(p.five_class_name)), '')) AS subClassName
+                    </when>
+                </choose>,
                 CAST(COUNT(DISTINCT p.product_no) AS INT) AS totalSku
             FROM base_dept_products p
             WHERE p.product_no IS NOT NULL
@@ -646,10 +730,10 @@
               AND ISNULL(LTRIM(RTRIM(p.status_name)), '') NOT IN (N'停用', N'作废', N'下架', N'无效')
             GROUP BY
             <choose>
-                <when test="param.classLevel == 1">p.two_class_no, p.two_class_name</when>
-                <when test="param.classLevel == 2">p.three_class_no, p.three_class_name</when>
-                <when test="param.classLevel == 3">p.four_class_no, p.four_class_name</when>
-                <when test="param.classLevel == 4">p.five_class_no, p.five_class_name</when>
+                <when test="param.classLevel == 1">p.two_class_no</when>
+                <when test="param.classLevel == 2">p.three_class_no</when>
+                <when test="param.classLevel == 3">p.four_class_no</when>
+                <when test="param.classLevel == 4">p.five_class_no</when>
             </choose>
         )
         SELECT
@@ -679,7 +763,28 @@
 
     <select id="aggregateSubclassDailySales" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSubclassDailyTrendAggRow">
         SELECT
-            <include refid="directSubclassSelectSales"/>,
+            <choose>
+                <when test="param.classLevel == 1">
+                    2 AS subClassLevel,
+                    two_class_no AS subClassNo,
+                    MAX(NULLIF(LTRIM(RTRIM(two_class_name)), '')) AS subClassName
+                </when>
+                <when test="param.classLevel == 2">
+                    3 AS subClassLevel,
+                    three_class_no AS subClassNo,
+                    MAX(NULLIF(LTRIM(RTRIM(three_class_name)), '')) AS subClassName
+                </when>
+                <when test="param.classLevel == 3">
+                    4 AS subClassLevel,
+                    four_class_no AS subClassNo,
+                    MAX(NULLIF(LTRIM(RTRIM(four_class_name)), '')) AS subClassName
+                </when>
+                <when test="param.classLevel == 4">
+                    5 AS subClassLevel,
+                    five_class_no AS subClassNo,
+                    MAX(NULLIF(LTRIM(RTRIM(five_class_name)), '')) AS subClassName
+                </when>
+            </choose>,
             sale_date AS pointDate,
             ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS totalSales
         FROM fact_sales_day
@@ -687,10 +792,10 @@
         <include refid="requireDirectSubclassSales"/>
         GROUP BY sale_date,
         <choose>
-            <when test="param.classLevel == 1">two_class_no, two_class_name</when>
-            <when test="param.classLevel == 2">three_class_no, three_class_name</when>
-            <when test="param.classLevel == 3">four_class_no, four_class_name</when>
-            <when test="param.classLevel == 4">five_class_no, five_class_name</when>
+            <when test="param.classLevel == 1">two_class_no</when>
+            <when test="param.classLevel == 2">three_class_no</when>
+            <when test="param.classLevel == 3">four_class_no</when>
+            <when test="param.classLevel == 4">five_class_no</when>
         </choose>
         ORDER BY pointDate ASC, subClassNo ASC
     </select>
