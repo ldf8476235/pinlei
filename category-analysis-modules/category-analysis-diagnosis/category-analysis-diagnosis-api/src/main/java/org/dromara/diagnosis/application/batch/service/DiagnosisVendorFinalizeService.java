@@ -27,6 +27,7 @@ public class DiagnosisVendorFinalizeService {
 
     private static final String TENANT_ID = "000000";
     private static final int SUMMARY_LIMIT = 10;
+    private static final int INSERT_BATCH_SIZE = 30;
     private static final BigDecimal LOW_SALES_SHARE_THRESHOLD = new BigDecimal("1.0000");
     private static final BigDecimal HIGH_DIFF_RATE_THRESHOLD = new BigDecimal("5.0000");
 
@@ -85,10 +86,10 @@ public class DiagnosisVendorFinalizeService {
         List<DiagnosisVendorMetricRow> metricRows = buildMetricRows(calcs, context);
         List<DiagnosisVendorJsonRow> jsonRows = buildJsonRows(calcs, context, snapshotTime);
         if (!metricRows.isEmpty()) {
-            vendorMapper.batchInsertMetrics(metricRows);
+            batchInsertMetrics(metricRows);
         }
         if (!jsonRows.isEmpty()) {
-            vendorMapper.batchInsertJson(jsonRows);
+            batchInsertJson(jsonRows);
         }
         return DiagnosisVendorFinalizeResult.builder()
             .metricRows(metricRows.size())
@@ -246,6 +247,20 @@ public class DiagnosisVendorFinalizeService {
 
     private String blankToDefault(String value, String defaultValue) {
         return value == null || value.isBlank() ? defaultValue : value;
+    }
+
+    private void batchInsertMetrics(List<DiagnosisVendorMetricRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            vendorMapper.batchInsertMetrics(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertJson(List<DiagnosisVendorJsonRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            vendorMapper.batchInsertJson(rows.subList(start, end));
+        }
     }
 
     private <T> List<T> safeList(List<T> rows) {

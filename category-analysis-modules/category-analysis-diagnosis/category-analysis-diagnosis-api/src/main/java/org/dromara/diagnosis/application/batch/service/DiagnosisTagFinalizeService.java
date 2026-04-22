@@ -30,6 +30,7 @@ public class DiagnosisTagFinalizeService {
     private static final String TENANT_ID = "000000";
     private static final BigDecimal HUNDRED = new BigDecimal("100");
     private static final int SUMMARY_LIMIT = 5;
+    private static final int INSERT_BATCH_SIZE = 30;
 
     private final DiagnosisBatchSourceMapper batchSourceMapper;
     private final DiagnosisTagMapper tagMapper;
@@ -67,10 +68,10 @@ public class DiagnosisTagFinalizeService {
         List<DiagnosisTagJsonRow> jsonRows = buildJsonRows(calcs, context, snapshotTime);
 
         if (!metricRows.isEmpty()) {
-            tagMapper.batchInsertMetrics(metricRows);
+            batchInsertMetrics(metricRows);
         }
         if (!jsonRows.isEmpty()) {
-            tagMapper.batchInsertJson(jsonRows);
+            batchInsertJson(jsonRows);
         }
 
         return DiagnosisTagFinalizeResult.builder()
@@ -255,6 +256,20 @@ public class DiagnosisTagFinalizeService {
         row.setPayloadJson(payloadJson);
         row.setSnapshotTime(snapshotTime);
         return row;
+    }
+
+    private void batchInsertMetrics(List<DiagnosisTagMetricRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            tagMapper.batchInsertMetrics(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertJson(List<DiagnosisTagJsonRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            tagMapper.batchInsertJson(rows.subList(start, end));
+        }
     }
 
     private List<Map<String, Object>> buildTagTypeTreePayload(List<TagMetricCalc> calcs) {

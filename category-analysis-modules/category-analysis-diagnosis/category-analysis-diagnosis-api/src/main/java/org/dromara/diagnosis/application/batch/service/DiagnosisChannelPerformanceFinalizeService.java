@@ -25,6 +25,7 @@ import java.util.Map;
 public class DiagnosisChannelPerformanceFinalizeService {
 
     private static final String TENANT_ID = "000000";
+    private static final int INSERT_BATCH_SIZE = 30;
 
     private static final List<String> ONLINE_CHANNEL_DICT_TYPES = List.of(
         "diag_online_channel_type",
@@ -122,12 +123,12 @@ public class DiagnosisChannelPerformanceFinalizeService {
         }
 
         if (!contributionRows.isEmpty()) {
-            channelPerformanceMapper.batchInsertContribution(contributionRows);
+            batchInsertContribution(contributionRows);
         }
 
         List<DiagnosisChannelTrendRow> trendRows = buildTrendRows(context, channels, currentTrendRows, dictNameMap);
         if (!trendRows.isEmpty()) {
-            channelPerformanceMapper.batchInsertTrend(trendRows);
+            batchInsertTrend(trendRows);
         }
 
         return DiagnosisChannelFinalizeResult.builder()
@@ -253,6 +254,20 @@ public class DiagnosisChannelPerformanceFinalizeService {
             map.put(key, row);
         }
         return map;
+    }
+
+    private void batchInsertContribution(List<DiagnosisChannelContributionRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            channelPerformanceMapper.batchInsertContribution(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertTrend(List<DiagnosisChannelTrendRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            channelPerformanceMapper.batchInsertTrend(rows.subList(start, end));
+        }
     }
 
     private ChannelKey normalizeKey(Integer saleChannel, String onlineType) {

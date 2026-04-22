@@ -25,6 +25,7 @@ import java.util.Map;
 public class DiagnosisSubclassContributionFinalizeService {
 
     private static final String TENANT_ID = "000000";
+    private static final int INSERT_BATCH_SIZE = 30;
 
     private final DiagnosisBatchSourceMapper batchSourceMapper;
     private final DiagnosisSubclassContributionMapper subclassContributionMapper;
@@ -42,7 +43,7 @@ public class DiagnosisSubclassContributionFinalizeService {
 
         List<DiagnosisSubclassContributionRow> contributionRows = buildContributionRows(context, currentAggRows, compareAggRows);
         if (!contributionRows.isEmpty()) {
-            subclassContributionMapper.batchInsertContribution(contributionRows);
+            batchInsertContribution(contributionRows);
         }
 
         List<DiagnosisSubclassTrendRow> trendRows = buildTrendRows(
@@ -51,7 +52,7 @@ public class DiagnosisSubclassContributionFinalizeService {
             safeTrendRows(batchSourceMapper.aggregateSubclassDailySales(context.getParam()))
         );
         if (!trendRows.isEmpty()) {
-            subclassContributionMapper.batchInsertTrend(trendRows);
+            batchInsertTrend(trendRows);
         }
 
         return DiagnosisSubclassFinalizeResult.builder()
@@ -214,6 +215,20 @@ public class DiagnosisSubclassContributionFinalizeService {
 
     private List<DiagnosisSourceSubclassDailyTrendAggRow> safeTrendRows(List<DiagnosisSourceSubclassDailyTrendAggRow> rows) {
         return rows == null ? List.of() : rows;
+    }
+
+    private void batchInsertContribution(List<DiagnosisSubclassContributionRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            subclassContributionMapper.batchInsertContribution(rows.subList(start, end));
+        }
+    }
+
+    private void batchInsertTrend(List<DiagnosisSubclassTrendRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            subclassContributionMapper.batchInsertTrend(rows.subList(start, end));
+        }
     }
 
     private BigDecimal sumSales(List<DiagnosisSourceSubclassContributionAggRow> rows) {
