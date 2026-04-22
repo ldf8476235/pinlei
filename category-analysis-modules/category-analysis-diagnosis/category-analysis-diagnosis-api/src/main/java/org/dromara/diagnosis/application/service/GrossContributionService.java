@@ -152,7 +152,7 @@ public class GrossContributionService {
         int offset = (actualPage - 1) * actualSize;
         String actualOrderBy = ORDER_BY_MAPPING.getOrDefault(order, "sales");
         String actualOrderType = "asc".equalsIgnoreCase(orderType) ? "ASC" : "DESC";
-        List<String> statusList = status == null ? List.of() : new ArrayList<>(status);
+        List<String> statusList = status == null ? new ArrayList<>() : new ArrayList<>(status);
         statusList.remove("-1");
 
         Long total = grossContributionMapper.countSku(
@@ -363,4 +363,3 @@ public class GrossContributionService {
         return map;
     }
 }
-
