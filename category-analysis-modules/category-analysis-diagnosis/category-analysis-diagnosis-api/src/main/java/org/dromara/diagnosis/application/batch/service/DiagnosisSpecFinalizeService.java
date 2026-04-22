@@ -31,6 +31,7 @@ public class DiagnosisSpecFinalizeService {
 
     private static final String TENANT_ID = "000000";
     private static final BigDecimal HUNDRED = new BigDecimal("100");
+    private static final int METRIC_INSERT_BATCH_SIZE = 30;
     private static final String TYPE_OTHER = "1";
     private static final String TYPE_NONE = "/";
     private static final String TYPE_OTHER_NAME = "其他规格";
@@ -84,7 +85,7 @@ public class DiagnosisSpecFinalizeService {
 
         specMapper.insertOverview(overviewRow);
         if (!metricRows.isEmpty()) {
-            specMapper.batchInsertMetrics(metricRows);
+            batchInsertMetrics(metricRows);
         }
         if (!jsonRows.isEmpty()) {
             specMapper.batchInsertJson(jsonRows);
@@ -95,6 +96,13 @@ public class DiagnosisSpecFinalizeService {
             .metricRows(metricRows.size())
             .jsonRows(jsonRows.size())
             .build();
+    }
+
+    private void batchInsertMetrics(List<DiagnosisSpecMetricRow> rows) {
+        for (int start = 0; start < rows.size(); start += METRIC_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + METRIC_INSERT_BATCH_SIZE, rows.size());
+            specMapper.batchInsertMetrics(rows.subList(start, end));
+        }
     }
 
     private void insertEmptyOverviewAndJson(DiagnosisFinalizeContext context) {

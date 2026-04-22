@@ -31,6 +31,7 @@ public class DiagnosisBrandFinalizeService {
 
     private static final String TENANT_ID = "000000";
     private static final BigDecimal HUNDRED = new BigDecimal("100");
+    private static final int METRIC_INSERT_BATCH_SIZE = 30;
     private static final int SUMMARY_LIMIT = 10;
     private static final String TYPE_OTHER = "1";
     private static final String TYPE_OWN = "2";
@@ -87,7 +88,7 @@ public class DiagnosisBrandFinalizeService {
 
         brandMapper.insertOverview(overviewRow);
         if (!metricRows.isEmpty()) {
-            brandMapper.batchInsertMetrics(metricRows);
+            batchInsertMetrics(metricRows);
         }
         if (!jsonRows.isEmpty()) {
             brandMapper.batchInsertJson(jsonRows);
@@ -98,6 +99,13 @@ public class DiagnosisBrandFinalizeService {
             .metricRows(metricRows.size())
             .jsonRows(jsonRows.size())
             .build();
+    }
+
+    private void batchInsertMetrics(List<DiagnosisBrandMetricRow> rows) {
+        for (int start = 0; start < rows.size(); start += METRIC_INSERT_BATCH_SIZE) {
+            int end = Math.min(start + METRIC_INSERT_BATCH_SIZE, rows.size());
+            brandMapper.batchInsertMetrics(rows.subList(start, end));
+        }
     }
 
     private void insertEmptyOverviewAndJson(DiagnosisFinalizeContext context) {
