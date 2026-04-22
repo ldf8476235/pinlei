@@ -879,6 +879,21 @@
         GROUP BY p.product_no
     </select>
 
+    <select id="selectProductVendorMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceProductVendorMetaRow">
+        SELECT
+            p.product_no AS productNo,
+            MAX(v.vendor_no) AS productVendorNo,
+            MAX(v.vendor_name) AS productVendorName,
+            CONCAT(MAX(v.vendor_no), MAX(v.vendor_name)) AS productVendorNoName
+        FROM base_dept_products p
+        LEFT JOIN base_vendor_product_info v
+          ON v.product_no = p.product_no
+        WHERE 1 = 1
+          <include refid="classFilterDeptProducts"/>
+          <include refid="storeFilterDeptProducts"/>
+        GROUP BY p.product_no
+    </select>
+
     <select id="aggregateBrandMetrics" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandAggRow">
         WITH brand_dim AS (
             SELECT

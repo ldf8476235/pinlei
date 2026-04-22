@@ -4,13 +4,17 @@ import lombok.RequiredArgsConstructor;
 import org.dromara.diagnosis.api.response.DiagnosisCategoryPerformanceTrendResponse;
 import org.dromara.diagnosis.api.request.DiagnosisRecordQueryRequest;
 import org.dromara.diagnosis.api.request.DiagnosisSessionCreateRequest;
+import org.dromara.diagnosis.api.request.LegacyClassSalesListRequest;
 import org.dromara.diagnosis.api.response.DiagnosisRecordPageResponse;
 import org.dromara.diagnosis.api.response.DiagnosisOverviewResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionCreateResponse;
 import org.dromara.diagnosis.api.response.DiagnosisSessionStatusResponse;
 import org.dromara.diagnosis.api.response.DiagnosisTrendsResponse;
+import org.dromara.diagnosis.api.response.LegacyClassSalesListResponse;
+import org.dromara.diagnosis.api.response.LegacyNodeResponse;
 import org.dromara.diagnosis.application.service.DiagnosisRecordService;
 import org.dromara.diagnosis.application.service.DiagnosisSessionService;
+import org.dromara.diagnosis.application.service.LegacyClassSalesListService;
 import org.dromara.diagnosis.common.model.DiagnosisApiResponse;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,6 +38,7 @@ public class DiagnosisQueryController {
 
     private final DiagnosisSessionService diagnosisSessionService;
     private final DiagnosisRecordService diagnosisRecordService;
+    private final LegacyClassSalesListService legacyClassSalesListService;
 
     @PostMapping("/sessions")
     public DiagnosisApiResponse<DiagnosisSessionCreateResponse> createSession(@RequestBody DiagnosisSessionCreateRequest request) {
@@ -66,6 +71,11 @@ public class DiagnosisQueryController {
     @PostMapping("/records")
     public DiagnosisApiResponse<DiagnosisRecordPageResponse> queryRecords(@RequestBody(required = false) DiagnosisRecordQueryRequest request) {
         return DiagnosisApiResponse.ok(diagnosisRecordService.queryRecords(request), nextRequestId());
+    }
+
+    @PostMapping("/class-sales-list")
+    public LegacyNodeResponse<LegacyClassSalesListResponse> classSalesList(@RequestBody LegacyClassSalesListRequest request) {
+        return LegacyNodeResponse.ok(legacyClassSalesListService.getSalesList(request));
     }
 
     private String nextRequestId() {

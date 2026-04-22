@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategorySalesListMapper">
+
+    <delete id="deleteByVersion">
+        DELETE FROM diag_result_category_sales_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+    </delete>
+
+    <insert id="batchInsert">
+        INSERT INTO diag_result_category_sales_sku (
+            tenant_id, query_hash, data_version, promotion_flag, product_no, product_name,
+            product_status, product_status_no, store_num, sale_quantity, sale_quantity_psd,
+            sales, sales_per, sales_psd, gross, gross_per, gross_psd, gross_rate,
+            stock_quantity, turnover_rate, turnover_days, stock_sales_rate, contribution_rate, gmroi, sales_rate,
+            activity, first_sale_date, new_product, key_product, seasonable_flag, seasonable_flag_name,
+            seasonable_start_date, seasonable_end_date, class_no, class_name, product_barcode,
+            brand_name, spec, in_price, sales_price, product_vendor_no, product_vendor_name, product_vendor_no_name,
+            snapshot_time
+        )
+        VALUES
+        <foreach collection="rows" item="row" separator=",">
+            (
+                #{row.tenantId}, #{row.queryHash}, #{row.dataVersion}, #{row.promotionFlag}, #{row.productNo}, #{row.productName},
+                #{row.productStatus}, #{row.productStatusNo}, #{row.storeNum}, #{row.saleQuantity}, #{row.saleQuantityPsd},
+                #{row.sales}, #{row.salesPer}, #{row.salesPsd}, #{row.gross}, #{row.grossPer}, #{row.grossPsd}, #{row.grossRate},
+                #{row.stockQuantity}, #{row.turnoverRate}, #{row.turnoverDays}, #{row.stockSalesRate}, #{row.contributionRate}, #{row.gmroi}, #{row.salesRate},
+                #{row.activity}, #{row.firstSaleDate}, #{row.newProduct}, #{row.keyProduct}, #{row.seasonableFlag}, #{row.seasonableFlagName},
+                #{row.seasonableStartDate}, #{row.seasonableEndDate}, #{row.classNo}, #{row.className}, #{row.productBarcode},
+                #{row.brandName}, #{row.spec}, #{row.inPrice}, #{row.salesPrice}, #{row.productVendorNo}, #{row.productVendorName}, #{row.productVendorNoName},
+                #{row.snapshotTime}
+            )
+        </foreach>
+    </insert>
+
+    <select id="countSku" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_result_category_sales_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          <if test="promotionFlag != null and promotionFlag != ''">
+              AND promotion_flag = #{promotionFlag}
+          </if>
+          <if test="statusList != null and statusList.size() &gt; 0">
+              AND product_status_no IN
+              <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+    </select>
+
+    <select id="selectSkuPage" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisCategorySalesSkuRow">
+        SELECT
+            promotion_flag AS promotionFlag, product_no AS productNo, product_name AS productName,
+            product_status AS productStatus, product_status_no AS productStatusNo, store_num AS storeNum,
+            sale_quantity AS saleQuantity, sale_quantity_psd AS saleQuantityPsd, sales, sales_per AS salesPer,
+            sales_psd AS salesPsd, gross, gross_per AS grossPer, gross_psd AS grossPsd, gross_rate AS grossRate,
+            stock_quantity AS stockQuantity, turnover_rate AS turnoverRate, turnover_days AS turnoverDays,
+            stock_sales_rate AS stockSalesRate, contribution_rate AS contributionRate, gmroi, sales_rate AS salesRate,
+            activity, first_sale_date AS firstSaleDate, new_product AS newProduct, key_product AS keyProduct,
+            seasonable_flag AS seasonableFlag, seasonable_flag_name AS seasonableFlagName,
+            seasonable_start_date AS seasonableStartDate, seasonable_end_date AS seasonableEndDate,
+            class_no AS classNo, class_name AS className, product_barcode AS productBarcode,
+            brand_name AS brandName, spec, in_price AS inPrice, sales_price AS salesPrice,
+            product_vendor_no AS productVendorNo, product_vendor_name AS productVendorName, product_vendor_no_name AS productVendorNoName
+        FROM diag_result_category_sales_sku
+        WHERE tenant_id = #{tenantId}
+          AND query_hash = #{queryHash}
+          AND data_version = #{dataVersion}
+          <if test="promotionFlag != null and promotionFlag != ''">
+              AND promotion_flag = #{promotionFlag}
+          </if>
+          <if test="statusList != null and statusList.size() &gt; 0">
+              AND product_status_no IN
+              <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                  #{item}
+              </foreach>
+          </if>
+        ORDER BY ${orderBy} ${orderType}, product_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    </select>
+</mapper>

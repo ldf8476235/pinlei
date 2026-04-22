@@ -19,6 +19,7 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductMetaR
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandMetaRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceBrandStockRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceProductVendorMetaRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecAggRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecMetaRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceSpecStockRow;
@@ -59,6 +60,7 @@ public interface DiagnosisBatchSourceMapper {
     List<DiagnosisSourceAbcProductStockRow> aggregateAbcProductStock(@Param("param") DiagnosisSourceShardParam param,
                                                                      @Param("stockDate") LocalDate stockDate);
     List<DiagnosisSourceAbcProductMetaRow> selectAbcProductMeta(@Param("param") DiagnosisSourceShardParam param);
+    List<DiagnosisSourceProductVendorMetaRow> selectProductVendorMeta(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceBrandAggRow> aggregateBrandMetrics(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceBrandStockRow> aggregateBrandStock(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceBrandMetaRow> selectBrandMeta(@Param("param") DiagnosisSourceShardParam param);
