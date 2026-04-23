@@ -8,4 +8,12 @@ import java.util.List;
 public class SpecFilterOptionsResponse {
 
     private List<SpecFilterOptionItemResponse> specList;
+
+    private List<String> summaryOne;
+
+    private List<String> summaryTwo;
+
+    private List<String> summaryThree;
+
+    private List<String> summaryFour;
 }

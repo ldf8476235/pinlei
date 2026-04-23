@@ -153,6 +153,14 @@ public class SpecAnalysisService {
         SpecFilterOptionsResponse response = new SpecFilterOptionsResponse();
         response.setSpecList(parseJsonPayload(session, "specType", new TypeReference<List<SpecFilterOptionItemResponse>>() {
         }, List.of()));
+        List<SpecSalesShareItemResponse> salesShare = parseJsonPayload(session, "salesShare", new TypeReference<List<SpecSalesShareItemResponse>>() {
+        }, List.of());
+        List<SpecSkuSalesChangeItemResponse> skuSalesChange = parseJsonPayload(session, "skuSalesChange", new TypeReference<List<SpecSkuSalesChangeItemResponse>>() {
+        }, List.of());
+        response.setSummaryOne(topSpecNamesBySalesPer(salesShare, true));
+        response.setSummaryTwo(topSpecNamesBySalesPer(salesShare, false));
+        response.setSummaryThree(topSpecNamesByGrowth(skuSalesChange, true));
+        response.setSummaryFour(topSpecNamesByGrowth(skuSalesChange, false));
         return response;
     }
 
@@ -295,6 +303,36 @@ public class SpecAnalysisService {
 
     private BigDecimal scale4(BigDecimal value) {
         return value == null ? null : value.setScale(4, RoundingMode.HALF_UP);
+    }
+
+    private List<String> topSpecNamesBySalesPer(List<SpecSalesShareItemResponse> rows, boolean descending) {
+        List<SpecSalesShareItemResponse> sorted = new ArrayList<>(rows == null ? List.of() : rows);
+        sorted.sort((left, right) -> {
+            BigDecimal leftValue = left == null || left.getSalesPer() == null ? BigDecimal.ZERO : left.getSalesPer();
+            BigDecimal rightValue = right == null || right.getSalesPer() == null ? BigDecimal.ZERO : right.getSalesPer();
+            int diff = leftValue.compareTo(rightValue);
+            return descending ? -diff : diff;
+        });
+        return sorted.stream()
+            .filter(item -> item != null && hasText(item.getProductSpec()))
+            .limit(5)
+            .map(SpecSalesShareItemResponse::getProductSpec)
+            .toList();
+    }
+
+    private List<String> topSpecNamesByGrowth(List<SpecSkuSalesChangeItemResponse> rows, boolean descending) {
+        List<SpecSkuSalesChangeItemResponse> sorted = new ArrayList<>(rows == null ? List.of() : rows);
+        sorted.sort((left, right) -> {
+            BigDecimal leftValue = left == null || left.getSales() == null ? BigDecimal.ZERO : left.getSales();
+            BigDecimal rightValue = right == null || right.getSales() == null ? BigDecimal.ZERO : right.getSales();
+            int diff = leftValue.compareTo(rightValue);
+            return descending ? -diff : diff;
+        });
+        return sorted.stream()
+            .filter(item -> item != null && hasText(item.getProductSpec()))
+            .limit(5)
+            .map(SpecSkuSalesChangeItemResponse::getProductSpec)
+            .toList();
     }
 
     private boolean hasText(String value) {
