@@ -218,10 +218,10 @@
           AND query_hash = #{queryHash}
           AND data_version = #{dataVersion}
           AND abc_type = #{abcType}
-        <if test="currentAbc != null and currentAbc != '' and currentAbc != '0'">
+        <if test='currentAbc != null and currentAbc != "" and currentAbc != "0"'>
             AND current_abc = #{currentAbc}
         </if>
-        <if test="compareAbc != null and compareAbc != '' and compareAbc != '0'">
+        <if test='compareAbc != null and compareAbc != "" and compareAbc != "0"'>
             AND compare_abc = #{compareAbc}
         </if>
         <if test="promotion != null and promotion != '' and promotion != '0'">

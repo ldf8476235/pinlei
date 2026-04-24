@@ -134,18 +134,20 @@
                 #{st}
             </foreach>
         </if>
-        <if test="gmroiList != null and gmroiList.size() > 0 and !gmroiList.contains('0')">
-            AND (
-            <foreach collection="gmroiList" item="seg" separator=" OR ">
-                <choose>
-                    <when test="seg == '1'">gmroi &lt;= 1</when>
-                    <when test="seg == '2'">gmroi &gt; 1 AND gmroi &lt;= 2</when>
-                    <when test="seg == '3'">gmroi &gt; 2 AND gmroi &lt;= 3</when>
-                    <when test="seg == '4'">gmroi &gt; 3</when>
-                    <otherwise>1 = 0</otherwise>
-                </choose>
-            </foreach>
-            )
+        <if test="gmroiList != null and gmroiList.size() > 0">
+            <if test="!gmroiList.contains('0')">
+                AND (
+                <foreach collection="gmroiList" item="seg" separator=" OR ">
+                    <choose>
+                        <when test="seg == '1'">gmroi &lt;= 1</when>
+                        <when test="seg == '2'">gmroi &gt; 1 AND gmroi &lt;= 2</when>
+                        <when test="seg == '3'">gmroi &gt; 2 AND gmroi &lt;= 3</when>
+                        <when test="seg == '4'">gmroi &gt; 3</when>
+                        <otherwise>1 = 0</otherwise>
+                    </choose>
+                </foreach>
+                )
+            </if>
         </if>
     </sql>
 
