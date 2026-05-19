@@ -40,6 +40,7 @@ nbdist/
 .DS_Store
 .codex-tmp/
 script/docker/volumes/
+script/sql/script.sql
 *.log
 *.log.gz
 *.xml.versionsBackup
