@@ -3,12 +3,13 @@ name: category-analysis-plus
 services:
   sqlserver:
     image: mcr.microsoft.com/mssql/server:2022-latest
+    platform: linux/amd64
     container_name: category-analysis-sqlserver
     environment:
       TZ: Asia/Shanghai
       ACCEPT_EULA: "Y"
       MSSQL_PID: Developer
-      SA_PASSWORD: ${DIAG_SQLSERVER_PASSWORD:-123456}
+      SA_PASSWORD: ${DIAG_SQLSERVER_PASSWORD:-Diag@123456}
     ports:
       - "${DIAG_SQLSERVER_PORT:-1433}:1433"
     volumes:
@@ -62,11 +63,11 @@ services:
       DIAG_SQLSERVER_PORT: 1433
       DIAG_SQLSERVER_DB: ${DIAG_SQLSERVER_DB:-diagnosis}
       DIAG_SQLSERVER_USER: ${DIAG_SQLSERVER_USER:-sa}
-      DIAG_SQLSERVER_PASSWORD: ${DIAG_SQLSERVER_PASSWORD:-123456}
+      DIAG_SQLSERVER_PASSWORD: ${DIAG_SQLSERVER_PASSWORD:-Diag@123456}
       DIAG_SQLSERVER_ENCRYPT: ${DIAG_SQLSERVER_ENCRYPT:-false}
       SPRING_DATA_REDIS_HOST: redis
       SPRING_DATA_REDIS_PORT: 6379
-      SPRING_DATA_REDIS_PASSWORD: ${REDIS_PASSWORD:-}
+      SPRING_DATA_REDIS_PASSWORD: ${REDIS_PASSWORD:-ruoyi123}
       SPRING_BOOT_ADMIN_CLIENT_ENABLED: ${SPRING_BOOT_ADMIN_CLIENT_ENABLED:-false}
       SNAIL_JOB_ENABLED: ${SNAIL_JOB_ENABLED:-false}
       JUSTAUTH_ADDRESS: ${JUSTAUTH_ADDRESS:-http://localhost}

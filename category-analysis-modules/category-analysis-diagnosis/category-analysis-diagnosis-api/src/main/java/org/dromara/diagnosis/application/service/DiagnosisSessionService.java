@@ -25,11 +25,14 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisTrendSnapshotRow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -43,8 +46,13 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class DiagnosisSessionService {
 
+    private static final Logger log = LoggerFactory.getLogger(DiagnosisSessionService.class);
+
     private static final String TENANT_ID = "000000";
     private static final ObjectMapper LOCAL_JSON_MAPPER = new ObjectMapper();
+    private static final String STATUS_PENDING = "PENDING";
+    private static final String STATUS_RUNNING = "RUNNING";
+    private static final String STATUS_RETRYING = "RETRYING";
 
     private final DiagnosisSnapshotMapper snapshotMapper;
 
@@ -69,7 +77,7 @@ public class DiagnosisSessionService {
             sessionCacheStore.save(existing.getSessionId(), existing, sessionTtl());
             return buildReadyResponse(existing, overview.getDataVersion(), "REUSED_READY_SESSION");
         }
-        if (overview == null && existing != null && hasText(existing.getSessionId()) && existing.getJobId() != null) {
+        if (overview == null && isReusableExistingSession(existing)) {
             return buildResponseFromExistingSession(existing);
         }
 
@@ -157,6 +165,35 @@ public class DiagnosisSessionService {
         return response;
     }
 
+    private boolean isReusableExistingSession(DiagnosisSessionCacheModel existing) {
+        if (existing == null || !hasText(existing.getSessionId()) || existing.getJobId() == null) {
+            return false;
+        }
+        DiagnosisPrecomputeJobRow job = precomputeMapper.selectJobById(TENANT_ID, existing.getJobId());
+        if (job == null || !isActiveJobStatus(job.getStatusCode())) {
+            log.info("skip diagnosis cached session reuse, sessionId={}, jobId={}, status={}",
+                existing.getSessionId(), existing.getJobId(), job == null ? null : job.getStatusCode());
+            return false;
+        }
+        Long executionCount = precomputeMapper.countBatchExecutionsByJobId(existing.getJobId());
+        if (executionCount != null && executionCount > 0) {
+            return true;
+        }
+        LocalDateTime startTime = job.getStartedTime() == null ? job.getSubmittedTime() : job.getStartedTime();
+        boolean freshPendingJob = startTime != null && !startTime.isBefore(LocalDateTime.now().minusMinutes(1));
+        if (!freshPendingJob) {
+            log.warn("skip diagnosis cached session reuse for zombie active job, sessionId={}, jobId={}, status={}",
+                existing.getSessionId(), existing.getJobId(), job.getStatusCode());
+        }
+        return freshPendingJob;
+    }
+
+    private boolean isActiveJobStatus(String status) {
+        return STATUS_PENDING.equalsIgnoreCase(status)
+            || STATUS_RUNNING.equalsIgnoreCase(status)
+            || STATUS_RETRYING.equalsIgnoreCase(status);
+    }
+
     private DiagnosisSessionCreateResponse buildReadyResponse(DiagnosisSessionCacheModel session,
                                                               String dataVersion,
                                                               String source) {
@@ -175,6 +212,7 @@ public class DiagnosisSessionService {
 
     public DiagnosisSessionStatusResponse getSessionStatus(String sessionId) {
         DiagnosisSessionCacheModel session = getSession(sessionId);
+        renewSession(sessionId, session);
         DiagnosisOverviewSnapshotRow overview;
         try {
             overview = resolveOverviewSnapshot(sessionId, session);
@@ -399,7 +437,13 @@ public class DiagnosisSessionService {
     }
 
     private Duration sessionTtl() {
-        return Duration.ofMinutes(Math.max(1, cacheProperties.getResultTtlMinutes()));
+        return Duration.ofMinutes(Math.max(1, cacheProperties.getSessionTtlMinutes()));
+    }
+
+    private void renewSession(String sessionId, DiagnosisSessionCacheModel session) {
+        sessionCacheStore.save(sessionId, session, sessionTtl());
+        log.debug("renew diagnosis session ttl, sessionId={}, queryHash={}, jobId={}",
+            sessionId, session.getQueryHash(), session.getJobId());
     }
 
     private boolean hasText(String value) {

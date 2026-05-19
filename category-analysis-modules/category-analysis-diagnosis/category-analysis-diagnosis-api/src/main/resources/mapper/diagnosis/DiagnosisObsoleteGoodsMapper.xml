@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisObsoleteGoodsMapper">
+
+    <sql id="obsoleteBaseFrom">
+        FROM diag_result_gross_sku g
+        <if test="priceBandList != null and priceBandList.size() &gt; 0">
+            INNER JOIN diag_result_price_band_sku pb
+              ON pb.tenant_id = g.tenant_id
+             AND pb.query_hash = g.query_hash
+             AND pb.data_version = g.data_version
+             AND pb.product_no = g.product_no
+        </if>
+        <if test="tagType != null and tagType != '' and tagList != null and tagList.size() &gt; 0">
+            INNER JOIN product_tag_info pti
+              ON pti.product_no = g.product_no
+             AND pti.tag_type_no = #{tagType}
+        </if>
+        LEFT JOIN diag_result_abc_sku abc
+          ON abc.tenant_id = g.tenant_id
+         AND abc.query_hash = g.query_hash
+         AND abc.data_version = g.data_version
+         AND abc.product_no = g.product_no
+         AND abc.abc_type = #{abcType}
+        LEFT JOIN diag_result_abc_sku gross_abc
+          ON gross_abc.tenant_id = g.tenant_id
+         AND gross_abc.query_hash = g.query_hash
+         AND gross_abc.data_version = g.data_version
+         AND gross_abc.product_no = g.product_no
+         AND gross_abc.abc_type = 'gross'
+        LEFT JOIN diag_result_abc_sku contribution_abc
+          ON contribution_abc.tenant_id = g.tenant_id
+         AND contribution_abc.query_hash = g.query_hash
+         AND contribution_abc.data_version = g.data_version
+         AND contribution_abc.product_no = g.product_no
+         AND contribution_abc.abc_type = 'contribution'
+    </sql>
+
+    <sql id="obsoleteWhere">
+        WHERE g.tenant_id = #{tenantId}
+          AND g.query_hash = #{queryHash}
+          AND g.data_version = #{dataVersion}
+          <if test="useAbc">
+              <if test="currentAbc != null and currentAbc != ''">
+                  AND abc.current_abc = #{currentAbc}
+              </if>
+              <if test="compareAbc != null and compareAbc != ''">
+                  AND abc.compare_abc = #{compareAbc}
+              </if>
+          </if>
+          <if test="useGross">
+              <if test="currentGrossRole != null and currentGrossRole != '' and currentGrossRole != '0'">
+                  AND g.current_gross_role = #{currentGrossRole}
+              </if>
+              <if test="compareGrossRole != null and compareGrossRole != '' and compareGrossRole != '0'">
+                  AND g.compare_gross_role = #{compareGrossRole}
+              </if>
+          </if>
+          <if test="useGmroi">
+              <if test="currentGmroiRole != null and currentGmroiRole != '' and currentGmroiRole != '0'">
+                  AND g.current_gmroi_role = #{currentGmroiRole}
+              </if>
+              <if test="compareGmroiRole != null and compareGmroiRole != '' and compareGmroiRole != '0'">
+                  AND g.compare_gmroi_role = #{compareGmroiRole}
+              </if>
+          </if>
+          <if test="statusList != null and statusList.size() &gt; 0">
+              AND g.product_status_no IN
+              <foreach collection="statusList" item="status" open="(" separator="," close=")">
+                  #{status}
+              </foreach>
+          </if>
+          <if test="firstSaleDate != null and firstSaleDate != ''">
+              AND g.first_sale_date &lt;= #{firstSaleDate}
+          </if>
+          <if test="priceBandList != null and priceBandList.size() &gt; 0">
+              AND pb.price_band_label IN
+              <foreach collection="priceBandList" item="priceBand" open="(" separator="," close=")">
+                  #{priceBand}
+              </foreach>
+          </if>
+          <if test="brandList != null and brandList.size() &gt; 0">
+              AND g.brand_name IN
+              <foreach collection="brandList" item="brand" open="(" separator="," close=")">
+                  #{brand}
+              </foreach>
+          </if>
+          <if test="specList != null and specList.size() &gt; 0">
+              AND g.spec IN
+              <foreach collection="specList" item="spec" open="(" separator="," close=")">
+                  #{spec}
+              </foreach>
+          </if>
+          <if test="tagType != null and tagType != '' and tagList != null and tagList.size() &gt; 0">
+              AND pti.tag_no IN
+              <foreach collection="tagList" item="tag" open="(" separator="," close=")">
+                  #{tag}
+              </foreach>
+          </if>
+    </sql>
+
+    <select id="countObsoleteGoods" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        <include refid="obsoleteBaseFrom"/>
+        <include refid="obsoleteWhere"/>
+    </select>
+
+    <select id="selectObsoleteGoodsPage" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisObsoleteGoodsRow">
+        SELECT
+            g.product_no AS productNo,
+            g.product_name AS productName,
+            g.product_status AS productStatus,
+            g.product_status_no AS productStatusNo,
+            g.store_num AS storeNum,
+            abc.current_abc AS currentSalesAbc,
+            abc.compare_abc AS compareSalesAbc,
+            gross_abc.current_abc AS currentGrossAbc,
+            gross_abc.compare_abc AS compareGrossAbc,
+            contribution_abc.current_abc AS currentContributionAbc,
+            contribution_abc.compare_abc AS compareContributionAbc,
+            g.current_gross_role AS currentGrossRole,
+            g.compare_gross_role AS compareGrossRole,
+            g.current_gmroi_role AS currentGmroiRole,
+            g.compare_gmroi_role AS compareGmroiRole,
+            g.sale_quantity AS saleQuantity,
+            g.sale_quantity_psd AS saleQuantityPsd,
+            g.sales,
+            g.sales_per AS salesPer,
+            g.sales_psd AS salesPsd,
+            g.gross,
+            g.gross_per AS grossPer,
+            g.gross_psd AS grossPsd,
+            g.gross_rate AS grossRate,
+            g.stock_quantity AS stockQuantity,
+            g.turnover_rate AS turnoverRate,
+            g.turnover_days AS turnoverDays,
+            g.stock_sales_rate AS stockSalesRate,
+            g.contribution_rate AS contributionRate,
+            g.gmroi,
+            g.sales_rate AS salesRate,
+            g.activity,
+            g.first_sale_date AS firstSaleDate,
+            g.new_product AS newProduct,
+            g.key_product AS keyProduct,
+            g.seasonable_flag AS seasonableFlag,
+            g.seasonable_flag_name AS seasonableFlagName,
+            g.seasonable_start_date AS seasonableStartDate,
+            g.seasonable_end_date AS seasonableEndDate,
+            g.class_no AS classNo,
+            g.class_name AS className,
+            g.class_level AS classLevel,
+            g.product_barcode AS productBarcode,
+            g.brand_name AS brandName,
+            g.spec,
+            g.in_price AS inPrice,
+            g.sales_price AS salesPrice,
+            g.product_vendor_no AS productVendorNo,
+            g.product_vendor_name AS productVendorName,
+            g.product_vendor_no_name AS productVendorNoName
+        <include refid="obsoleteBaseFrom"/>
+        <include refid="obsoleteWhere"/>
+        ORDER BY ${orderBy} ${orderType}, g.product_no ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{pageSize} ROWS ONLY
+    </select>
+</mapper>

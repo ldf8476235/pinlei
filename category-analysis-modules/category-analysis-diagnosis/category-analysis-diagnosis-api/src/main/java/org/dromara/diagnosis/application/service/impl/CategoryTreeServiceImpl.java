@@ -389,9 +389,13 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
             recalculateFromChildren(child);
         }
         if (!node.getSubClass().isEmpty()) {
-            node.setSuggestSaleSku(sum(node.getSubClass(), MutableNode::getSuggestSaleSku));
+            if (ROOT_CLASS_NO.equals(node.getClassNo()) || node.getSuggestSaleSku() == null) {
+                node.setSuggestSaleSku(sum(node.getSubClass(), MutableNode::getSuggestSaleSku));
+            }
             node.setSaleSku(sum(node.getSubClass(), MutableNode::getSaleSku));
-            node.setSysSuggestSaleSku(sum(node.getSubClass(), MutableNode::getSysSuggestSaleSku));
+            if (ROOT_CLASS_NO.equals(node.getClassNo()) || node.getSysSuggestSaleSku() == null) {
+                node.setSysSuggestSaleSku(sum(node.getSubClass(), MutableNode::getSysSuggestSaleSku));
+            }
             if (!notBlank(node.getRoleNo())) {
                 node.setRoleNo(node.getSubClass().stream().map(MutableNode::getRoleNo).filter(this::notBlank).findFirst().orElse(null));
             }

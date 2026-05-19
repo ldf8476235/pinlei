@@ -224,24 +224,24 @@ public class DiagnosisBrandFinalizeService {
             row.setCompareSkuCount(calc.compareSku);
             row.setSkuChange(calc.skuChange);
             row.setSkuInc(scale6(calc.skuInc));
-            row.setSkuPer(scale6(ratio(BigDecimal.valueOf(Math.max(0, calc.currentSku)), BigDecimal.valueOf(Math.max(1, totals.totalSku)))));
+            row.setSkuPer(scale6(nonNullRatio(BigDecimal.valueOf(Math.max(0, calc.currentSku)), BigDecimal.valueOf(Math.max(1, totals.totalSku)))));
             row.setSaleQuantity(scale4(calc.saleQuantity));
             row.setCompareSaleQuantity(scale4(calc.compareSaleQuantity));
             row.setSaleQuantityChange(scale4(calc.saleQuantityChange));
             row.setSaleQuantityInc(scale6(calc.saleQuantityInc));
-            row.setSaleQuantityPer(scale6(ratio(calc.saleQuantity, totals.totalSaleQuantity)));
+            row.setSaleQuantityPer(scale6(nonNullRatio(calc.saleQuantity, totals.totalSaleQuantity)));
             row.setSaleQuantityPsd(scale6(calc.saleQuantityPsd));
             row.setSales(scale4(calc.sales));
             row.setCompareSales(scale4(calc.compareSales));
             row.setSalesChange(scale4(calc.salesChange));
             row.setSalesInc(scale6(calc.salesInc));
-            row.setSalesPer(scale6(ratio(calc.sales, totals.totalSales)));
+            row.setSalesPer(scale6(nonNullRatio(calc.sales, totals.totalSales)));
             row.setSalesPsd(scale6(calc.salesPsd));
             row.setGross(scale4(calc.gross));
             row.setCompareGross(scale4(calc.compareGross));
             row.setGrossChange(scale4(calc.grossChange));
             row.setGrossInc(scale6(calc.grossInc));
-            row.setGrossPer(scale6(ratio(calc.gross, totals.totalGross)));
+            row.setGrossPer(scale6(nonNullRatio(calc.gross, totals.totalGross)));
             row.setGrossPsd(scale6(calc.grossPsd));
             row.setGrossRate(scale6(calc.grossRate));
             row.setCompareGrossRate(scale6(calc.compareGrossRate));
@@ -523,6 +523,11 @@ public class DiagnosisBrandFinalizeService {
             return null;
         }
         return nvl(numerator).divide(denominator, 6, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal nonNullRatio(BigDecimal numerator, BigDecimal denominator) {
+        BigDecimal value = ratio(numerator, denominator);
+        return value == null ? BigDecimal.ZERO : value;
     }
 
     private BigDecimal diff(BigDecimal current, BigDecimal compare) {

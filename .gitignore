@@ -37,6 +37,9 @@ nbdist/
 
 ######################################################################
 # Others
+.DS_Store
+.codex-tmp/
+script/docker/volumes/
 *.log
 *.log.gz
 *.xml.versionsBackup

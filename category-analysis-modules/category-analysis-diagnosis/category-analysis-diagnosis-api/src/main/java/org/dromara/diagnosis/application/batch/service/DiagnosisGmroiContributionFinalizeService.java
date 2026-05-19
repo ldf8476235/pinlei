@@ -95,8 +95,8 @@ public class DiagnosisGmroiContributionFinalizeService {
 
             item.currentGrossRate = percent(item.currentGross, item.currentSales);
             item.compareGrossRate = percent(item.compareGross, item.compareSales);
-            item.currentTurnoverRate = ratio(item.currentSales, item.currentStockSaleMoney);
-            item.compareTurnoverRate = ratio(item.compareSales, item.compareStockSaleMoney);
+            item.currentTurnoverRate = annualizeTurnoverRate(ratio(item.currentSales, item.currentStockSaleMoney), context.getPeriodDays());
+            item.compareTurnoverRate = annualizeTurnoverRate(ratio(item.compareSales, item.compareStockSaleMoney), context.getCompareDays());
             item.currentGmroi = ratio(item.currentGross, item.currentStockSaleMoney);
             item.compareGmroi = ratio(item.compareGross, item.compareStockSaleMoney);
             item.currentGrowthRate = growthRate(item.currentSales, item.compareSales);
@@ -188,7 +188,7 @@ public class DiagnosisGmroiContributionFinalizeService {
         row.setTurnoverRate(scale4(item.currentTurnoverRate));
         row.setTurnoverDays(scale4(item.currentTurnoverRate.compareTo(BigDecimal.ZERO) == 0
             ? BigDecimal.ZERO
-            : BigDecimal.valueOf(Math.max(1L, context.getPeriodDays())).divide(item.currentTurnoverRate, 6, RoundingMode.HALF_UP)));
+            : BigDecimal.valueOf(365).divide(item.currentTurnoverRate, 6, RoundingMode.HALF_UP)));
         row.setContributionRate(scale6(ratio(item.currentGross, totalGross)));
         row.setGmroi(scale4(item.currentGmroi));
         row.setSalesRate(BigDecimal.ZERO.setScale(4, RoundingMode.HALF_UP));
@@ -352,6 +352,15 @@ public class DiagnosisGmroiContributionFinalizeService {
             return BigDecimal.ZERO;
         }
         return nvl(numerator).divide(denominator, 6, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal annualizeTurnoverRate(BigDecimal periodTurnoverRate, long periodDays) {
+        if (periodDays <= 0) {
+            return BigDecimal.ZERO;
+        }
+        return nvl(periodTurnoverRate)
+            .multiply(BigDecimal.valueOf(365))
+            .divide(BigDecimal.valueOf(periodDays), 6, RoundingMode.HALF_UP);
     }
 
     private BigDecimal percent(BigDecimal numerator, BigDecimal denominator) {

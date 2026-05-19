@@ -18,6 +18,8 @@ import org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeEventRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -36,6 +38,8 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class PrecomputeJobServiceImpl implements PrecomputeJobService {
 
+    private static final Logger log = LoggerFactory.getLogger(PrecomputeJobServiceImpl.class);
+
     private static final String DEFAULT_TENANT_ID = "000000";
 
     private static final String STATUS_PENDING = "PENDING";
@@ -45,6 +49,8 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
     private static final String STATUS_RETRYING = "RETRYING";
 
     private static final String STATUS_RUNNING = "RUNNING";
+
+    private static final String STATUS_FAILED = "FAILED";
 
     private static final String MODULE_DIAGNOSIS = "DIAGNOSIS";
 
@@ -64,7 +70,11 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         if (!Boolean.TRUE.equals(request.getForceRebuild())) {
             DiagnosisPrecomputeJobRow active = precomputeMapper.selectLatestActiveJobByRequestHash(DEFAULT_TENANT_ID, requestHash);
             if (active != null) {
-                return getJob(active.getJobId());
+                if (isZombieActiveJob(active)) {
+                    markJobFailed(active.getJobId(), "任务处于活跃状态但未生成 Spring Batch 执行记录，已自动标记失败并重新创建任务");
+                } else {
+                    return getJob(active.getJobId());
+                }
             }
         }
 
@@ -134,7 +144,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, row.getJobId()));
 
         String dataVersion = "V" + System.currentTimeMillis();
-        batchRunner.launch(row.getJobId(), window.getWindowId(), window.getPeriodStart(), window.getPeriodEnd(), dataVersion, row.getRequestJson());
+        launchBatchOrFail(row.getJobId(), window.getWindowId(), window.getPeriodStart(), window.getPeriodEnd(), dataVersion, row.getRequestJson());
         return getJob(row.getJobId());
     }
 
@@ -246,9 +256,70 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         DiagnosisPrecomputeWindowRow firstPending = precomputeMapper.selectNextPendingWindow(DEFAULT_TENANT_ID, jobId);
         if (firstPending != null) {
             String dataVersion = "V" + System.currentTimeMillis();
-            batchRunner.launch(jobId, firstPending.getWindowId(), firstPending.getPeriodStart(), firstPending.getPeriodEnd(), dataVersion, row.getRequestJson());
+            launchBatchOrFail(jobId, firstPending.getWindowId(), firstPending.getPeriodStart(), firstPending.getPeriodEnd(), dataVersion, row.getRequestJson());
         }
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId));
+    }
+
+    private boolean isZombieActiveJob(DiagnosisPrecomputeJobRow active) {
+        if (active.getJobId() == null) {
+            return false;
+        }
+        Long executionCount = precomputeMapper.countBatchExecutionsByJobId(active.getJobId());
+        if (executionCount != null && executionCount > 0) {
+            return false;
+        }
+        LocalDateTime startTime = active.getStartedTime() == null ? active.getSubmittedTime() : active.getStartedTime();
+        return startTime != null && startTime.isBefore(LocalDateTime.now().minusMinutes(1));
+    }
+
+    private void launchBatchOrFail(Long jobId,
+                                   Long windowId,
+                                   java.time.LocalDate periodStart,
+                                   java.time.LocalDate periodEnd,
+                                   String dataVersion,
+                                   String requestJson) {
+        try {
+            log.info("starting diagnosis precompute batch, jobId={}, windowId={}, periodStart={}, periodEnd={}, dataVersion={}",
+                jobId, windowId, periodStart, periodEnd, dataVersion);
+            batchRunner.launch(jobId, windowId, periodStart, periodEnd, dataVersion, requestJson);
+        } catch (RuntimeException ex) {
+            markJobFailed(jobId, "启动预计算任务失败: " + ex.getMessage());
+            markWindowFailed(windowId, "启动预计算任务失败");
+            log.error("failed to start diagnosis precompute batch, jobId={}, windowId={}, dataVersion={}",
+                jobId, windowId, dataVersion, ex);
+            throw ex;
+        }
+    }
+
+    private void markJobFailed(Long jobId, String message) {
+        DiagnosisPrecomputeJobRow update = new DiagnosisPrecomputeJobRow();
+        update.setTenantId(DEFAULT_TENANT_ID);
+        update.setJobId(jobId);
+        update.setStatusCode(STATUS_FAILED);
+        update.setCurrentStage(STATUS_FAILED);
+        update.setOrchestratorStatus(STATUS_FAILED);
+        update.setFinishedTime(LocalDateTime.now());
+        update.setErrorMessage(message);
+        precomputeMapper.updateJobStatus(update);
+        progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId));
+    }
+
+    private void markWindowFailed(Long windowId, String message) {
+        if (windowId == null) {
+            return;
+        }
+        DiagnosisPrecomputeWindowRow update = new DiagnosisPrecomputeWindowRow();
+        update.setTenantId(DEFAULT_TENANT_ID);
+        update.setWindowId(windowId);
+        update.setStatusCode(STATUS_FAILED);
+        update.setProgressPercent(BigDecimal.ZERO);
+        update.setCurrentStage(STATUS_FAILED);
+        update.setRowsRead(0L);
+        update.setRowsWritten(0L);
+        update.setFinishedTime(LocalDateTime.now());
+        update.setErrorMessage(message);
+        precomputeMapper.updateWindowStatus(update);
     }
 
     private PrecomputeJobResponse toJobResponse(DiagnosisPrecomputeJobRow row) {
@@ -351,4 +422,3 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         return item;
     }
 }
-

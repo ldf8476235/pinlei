@@ -77,6 +77,7 @@ diagnosis:
     parallelShards: ${DIAG_PARALLEL_SHARDS:16}
   cache:
     resultTtlMinutes: ${DIAG_CACHE_RESULT_TTL_MINUTES:15}
+    sessionTtlMinutes: ${DIAG_CACHE_SESSION_TTL_MINUTES:120}
     emptyResultTtlSeconds: ${DIAG_CACHE_EMPTY_TTL_SECONDS:60}
     progressTtlMinutes: ${DIAG_CACHE_PROGRESS_TTL_MINUTES:120}
   redis:
@@ -260,5 +261,4 @@ justauth:
       client-id: 10**********6
       client-secret: 1f7d08**********5b7**********29e
       redirect-uri: ${justauth.address}/social-callback?source=gitea
-
 

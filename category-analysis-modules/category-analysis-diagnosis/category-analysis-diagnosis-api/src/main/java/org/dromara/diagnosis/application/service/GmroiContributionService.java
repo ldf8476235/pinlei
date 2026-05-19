@@ -21,12 +21,15 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisGmroiSkuRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +38,7 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class GmroiContributionService {
 
+    private static final Logger log = LoggerFactory.getLogger(GmroiContributionService.class);
     private static final String TENANT_ID = "000000";
     private static final Map<String, String> ORDER_BY_MAPPING = buildOrderByMapping();
 
@@ -67,7 +71,7 @@ public class GmroiContributionService {
             item.setProductNo(row.getProductNo());
             item.setProductName(row.getProductName());
             item.setGrossRate(scale2(row.getGrossRate()));
-            item.setTurnoverRate(scale2(row.getTurnoverRate()));
+            item.setTurnoverRate(scale4(row.getTurnoverRate()));
             list.add(item);
 
             BigDecimal x = nvl(row.getTurnoverRate());
@@ -84,8 +88,8 @@ public class GmroiContributionService {
         LegacyGmroiFourQuadrantResponse response = new LegacyGmroiFourQuadrantResponse();
         response.setGrossRate(count == 0 ? BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP)
             : grossRateSum.divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP));
-        response.setTurnoverRate(count == 0 ? BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP)
-            : turnoverRateSum.divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP));
+        response.setTurnoverRate(count == 0 ? BigDecimal.ZERO.setScale(4, RoundingMode.HALF_UP)
+            : turnoverRateSum.divide(BigDecimal.valueOf(count), 4, RoundingMode.HALF_UP));
         response.setList(list);
         int dynamicMinX = minX == null ? -1 : minX.setScale(0, RoundingMode.FLOOR).intValue();
         int dynamicMaxX = maxX == null ? 27 : maxX.setScale(0, RoundingMode.CEILING).intValue();
@@ -156,20 +160,27 @@ public class GmroiContributionService {
         int actualPage = page == null || page < 1 ? 1 : page;
         int actualSize = size == null || size < 1 ? 10 : Math.min(size, 200);
         int offset = (actualPage - 1) * actualSize;
-        String actualOrderBy = ORDER_BY_MAPPING.getOrDefault(order, "sales");
         String actualOrderType = "asc".equalsIgnoreCase(orderType) ? "ASC" : "DESC";
-        List<String> statusList = status == null ? List.of() : new ArrayList<>(status);
+        List<String> statusList = status == null ? new ArrayList<>() : new ArrayList<>(status);
         statusList.remove("-1");
         List<String> gmroiSegments = gmroiList == null ? List.of("0") : new ArrayList<>(gmroiList);
+        String currentGmroiRole = normalizeGmroiRoleFilter(currentGmroi);
+        String compareGmroiRole = normalizeGmroiRoleFilter(compareGmroi);
+        String actualOrder = ORDER_BY_MAPPING.containsKey(order) ? order : "sales";
 
-        Long total = gmroiContributionMapper.countSku(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), currentGmroi, compareGmroi, promotion, statusList, gmroiSegments);
-        List<DiagnosisGmroiSkuRow> rows = gmroiContributionMapper.selectSkuPage(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), currentGmroi, compareGmroi, promotion, statusList, gmroiSegments,
-            actualOrderBy, actualOrderType, offset, actualSize);
-        if (rows == null) {
-            rows = List.of();
-        }
+        List<DiagnosisGmroiSkuRow> allRows = gmroiContributionMapper.selectQuadrantList(
+            TENANT_ID, session.getQueryHash(), session.getDataVersion());
+        List<DiagnosisGmroiSkuRow> filteredRows = filterRows(
+            allRows, currentGmroiRole, compareGmroiRole, promotion, statusList, gmroiSegments);
+        sortRows(filteredRows, actualOrder, actualOrderType);
+        int total = filteredRows.size();
+        int fromIndex = Math.min(offset, total);
+        int toIndex = Math.min(fromIndex + actualSize, total);
+        List<DiagnosisGmroiSkuRow> rows = filteredRows.subList(fromIndex, toIndex);
+
+        log.info("query gmroi sku list, sessionId={}, queryHash={}, dataVersion={}, currentGmroi={}, compareGmroi={}, statusSize={}, gmroiSegments={}, page={}, size={}, total={}, returned={}",
+            sessionId, session.getQueryHash(), session.getDataVersion(), currentGmroiRole, compareGmroiRole,
+            statusList.size(), gmroiSegments, actualPage, actualSize, total, rows.size());
 
         List<LegacyGmroiSalesListItemResponse> records = new ArrayList<>(rows.size());
         for (DiagnosisGmroiSkuRow row : rows) {
@@ -227,11 +238,143 @@ public class GmroiContributionService {
 
         LegacyGmroiSalesListResponse response = new LegacyGmroiSalesListResponse();
         response.setRecords(records);
-        response.setTotal(total == null ? 0L : total);
+        response.setTotal((long) total);
         response.setCurrent(actualPage);
         response.setSize(actualSize);
         response.setPages((int) ((response.getTotal() + actualSize - 1) / actualSize));
         return response;
+    }
+
+    private String normalizeGmroiRoleFilter(String role) {
+        if (role == null || role.isBlank() || "0".equals(role)) {
+            return null;
+        }
+        return switch (role.trim()) {
+            case "success", "1" -> "1";
+            case "sleep", "sleeping", "2" -> "2";
+            case "problem", "3" -> "3";
+            case "attract", "attracting", "4" -> "4";
+            default -> null;
+        };
+    }
+
+    private List<DiagnosisGmroiSkuRow> filterRows(List<DiagnosisGmroiSkuRow> rows,
+                                                  String currentGmroi,
+                                                  String compareGmroi,
+                                                  String promotion,
+                                                  List<String> statusList,
+                                                  List<String> gmroiSegments) {
+        if (rows == null || rows.isEmpty()) {
+            return new ArrayList<>();
+        }
+        List<DiagnosisGmroiSkuRow> result = new ArrayList<>(rows.size());
+        boolean filterStatus = statusList != null && !statusList.isEmpty();
+        boolean filterGmroiSegment = gmroiSegments != null && !gmroiSegments.isEmpty() && !gmroiSegments.contains("0");
+        for (DiagnosisGmroiSkuRow row : rows) {
+            if (currentGmroi != null && !currentGmroi.equals(row.getCurrentGmroiRole())) {
+                continue;
+            }
+            if (compareGmroi != null && !compareGmroi.equals(row.getCompareGmroiRole())) {
+                continue;
+            }
+            if (!matchPromotion(row, promotion)) {
+                continue;
+            }
+            if (filterStatus && !statusList.contains(row.getProductStatusNo())) {
+                continue;
+            }
+            if (filterGmroiSegment && !matchGmroiSegment(row.getGmroi(), gmroiSegments)) {
+                continue;
+            }
+            result.add(row);
+        }
+        return result;
+    }
+
+    private boolean matchPromotion(DiagnosisGmroiSkuRow row, String promotion) {
+        if (promotion == null || promotion.isBlank() || "0".equals(promotion)) {
+            return true;
+        }
+        String flag = row.getPromotionFlag();
+        if ("1".equals(promotion) || "Y".equalsIgnoreCase(promotion) || "是".equals(promotion)) {
+            return "1".equals(flag) || "Y".equalsIgnoreCase(flag) || "是".equals(flag);
+        }
+        if ("2".equals(promotion) || "N".equalsIgnoreCase(promotion) || "否".equals(promotion)) {
+            return flag == null || flag.isBlank() || "0".equals(flag) || "N".equalsIgnoreCase(flag) || "否".equals(flag);
+        }
+        return true;
+    }
+
+    private boolean matchGmroiSegment(BigDecimal gmroi, List<String> gmroiSegments) {
+        BigDecimal value = nvl(gmroi);
+        for (String segment : gmroiSegments) {
+            if ("1".equals(segment) && value.compareTo(BigDecimal.ONE) <= 0) {
+                return true;
+            }
+            if ("2".equals(segment) && value.compareTo(BigDecimal.ONE) > 0 && value.compareTo(new BigDecimal("2")) <= 0) {
+                return true;
+            }
+            if ("3".equals(segment) && value.compareTo(new BigDecimal("2")) > 0 && value.compareTo(new BigDecimal("3")) <= 0) {
+                return true;
+            }
+            if ("4".equals(segment) && value.compareTo(new BigDecimal("3")) > 0) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private void sortRows(List<DiagnosisGmroiSkuRow> rows, String order, String orderType) {
+        Comparator<DiagnosisGmroiSkuRow> comparator = (left, right) -> compareSortValue(sortValue(left, order), sortValue(right, order));
+        if (!"ASC".equalsIgnoreCase(orderType)) {
+            comparator = comparator.reversed();
+        }
+        rows.sort(comparator.thenComparing(row -> stringValue(row.getProductNo())));
+    }
+
+    @SuppressWarnings({"rawtypes", "unchecked"})
+    private int compareSortValue(Comparable left, Comparable right) {
+        if (left == null && right == null) {
+            return 0;
+        }
+        if (left == null) {
+            return 1;
+        }
+        if (right == null) {
+            return -1;
+        }
+        return left.compareTo(right);
+    }
+
+    private Comparable<?> sortValue(DiagnosisGmroiSkuRow row, String order) {
+        return switch (order) {
+            case "productNo" -> stringValue(row.getProductNo());
+            case "productName" -> stringValue(row.getProductName());
+            case "productStatus" -> stringValue(row.getProductStatusNo());
+            case "storeNum" -> row.getStoreNum();
+            case "saleQuantity" -> nvl(row.getSaleQuantity());
+            case "saleQuantityPsd" -> nvl(row.getSaleQuantityPsd());
+            case "salesPer" -> nvl(row.getSalesPer());
+            case "salesPsd" -> nvl(row.getSalesPsd());
+            case "gross" -> nvl(row.getGross());
+            case "grossPer" -> nvl(row.getGrossPer());
+            case "grossPsd" -> nvl(row.getGrossPsd());
+            case "grossRate" -> nvl(row.getGrossRate());
+            case "stockQuantity" -> nvl(row.getStockQuantity());
+            case "turnoverRate" -> nvl(row.getTurnoverRate());
+            case "turnoverDays" -> nvl(row.getTurnoverDays());
+            case "stockSalesRate" -> nvl(row.getStockSalesRate());
+            case "contributionRate" -> nvl(row.getContributionRate());
+            case "gmroi" -> nvl(row.getGmroi());
+            case "salesRate" -> nvl(row.getSalesRate());
+            case "activity" -> stringValue(row.getActivity());
+            case "firstSaleDate" -> row.getFirstSaleDate();
+            default -> nvl(row.getSales());
+        };
+    }
+
+    private String stringValue(String value) {
+        return value == null ? "" : value;
     }
 
     private String gmroiRoleName(String role) {

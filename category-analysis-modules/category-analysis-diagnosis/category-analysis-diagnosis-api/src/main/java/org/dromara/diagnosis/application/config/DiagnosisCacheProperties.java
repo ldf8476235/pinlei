@@ -14,8 +14,9 @@ public class DiagnosisCacheProperties {
 
     private int resultTtlMinutes = 15;
 
+    private int sessionTtlMinutes = 120;
+
     private int emptyResultTtlSeconds = 60;
 
     private int progressTtlMinutes = 120;
 }
-

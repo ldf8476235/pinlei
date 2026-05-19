@@ -13,6 +13,8 @@ import org.dromara.diagnosis.api.response.AllClassCheckSkuDifferResponse;
 import org.dromara.diagnosis.api.response.AllClassCheckSkuItemResponse;
 import org.dromara.diagnosis.api.response.AllClassCheckSkuResponse;
 import org.dromara.diagnosis.api.response.AllClassCheckSkuYDataResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +34,10 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class AllClassCheckService {
 
+    private static final Logger log = LoggerFactory.getLogger(AllClassCheckService.class);
+
+    private static final int DEFAULT_CLASS_LEVEL = 1;
+    private static final BigDecimal SKU_STRUCTURE_DIFF_WARNING_THRESHOLD = BigDecimal.valueOf(3);
     private static final Map<String, String> ROLE_NAME_MAP = Map.of(
         "1", "明星品类",
         "2", "幼童品类",
@@ -42,6 +48,7 @@ public class AllClassCheckService {
     private final JdbcTemplate jdbcTemplate;
 
     public AllClassCheckSalesChangeResponse getSalesChange(AllClassCheckListRequest request) {
+        int classLevel = normalizeClassLevel(request.getClassLevel());
         List<ClassAggRow> rows = loadClassAggregates(request);
         Map<String, String> roleMap = loadRoleMap(request);
         rows.forEach(row -> row.roleCode = roleMap.getOrDefault(row.classNo, row.roleCode));
@@ -56,7 +63,7 @@ public class AllClassCheckService {
         int fromIndex = Math.min((page - 1) * size, filtered.size());
         int toIndex = Math.min(fromIndex + size, filtered.size());
         List<AllClassCheckSalesChangeItemResponse> pageList = filtered.subList(fromIndex, toIndex).stream()
-            .map(this::toSalesChangeItem)
+            .map(row -> toSalesChangeItem(row, classLevel))
             .collect(Collectors.toList());
 
         AllClassCheckSalesChangeResponse response = new AllClassCheckSalesChangeResponse();
@@ -68,6 +75,7 @@ public class AllClassCheckService {
     }
 
     public AllClassCheckScatterResponse getAllClassCheck(AllClassCheckRequest request) {
+        int classLevel = normalizeClassLevel(request.getClassLevel());
         List<ClassAggRow> rows = loadClassAggregates(request);
         Map<String, String> roleMap = loadRoleMap(request);
         rows.forEach(row -> row.roleCode = roleMap.getOrDefault(row.classNo, row.roleCode));
@@ -95,15 +103,20 @@ public class AllClassCheckService {
         xyData.setXName("综合贡献率");
         xyData.setYName("销售对比增长率%");
 
+        int warningCount = countRoleWarnings(filtered, avgX, avgY, roleMap);
+        log.info("all class role warning calculated, classLevel={}, total={}, warning={}",
+            classLevel, filtered.size(), warningCount);
+
         AllClassCheckScatterResponse response = new AllClassCheckScatterResponse();
-        response.setWarn(filtered.size());
+        response.setWarn(warningCount);
         response.setScaleY(buildScaleY(minY, maxY));
         response.setXyData(xyData);
-        response.setList(filtered.stream().map(this::toScatterItem).collect(Collectors.toList()));
+        response.setList(filtered.stream().map(row -> toScatterItem(row, classLevel)).collect(Collectors.toList()));
         return response;
     }
 
     public AllClassCheckSkuResponse getFindClassSku(AllClassCheckRequest request) {
+        int classLevel = normalizeClassLevel(request.getClassLevel());
         List<ClassAggRow> rows = loadClassAggregates(request);
         Map<String, String> roleMap = loadRoleMap(request);
         rows.forEach(row -> row.roleCode = roleMap.getOrDefault(row.classNo, row.roleCode));
@@ -131,7 +144,7 @@ public class AllClassCheckService {
             AllClassCheckSkuItemResponse item = new AllClassCheckSkuItemResponse();
             item.setClassNo(row.classNo);
             item.setClassName(row.className);
-            item.setClassLevel(1);
+            item.setClassLevel(classLevel);
             item.setSales(row.sales);
             item.setSalesPer(salesPer);
             item.setSkuPer(skuPer);
@@ -149,14 +162,19 @@ public class AllClassCheckService {
         yData.setYTwoSkuDifferenceMin(list.stream().map(i -> nvl(i.getSkuDifference())).min(BigDecimal::compareTo).orElse(BigDecimal.ZERO));
         yData.setYTwoSkuDifferenceMax(list.stream().map(i -> nvl(i.getSkuDifference())).max(BigDecimal::compareTo).orElse(BigDecimal.ZERO));
 
+        int warningCount = countSkuStructureWarnings(list);
+        log.info("all class sku structure warning calculated, classLevel={}, total={}, warning={}",
+            classLevel, list.size(), warningCount);
+
         AllClassCheckSkuResponse response = new AllClassCheckSkuResponse();
-        response.setWarn(list.size());
+        response.setWarn(warningCount);
         response.setYData(yData);
         response.setList(list);
         return response;
     }
 
     public AllClassCheckSkuDifferResponse getFindClassSkuDiffer(AllClassCheckRequest request) {
+        int classLevel = normalizeClassLevel(request.getClassLevel());
         List<ClassAggRow> rows = loadClassAggregates(request);
         Map<String, String> roleMap = loadRoleMap(request);
         rows.forEach(row -> row.roleCode = roleMap.getOrDefault(row.classNo, row.roleCode));
@@ -182,7 +200,7 @@ public class AllClassCheckService {
             AllClassCheckSkuDifferItemResponse item = new AllClassCheckSkuDifferItemResponse();
             item.setClassNo(row.classNo);
             item.setClassName(row.className);
-            item.setClassLevel(1);
+            item.setClassLevel(classLevel);
             item.setSuggestSaleSku(suggestSaleSku);
             item.setSaleSku(saleSku);
             item.setSkuDiffer(saleSku - suggestSaleSku);
@@ -190,29 +208,48 @@ public class AllClassCheckService {
             list.add(item);
         }
 
+        int warningCount = countSkuPresetWarnings(list);
+        log.info("all class sku preset warning calculated, classLevel={}, total={}, warning={}",
+            classLevel, list.size(), warningCount);
+
         AllClassCheckSkuDifferResponse response = new AllClassCheckSkuDifferResponse();
-        response.setWarn(list.size());
+        response.setWarn(warningCount);
         response.setList(list);
         return response;
     }
 
     private List<ClassAggRow> loadClassAggregates(AllClassCheckRequest request) {
+        int classLevel = normalizeClassLevel(request.getClassLevel());
+        ClassLevelColumns columns = resolveClassLevelColumns(classLevel);
         List<Object> params = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
+            WITH class_dim AS (
+                SELECT DISTINCT
+                    %s AS class_no,
+                    %s AS class_name
+                FROM base_class
+                WHERE %s IS NOT NULL AND LTRIM(RTRIM(%s)) <> ''
+            )
             SELECT
-                bc.one_class_no AS class_no,
-                bc.one_class_name AS class_name,
+                dim.class_no AS class_no,
+                dim.class_name AS class_name,
                 COALESCE(SUM(CASE WHEN fs.sale_date BETWEEN ? AND ? THEN CAST(fs.sales AS DECIMAL(20, 6)) ELSE 0 END), 0) AS current_sales,
                 COALESCE(SUM(CASE WHEN fs.sale_date BETWEEN ? AND ? THEN CAST(fs.gross AS DECIMAL(20, 6)) ELSE 0 END), 0) AS current_gross,
                 COALESCE(SUM(CASE WHEN fs.sale_date BETWEEN ? AND ? THEN CAST(fs.sale_quantity AS DECIMAL(20, 6)) ELSE 0 END), 0) AS current_qty,
                 COALESCE(SUM(CASE WHEN fs.sale_date BETWEEN ? AND ? THEN CAST(fs.sales AS DECIMAL(20, 6)) ELSE 0 END), 0) AS compare_sales,
                 COALESCE(SUM(CASE WHEN fs.sale_date BETWEEN ? AND ? THEN CAST(fs.gross AS DECIMAL(20, 6)) ELSE 0 END), 0) AS compare_gross,
                 COALESCE(SUM(CASE WHEN fs.sale_date BETWEEN ? AND ? THEN CAST(fs.sale_quantity AS DECIMAL(20, 6)) ELSE 0 END), 0) AS compare_qty
-            FROM base_class bc
+            FROM class_dim dim
             LEFT JOIN fact_sales_day fs
-              ON fs.one_class_no = bc.one_class_no
-            WHERE bc.one_class_no IS NOT NULL AND LTRIM(RTRIM(bc.one_class_no)) <> ''
-            """);
+              ON fs.%s = dim.class_no
+            WHERE 1 = 1
+            """.formatted(
+            columns.codeColumn,
+            columns.nameColumn,
+            columns.codeColumn,
+            columns.codeColumn,
+            columns.codeColumn
+        ));
 
         addDateParams(params, request.getCurrentStartDate(), request.getCurrentEndDate());
         addDateParams(params, request.getCurrentStartDate(), request.getCurrentEndDate());
@@ -222,8 +259,8 @@ public class AllClassCheckService {
         addDateParams(params, request.getCompareStartDate(), request.getCompareEndDate());
 
         applyStoreScope(sql, params, request);
-        appendClassFilter(sql, params, request.getClassNo(), "bc.one_class_no");
-        sql.append(" GROUP BY bc.one_class_no, bc.one_class_name ORDER BY bc.one_class_no");
+        appendClassFilter(sql, params, request.getClassNo(), "dim.class_no");
+        sql.append(" GROUP BY dim.class_no, dim.class_name ORDER BY dim.class_no");
 
         return jdbcTemplate.query(sql.toString(), params.toArray(), (rs, rowNum) -> {
             ClassAggRow row = new ClassAggRow();
@@ -262,15 +299,24 @@ public class AllClassCheckService {
     }
 
     private List<ClassSkuRow> loadClassSkuConfigRows(AllClassCheckRequest request) {
+        ClassLevelColumns columns = resolveClassLevelColumns(normalizeClassLevel(request.getClassLevel()));
         List<Object> params = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
+            WITH class_dim AS (
+                SELECT DISTINCT
+                    %s AS class_no
+                FROM base_class
+                WHERE %s IS NOT NULL AND LTRIM(RTRIM(%s)) <> ''
+            )
             SELECT
                 bcs.class_no AS class_no,
                 COALESCE(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(bcs.class_sku)), '')), 0)), 0) AS class_sku
             FROM base_class_sku bcs
+            INNER JOIN class_dim dim
+              ON dim.class_no = bcs.class_no
             WHERE bcs.class_no IS NOT NULL AND LTRIM(RTRIM(bcs.class_no)) <> ''
-            """);
-        applyStoreScope(sql, params, request);
+            """.formatted(columns.codeColumn, columns.codeColumn, columns.codeColumn));
+        applyStoreScopeToClassSku(sql, params, request);
         appendClassFilter(sql, params, request.getClassNo(), "bcs.class_no");
         sql.append(" GROUP BY bcs.class_no");
 
@@ -283,14 +329,23 @@ public class AllClassCheckService {
     }
 
     private Map<String, String> loadRoleMap(AllClassCheckRequest request) {
+        ClassLevelColumns columns = resolveClassLevelColumns(normalizeClassLevel(request.getClassLevel()));
         List<Object> params = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
+            WITH class_dim AS (
+                SELECT DISTINCT
+                    %s AS class_no
+                FROM base_class
+                WHERE %s IS NOT NULL AND LTRIM(RTRIM(%s)) <> ''
+            )
             SELECT
                 bcs.class_no AS class_no,
                 MAX(LTRIM(RTRIM(COALESCE(bcs.class_role, '')))) AS role_code
             FROM base_class_sku bcs
+            INNER JOIN class_dim dim
+              ON dim.class_no = bcs.class_no
             WHERE bcs.class_no IS NOT NULL AND LTRIM(RTRIM(bcs.class_no)) <> ''
-            """);
+            """.formatted(columns.codeColumn, columns.codeColumn, columns.codeColumn));
         applyStoreScopeToClassSku(sql, params, request);
         appendClassFilter(sql, params, request.getClassNo(), "bcs.class_no");
         sql.append(" GROUP BY bcs.class_no");
@@ -304,19 +359,20 @@ public class AllClassCheckService {
     }
 
     private Map<String, Integer> loadActualSaleSkuMap(AllClassCheckRequest request) {
+        ClassLevelColumns columns = resolveClassLevelColumns(normalizeClassLevel(request.getClassLevel()));
         List<Object> params = new ArrayList<>();
         StringBuilder sql = new StringBuilder("""
             SELECT
-                fs.one_class_no AS class_no,
+                fs.%s AS class_no,
                 COUNT(DISTINCT fs.product_no) AS sale_sku
             FROM fact_sales_day fs
-            WHERE fs.one_class_no IS NOT NULL AND LTRIM(RTRIM(fs.one_class_no)) <> ''
+            WHERE fs.%s IS NOT NULL AND LTRIM(RTRIM(fs.%s)) <> ''
               AND fs.sale_date BETWEEN ? AND ?
-            """);
+            """.formatted(columns.codeColumn, columns.codeColumn, columns.codeColumn));
         addDateParams(params, request.getCurrentStartDate(), request.getCurrentEndDate());
         applyStoreScope(sql, params, request);
-        appendClassFilter(sql, params, request.getClassNo(), "fs.one_class_no");
-        sql.append(" GROUP BY fs.one_class_no");
+        appendClassFilter(sql, params, request.getClassNo(), "fs." + columns.codeColumn);
+        sql.append(" GROUP BY fs.").append(columns.codeColumn);
 
         return jdbcTemplate.query(sql.toString(), params.toArray(), (rs, rowNum) -> Map.entry(
             rs.getString("class_no"),
@@ -421,11 +477,11 @@ public class AllClassCheckService {
         return comparator.thenComparing(r -> r.classNo, Comparator.nullsLast(String::compareTo));
     }
 
-    private AllClassCheckSalesChangeItemResponse toSalesChangeItem(ClassAggRow row) {
+    private AllClassCheckSalesChangeItemResponse toSalesChangeItem(ClassAggRow row, int classLevel) {
         AllClassCheckSalesChangeItemResponse item = new AllClassCheckSalesChangeItemResponse();
         item.setClassNo(row.classNo);
         item.setClassName(row.className);
-        item.setClassLevel(1);
+        item.setClassLevel(classLevel);
         item.setSales(row.sales);
         item.setSalesCompare(row.salesCompare);
 //        item.setGross(row.gross);
@@ -437,11 +493,11 @@ public class AllClassCheckService {
         return item;
     }
 
-    private AllClassCheckScatterItemResponse toScatterItem(ClassAggRow row) {
+    private AllClassCheckScatterItemResponse toScatterItem(ClassAggRow row, int classLevel) {
         AllClassCheckScatterItemResponse item = new AllClassCheckScatterItemResponse();
         item.setClassNo(row.classNo);
         item.setClassName(row.className);
-        item.setClassLevel(1);
+        item.setClassLevel(classLevel);
         item.setSales(row.sales);
         item.setSalesCompare(row.salesCompare);
         item.setGross(row.gross);
@@ -492,6 +548,58 @@ public class AllClassCheckService {
             case "4" -> "金牛品类";
             default -> null;
         };
+    }
+
+    private int countRoleWarnings(List<ClassAggRow> rows, BigDecimal splitX, BigDecimal splitY, Map<String, String> presetRoleMap) {
+        int count = 0;
+        for (ClassAggRow row : rows) {
+            String presetRole = normalizeRoleCode(presetRoleMap.get(row.classNo));
+            String evaluatedRole = resolveMetricRoleCode(row, splitX, splitY);
+            if (hasText(presetRole) && hasText(evaluatedRole) && !presetRole.equals(evaluatedRole)) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private String resolveMetricRoleCode(ClassAggRow row, BigDecimal splitX, BigDecimal splitY) {
+        BigDecimal contributionRate = nvl(row.contributionRatePer);
+        BigDecimal growth = nvl(row.salesCompareRate);
+        if (contributionRate.compareTo(BigDecimal.ZERO) == 0 && growth.compareTo(BigDecimal.ZERO) == 0) {
+            return null;
+        }
+        boolean highContribution = contributionRate.compareTo(nvl(splitX)) >= 0;
+        boolean highGrowth = growth.compareTo(nvl(splitY)) >= 0;
+        if (highContribution && highGrowth) {
+            return "1";
+        }
+        if (!highContribution && highGrowth) {
+            return "2";
+        }
+        if (!highContribution) {
+            return "3";
+        }
+        return "4";
+    }
+
+    private int countSkuStructureWarnings(List<AllClassCheckSkuItemResponse> list) {
+        int count = 0;
+        for (AllClassCheckSkuItemResponse item : list) {
+            if (nvl(item.getSkuDifference()).abs().compareTo(SKU_STRUCTURE_DIFF_WARNING_THRESHOLD) > 0) {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    private int countSkuPresetWarnings(List<AllClassCheckSkuDifferItemResponse> list) {
+        int count = 0;
+        for (AllClassCheckSkuDifferItemResponse item : list) {
+            if (item.getSkuDiffer() != null && item.getSkuDiffer() != 0) {
+                count++;
+            }
+        }
+        return count;
     }
 
     private List<Integer> buildScaleY(BigDecimal min, BigDecimal max) {
@@ -601,6 +709,23 @@ public class AllClassCheckService {
         return size == null || size < 1 ? 10 : Math.min(size, 200);
     }
 
+    private int normalizeClassLevel(Integer classLevel) {
+        if (classLevel == null || classLevel < 1 || classLevel > 5) {
+            return DEFAULT_CLASS_LEVEL;
+        }
+        return classLevel;
+    }
+
+    private ClassLevelColumns resolveClassLevelColumns(int classLevel) {
+        return switch (classLevel) {
+            case 2 -> new ClassLevelColumns("two_class_no", "two_class_name");
+            case 3 -> new ClassLevelColumns("three_class_no", "three_class_name");
+            case 4 -> new ClassLevelColumns("four_class_no", "four_class_name");
+            case 5 -> new ClassLevelColumns("five_class_no", "five_class_name");
+            default -> new ClassLevelColumns("one_class_no", "one_class_name");
+        };
+    }
+
     private boolean hasText(String value) {
         return value != null && !value.isBlank();
     }
@@ -631,5 +756,15 @@ public class AllClassCheckService {
     private static class ClassSkuRow {
         private String classNo;
         private int classSku;
+    }
+
+    private static class ClassLevelColumns {
+        private final String codeColumn;
+        private final String nameColumn;
+
+        private ClassLevelColumns(String codeColumn, String nameColumn) {
+            this.codeColumn = codeColumn;
+            this.nameColumn = nameColumn;
+        }
     }
 }

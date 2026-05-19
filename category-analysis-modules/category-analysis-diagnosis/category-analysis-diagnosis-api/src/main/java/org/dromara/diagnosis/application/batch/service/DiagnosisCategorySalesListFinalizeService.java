@@ -25,6 +25,7 @@ import java.util.Map;
 public class DiagnosisCategorySalesListFinalizeService {
 
     private static final String TENANT_ID = "000000";
+    private static final int INSERT_BATCH_SIZE = 40;
 
     private final DiagnosisBatchSourceMapper batchSourceMapper;
     private final DiagnosisCategorySalesListMapper categorySalesListMapper;
@@ -72,11 +73,18 @@ public class DiagnosisCategorySalesListFinalizeService {
 
         categorySalesListMapper.deleteByVersion(TENANT_ID, context.getQueryHash(), context.getDataVersion());
         if (!resultRows.isEmpty()) {
-            categorySalesListMapper.batchInsert(resultRows);
+            batchInsert(resultRows);
         }
         return DiagnosisCategorySalesListFinalizeResult.builder()
             .skuRows(resultRows.size())
             .build();
+    }
+
+    private void batchInsert(List<DiagnosisCategorySalesSkuRow> rows) {
+        for (int start = 0; start < rows.size(); start += INSERT_BATCH_SIZE) {
+            int end = Math.min(start + INSERT_BATCH_SIZE, rows.size());
+            categorySalesListMapper.batchInsert(rows.subList(start, end));
+        }
     }
 
     private DiagnosisCategorySalesSkuRow toSkuRow(DiagnosisFinalizeContext context,

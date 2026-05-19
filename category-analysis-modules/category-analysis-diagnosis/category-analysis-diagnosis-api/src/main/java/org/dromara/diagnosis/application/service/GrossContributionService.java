@@ -154,11 +154,13 @@ public class GrossContributionService {
         String actualOrderType = "asc".equalsIgnoreCase(orderType) ? "ASC" : "DESC";
         List<String> statusList = status == null ? new ArrayList<>() : new ArrayList<>(status);
         statusList.remove("-1");
+        String currentGrossRole = normalizeGrossRoleFilter(currentGross);
+        String compareGrossRole = normalizeGrossRoleFilter(compareGross);
 
         Long total = grossContributionMapper.countSku(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), currentGross, compareGross, promotion, statusList);
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), currentGrossRole, compareGrossRole, promotion, statusList);
         List<DiagnosisGrossSkuRow> rows = grossContributionMapper.selectSkuPage(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), currentGross, compareGross, promotion, statusList,
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), currentGrossRole, compareGrossRole, promotion, statusList,
             actualOrderBy, actualOrderType, offset, actualSize);
         if (rows == null) {
             rows = List.of();
@@ -223,6 +225,19 @@ public class GrossContributionService {
         response.setSize(actualSize);
         response.setPages((int) ((response.getTotal() + actualSize - 1) / actualSize));
         return response;
+    }
+
+    private String normalizeGrossRoleFilter(String role) {
+        if (role == null || role.isBlank() || "0".equals(role)) {
+            return null;
+        }
+        return switch (role.trim()) {
+            case "leading", "1" -> "1";
+            case "attracting", "2" -> "2";
+            case "problem", "3" -> "3";
+            case "profit", "4" -> "4";
+            default -> null;
+        };
     }
 
     private String roleName(String role) {

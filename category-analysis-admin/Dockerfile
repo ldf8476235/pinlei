@@ -17,7 +17,7 @@ EXPOSE ${SERVER_PORT}
 # 暴露 snail job 客户端端口 用于定时任务调度中心通信
 EXPOSE ${SNAIL_PORT}
 
-ADD ./target/category-analysis-admin.jar ./app.jar
+ADD ./category-analysis-admin/target/category-analysis-admin.jar ./app.jar
 
 SHELL ["/bin/bash", "-c"]
 
@@ -28,4 +28,3 @@ ENTRYPOINT java -Djava.security.egd=file:/dev/./urandom -Dserver.port=${SERVER_P
            #-javaagent:/category-analysis/skywalking/agent/skywalking-agent.jar \
            -XX:+HeapDumpOnOutOfMemoryError -XX:+UseZGC ${JAVA_OPTS} \
            -jar app.jar
-

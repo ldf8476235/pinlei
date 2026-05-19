@@ -33,6 +33,8 @@ public interface DiagnosisPrecomputeMapper {
     DiagnosisPrecomputeJobRow selectLatestActiveJobByRequestHash(@Param("tenantId") String tenantId,
                                                                  @Param("requestHash") String requestHash);
 
+    Long countBatchExecutionsByJobId(@Param("jobId") Long jobId);
+
     DiagnosisPrecomputeJobRow selectLatestJobByRequestHash(@Param("tenantId") String tenantId,
                                                            @Param("requestHash") String requestHash);
 
@@ -67,4 +69,12 @@ public interface DiagnosisPrecomputeMapper {
                                                                     @Param("req") DiagnosisRecordQueryRequest request,
                                                                     @Param("offset") Integer offset,
                                                                     @Param("limit") Integer limit);
+
+    Long countDiagnosisRecordRowsLoose(@Param("tenantId") String tenantId,
+                                       @Param("req") DiagnosisRecordQueryRequest request);
+
+    List<DiagnosisRecordQueryRow> selectDiagnosisRecordRowsLoose(@Param("tenantId") String tenantId,
+                                                                 @Param("req") DiagnosisRecordQueryRequest request,
+                                                                 @Param("offset") Integer offset,
+                                                                 @Param("limit") Integer limit);
 }

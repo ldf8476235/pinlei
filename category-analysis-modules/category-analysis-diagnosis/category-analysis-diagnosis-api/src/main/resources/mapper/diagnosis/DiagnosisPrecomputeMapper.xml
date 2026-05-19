@@ -164,6 +164,13 @@
         ORDER BY submitted_time DESC, job_id DESC
     </select>
 
+    <select id="countBatchExecutionsByJobId" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM BATCH_JOB_EXECUTION_PARAMS
+        WHERE PARAMETER_NAME = 'jobId'
+          AND PARAMETER_VALUE = CAST(#{jobId} AS NVARCHAR(64))
+    </select>
+
     <select id="selectLatestJobByRequestHash" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow">
         SELECT TOP 1
             job_id AS jobId,
@@ -378,32 +385,32 @@
                   #{classNo}
               </foreach>
           </if>
-          <if test="req.deptId != null and req.deptId != '' and req.deptId != '0'">
+          <if test="req.deptId != null and req.deptId != '' and !req.deptId.equals('0')">
               AND reqj.deptId = #{req.deptId}
           </if>
-          <if test="req.retailTypeId != null and req.retailTypeId != '' and req.retailTypeId != '0'">
+          <if test="req.retailTypeId != null and req.retailTypeId != '' and !req.retailTypeId.equals('0')">
               AND reqj.retailTypeId = #{req.retailTypeId}
           </if>
-          <if test="req.businessCircleId != null and req.businessCircleId != '' and req.businessCircleId != '0'">
+          <if test="req.businessCircleId != null and req.businessCircleId != '' and !req.businessCircleId.equals('0')">
               AND reqj.businessCircleId = #{req.businessCircleId}
           </if>
-          <if test="req.deptGroupId != null and req.deptGroupId != '' and req.deptGroupId != '0'">
+          <if test="req.deptGroupId != null and req.deptGroupId != '' and !req.deptGroupId.equals('0')">
               AND reqj.deptGroupId = #{req.deptGroupId}
           </if>
-          <if test="req.storeScope != null and req.storeScope != '' and req.storeScope != '0'">
+          <if test="req.storeScope != null and req.storeScope != '' and !req.storeScope.equals('0')">
               AND reqj.storeNo = #{req.storeScope}
           </if>
           <if test="req.periodStart != null">
-              AND j.read_start = #{req.periodStart}
+              AND CONVERT(date, j.read_start) = #{req.periodStart}
           </if>
           <if test="req.periodEnd != null">
-              AND j.read_end = #{req.periodEnd}
+              AND CONVERT(date, j.read_end) = #{req.periodEnd}
           </if>
           <if test="req.compareStart != null">
-              AND w.compare_start = #{req.compareStart}
+              AND CONVERT(date, w.compare_start) = #{req.compareStart}
           </if>
           <if test="req.compareEnd != null">
-              AND w.compare_end = #{req.compareEnd}
+              AND CONVERT(date, w.compare_end) = #{req.compareEnd}
           </if>
     </sql>
 
@@ -593,6 +600,133 @@
             <otherwise>DESC</otherwise>
         </choose>,
         j.job_id DESC
+        OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
+    </select>
+
+    <select id="countDiagnosisRecordRowsLoose" resultType="java.lang.Long">
+        SELECT COUNT(1)
+        FROM diag_precompute_job j
+        LEFT JOIN diag_precompute_window w
+               ON w.tenant_id = j.tenant_id
+              AND w.job_id = j.job_id
+        WHERE j.tenant_id = #{tenantId}
+          AND j.module_code = 'DIAGNOSIS'
+          <if test="req.classNos != null and req.classNos.size() > 0">
+              AND JSON_VALUE(j.request_json, '$.classNo') IN
+              <foreach collection="req.classNos" item="classNo" open="(" separator="," close=")">
+                  #{classNo}
+              </foreach>
+          </if>
+          <if test="req.deptId != null and req.deptId != '' and !req.deptId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.deptId'), '') = #{req.deptId}
+          </if>
+          <if test="req.retailTypeId != null and req.retailTypeId != '' and !req.retailTypeId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.retailTypeId'), '') = #{req.retailTypeId}
+          </if>
+          <if test="req.businessCircleId != null and req.businessCircleId != '' and !req.businessCircleId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.businessCircleId'), '') = #{req.businessCircleId}
+          </if>
+          <if test="req.deptGroupId != null and req.deptGroupId != '' and !req.deptGroupId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.deptGroupId'), '') = #{req.deptGroupId}
+          </if>
+          <if test="req.storeScope != null and req.storeScope != '' and !req.storeScope.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.storeNo'), '') = #{req.storeScope}
+          </if>
+          <if test="req.periodStart != null">
+              AND CONVERT(date, j.read_start) = #{req.periodStart}
+          </if>
+          <if test="req.periodEnd != null">
+              AND CONVERT(date, j.read_end) = #{req.periodEnd}
+          </if>
+          <if test="req.compareStart != null">
+              AND CONVERT(date, w.compare_start) = #{req.compareStart}
+          </if>
+          <if test="req.compareEnd != null">
+              AND CONVERT(date, w.compare_end) = #{req.compareEnd}
+          </if>
+    </select>
+
+    <select id="selectDiagnosisRecordRowsLoose" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisRecordQueryRow">
+        SELECT
+            j.job_id AS jobId,
+            j.request_hash AS requestHash,
+            j.status_code AS statusCode,
+            j.progress_percent AS progressPercent,
+            j.current_stage AS currentStage,
+            j.submitted_by AS submittedBy,
+            COALESCE(j.submitted_time, j.create_time) AS submittedTime,
+            TRY_CAST(JSON_VALUE(j.request_json, '$.classLevel') AS INT) AS classLevel,
+            JSON_VALUE(j.request_json, '$.classNo') AS classNo,
+            JSON_VALUE(j.request_json, '$.className') AS className,
+            JSON_VALUE(j.request_json, '$.deptId') AS deptId,
+            JSON_VALUE(j.request_json, '$.deptId') AS deptName,
+            JSON_VALUE(j.request_json, '$.retailTypeId') AS retailTypeId,
+            JSON_VALUE(j.request_json, '$.retailTypeId') AS retailTypeName,
+            JSON_VALUE(j.request_json, '$.businessCircleId') AS businessCircleId,
+            JSON_VALUE(j.request_json, '$.businessCircleId') AS businessCircleName,
+            JSON_VALUE(j.request_json, '$.deptGroupId') AS deptGroupId,
+            JSON_VALUE(j.request_json, '$.deptGroupId') AS deptGroupName,
+            JSON_VALUE(j.request_json, '$.storeNo') AS storeNo,
+            JSON_VALUE(j.request_json, '$.storeNo') AS storeName,
+            j.read_start AS periodStart,
+            j.read_end AS periodEnd,
+            w.compare_start AS compareStart,
+            w.compare_end AS compareEnd,
+            w.data_version AS dataVersion,
+            snapshotInfo.snapshotId AS snapshotId,
+            CAST(NULL AS NVARCHAR(128)) AS createByName
+        FROM diag_precompute_job j
+        OUTER APPLY (
+            SELECT TOP 1 *
+            FROM diag_precompute_window w1
+            WHERE w1.tenant_id = j.tenant_id
+              AND w1.job_id = j.job_id
+            ORDER BY w1.window_id DESC
+        ) w
+        OUTER APPLY (
+            SELECT TOP 1 o.id AS snapshotId
+            FROM diag_result_overview o
+            WHERE o.tenant_id = j.tenant_id
+              AND o.query_hash = j.request_hash
+              AND o.data_version = w.data_version
+            ORDER BY o.snapshot_time DESC, o.id DESC
+        ) snapshotInfo
+        WHERE j.tenant_id = #{tenantId}
+          AND j.module_code = 'DIAGNOSIS'
+          <if test="req.classNos != null and req.classNos.size() > 0">
+              AND JSON_VALUE(j.request_json, '$.classNo') IN
+              <foreach collection="req.classNos" item="classNo" open="(" separator="," close=")">
+                  #{classNo}
+              </foreach>
+          </if>
+          <if test="req.deptId != null and req.deptId != '' and !req.deptId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.deptId'), '') = #{req.deptId}
+          </if>
+          <if test="req.retailTypeId != null and req.retailTypeId != '' and !req.retailTypeId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.retailTypeId'), '') = #{req.retailTypeId}
+          </if>
+          <if test="req.businessCircleId != null and req.businessCircleId != '' and !req.businessCircleId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.businessCircleId'), '') = #{req.businessCircleId}
+          </if>
+          <if test="req.deptGroupId != null and req.deptGroupId != '' and !req.deptGroupId.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.deptGroupId'), '') = #{req.deptGroupId}
+          </if>
+          <if test="req.storeScope != null and req.storeScope != '' and !req.storeScope.equals('0')">
+              AND ISNULL(JSON_VALUE(j.request_json, '$.storeNo'), '') = #{req.storeScope}
+          </if>
+          <if test="req.periodStart != null">
+              AND j.read_start = #{req.periodStart}
+          </if>
+          <if test="req.periodEnd != null">
+              AND j.read_end = #{req.periodEnd}
+          </if>
+          <if test="req.compareStart != null">
+              AND w.compare_start = #{req.compareStart}
+          </if>
+          <if test="req.compareEnd != null">
+              AND w.compare_end = #{req.compareEnd}
+          </if>
+        ORDER BY COALESCE(j.submitted_time, j.create_time) DESC, j.job_id DESC
         OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY
     </select>
 

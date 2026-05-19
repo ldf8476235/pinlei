@@ -73,7 +73,7 @@ public class DiagnosisSpecFinalizeService {
                 .build();
         }
 
-        List<SpecMetricCalc> calcs = new ArrayList<>(calcMap.values());
+        List<SpecMetricCalc> calcs = mergeDuplicateSpecCalcs(calcMap.values(), context);
         calcs.sort(Comparator.comparing(SpecMetricCalc::getSales, Comparator.nullsFirst(BigDecimal::compareTo)).reversed()
             .thenComparing(SpecMetricCalc::getSpecNo, Comparator.nullsFirst(String::compareTo)));
 
@@ -96,6 +96,74 @@ public class DiagnosisSpecFinalizeService {
             .metricRows(metricRows.size())
             .jsonRows(jsonRows.size())
             .build();
+    }
+
+    private List<SpecMetricCalc> mergeDuplicateSpecCalcs(Iterable<SpecMetricCalc> source, DiagnosisFinalizeContext context) {
+        LinkedHashMap<String, SpecMetricCalc> merged = new LinkedHashMap<>();
+        for (SpecMetricCalc calc : source) {
+            if (calc == null) {
+                continue;
+            }
+            String key = normalizeSpecUniqueKey(calc.specName);
+            SpecMetricCalc existing = merged.get(key);
+            if (existing == null) {
+                merged.put(key, calc);
+                continue;
+            }
+            mergeSpecCalc(existing, calc, context);
+        }
+        return new ArrayList<>(merged.values());
+    }
+
+    private void mergeSpecCalc(SpecMetricCalc target, SpecMetricCalc source, DiagnosisFinalizeContext context) {
+        target.currentSku += Math.max(0, source.currentSku);
+        target.compareSku += Math.max(0, source.compareSku);
+        target.saleQuantity = nvl(target.saleQuantity).add(nvl(source.saleQuantity));
+        target.compareSaleQuantity = nvl(target.compareSaleQuantity).add(nvl(source.compareSaleQuantity));
+        target.sales = nvl(target.sales).add(nvl(source.sales));
+        target.compareSales = nvl(target.compareSales).add(nvl(source.compareSales));
+        target.gross = nvl(target.gross).add(nvl(source.gross));
+        target.compareGross = nvl(target.compareGross).add(nvl(source.compareGross));
+        target.salesCost = nvl(target.salesCost).add(nvl(source.salesCost));
+        target.compareSalesCost = nvl(target.compareSalesCost).add(nvl(source.compareSalesCost));
+        target.stockQuantity = nvl(target.stockQuantity).add(nvl(source.stockQuantity));
+        target.compareStockQuantity = nvl(target.compareStockQuantity).add(nvl(source.compareStockQuantity));
+        target.activitySku += Math.max(0, source.activitySku);
+        target.activeStoreCount += Math.max(0, source.activeStoreCount);
+        if (NEW_SPEC_YES.equals(source.newSpecType)) {
+            target.newSpecType = NEW_SPEC_YES;
+            target.newSpecTypeName = "是";
+        }
+        recalculateDerivedFields(target, context);
+    }
+
+    private void recalculateDerivedFields(SpecMetricCalc calc, DiagnosisFinalizeContext context) {
+        calc.skuChange = calc.currentSku - calc.compareSku;
+        calc.skuInc = growth(BigDecimal.valueOf(calc.currentSku), BigDecimal.valueOf(calc.compareSku));
+        calc.saleQuantityChange = nvl(calc.saleQuantity).subtract(nvl(calc.compareSaleQuantity));
+        calc.saleQuantityInc = growth(calc.saleQuantity, calc.compareSaleQuantity);
+        calc.salesChange = nvl(calc.sales).subtract(nvl(calc.compareSales));
+        calc.salesInc = growth(calc.sales, calc.compareSales);
+        calc.grossChange = nvl(calc.gross).subtract(nvl(calc.compareGross));
+        calc.grossInc = growth(calc.gross, calc.compareGross);
+        calc.periodDays = Math.max(1, (int) context.getPeriodDays());
+        calc.saleQuantityPsd = perStoreDaily(calc.saleQuantity, calc.activeStoreCount, calc.periodDays);
+        calc.salesPsd = perStoreDaily(calc.sales, calc.activeStoreCount, calc.periodDays);
+        calc.grossPsd = perStoreDaily(calc.gross, calc.activeStoreCount, calc.periodDays);
+        calc.grossRate = ratio(calc.gross, calc.sales);
+        calc.compareGrossRate = ratio(calc.compareGross, calc.compareSales);
+        calc.grossRateInc = diff(calc.grossRate, calc.compareGrossRate);
+        calc.turnoverRate = ratio(calc.salesCost, calc.stockQuantity);
+        calc.turnoverDays = calc.turnoverRate == null || calc.turnoverRate.compareTo(BigDecimal.ZERO) == 0
+            ? null
+            : BigDecimal.valueOf(calc.periodDays).divide(calc.turnoverRate, 6, RoundingMode.HALF_UP);
+        calc.stockSalesRate = ratio(calc.stockQuantity, calc.saleQuantity);
+        calc.gmroi = ratio(calc.gross, calc.stockQuantity);
+    }
+
+    private String normalizeSpecUniqueKey(String specName) {
+        String value = hasText(specName) ? specName.trim() : TYPE_NONE_NAME;
+        return value.replaceAll("\\s+", "").toUpperCase();
     }
 
     private void batchInsertMetrics(List<DiagnosisSpecMetricRow> rows) {
@@ -219,24 +287,24 @@ public class DiagnosisSpecFinalizeService {
             row.setCompareSkuCount(calc.compareSku);
             row.setSkuChange(calc.skuChange);
             row.setSkuInc(scale6(calc.skuInc));
-            row.setSkuPer(scale6(ratio(BigDecimal.valueOf(Math.max(0, calc.currentSku)), BigDecimal.valueOf(Math.max(1, totals.totalSku)))));
+            row.setSkuPer(scale6(nonNullRatio(BigDecimal.valueOf(Math.max(0, calc.currentSku)), BigDecimal.valueOf(Math.max(1, totals.totalSku)))));
             row.setSaleQuantity(scale4(calc.saleQuantity));
             row.setCompareSaleQuantity(scale4(calc.compareSaleQuantity));
             row.setSaleQuantityChange(scale4(calc.saleQuantityChange));
             row.setSaleQuantityInc(scale6(calc.saleQuantityInc));
-            row.setSaleQuantityPer(scale6(ratio(calc.saleQuantity, totals.totalSaleQuantity)));
+            row.setSaleQuantityPer(scale6(nonNullRatio(calc.saleQuantity, totals.totalSaleQuantity)));
             row.setSaleQuantityPsd(scale6(calc.saleQuantityPsd));
             row.setSales(scale4(calc.sales));
             row.setCompareSales(scale4(calc.compareSales));
             row.setSalesChange(scale4(calc.salesChange));
             row.setSalesInc(scale6(calc.salesInc));
-            row.setSalesPer(scale6(ratio(calc.sales, totals.totalSales)));
+            row.setSalesPer(scale6(nonNullRatio(calc.sales, totals.totalSales)));
             row.setSalesPsd(scale6(calc.salesPsd));
             row.setGross(scale4(calc.gross));
             row.setCompareGross(scale4(calc.compareGross));
             row.setGrossChange(scale4(calc.grossChange));
             row.setGrossInc(scale6(calc.grossInc));
-            row.setGrossPer(scale6(ratio(calc.gross, totals.totalGross)));
+            row.setGrossPer(scale6(nonNullRatio(calc.gross, totals.totalGross)));
             row.setGrossPsd(scale6(calc.grossPsd));
             row.setGrossRate(scale6(calc.grossRate));
             row.setCompareGrossRate(scale6(calc.compareGrossRate));
@@ -473,6 +541,11 @@ public class DiagnosisSpecFinalizeService {
             return null;
         }
         return nvl(numerator).divide(denominator, 6, RoundingMode.HALF_UP);
+    }
+
+    private BigDecimal nonNullRatio(BigDecimal numerator, BigDecimal denominator) {
+        BigDecimal value = ratio(numerator, denominator);
+        return value == null ? BigDecimal.ZERO : value;
     }
 
     private BigDecimal diff(BigDecimal current, BigDecimal compare) {

@@ -5,8 +5,7 @@ import org.dromara.diagnosis.api.response.CategoryTreeResponse;
 import org.dromara.diagnosis.api.response.DictDetailResponse;
 import org.dromara.diagnosis.infrastructure.mapper.CategoryTreeMapper;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,8 +20,7 @@ public class DictController {
 
     private final CategoryTreeMapper categoryTreeMapper;
 
-    @GetMapping("/findClassTreeRoleType")
-    @PostMapping("/findClassTreeRoleType")
+    @RequestMapping(value = "/findClassTreeRoleType", method = {RequestMethod.GET, RequestMethod.POST})
     public CategoryTreeResponse<List<DictDetailResponse>> findClassTreeRoleType() {
         List<DiagnosisDictRow> rows = categoryTreeMapper.selectDictRowsByType(DICT_TYPE_CATEGORY_ROLE);
         return CategoryTreeResponse.ok(rows == null ? List.of() : rows.stream().map(this::toResponse).toList());

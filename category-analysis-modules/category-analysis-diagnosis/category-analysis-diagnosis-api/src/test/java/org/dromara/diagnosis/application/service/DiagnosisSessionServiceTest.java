@@ -9,9 +9,11 @@ import org.dromara.diagnosis.application.config.DiagnosisCacheProperties;
 import org.dromara.diagnosis.application.model.DiagnosisSessionCacheModel;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategoryPerformanceTrendMapper;
+import org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisCategoryPerformanceTrendRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisOverviewSnapshotRow;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeJobRow;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -22,6 +24,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import java.math.BigDecimal;
 import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -43,6 +46,8 @@ class DiagnosisSessionServiceTest {
     private DiagnosisQueryHashService queryHashService;
     @Mock
     private PrecomputeJobService precomputeJobService;
+    @Mock
+    private DiagnosisPrecomputeMapper precomputeMapper;
     @Mock
     private DiagnosisCacheProperties cacheProperties;
     @Mock
@@ -66,7 +71,7 @@ class DiagnosisSessionServiceTest {
 
         when(queryHashService.buildQueryHash(req)).thenReturn("qh-1");
         when(snapshotMapper.selectLatestOverviewByQuery("000000", "qh-1")).thenReturn(null);
-        when(cacheProperties.getResultTtlMinutes()).thenReturn(15);
+        when(cacheProperties.getSessionTtlMinutes()).thenReturn(120);
         PrecomputeJobResponse job = new PrecomputeJobResponse();
         job.setJobId(300L);
         when(precomputeJobService.createJob(any())).thenReturn(job);
@@ -77,7 +82,50 @@ class DiagnosisSessionServiceTest {
         assertThat(response.getReady()).isFalse();
         assertThat(response.getTriggeredJobId()).isEqualTo(300L);
         assertThat(response.getSource()).isEqualTo("TRIGGERED");
-        verify(sessionCacheStore).save(eq(response.getSessionId()), any(DiagnosisSessionCacheModel.class), eq(Duration.ofMinutes(15)));
+        verify(sessionCacheStore).save(eq(response.getSessionId()), any(DiagnosisSessionCacheModel.class), eq(Duration.ofMinutes(120)));
+    }
+
+    @Test
+    void createSession_shouldTriggerNewPrecompute_whenCachedJobIsZombieActive() {
+        DiagnosisSessionCreateRequest req = new DiagnosisSessionCreateRequest();
+        req.setStoreNo("");
+        req.setClassLevel(1);
+        req.setClassNo("003");
+        req.setClassName("食品杂货");
+        req.setPeriodStart(LocalDate.of(2025, 4, 1));
+        req.setPeriodEnd(LocalDate.of(2025, 4, 30));
+        req.setCompareStart(LocalDate.of(2024, 4, 1));
+        req.setCompareEnd(LocalDate.of(2024, 4, 30));
+        req.setTriggerIfMissing(Boolean.TRUE);
+        req.setWaitSeconds(0);
+
+        DiagnosisSessionCacheModel cached = new DiagnosisSessionCacheModel();
+        cached.setSessionId("S-old");
+        cached.setQueryHash("qh-zombie");
+        cached.setJobId(26L);
+
+        DiagnosisPrecomputeJobRow zombieJob = new DiagnosisPrecomputeJobRow();
+        zombieJob.setJobId(26L);
+        zombieJob.setStatusCode("RUNNING");
+        zombieJob.setStartedTime(LocalDateTime.now().minusMinutes(5));
+
+        PrecomputeJobResponse newJob = new PrecomputeJobResponse();
+        newJob.setJobId(301L);
+        newJob.setStatus("RUNNING");
+        newJob.setOrchestratorStatus("RUNNING");
+
+        when(queryHashService.buildQueryHash(req)).thenReturn("qh-zombie");
+        when(snapshotMapper.selectLatestOverviewByQuery("000000", "qh-zombie")).thenReturn(null);
+        when(sessionCacheStore.getByQueryHash("qh-zombie")).thenReturn(cached);
+        when(precomputeMapper.selectJobById("000000", 26L)).thenReturn(zombieJob);
+        when(precomputeMapper.countBatchExecutionsByJobId(26L)).thenReturn(0L);
+        when(precomputeJobService.createJob(any())).thenReturn(newJob);
+        when(cacheProperties.getSessionTtlMinutes()).thenReturn(120);
+
+        DiagnosisSessionCreateResponse response = service.createSession(req);
+
+        assertThat(response.getSource()).isEqualTo("TRIGGERED");
+        assertThat(response.getTriggeredJobId()).isEqualTo(301L);
     }
 
     @Test
@@ -171,4 +219,3 @@ class DiagnosisSessionServiceTest {
             .isInstanceOf(DiagnosisBizException.class);
     }
 }
-

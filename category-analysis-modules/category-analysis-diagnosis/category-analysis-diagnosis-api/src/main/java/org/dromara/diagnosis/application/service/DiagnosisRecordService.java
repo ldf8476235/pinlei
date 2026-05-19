@@ -21,6 +21,7 @@ public class DiagnosisRecordService {
 
     public DiagnosisRecordPageResponse queryRecords(DiagnosisRecordQueryRequest request) {
         DiagnosisRecordQueryRequest actual = request == null ? new DiagnosisRecordQueryRequest() : request;
+        normalizeAllScope(actual);
         String tenantId = resolveTenantId();
         int pageNum = actual.getPageNum() == null || actual.getPageNum() < 1 ? 1 : actual.getPageNum();
         int pageSize = actual.getPageSize() == null || actual.getPageSize() < 1 ? 20 : Math.min(actual.getPageSize(), 200);
@@ -32,6 +33,13 @@ public class DiagnosisRecordService {
             : precomputeMapper.selectDiagnosisRecordRows(tenantId, actual, offset, pageSize);
         if ((rows == null || rows.isEmpty()) && total != null && total > 0) {
             rows = precomputeMapper.selectDiagnosisRecordRowsFallback(tenantId, actual, offset, pageSize);
+        }
+        if ((total == null || total <= 0) || rows == null || rows.isEmpty()) {
+            Long looseTotal = precomputeMapper.countDiagnosisRecordRowsLoose(tenantId, actual);
+            if (looseTotal != null && looseTotal > 0) {
+                rows = precomputeMapper.selectDiagnosisRecordRowsLoose(tenantId, actual, offset, pageSize);
+                total = looseTotal;
+            }
         }
 
         DiagnosisRecordPageResponse response = new DiagnosisRecordPageResponse();
@@ -45,6 +53,22 @@ public class DiagnosisRecordService {
     private String resolveTenantId() {
         String tenantId = TenantHelper.getTenantId();
         return (tenantId == null || tenantId.isBlank()) ? TenantConstants.DEFAULT_TENANT_ID : tenantId;
+    }
+
+    private void normalizeAllScope(DiagnosisRecordQueryRequest request) {
+        request.setStoreScope(normalizeScopeValue(request.getStoreScope()));
+        request.setDeptId(normalizeScopeValue(request.getDeptId()));
+        request.setRetailTypeId(normalizeScopeValue(request.getRetailTypeId()));
+        request.setBusinessCircleId(normalizeScopeValue(request.getBusinessCircleId()));
+        request.setDeptGroupId(normalizeScopeValue(request.getDeptGroupId()));
+    }
+
+    private String normalizeScopeValue(String value) {
+        if (value == null) {
+            return null;
+        }
+        String trimmed = value.trim();
+        return trimmed.isEmpty() || "0".equals(trimmed) ? null : trimmed;
     }
 
     private DiagnosisRecordItemResponse toItem(DiagnosisRecordQueryRow row) {
