@@ -24,10 +24,11 @@ public class DiagnosisRecordService {
         normalizeAllScope(actual);
         String tenantId = resolveTenantId();
         int pageNum = actual.getPageNum() == null || actual.getPageNum() < 1 ? 1 : actual.getPageNum();
-        int pageSize = actual.getPageSize() == null || actual.getPageSize() < 1 ? 20 : Math.min(actual.getPageSize(), 200);
-        int offset = (pageNum - 1) * pageSize;
+        boolean queryAll = actual.getPageSize() != null && actual.getPageSize() == 0;
 
         Long total = precomputeMapper.countDiagnosisRecordRows(tenantId, actual);
+        int pageSize = resolvePageSize(actual.getPageSize(), total, queryAll);
+        int offset = queryAll ? 0 : (pageNum - 1) * pageSize;
         List<DiagnosisRecordQueryRow> rows = total == null || total <= 0
             ? new ArrayList<>()
             : precomputeMapper.selectDiagnosisRecordRows(tenantId, actual, offset, pageSize);
@@ -37,6 +38,8 @@ public class DiagnosisRecordService {
         if ((total == null || total <= 0) || rows == null || rows.isEmpty()) {
             Long looseTotal = precomputeMapper.countDiagnosisRecordRowsLoose(tenantId, actual);
             if (looseTotal != null && looseTotal > 0) {
+                pageSize = resolvePageSize(actual.getPageSize(), looseTotal, queryAll);
+                offset = queryAll ? 0 : (pageNum - 1) * pageSize;
                 rows = precomputeMapper.selectDiagnosisRecordRowsLoose(tenantId, actual, offset, pageSize);
                 total = looseTotal;
             }
@@ -48,6 +51,14 @@ public class DiagnosisRecordService {
         response.setPageNum(pageNum);
         response.setPageSize(pageSize);
         return response;
+    }
+
+    private int resolvePageSize(Integer requestPageSize, Long total, boolean queryAll) {
+        if (queryAll) {
+            long safeTotal = total == null ? 0L : total;
+            return (int) Math.max(1L, Math.min(safeTotal, Integer.MAX_VALUE));
+        }
+        return requestPageSize == null || requestPageSize < 1 ? 20 : Math.min(requestPageSize, 200);
     }
 
     private String resolveTenantId() {

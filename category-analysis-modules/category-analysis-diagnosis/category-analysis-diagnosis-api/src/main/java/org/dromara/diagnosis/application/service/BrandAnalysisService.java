@@ -11,14 +11,18 @@ import org.dromara.diagnosis.api.response.BrandOverviewResponse;
 import org.dromara.diagnosis.api.response.BrandRankingItemResponse;
 import org.dromara.diagnosis.api.response.BrandRankingResponse;
 import org.dromara.diagnosis.api.response.BrandSalesShareItemResponse;
+import org.dromara.diagnosis.api.response.BrandSkuDetailPageResponse;
 import org.dromara.diagnosis.api.response.BrandSkuSalesChangeItemResponse;
+import org.dromara.diagnosis.api.response.LegacyClassSalesListItemResponse;
 import org.dromara.diagnosis.application.config.DiagnosisCacheProperties;
 import org.dromara.diagnosis.application.model.DiagnosisSessionCacheModel;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisBrandMapper;
+import org.dromara.diagnosis.infrastructure.mapper.DiagnosisCategorySalesListMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisPrecomputeMapper;
 import org.dromara.diagnosis.infrastructure.mapper.DiagnosisSnapshotMapper;
+import org.dromara.diagnosis.infrastructure.model.DiagnosisCategorySalesSkuRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisBrandJsonRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisBrandMetricRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisBrandOverviewRow;
@@ -50,6 +54,7 @@ public class BrandAnalysisService {
     private final DiagnosisCacheProperties cacheProperties;
     private final DiagnosisPrecomputeMapper precomputeMapper;
     private final DiagnosisBrandMapper brandMapper;
+    private final DiagnosisCategorySalesListMapper categorySalesListMapper;
 
     public BrandOverviewResponse getOverview(String sessionId) {
         DiagnosisSessionCacheModel session = getSession(sessionId);
@@ -166,6 +171,46 @@ public class BrandAnalysisService {
         return response;
     }
 
+    public BrandSkuDetailPageResponse getBrandSkuList(String sessionId,
+                                                      List<String> brandList,
+                                                      List<String> statusList,
+                                                      String promotion,
+                                                      Integer page,
+                                                      Integer size,
+                                                      String order,
+                                                      String orderType) {
+        DiagnosisSessionCacheModel session = getSession(sessionId);
+        resolveOverviewSnapshot(sessionId, session);
+
+        int actualPage = page == null || page < 1 ? 1 : page;
+        int actualSize = size == null || size < 1 ? 10 : Math.min(size, 200);
+        int offset = (actualPage - 1) * actualSize;
+        String actualOrderBy = CATEGORY_SALES_ORDER_MAPPING.getOrDefault(order, "sales");
+        String actualOrderType = "asc".equalsIgnoreCase(orderType) ? "ASC" : "DESC";
+        String promotionFlag = resolvePromotionFlag(promotion);
+        List<String> normalizedStatusList = normalizeStatusList(statusList);
+        List<String> normalizedBrandList = normalizeTextList(brandList);
+
+        Long total = categorySalesListMapper.countSku(
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, normalizedStatusList, normalizedBrandList);
+        List<DiagnosisCategorySalesSkuRow> rows = categorySalesListMapper.selectSkuPage(
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, normalizedStatusList, normalizedBrandList,
+            actualOrderBy, actualOrderType, offset, actualSize);
+
+        List<LegacyClassSalesListItemResponse> records = new ArrayList<>();
+        for (DiagnosisCategorySalesSkuRow row : rows == null ? List.<DiagnosisCategorySalesSkuRow>of() : rows) {
+            records.add(toSkuDetailItem(row));
+        }
+
+        BrandSkuDetailPageResponse response = new BrandSkuDetailPageResponse();
+        response.setRecords(records);
+        response.setTotal(total == null ? 0L : total);
+        response.setCurrent(actualPage);
+        response.setSize(actualSize);
+        response.setPages((int) ((response.getTotal() + actualSize - 1) / actualSize));
+        return response;
+    }
+
     private DiagnosisSessionCacheModel getSession(String sessionId) {
         DiagnosisSessionCacheModel model = sessionCacheStore.get(sessionId);
         if (model == null) {
@@ -271,6 +316,50 @@ public class BrandAnalysisService {
         return item;
     }
 
+    private LegacyClassSalesListItemResponse toSkuDetailItem(DiagnosisCategorySalesSkuRow row) {
+        LegacyClassSalesListItemResponse item = new LegacyClassSalesListItemResponse();
+        item.setProductNo(row.getProductNo());
+        item.setProductName(row.getProductName());
+        item.setProductStatus(row.getProductStatus());
+        item.setProductStatusNo(row.getProductStatusNo());
+        item.setStoreNum(row.getStoreNum());
+        item.setSaleQuantity(scale4(row.getSaleQuantity()));
+        item.setSaleQuantityPsd(scale4(row.getSaleQuantityPsd()));
+        item.setSales(scale4(row.getSales()));
+        item.setSalesPer(scale4(row.getSalesPer()));
+        item.setSalesPsd(scale4(row.getSalesPsd()));
+        item.setGross(scale4(row.getGross()));
+        item.setGrossPer(scale4(row.getGrossPer()));
+        item.setGrossPsd(scale4(row.getGrossPsd()));
+        item.setGrossRate(scale4(row.getGrossRate()));
+        item.setStockQuantity(scale4(row.getStockQuantity()));
+        item.setTurnoverRate(scale4(row.getTurnoverRate()));
+        item.setTurnoverDays(scale4(row.getTurnoverDays()));
+        item.setStockSalesRate(scale4(row.getStockSalesRate()));
+        item.setContributionRate(scale4(row.getContributionRate()));
+        item.setGmroi(scale4(row.getGmroi()));
+        item.setSalesRate(scale4(row.getSalesRate()));
+        item.setActivity(row.getActivity());
+        item.setFirstSaleDate(row.getFirstSaleDate());
+        item.setNewProduct(row.getNewProduct());
+        item.setKeyProduct(row.getKeyProduct());
+        item.setSeasonableFlag(row.getSeasonableFlag());
+        item.setSeasonableFlagName(row.getSeasonableFlagName());
+        item.setSeasonableStartDate(row.getSeasonableStartDate());
+        item.setSeasonableEndDate(row.getSeasonableEndDate());
+        item.setClassNo(row.getClassNo());
+        item.setClassName(row.getClassName());
+        item.setProductBarcode(row.getProductBarcode());
+        item.setBrandName(row.getBrandName());
+        item.setSpec(row.getSpec());
+        item.setInPrice(scale4(row.getInPrice()));
+        item.setSalesPrice(scale4(row.getSalesPrice()));
+        item.setProductVendorNo(row.getProductVendorNo());
+        item.setProductVendorName(row.getProductVendorName());
+        item.setProductVendorNoName(row.getProductVendorNoName());
+        return item;
+    }
+
     private static Map<String, String> buildRankingMapping() {
         Map<String, String> mapping = new LinkedHashMap<>();
         mapping.put("1", "sales");
@@ -300,6 +389,41 @@ public class BrandAnalysisService {
         return mapping;
     }
 
+    private static final Map<String, String> CATEGORY_SALES_ORDER_MAPPING = buildCategorySalesOrderMapping();
+
+    private static Map<String, String> buildCategorySalesOrderMapping() {
+        Map<String, String> map = new LinkedHashMap<>();
+        map.put("productNo", "product_no");
+        map.put("productName", "product_name");
+        map.put("productStatus", "product_status");
+        map.put("storeNum", "store_num");
+        map.put("saleQuantity", "sale_quantity");
+        map.put("saleQuantityPsd", "sale_quantity_psd");
+        map.put("sales", "sales");
+        map.put("salesPer", "sales_per");
+        map.put("salesPsd", "sales_psd");
+        map.put("gross", "gross");
+        map.put("grossPer", "gross_per");
+        map.put("grossPsd", "gross_psd");
+        map.put("grossRate", "gross_rate");
+        map.put("stockQuantity", "stock_quantity");
+        map.put("turnoverRate", "turnover_rate");
+        map.put("turnoverDays", "turnover_days");
+        map.put("stockSalesRate", "stock_sales_rate");
+        map.put("contributionRate", "contribution_rate");
+        map.put("gmroi", "gmroi");
+        map.put("salesRate", "sales_rate");
+        map.put("activity", "activity");
+        map.put("firstSaleDate", "first_sale_date");
+        map.put("brandName", "brand_name");
+        map.put("spec", "spec");
+        map.put("inPrice", "in_price");
+        map.put("salesPrice", "sales_price");
+        map.put("productVendorNo", "product_vendor_no");
+        map.put("productVendorName", "product_vendor_name");
+        return map;
+    }
+
     private List<DiagnosisBrandMetricRow> safeList(List<DiagnosisBrandMetricRow> rows) {
         return rows == null ? List.of() : rows;
     }
@@ -310,5 +434,32 @@ public class BrandAnalysisService {
 
     private boolean hasText(String value) {
         return value != null && !value.isBlank();
+    }
+
+    private String resolvePromotionFlag(String promotion) {
+        if (!hasText(promotion) || "0".equals(promotion)) {
+            return null;
+        }
+        return "1".equals(promotion) ? "1" : "2";
+    }
+
+    private List<String> normalizeStatusList(List<String> statusList) {
+        List<String> result = statusList == null ? new ArrayList<>() : new ArrayList<>(statusList);
+        result.remove("-1");
+        result.removeIf(item -> item == null || item.isBlank());
+        return result;
+    }
+
+    private List<String> normalizeTextList(List<String> values) {
+        List<String> result = new ArrayList<>();
+        if (values == null) {
+            return result;
+        }
+        for (String value : values) {
+            if (hasText(value)) {
+                result.add(value.trim());
+            }
+        }
+        return result;
     }
 }

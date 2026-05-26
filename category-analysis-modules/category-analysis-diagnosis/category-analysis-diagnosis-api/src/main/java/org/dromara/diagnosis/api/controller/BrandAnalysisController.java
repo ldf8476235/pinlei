@@ -6,6 +6,7 @@ import org.dromara.diagnosis.api.response.BrandFilterOptionsResponse;
 import org.dromara.diagnosis.api.response.BrandOverviewResponse;
 import org.dromara.diagnosis.api.response.BrandRankingResponse;
 import org.dromara.diagnosis.api.response.BrandSalesShareItemResponse;
+import org.dromara.diagnosis.api.response.BrandSkuDetailPageResponse;
 import org.dromara.diagnosis.api.response.BrandSkuSalesChangeItemResponse;
 import org.dromara.diagnosis.application.service.BrandAnalysisService;
 import org.dromara.diagnosis.common.model.DiagnosisApiResponse;
@@ -59,6 +60,20 @@ public class BrandAnalysisController {
                                                                       @RequestParam(value = "orderType", required = false) String orderType) {
         return DiagnosisApiResponse.ok(
             brandAnalysisService.getBrandList(sessionId, brandTypeList, brandList, newBrandType, page, size, order, orderType),
+            nextRequestId());
+    }
+
+    @GetMapping("/sku-list")
+    public DiagnosisApiResponse<BrandSkuDetailPageResponse> getBrandSkuList(@RequestParam("sessionId") String sessionId,
+                                                                             @RequestParam(value = "brandList", required = false) List<String> brandList,
+                                                                             @RequestParam(value = "status", required = false) List<String> status,
+                                                                             @RequestParam(value = "promotion", required = false) String promotion,
+                                                                             @RequestParam(value = "page", required = false) Integer page,
+                                                                             @RequestParam(value = "size", required = false) Integer size,
+                                                                             @RequestParam(value = "order", required = false) String order,
+                                                                             @RequestParam(value = "orderType", required = false) String orderType) {
+        return DiagnosisApiResponse.ok(
+            brandAnalysisService.getBrandSkuList(sessionId, brandList, status, promotion, page, size, order, orderType),
             nextRequestId());
     }
 

@@ -379,6 +379,9 @@
     <sql id="diagnosisRecordWhere">
         WHERE j.tenant_id = #{tenantId}
           AND j.module_code = 'DIAGNOSIS'
+          <if test="req.classLevel != null">
+              AND reqj.classLevel = #{req.classLevel}
+          </if>
           <if test="req.classNos != null and req.classNos.size() > 0">
               AND reqj.classNo IN
               <foreach collection="req.classNos" item="classNo" open="(" separator="," close=")">
@@ -411,6 +414,12 @@
           </if>
           <if test="req.compareEnd != null">
               AND CONVERT(date, w.compare_end) = #{req.compareEnd}
+          </if>
+          <if test="req.createStart != null">
+              AND COALESCE(j.submitted_time, j.create_time) &gt;= #{req.createStart}
+          </if>
+          <if test="req.createEnd != null">
+              AND COALESCE(j.submitted_time, j.create_time) &lt; DATEADD(day, 1, #{req.createEnd})
           </if>
     </sql>
 
@@ -611,6 +620,9 @@
               AND w.job_id = j.job_id
         WHERE j.tenant_id = #{tenantId}
           AND j.module_code = 'DIAGNOSIS'
+          <if test="req.classLevel != null">
+              AND TRY_CAST(JSON_VALUE(j.request_json, '$.classLevel') AS INT) = #{req.classLevel}
+          </if>
           <if test="req.classNos != null and req.classNos.size() > 0">
               AND JSON_VALUE(j.request_json, '$.classNo') IN
               <foreach collection="req.classNos" item="classNo" open="(" separator="," close=")">
@@ -643,6 +655,12 @@
           </if>
           <if test="req.compareEnd != null">
               AND CONVERT(date, w.compare_end) = #{req.compareEnd}
+          </if>
+          <if test="req.createStart != null">
+              AND COALESCE(j.submitted_time, j.create_time) &gt;= #{req.createStart}
+          </if>
+          <if test="req.createEnd != null">
+              AND COALESCE(j.submitted_time, j.create_time) &lt; DATEADD(day, 1, #{req.createEnd})
           </if>
     </select>
 
@@ -693,6 +711,9 @@
         ) snapshotInfo
         WHERE j.tenant_id = #{tenantId}
           AND j.module_code = 'DIAGNOSIS'
+          <if test="req.classLevel != null">
+              AND TRY_CAST(JSON_VALUE(j.request_json, '$.classLevel') AS INT) = #{req.classLevel}
+          </if>
           <if test="req.classNos != null and req.classNos.size() > 0">
               AND JSON_VALUE(j.request_json, '$.classNo') IN
               <foreach collection="req.classNos" item="classNo" open="(" separator="," close=")">
@@ -725,6 +746,12 @@
           </if>
           <if test="req.compareEnd != null">
               AND w.compare_end = #{req.compareEnd}
+          </if>
+          <if test="req.createStart != null">
+              AND COALESCE(j.submitted_time, j.create_time) &gt;= #{req.createStart}
+          </if>
+          <if test="req.createEnd != null">
+              AND COALESCE(j.submitted_time, j.create_time) &lt; DATEADD(day, 1, #{req.createEnd})
           </if>
         ORDER BY COALESCE(j.submitted_time, j.create_time) DESC, j.job_id DESC
         OFFSET #{offset} ROWS FETCH NEXT #{limit} ROWS ONLY

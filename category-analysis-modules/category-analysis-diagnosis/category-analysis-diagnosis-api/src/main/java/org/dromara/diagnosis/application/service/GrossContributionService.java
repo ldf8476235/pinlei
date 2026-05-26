@@ -52,7 +52,7 @@ public class GrossContributionService {
             rows = List.of();
         }
 
-        BigDecimal avgGrowthRate = BigDecimal.ZERO;
+        BigDecimal avgSalesPer = BigDecimal.ZERO;
         BigDecimal avgGrossRate = BigDecimal.ZERO;
         BigDecimal minGrossRate = null;
         BigDecimal maxGrossRate = null;
@@ -64,14 +64,14 @@ public class GrossContributionService {
             item.setProductNo(row.getProductNo());
             item.setProductName(row.getProductName());
             item.setSales(scale2(row.getSales()));
-            item.setSalesPer(scale2(row.getCurrentGrowthRate()));
+            item.setSalesPer(scale2(row.getSalesPer()));
             item.setGross(scale2(row.getGross()));
             item.setGrossRate(scale2(row.getGrossRate()));
             list.add(item);
 
-            BigDecimal currentGrowth = nvl(row.getCurrentGrowthRate());
+            BigDecimal currentSalesPer = nvl(row.getSalesPer());
             BigDecimal currentGrossRate = nvl(row.getGrossRate());
-            avgGrowthRate = avgGrowthRate.add(currentGrowth);
+            avgSalesPer = avgSalesPer.add(currentSalesPer);
             avgGrossRate = avgGrossRate.add(currentGrossRate);
             minGrossRate = minGrossRate == null ? currentGrossRate : minGrossRate.min(currentGrossRate);
             maxGrossRate = maxGrossRate == null ? currentGrossRate : maxGrossRate.max(currentGrossRate);
@@ -80,7 +80,7 @@ public class GrossContributionService {
 
         LegacyGrossFourQuadrantResponse response = new LegacyGrossFourQuadrantResponse();
         response.setSalesPer(count == 0 ? BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP)
-            : avgGrowthRate.divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP));
+            : avgSalesPer.divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP));
         response.setGross(count == 0 ? BigDecimal.ZERO.setScale(2, RoundingMode.HALF_UP)
             : avgGrossRate.divide(BigDecimal.valueOf(count), 2, RoundingMode.HALF_UP));
         response.setList(list);

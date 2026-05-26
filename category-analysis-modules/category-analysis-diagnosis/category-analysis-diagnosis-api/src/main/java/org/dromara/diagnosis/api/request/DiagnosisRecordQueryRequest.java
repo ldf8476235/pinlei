@@ -34,6 +34,10 @@ public class DiagnosisRecordQueryRequest {
 
     private LocalDate compareEnd;
 
+    private LocalDate createStart;
+
+    private LocalDate createEnd;
+
     private String orderByColumn;
 
     private String isAsc;

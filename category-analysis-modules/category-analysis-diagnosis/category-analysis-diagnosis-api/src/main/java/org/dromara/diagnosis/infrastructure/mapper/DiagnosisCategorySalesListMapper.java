@@ -21,13 +21,15 @@ public interface DiagnosisCategorySalesListMapper {
                   @Param("queryHash") String queryHash,
                   @Param("dataVersion") String dataVersion,
                   @Param("promotionFlag") String promotionFlag,
-                  @Param("statusList") List<String> statusList);
+                  @Param("statusList") List<String> statusList,
+                  @Param("brandList") List<String> brandList);
 
     List<DiagnosisCategorySalesSkuRow> selectSkuPage(@Param("tenantId") String tenantId,
                                                      @Param("queryHash") String queryHash,
                                                      @Param("dataVersion") String dataVersion,
                                                      @Param("promotionFlag") String promotionFlag,
                                                      @Param("statusList") List<String> statusList,
+                                                     @Param("brandList") List<String> brandList,
                                                      @Param("orderBy") String orderBy,
                                                      @Param("orderType") String orderType,
                                                      @Param("offset") int offset,

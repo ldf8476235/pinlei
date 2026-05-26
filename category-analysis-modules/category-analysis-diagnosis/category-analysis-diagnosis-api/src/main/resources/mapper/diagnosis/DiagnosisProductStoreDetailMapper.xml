@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisProductStoreDetailMapper">
+
+    <sql id="classFilterSalesForStoreDetail">
+        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <choose>
+                <when test="param.classLevel == 1">AND f.one_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 2">AND f.two_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 3">AND f.three_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 4">AND f.four_class_no = #{param.classNo}</when>
+                <otherwise>
+                    AND (
+                        f.one_class_no = #{param.classNo}
+                        OR f.two_class_no = #{param.classNo}
+                        OR f.three_class_no = #{param.classNo}
+                        OR f.four_class_no = #{param.classNo}
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="storeFilterSalesForStoreDetail">
+        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+            AND f.store_no = #{param.storeNo}
+        </if>
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+            and (
+                (param.deptId != null and param.deptId != '' and param.deptId != '0')
+                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
+                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
+                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+            )">
+            AND EXISTS (
+                SELECT 1
+                FROM base_department bd
+                WHERE bd.store_no = f.store_no
+                  AND bd.status_no = 1
+                  AND bd.store_type_no = '1'
+                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                    AND bd.preorgcode = #{param.deptId}
+                </if>
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                    AND bd.store_format_no = #{param.retailTypeId}
+                </if>
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                    AND bd.business_circle_no = #{param.businessCircleId}
+                </if>
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                    AND bd.store_group_no = #{param.deptGroupId}
+                </if>
+            )
+        </if>
+    </sql>
+
+    <sql id="classFilterStockForStoreDetail">
+        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <choose>
+                <when test="param.classLevel == 1">AND s.one_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 2">AND s.two_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 3">AND s.three_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 4">AND s.four_class_no = #{param.classNo}</when>
+                <otherwise>
+                    AND (
+                        s.one_class_no = #{param.classNo}
+                        OR s.two_class_no = #{param.classNo}
+                        OR s.three_class_no = #{param.classNo}
+                        OR s.four_class_no = #{param.classNo}
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="storeFilterStockForStoreDetail">
+        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+            AND s.store_no = #{param.storeNo}
+        </if>
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+            and (
+                (param.deptId != null and param.deptId != '' and param.deptId != '0')
+                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
+                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
+                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+            )">
+            AND EXISTS (
+                SELECT 1
+                FROM base_department bd
+                WHERE bd.store_no = s.store_no
+                  AND bd.status_no = 1
+                  AND bd.store_type_no = '1'
+                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                    AND bd.preorgcode = #{param.deptId}
+                </if>
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                    AND bd.store_format_no = #{param.retailTypeId}
+                </if>
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                    AND bd.business_circle_no = #{param.businessCircleId}
+                </if>
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                    AND bd.store_group_no = #{param.deptGroupId}
+                </if>
+            )
+        </if>
+    </sql>
+
+    <sql id="classFilterProductForStoreDetail">
+        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <choose>
+                <when test="param.classLevel == 1">AND p.one_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 2">AND p.two_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 3">AND p.three_class_no = #{param.classNo}</when>
+                <when test="param.classLevel == 4">AND p.four_class_no = #{param.classNo}</when>
+                <otherwise>
+                    AND (
+                        p.one_class_no = #{param.classNo}
+                        OR p.two_class_no = #{param.classNo}
+                        OR p.three_class_no = #{param.classNo}
+                        OR p.four_class_no = #{param.classNo}
+                    )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+
+    <sql id="storeFilterProductForStoreDetail">
+        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+            AND p.store_no = #{param.storeNo}
+        </if>
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+            and (
+                (param.deptId != null and param.deptId != '' and param.deptId != '0')
+                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
+                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
+                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+            )">
+            AND EXISTS (
+                SELECT 1
+                FROM base_department bd
+                WHERE bd.store_no = p.store_no
+                  AND bd.status_no = 1
+                  AND bd.store_type_no = '1'
+                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                    AND bd.preorgcode = #{param.deptId}
+                </if>
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                    AND bd.store_format_no = #{param.retailTypeId}
+                </if>
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                    AND bd.business_circle_no = #{param.businessCircleId}
+                </if>
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                    AND bd.store_group_no = #{param.deptGroupId}
+                </if>
+            )
+        </if>
+    </sql>
+
+    <sql id="storeDetailWith">
+        WITH sales_base AS (
+            SELECT
+                f.store_no AS storeNo,
+                MAX(f.store_name) AS storeName,
+                ISNULL(SUM(CAST(f.sale_quantity AS DECIMAL(20, 6))), 0) AS saleQuantity,
+                ISNULL(SUM(CAST(f.sales AS DECIMAL(20, 6))), 0) AS sales,
+                ISNULL(SUM(CAST(f.gross AS DECIMAL(20, 6))), 0) AS gross,
+                ISNULL(SUM(CAST(f.sale_cost AS DECIMAL(20, 6))), 0) AS saleCost,
+                CASE WHEN MAX(CASE WHEN ISNULL(LTRIM(RTRIM(f.cx_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN 1 ELSE 0 END) = 1
+                     THEN N'是' ELSE N'否' END AS activity,
+                MIN(f.sale_date) AS firstSaleDate
+            FROM fact_sales_day f
+            WHERE f.sale_date &gt;= #{param.periodStart}
+              AND f.sale_date &lt;= #{param.periodEnd}
+              AND f.product_no = #{productNo}
+              AND f.sales &gt; 0
+              <include refid="classFilterSalesForStoreDetail"/>
+              <include refid="storeFilterSalesForStoreDetail"/>
+            GROUP BY f.store_no
+        ),
+        stock_base AS (
+            SELECT
+                s.store_no AS storeNo,
+                ISNULL(SUM(CAST(s.stock_quantity AS DECIMAL(20, 6))), 0) AS stockQuantity
+            FROM fact_stock_day s
+            WHERE s.stock_date = #{stockDate}
+              AND s.product_no = #{productNo}
+              <include refid="classFilterStockForStoreDetail"/>
+              <include refid="storeFilterStockForStoreDetail"/>
+            GROUP BY s.store_no
+        ),
+        meta_base AS (
+            SELECT
+                p.store_no AS storeNo,
+                MAX(p.store_name) AS storeName,
+                MAX(p.status_name) AS productStatus,
+                CAST(MAX(CAST(ISNULL(p.status_no, 0) AS INT)) AS NVARCHAR(20)) AS productStatusNo
+            FROM base_dept_products p
+            WHERE p.product_no = #{productNo}
+              <include refid="classFilterProductForStoreDetail"/>
+              <include refid="storeFilterProductForStoreDetail"/>
+            GROUP BY p.store_no
+        ),
+        detail_base AS (
+            SELECT
+                sales_base.storeNo,
+                COALESCE(meta_base.storeName, sales_base.storeName) AS storeName,
+                ISNULL(meta_base.productStatus, N'未知') AS productStatus,
+                ISNULL(meta_base.productStatusNo, N'0') AS productStatusNo,
+                sales_base.saleQuantity,
+                sales_base.sales,
+                sales_base.gross,
+                sales_base.saleCost,
+                ISNULL(stock_base.stockQuantity, 0) AS stockQuantity,
+                sales_base.activity,
+                sales_base.firstSaleDate
+            FROM sales_base
+            LEFT JOIN stock_base ON stock_base.storeNo = sales_base.storeNo
+            LEFT JOIN meta_base ON meta_base.storeNo = sales_base.storeNo
+            WHERE 1 = 1
+            <if test="statusList != null and statusList.size() &gt; 0">
+                AND ISNULL(meta_base.productStatusNo, N'0') IN
+                <foreach collection="statusList" item="item" open="(" separator="," close=")">
+                    #{item}
+                </foreach>
+            </if>
+            <if test="storeKeyword != null and storeKeyword != ''">
+                AND (
+                    sales_base.storeNo LIKE CONCAT('%', #{storeKeyword}, '%')
+                    OR COALESCE(meta_base.storeName, sales_base.storeName) LIKE CONCAT('%', #{storeKeyword}, '%')
+                )
+            </if>
+        )
+    </sql>
+
+    <select id="countStoreDetails" resultType="java.lang.Long">
+        <include refid="storeDetailWith"/>
+        SELECT COUNT(1)
+        FROM detail_base
+    </select>
+
+    <select id="selectStoreDetailPage" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisProductStoreDetailRow">
+        <include refid="storeDetailWith"/>
+        SELECT
+            storeNo,
+            storeName,
+            productStatus,
+            productStatusNo,
+            saleQuantity,
+            sales,
+            gross,
+            saleCost,
+            stockQuantity,
+            activity,
+            firstSaleDate
+        FROM detail_base
+        ORDER BY ${orderBy} ${orderType}, storeNo ASC
+        OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY
+    </select>
+</mapper>
