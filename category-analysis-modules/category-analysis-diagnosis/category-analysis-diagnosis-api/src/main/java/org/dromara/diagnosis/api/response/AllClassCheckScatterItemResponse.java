@@ -21,4 +21,9 @@ public class AllClassCheckScatterItemResponse {
     private String classRoleName;
     private String classRoleType;
     private String classRoleTypeDescribe;
+    private String presetRole;
+    private String presetRoleName;
+    private String evaluatedRole;
+    private String evaluatedRoleName;
+    private Boolean roleWarning;
 }

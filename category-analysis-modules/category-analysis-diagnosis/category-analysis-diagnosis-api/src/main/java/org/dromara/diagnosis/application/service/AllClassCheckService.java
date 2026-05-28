@@ -111,7 +111,7 @@ public class AllClassCheckService {
         response.setWarn(warningCount);
         response.setScaleY(buildScaleY(minY, maxY));
         response.setXyData(xyData);
-        response.setList(filtered.stream().map(row -> toScatterItem(row, classLevel)).collect(Collectors.toList()));
+        response.setList(filtered.stream().map(row -> toScatterItem(row, classLevel, avgX, avgY, roleMap)).collect(Collectors.toList()));
         return response;
     }
 
@@ -493,7 +493,7 @@ public class AllClassCheckService {
         return item;
     }
 
-    private AllClassCheckScatterItemResponse toScatterItem(ClassAggRow row, int classLevel) {
+    private AllClassCheckScatterItemResponse toScatterItem(ClassAggRow row, int classLevel, BigDecimal splitX, BigDecimal splitY, Map<String, String> presetRoleMap) {
         AllClassCheckScatterItemResponse item = new AllClassCheckScatterItemResponse();
         item.setClassNo(row.classNo);
         item.setClassName(row.className);
@@ -506,35 +506,46 @@ public class AllClassCheckService {
         item.setContributionRatePer(row.contributionRatePer);
         item.setSalesPer(row.salesPer);
         fillRole(item, row.roleCode);
+        String presetRole = normalizeRoleCode(presetRoleMap.get(row.classNo));
+        String evaluatedRole = resolveMetricRoleCode(row, splitX, splitY);
+        item.setPresetRole(presetRole);
+        item.setPresetRoleName(roleName(presetRole));
+        item.setEvaluatedRole(evaluatedRole);
+        item.setEvaluatedRoleName(roleName(evaluatedRole));
+        item.setRoleWarning(hasText(presetRole) && hasText(evaluatedRole) && !presetRole.equals(evaluatedRole));
         return item;
     }
 
     private void fillRole(AllClassCheckSalesChangeItemResponse item, String roleCode) {
         item.setClassRole(roleCode);
-        item.setClassRoleName(ROLE_NAME_MAP.get(roleCode));
+        item.setClassRoleName(roleName(roleCode));
         item.setClassRoleType(resolveRoleType(roleCode));
         item.setClassRoleTypeDescribe(null);
     }
 
     private void fillRole(AllClassCheckScatterItemResponse item, String roleCode) {
         item.setClassRole(roleCode);
-        item.setClassRoleName(ROLE_NAME_MAP.get(roleCode));
+        item.setClassRoleName(roleName(roleCode));
         item.setClassRoleType(resolveRoleType(roleCode));
         item.setClassRoleTypeDescribe(null);
     }
 
     private void fillRole(AllClassCheckSkuItemResponse item, String roleCode) {
         item.setClassRole(roleCode);
-        item.setClassRoleName(ROLE_NAME_MAP.get(roleCode));
+        item.setClassRoleName(roleName(roleCode));
         item.setClassRoleType(resolveRoleType(roleCode));
         item.setClassRoleTypeDescribe(null);
     }
 
     private void fillRole(AllClassCheckSkuDifferItemResponse item, String roleCode) {
         item.setClassRole(roleCode);
-        item.setClassRoleName(ROLE_NAME_MAP.get(roleCode));
+        item.setClassRoleName(roleName(roleCode));
         item.setClassRoleType(resolveRoleType(roleCode));
         item.setClassRoleTypeDescribe(null);
+    }
+
+    private String roleName(String roleCode) {
+        return hasText(roleCode) ? ROLE_NAME_MAP.get(roleCode) : null;
     }
 
     private String resolveRoleType(String roleCode) {
