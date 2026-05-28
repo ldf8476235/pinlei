@@ -829,54 +829,135 @@
     </select>
 
     <select id="selectAbcProductMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceAbcProductMetaRow">
+        WITH sales_class_base AS (
+            SELECT
+                product_no AS productNo,
+                <choose>
+                    <when test="param.classLevel == 1">
+                        one_class_no AS classNo,
+                        one_class_name AS className,
+                        1 AS classLevel
+                    </when>
+                    <when test="param.classLevel == 2">
+                        two_class_no AS classNo,
+                        two_class_name AS className,
+                        2 AS classLevel
+                    </when>
+                    <when test="param.classLevel == 3">
+                        three_class_no AS classNo,
+                        three_class_name AS className,
+                        3 AS classLevel
+                    </when>
+                    <when test="param.classLevel == 4">
+                        four_class_no AS classNo,
+                        four_class_name AS className,
+                        4 AS classLevel
+                    </when>
+                    <otherwise>
+                        one_class_no AS classNo,
+                        one_class_name AS className,
+                        1 AS classLevel
+                    </otherwise>
+                </choose>,
+                ISNULL(SUM(CAST(sales AS DECIMAL(20, 6))), 0) AS classSales
+            FROM fact_sales_day
+            WHERE sale_date &gt;= #{param.periodStart}
+              AND sale_date &lt;= #{param.periodEnd}
+              <include refid="classFilterSales"/>
+              <include refid="storeFilterSales"/>
+            GROUP BY
+                product_no,
+                <choose>
+                    <when test="param.classLevel == 1">
+                        one_class_no, one_class_name
+                    </when>
+                    <when test="param.classLevel == 2">
+                        two_class_no, two_class_name
+                    </when>
+                    <when test="param.classLevel == 3">
+                        three_class_no, three_class_name
+                    </when>
+                    <when test="param.classLevel == 4">
+                        four_class_no, four_class_name
+                    </when>
+                    <otherwise>
+                        one_class_no, one_class_name
+                    </otherwise>
+                </choose>
+        ),
+        sales_class_rank AS (
+            SELECT
+                productNo,
+                classNo,
+                className,
+                classLevel,
+                ROW_NUMBER() OVER (PARTITION BY productNo ORDER BY classSales DESC, classNo ASC) AS rn
+            FROM sales_class_base
+            WHERE classNo IS NOT NULL AND LTRIM(RTRIM(classNo)) &lt;&gt; ''
+        ),
+        product_meta_rank AS (
+            SELECT
+                p.*,
+                s.classNo AS salesClassNo,
+                s.className AS salesClassName,
+                s.classLevel AS salesClassLevel,
+                ROW_NUMBER() OVER (
+                    PARTITION BY p.product_no
+                    ORDER BY CASE WHEN s.productNo IS NULL THEN 1 ELSE 0 END, p.store_no ASC
+                ) AS rn
+            FROM base_dept_products p
+            LEFT JOIN sales_class_rank s
+              ON s.productNo = p.product_no
+             AND s.rn = 1
+            WHERE 1 = 1
+              <include refid="classFilterDeptProducts"/>
+              <include refid="storeFilterDeptProducts"/>
+        )
         SELECT
             p.product_no AS productNo,
-            MAX(p.product_barcode) AS productBarcode,
-            MAX(p.product_name) AS productName,
-            MAX(p.status_name) AS productStatus,
-            CAST(MAX(CAST(ISNULL(p.status_no, 0) AS INT)) AS NVARCHAR(20)) AS productStatusNo,
-            MAX(p.product_brand) AS brandName,
-            MAX(p.product_spec) AS spec,
-            ISNULL(MAX(CAST(p.product_taxin_inprice AS DECIMAL(20, 6))), 0) AS inPrice,
-            ISNULL(MAX(CAST(p.product_saleprice AS DECIMAL(20, 6))), 0) AS salesPrice,
-            MAX(p.seasonable_flag) AS seasonableFlag,
-            CASE WHEN MAX(CASE WHEN ISNULL(LTRIM(RTRIM(p.seasonable_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE') THEN 1 ELSE 0 END) = 1
+            p.product_barcode AS productBarcode,
+            p.product_name AS productName,
+            p.status_name AS productStatus,
+            CAST(ISNULL(p.status_no, 0) AS NVARCHAR(20)) AS productStatusNo,
+            p.product_brand AS brandName,
+            p.product_spec AS spec,
+            ISNULL(CAST(p.product_taxin_inprice AS DECIMAL(20, 6)), 0) AS inPrice,
+            ISNULL(CAST(p.product_saleprice AS DECIMAL(20, 6)), 0) AS salesPrice,
+            p.seasonable_flag AS seasonableFlag,
+            CASE WHEN ISNULL(LTRIM(RTRIM(p.seasonable_flag)), '0') IN ('1', 'Y', 'y', 'true', 'TRUE')
                 THEN N'是' ELSE N'否' END AS seasonableFlagName,
-            MAX(CAST(p.seasonable_start_date AS DATE)) AS seasonableStartDate,
-            MAX(CAST(p.seasonable_end_date AS DATE)) AS seasonableEndDate,
-            MAX(CAST(p.first_order_date AS DATE)) AS firstSaleDate,
+            CAST(p.seasonable_start_date AS DATE) AS seasonableStartDate,
+            CAST(p.seasonable_end_date AS DATE) AS seasonableEndDate,
+            CAST(p.first_order_date AS DATE) AS firstSaleDate,
             <choose>
                 <when test="param.classLevel == 1">
-                    MAX(p.one_class_no) AS classNo,
-                    MAX(p.one_class_name) AS className,
-                    1 AS classLevel
+                    COALESCE(p.salesClassNo, p.one_class_no) AS classNo,
+                    COALESCE(p.salesClassName, p.one_class_name) AS className,
+                    COALESCE(p.salesClassLevel, 1) AS classLevel
                 </when>
                 <when test="param.classLevel == 2">
-                    MAX(p.two_class_no) AS classNo,
-                    MAX(p.two_class_name) AS className,
-                    2 AS classLevel
+                    COALESCE(p.salesClassNo, p.two_class_no) AS classNo,
+                    COALESCE(p.salesClassName, p.two_class_name) AS className,
+                    COALESCE(p.salesClassLevel, 2) AS classLevel
                 </when>
                 <when test="param.classLevel == 3">
-                    MAX(p.three_class_no) AS classNo,
-                    MAX(p.three_class_name) AS className,
-                    3 AS classLevel
+                    COALESCE(p.salesClassNo, p.three_class_no) AS classNo,
+                    COALESCE(p.salesClassName, p.three_class_name) AS className,
+                    COALESCE(p.salesClassLevel, 3) AS classLevel
                 </when>
                 <when test="param.classLevel == 4">
-                    MAX(p.four_class_no) AS classNo,
-                    MAX(p.four_class_name) AS className,
-                    4 AS classLevel
+                    COALESCE(p.salesClassNo, p.four_class_no) AS classNo,
+                    COALESCE(p.salesClassName, p.four_class_name) AS className,
+                    COALESCE(p.salesClassLevel, 4) AS classLevel
                 </when>
                 <otherwise>
-                    MAX(p.one_class_no) AS classNo,
-                    MAX(p.one_class_name) AS className,
-                    1 AS classLevel
+                    COALESCE(p.salesClassNo, p.one_class_no) AS classNo,
+                    COALESCE(p.salesClassName, p.one_class_name) AS className,
+                    COALESCE(p.salesClassLevel, 1) AS classLevel
                 </otherwise>
             </choose>
-        FROM base_dept_products p
-        WHERE 1 = 1
-          <include refid="classFilterDeptProducts"/>
-          <include refid="storeFilterDeptProducts"/>
-        GROUP BY p.product_no
+        FROM product_meta_rank p
+        WHERE p.rn = 1
     </select>
 
     <select id="selectProductVendorMeta" resultType="org.dromara.diagnosis.infrastructure.model.DiagnosisSourceProductVendorMetaRow">

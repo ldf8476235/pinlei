@@ -91,22 +91,25 @@ public class DiagnosisGmroiContributionFinalizeService {
 
             item.currentStockQuantity = nvl(currentStock == null ? null : currentStock.getStockQuantity());
             item.currentStockSaleMoney = nvl(currentStock == null ? null : currentStock.getStockSaleMoney());
+            item.compareStockQuantity = nvl(compareStock == null ? null : compareStock.getStockQuantity());
             item.compareStockSaleMoney = nvl(compareStock == null ? null : compareStock.getStockSaleMoney());
 
             item.currentGrossRate = percent(item.currentGross, item.currentSales);
             item.compareGrossRate = percent(item.compareGross, item.compareSales);
-            item.currentTurnoverRate = annualizeTurnoverRate(ratio(item.currentSales, item.currentStockSaleMoney), context.getPeriodDays());
-            item.compareTurnoverRate = annualizeTurnoverRate(ratio(item.compareSales, item.compareStockSaleMoney), context.getCompareDays());
-            item.currentGmroi = ratio(item.currentGross, item.currentStockSaleMoney);
-            item.compareGmroi = ratio(item.compareGross, item.compareStockSaleMoney);
+            item.currentTurnoverRate = turnoverRate(item.currentSales, item.currentStockQuantity, item.currentStockSaleMoney, context.getPeriodDays());
+            item.compareTurnoverRate = turnoverRate(item.compareSales, item.compareStockQuantity, item.compareStockSaleMoney, context.getCompareDays());
+            item.currentGmroi = inventoryReturn(item.currentGross, item.currentStockQuantity, item.currentStockSaleMoney);
+            item.compareGmroi = inventoryReturn(item.compareGross, item.compareStockQuantity, item.compareStockSaleMoney);
             item.currentGrowthRate = growthRate(item.currentSales, item.compareSales);
             item.compareGrowthRate = growthRate(item.compareSales, item.currentSales);
 
-            if (item.currentTurnoverRate.compareTo(BigDecimal.ZERO) != 0 || item.currentSales.compareTo(BigDecimal.ZERO) != 0) {
+            if (hasComputableInventory(item.currentStockQuantity, item.currentStockSaleMoney)
+                && (item.currentTurnoverRate.compareTo(BigDecimal.ZERO) != 0 || item.currentSales.compareTo(BigDecimal.ZERO) != 0)) {
                 currentTurnoverSum = currentTurnoverSum.add(item.currentTurnoverRate);
                 currentTurnoverCount++;
             }
-            if (item.compareTurnoverRate.compareTo(BigDecimal.ZERO) != 0 || item.compareSales.compareTo(BigDecimal.ZERO) != 0) {
+            if (hasComputableInventory(item.compareStockQuantity, item.compareStockSaleMoney)
+                && (item.compareTurnoverRate.compareTo(BigDecimal.ZERO) != 0 || item.compareSales.compareTo(BigDecimal.ZERO) != 0)) {
                 compareTurnoverSum = compareTurnoverSum.add(item.compareTurnoverRate);
                 compareTurnoverCount++;
             }
@@ -354,6 +357,25 @@ public class DiagnosisGmroiContributionFinalizeService {
         return nvl(numerator).divide(denominator, 6, RoundingMode.HALF_UP);
     }
 
+    private boolean hasComputableInventory(BigDecimal stockQuantity, BigDecimal stockSaleMoney) {
+        return nvl(stockQuantity).compareTo(BigDecimal.ZERO) > 0
+            && nvl(stockSaleMoney).compareTo(BigDecimal.ZERO) > 0;
+    }
+
+    private BigDecimal inventoryReturn(BigDecimal numerator, BigDecimal stockQuantity, BigDecimal stockSaleMoney) {
+        if (!hasComputableInventory(stockQuantity, stockSaleMoney)) {
+            return BigDecimal.ZERO;
+        }
+        return ratio(numerator, stockSaleMoney);
+    }
+
+    private BigDecimal turnoverRate(BigDecimal sales, BigDecimal stockQuantity, BigDecimal stockSaleMoney, long periodDays) {
+        if (!hasComputableInventory(stockQuantity, stockSaleMoney)) {
+            return BigDecimal.ZERO;
+        }
+        return annualizeTurnoverRate(ratio(sales, stockSaleMoney), periodDays);
+    }
+
     private BigDecimal annualizeTurnoverRate(BigDecimal periodTurnoverRate, long periodDays) {
         if (periodDays <= 0) {
             return BigDecimal.ZERO;
@@ -391,6 +413,7 @@ public class DiagnosisGmroiContributionFinalizeService {
         private BigDecimal compareQty = BigDecimal.ZERO;
         private BigDecimal currentStockQuantity = BigDecimal.ZERO;
         private BigDecimal currentStockSaleMoney = BigDecimal.ZERO;
+        private BigDecimal compareStockQuantity = BigDecimal.ZERO;
         private BigDecimal compareStockSaleMoney = BigDecimal.ZERO;
         private BigDecimal currentGrossRate = BigDecimal.ZERO;
         private BigDecimal compareGrossRate = BigDecimal.ZERO;

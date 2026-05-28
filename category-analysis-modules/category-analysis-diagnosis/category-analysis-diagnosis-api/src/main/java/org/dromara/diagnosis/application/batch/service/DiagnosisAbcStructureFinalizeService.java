@@ -341,9 +341,9 @@ public class DiagnosisAbcStructureFinalizeService {
                 rank++;
                 prev = metric;
             }
+            BigDecimal previousCumulativePer = percent(cumulative, total);
             cumulative = cumulative.add(metric);
-            BigDecimal cumulativePer = percent(cumulative, total);
-            String bucket = resolveBucket(cumulativePer, cfg);
+            String bucket = resolveBucketByPreviousCumulative(previousCumulativePer, cfg);
             if (current) {
                 item.currentRank = rank;
                 item.currentAbc = bucket;
@@ -354,13 +354,13 @@ public class DiagnosisAbcStructureFinalizeService {
         }
     }
 
-    private String resolveBucket(BigDecimal cumulativePer, DiagnosisAbcParamConfigRow cfg) {
+    private String resolveBucketByPreviousCumulative(BigDecimal previousCumulativePer, DiagnosisAbcParamConfigRow cfg) {
         BigDecimal a = nvl(cfg.getARate(), BigDecimal.ZERO);
         BigDecimal b = nvl(cfg.getBRate(), BigDecimal.ZERO);
-        if (cumulativePer.compareTo(a) <= 0) {
+        if (previousCumulativePer.compareTo(a) < 0) {
             return "A";
         }
-        if (cumulativePer.compareTo(a.add(b)) <= 0) {
+        if (previousCumulativePer.compareTo(a.add(b)) < 0) {
             return "B";
         }
         return "C";
