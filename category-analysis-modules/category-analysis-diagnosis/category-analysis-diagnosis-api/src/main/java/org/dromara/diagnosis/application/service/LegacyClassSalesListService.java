@@ -55,9 +55,9 @@ public class LegacyClassSalesListService {
         List<String> statusList = normalizeStatusList(request.getStatus());
 
         Long total = categorySalesListMapper.countSku(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, statusList, null);
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, statusList, null, null, null, null, false);
         List<DiagnosisCategorySalesSkuRow> rows = categorySalesListMapper.selectSkuPage(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, statusList, null,
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, statusList, null, null, null, null, false,
             actualOrderBy, actualOrderType, offset, actualSize);
 
         List<LegacyClassSalesListItemResponse> content = new ArrayList<>();

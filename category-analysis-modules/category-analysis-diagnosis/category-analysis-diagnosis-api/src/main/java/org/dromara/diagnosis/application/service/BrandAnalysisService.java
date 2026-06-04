@@ -173,8 +173,12 @@ public class BrandAnalysisService {
 
     public BrandSkuDetailPageResponse getBrandSkuList(String sessionId,
                                                       List<String> brandList,
+                                                      List<String> specList,
+                                                      String tagType,
+                                                      List<String> tagList,
                                                       List<String> statusList,
                                                       String promotion,
+                                                      Boolean activeOnly,
                                                       Integer page,
                                                       Integer size,
                                                       String order,
@@ -190,12 +194,21 @@ public class BrandAnalysisService {
         String promotionFlag = resolvePromotionFlag(promotion);
         List<String> normalizedStatusList = normalizeStatusList(statusList);
         List<String> normalizedBrandList = normalizeTextList(brandList);
+        List<String> normalizedSpecList = normalizeTextList(specList);
+        String normalizedTagType = hasText(tagType) ? tagType.trim() : null;
+        List<String> normalizedTagList = normalizeTextList(tagList);
+        if (!hasText(normalizedTagType) || normalizedTagList.contains("-1")) {
+            normalizedTagType = null;
+            normalizedTagList = List.of();
+        }
+        boolean onlyActiveSku = Boolean.TRUE.equals(activeOnly);
 
         Long total = categorySalesListMapper.countSku(
-            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, normalizedStatusList, normalizedBrandList);
+            TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, normalizedStatusList, normalizedBrandList,
+            normalizedSpecList, normalizedTagType, normalizedTagList, onlyActiveSku);
         List<DiagnosisCategorySalesSkuRow> rows = categorySalesListMapper.selectSkuPage(
             TENANT_ID, session.getQueryHash(), session.getDataVersion(), promotionFlag, normalizedStatusList, normalizedBrandList,
-            actualOrderBy, actualOrderType, offset, actualSize);
+            normalizedSpecList, normalizedTagType, normalizedTagList, onlyActiveSku, actualOrderBy, actualOrderType, offset, actualSize);
 
         List<LegacyClassSalesListItemResponse> records = new ArrayList<>();
         for (DiagnosisCategorySalesSkuRow row : rows == null ? List.<DiagnosisCategorySalesSkuRow>of() : rows) {

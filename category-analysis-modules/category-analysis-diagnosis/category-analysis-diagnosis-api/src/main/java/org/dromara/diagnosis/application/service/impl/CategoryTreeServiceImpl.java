@@ -129,6 +129,7 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         String classNo = trim(request.getClassNo());
         String roleNo = trim(request.getRoleNo());
         Integer suggestSaleSku = request.getSuggestSaleSku();
+        Integer sysSuggestSaleSku = request.getSysSuggestSaleSku();
 
         if (!notBlank(storeNo)) {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "storeNo is required");
@@ -143,6 +144,12 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
             throw new DiagnosisBizException(
                 DiagnosisErrorCode.INVALID_ARGUMENT,
                 "suggestSaleSku must be an integer between 0 and " + SUGGEST_SKU_MAX
+            );
+        }
+        if (sysSuggestSaleSku == null || sysSuggestSaleSku < 0 || sysSuggestSaleSku > SUGGEST_SKU_MAX) {
+            throw new DiagnosisBizException(
+                DiagnosisErrorCode.INVALID_ARGUMENT,
+                "sysSuggestSaleSku must be an integer between 0 and " + SUGGEST_SKU_MAX
             );
         }
 
@@ -160,7 +167,7 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "roleNo is not in dictionary");
         }
 
-        categoryTreeMapper.upsertCategoryNodeConfig(storeNo, classNo, roleNo, suggestSaleSku);
+        categoryTreeMapper.upsertCategoryNodeConfig(storeNo, classNo, roleNo, suggestSaleSku, sysSuggestSaleSku);
 
         CategorySkuMetricRow row = categoryTreeMapper.selectCategoryNodeConfig(storeNo, classNo);
         CategoryNodeConfigUpdateResponse response = new CategoryNodeConfigUpdateResponse();
@@ -168,6 +175,7 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         response.setClassNo(classNo);
         response.setRoleNo(row == null || !notBlank(row.getRoleNo()) ? roleNo : trim(row.getRoleNo()));
         response.setSuggestSaleSku(row == null ? suggestSaleSku : nvl(row.getSuggestSaleSku()));
+        response.setSysSuggestSaleSku(row == null ? sysSuggestSaleSku : nvl(row.getSysSuggestSaleSku()));
         response.setRoleType(roleMap.getOrDefault(response.getRoleNo(), toRoleType(response.getRoleNo())));
         return response;
     }

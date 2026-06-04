@@ -75,7 +75,7 @@
         SELECT
             s.class_no AS classNo,
             CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.class_sku)), '')), 0)) AS INT) AS suggestSaleSku,
-            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.class_sku)), '')), 0)) AS INT) AS sysSuggestSaleSku,
+            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.sys_suggest_sale_sku)), '')), COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.class_sku)), '')), 0))) AS INT) AS sysSuggestSaleSku,
             MAX(LTRIM(RTRIM(s.class_role))) AS roleNo
         FROM base_class_sku s
         LEFT JOIN base_department d ON d.store_no = s.store_no
@@ -151,6 +151,7 @@
             UPDATE base_class_sku
             SET class_role = #{roleNo},
                 class_sku = CAST(#{suggestSaleSku} AS NVARCHAR(40)),
+                sys_suggest_sale_sku = CAST(#{sysSuggestSaleSku} AS NVARCHAR(40)),
                 updatetime = GETDATE()
             WHERE store_no = #{storeNo}
               AND class_no = #{classNo};
@@ -163,7 +164,7 @@
                 store_format_no, store_format_name,
                 business_circle_no, business_circle_name,
                 store_group_no, store_group_name,
-                class_no, class_name, class_sku, class_role, updatetime
+                class_no, class_name, class_sku, sys_suggest_sale_sku, class_role, updatetime
             )
             SELECT
                 d.store_no,
@@ -179,6 +180,7 @@
                 #{classNo},
                 cls.class_name,
                 CAST(#{suggestSaleSku} AS NVARCHAR(40)),
+                CAST(#{sysSuggestSaleSku} AS NVARCHAR(40)),
                 #{roleNo},
                 GETDATE()
             FROM base_department d
@@ -205,7 +207,7 @@
         SELECT
             class_no AS classNo,
             CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(class_sku)), '')), 0)) AS INT) AS suggestSaleSku,
-            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(class_sku)), '')), 0)) AS INT) AS sysSuggestSaleSku,
+            CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(sys_suggest_sale_sku)), '')), COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(class_sku)), '')), 0))) AS INT) AS sysSuggestSaleSku,
             MAX(LTRIM(RTRIM(class_role))) AS roleNo
         FROM base_class_sku
         WHERE store_no = #{storeNo}

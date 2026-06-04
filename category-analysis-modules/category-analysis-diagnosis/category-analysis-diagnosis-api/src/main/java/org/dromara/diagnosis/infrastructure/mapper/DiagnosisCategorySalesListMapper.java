@@ -22,7 +22,11 @@ public interface DiagnosisCategorySalesListMapper {
                   @Param("dataVersion") String dataVersion,
                   @Param("promotionFlag") String promotionFlag,
                   @Param("statusList") List<String> statusList,
-                  @Param("brandList") List<String> brandList);
+                  @Param("brandList") List<String> brandList,
+                  @Param("specList") List<String> specList,
+                  @Param("tagType") String tagType,
+                  @Param("tagList") List<String> tagList,
+                  @Param("activeOnly") boolean activeOnly);
 
     List<DiagnosisCategorySalesSkuRow> selectSkuPage(@Param("tenantId") String tenantId,
                                                      @Param("queryHash") String queryHash,
@@ -30,6 +34,10 @@ public interface DiagnosisCategorySalesListMapper {
                                                      @Param("promotionFlag") String promotionFlag,
                                                      @Param("statusList") List<String> statusList,
                                                      @Param("brandList") List<String> brandList,
+                                                     @Param("specList") List<String> specList,
+                                                     @Param("tagType") String tagType,
+                                                     @Param("tagList") List<String> tagList,
+                                                     @Param("activeOnly") boolean activeOnly,
                                                      @Param("orderBy") String orderBy,
                                                      @Param("orderType") String orderType,
                                                      @Param("offset") int offset,

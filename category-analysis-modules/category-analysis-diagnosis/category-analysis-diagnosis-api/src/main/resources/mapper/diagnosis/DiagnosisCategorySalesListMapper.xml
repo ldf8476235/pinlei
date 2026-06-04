@@ -38,29 +38,56 @@
     </insert>
 
     <sql id="categorySalesSkuWhere">
-        tenant_id = #{tenantId}
-        AND query_hash = #{queryHash}
-        AND data_version = #{dataVersion}
+        sku.tenant_id = #{tenantId}
+        AND sku.query_hash = #{queryHash}
+        AND sku.data_version = #{dataVersion}
         <if test="promotionFlag != null and promotionFlag != ''">
-            AND promotion_flag = #{promotionFlag}
+            AND sku.promotion_flag = #{promotionFlag}
         </if>
         <if test="statusList != null and statusList.size() &gt; 0">
-            AND product_status_no IN
+            AND sku.product_status_no IN
             <foreach collection="statusList" item="item" open="(" separator="," close=")">
                 #{item}
             </foreach>
         </if>
         <if test="brandList != null and brandList.size() &gt; 0">
-            AND brand_name IN
+            AND sku.brand_name IN
             <foreach collection="brandList" item="item" open="(" separator="," close=")">
                 #{item}
             </foreach>
+        </if>
+        <if test="specList != null and specList.size() &gt; 0">
+            AND sku.spec IN
+            <foreach collection="specList" item="item" open="(" separator="," close=")">
+                #{item}
+            </foreach>
+        </if>
+        <if test="tagType != null and tagType != '' and tagList != null and tagList.size() &gt; 0">
+            AND EXISTS (
+                SELECT 1
+                FROM product_tag_info pti
+                WHERE pti.product_no = sku.product_no
+                  AND (pti.tag_type_no = #{tagType} OR pti.tag_type_name = #{tagType})
+                  AND (
+                      pti.tag_no IN
+                      <foreach collection="tagList" item="item" open="(" separator="," close=")">
+                          #{item}
+                      </foreach>
+                      OR pti.tag_name IN
+                      <foreach collection="tagList" item="item" open="(" separator="," close=")">
+                          #{item}
+                      </foreach>
+                  )
+            )
+        </if>
+        <if test="activeOnly">
+            AND sku.sales &gt; 0
         </if>
     </sql>
 
     <select id="countSku" resultType="java.lang.Long">
         SELECT COUNT(1)
-        FROM diag_result_category_sales_sku
+        FROM diag_result_category_sales_sku sku
         WHERE <include refid="categorySalesSkuWhere"/>
     </select>
 
@@ -78,7 +105,7 @@
             class_no AS classNo, class_name AS className, product_barcode AS productBarcode,
             brand_name AS brandName, spec, in_price AS inPrice, sales_price AS salesPrice,
             product_vendor_no AS productVendorNo, product_vendor_name AS productVendorName, product_vendor_no_name AS productVendorNoName
-        FROM diag_result_category_sales_sku
+        FROM diag_result_category_sales_sku sku
         WHERE <include refid="categorySalesSkuWhere"/>
         ORDER BY ${orderBy} ${orderType}, product_no ASC
         OFFSET #{offset} ROWS FETCH NEXT #{size} ROWS ONLY

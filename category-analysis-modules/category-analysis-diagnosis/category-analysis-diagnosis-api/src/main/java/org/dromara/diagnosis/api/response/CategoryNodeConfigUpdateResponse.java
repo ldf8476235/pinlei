@@ -17,5 +17,6 @@ public class CategoryNodeConfigUpdateResponse {
     private String roleType;
 
     private Integer suggestSaleSku;
-}
 
+    private Integer sysSuggestSaleSku;
+}

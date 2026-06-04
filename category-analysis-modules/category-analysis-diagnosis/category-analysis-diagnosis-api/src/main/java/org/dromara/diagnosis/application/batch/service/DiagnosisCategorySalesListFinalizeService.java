@@ -50,6 +50,10 @@ public class DiagnosisCategorySalesListFinalizeService {
         for (DiagnosisSourceProductVendorMetaRow row : vendorRows) {
             vendorMap.put(row.getProductNo(), row);
         }
+        Map<String, DiagnosisSourceAbcProductAggRow> metricMap = new LinkedHashMap<>();
+        for (DiagnosisSourceAbcProductAggRow row : metricRows) {
+            metricMap.put(row.getProductNo(), row);
+        }
 
         BigDecimal totalSales = BigDecimal.ZERO;
         BigDecimal totalGross = BigDecimal.ZERO;
@@ -58,14 +62,15 @@ public class DiagnosisCategorySalesListFinalizeService {
             totalGross = totalGross.add(nvl(row.getGross()));
         }
 
-        List<DiagnosisCategorySalesSkuRow> resultRows = new ArrayList<>(metricRows.size());
-        for (DiagnosisSourceAbcProductAggRow metricRow : metricRows) {
+        List<DiagnosisCategorySalesSkuRow> resultRows = new ArrayList<>(metaRows.size());
+        for (DiagnosisSourceAbcProductMetaRow metaRow : metaRows) {
+            DiagnosisSourceAbcProductAggRow metricRow = metricMap.get(metaRow.getProductNo());
             resultRows.add(toSkuRow(
                 context,
-                metricRow,
-                stockMap.get(metricRow.getProductNo()),
-                metaMap.get(metricRow.getProductNo()),
-                vendorMap.get(metricRow.getProductNo()),
+                metricRow == null ? emptyMetricRow(metaRow) : metricRow,
+                stockMap.get(metaRow.getProductNo()),
+                metaRow,
+                vendorMap.get(metaRow.getProductNo()),
                 totalSales,
                 totalGross
             ));
@@ -164,6 +169,21 @@ public class DiagnosisCategorySalesListFinalizeService {
             row.setProductVendorName(vendorRow.getProductVendorName());
             row.setProductVendorNoName(vendorRow.getProductVendorNoName());
         }
+        return row;
+    }
+
+    private DiagnosisSourceAbcProductAggRow emptyMetricRow(DiagnosisSourceAbcProductMetaRow metaRow) {
+        DiagnosisSourceAbcProductAggRow row = new DiagnosisSourceAbcProductAggRow();
+        row.setProductNo(metaRow.getProductNo());
+        row.setProductBarcode(metaRow.getProductBarcode());
+        row.setProductName(metaRow.getProductName());
+        row.setStoreNum(0);
+        row.setSaleQuantity(BigDecimal.ZERO);
+        row.setSales(BigDecimal.ZERO);
+        row.setGross(BigDecimal.ZERO);
+        row.setSaleCost(BigDecimal.ZERO);
+        row.setPromotionFlag("2");
+        row.setFirstSaleDate(metaRow.getFirstSaleDate());
         return row;
     }
 

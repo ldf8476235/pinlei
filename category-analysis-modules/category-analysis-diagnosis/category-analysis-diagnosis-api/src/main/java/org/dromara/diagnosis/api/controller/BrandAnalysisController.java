@@ -66,14 +66,18 @@ public class BrandAnalysisController {
     @GetMapping("/sku-list")
     public DiagnosisApiResponse<BrandSkuDetailPageResponse> getBrandSkuList(@RequestParam("sessionId") String sessionId,
                                                                              @RequestParam(value = "brandList", required = false) List<String> brandList,
+                                                                             @RequestParam(value = "specList", required = false) List<String> specList,
+                                                                             @RequestParam(value = "tagType", required = false) String tagType,
+                                                                             @RequestParam(value = "tagList", required = false) List<String> tagList,
                                                                              @RequestParam(value = "status", required = false) List<String> status,
                                                                              @RequestParam(value = "promotion", required = false) String promotion,
+                                                                             @RequestParam(value = "activeOnly", required = false) Boolean activeOnly,
                                                                              @RequestParam(value = "page", required = false) Integer page,
                                                                              @RequestParam(value = "size", required = false) Integer size,
                                                                              @RequestParam(value = "order", required = false) String order,
                                                                              @RequestParam(value = "orderType", required = false) String orderType) {
         return DiagnosisApiResponse.ok(
-            brandAnalysisService.getBrandSkuList(sessionId, brandList, status, promotion, page, size, order, orderType),
+            brandAnalysisService.getBrandSkuList(sessionId, brandList, specList, tagType, tagList, status, promotion, activeOnly, page, size, order, orderType),
             nextRequestId());
     }
 

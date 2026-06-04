@@ -32,7 +32,8 @@ public interface CategoryTreeMapper {
     int upsertCategoryNodeConfig(@Param("storeNo") String storeNo,
                                  @Param("classNo") String classNo,
                                  @Param("roleNo") String roleNo,
-                                 @Param("suggestSaleSku") Integer suggestSaleSku);
+                                 @Param("suggestSaleSku") Integer suggestSaleSku,
+                                 @Param("sysSuggestSaleSku") Integer sysSuggestSaleSku);
 
     CategorySkuMetricRow selectCategoryNodeConfig(@Param("storeNo") String storeNo,
                                                   @Param("classNo") String classNo);

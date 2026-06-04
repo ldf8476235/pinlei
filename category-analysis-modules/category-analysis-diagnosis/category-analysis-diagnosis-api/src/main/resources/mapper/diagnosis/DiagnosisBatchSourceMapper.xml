@@ -912,6 +912,9 @@
             WHERE 1 = 1
               <include refid="classFilterDeptProducts"/>
               <include refid="storeFilterDeptProducts"/>
+              AND p.product_no IS NOT NULL
+              AND LTRIM(RTRIM(p.product_no)) &lt;&gt; ''
+              AND ISNULL(LTRIM(RTRIM(p.status_name)), '') NOT IN (N'停用', N'作废', N'下架', N'无效')
         )
         SELECT
             p.product_no AS productNo,
