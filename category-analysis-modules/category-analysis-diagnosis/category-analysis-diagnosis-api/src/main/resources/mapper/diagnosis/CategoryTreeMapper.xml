@@ -85,40 +85,31 @@
     </select>
 
     <select id="selectCategorySaleSku" resultType="org.dromara.diagnosis.infrastructure.model.CategorySaleSkuRow">
-        WITH filtered_products AS (
-            SELECT
-                p.*
-            FROM base_dept_products p
-            LEFT JOIN base_department d ON d.store_no = p.store_no
-            WHERE 1 = 1
-            <include refid="storeFilterSql"/>
-        ),
-        class_products AS (
-            SELECT one_class_no AS class_no, product_no
-            FROM filtered_products
-            WHERE one_class_no IS NOT NULL AND LTRIM(RTRIM(one_class_no)) &lt;&gt; ''
-            UNION ALL
-            SELECT two_class_no AS class_no, product_no
-            FROM filtered_products
-            WHERE two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
-            UNION ALL
-            SELECT three_class_no AS class_no, product_no
-            FROM filtered_products
-            WHERE three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
-            UNION ALL
-            SELECT four_class_no AS class_no, product_no
-            FROM filtered_products
-            WHERE four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
-            UNION ALL
-            SELECT five_class_no AS class_no, product_no
-            FROM filtered_products
-            WHERE five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
-        )
         SELECT
             class_no AS classNo,
-            CAST(COUNT(DISTINCT product_no) AS INT) AS saleSku
-        FROM class_products
+            CAST(MAX(sale_sku) AS INT) AS saleSku
+        FROM category_sale_sku_summary
         WHERE class_no IS NOT NULL AND LTRIM(RTRIM(class_no)) &lt;&gt; ''
+          AND store_no =
+          <choose>
+              <when test="param.storeNo != null and param.storeNo != ''">#{param.storeNo}</when>
+              <otherwise>N'__ALL__'</otherwise>
+          </choose>
+          AND store_format_no =
+          <choose>
+              <when test="param.retailTypeId != null and param.retailTypeId != ''">#{param.retailTypeId}</when>
+              <otherwise>N'__ALL__'</otherwise>
+          </choose>
+          AND business_circle_no =
+          <choose>
+              <when test="param.businessCircleId != null and param.businessCircleId != ''">#{param.businessCircleId}</when>
+              <otherwise>N'__ALL__'</otherwise>
+          </choose>
+          AND store_group_no =
+          <choose>
+              <when test="param.deptGroupId != null and param.deptGroupId != ''">#{param.deptGroupId}</when>
+              <otherwise>N'__ALL__'</otherwise>
+          </choose>
         GROUP BY class_no
     </select>
 

@@ -1,6 +1,5 @@
 package org.dromara.diagnosis.application.service.impl;
 
-import lombok.RequiredArgsConstructor;
 import org.dromara.common.json.utils.JsonUtils;
 import org.dromara.diagnosis.api.request.PrecomputeJobCreateRequest;
 import org.dromara.diagnosis.api.response.PrecomputeEventResponse;
@@ -20,6 +19,7 @@ import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeEventRow;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisPrecomputeWindowRow;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
@@ -29,13 +29,13 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.concurrent.Executor;
 import java.util.stream.Collectors;
 
 /**
  * 棰勮绠椾换鍔℃湇鍔″疄鐜?
  */
 @Service
-@RequiredArgsConstructor
 public class PrecomputeJobServiceImpl implements PrecomputeJobService {
 
     private static final Logger log = LoggerFactory.getLogger(PrecomputeJobServiceImpl.class);
@@ -63,6 +63,22 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
     private final DiagnosisProgressCacheService progressCacheService;
 
     private final DiagnosisRequestHashService requestHashService;
+
+    private final Executor precomputeLaunchExecutor;
+
+    public PrecomputeJobServiceImpl(DiagnosisPrecomputeMapper precomputeMapper,
+                                    DiagnosisWindowPlanService windowPlanService,
+                                    DiagnosisPrecomputeBatchRunner batchRunner,
+                                    DiagnosisProgressCacheService progressCacheService,
+                                    DiagnosisRequestHashService requestHashService,
+                                    @Qualifier("diagnosisOrchestratorExecutor") Executor precomputeLaunchExecutor) {
+        this.precomputeMapper = precomputeMapper;
+        this.windowPlanService = windowPlanService;
+        this.batchRunner = batchRunner;
+        this.progressCacheService = progressCacheService;
+        this.requestHashService = requestHashService;
+        this.precomputeLaunchExecutor = precomputeLaunchExecutor;
+    }
 
     @Override
     public PrecomputeJobResponse createJob(PrecomputeJobCreateRequest request) {
@@ -144,7 +160,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, row.getJobId()));
 
         String dataVersion = "V" + System.currentTimeMillis();
-        launchBatchOrFail(row.getJobId(), window.getWindowId(), window.getPeriodStart(), window.getPeriodEnd(), dataVersion, row.getRequestJson());
+        launchBatchAsync(row.getJobId(), window.getWindowId(), window.getPeriodStart(), window.getPeriodEnd(), dataVersion, row.getRequestJson());
         return getJob(row.getJobId());
     }
 
@@ -256,7 +272,7 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
         DiagnosisPrecomputeWindowRow firstPending = precomputeMapper.selectNextPendingWindow(DEFAULT_TENANT_ID, jobId);
         if (firstPending != null) {
             String dataVersion = "V" + System.currentTimeMillis();
-            launchBatchOrFail(jobId, firstPending.getWindowId(), firstPending.getPeriodStart(), firstPending.getPeriodEnd(), dataVersion, row.getRequestJson());
+            launchBatchAsync(jobId, firstPending.getWindowId(), firstPending.getPeriodStart(), firstPending.getPeriodEnd(), dataVersion, row.getRequestJson());
         }
         progressCacheService.saveFromJobRow(precomputeMapper.selectJobById(DEFAULT_TENANT_ID, jobId));
     }
@@ -287,6 +303,23 @@ public class PrecomputeJobServiceImpl implements PrecomputeJobService {
             markJobFailed(jobId, "启动预计算任务失败: " + ex.getMessage());
             markWindowFailed(windowId, "启动预计算任务失败");
             log.error("failed to start diagnosis precompute batch, jobId={}, windowId={}, dataVersion={}",
+                jobId, windowId, dataVersion, ex);
+            throw ex;
+        }
+    }
+
+    private void launchBatchAsync(Long jobId,
+                                  Long windowId,
+                                  java.time.LocalDate periodStart,
+                                  java.time.LocalDate periodEnd,
+                                  String dataVersion,
+                                  String requestJson) {
+        try {
+            precomputeLaunchExecutor.execute(() -> launchBatchOrFail(jobId, windowId, periodStart, periodEnd, dataVersion, requestJson));
+        } catch (RuntimeException ex) {
+            markJobFailed(jobId, "提交预计算任务失败: " + ex.getMessage());
+            markWindowFailed(windowId, "提交预计算任务失败");
+            log.error("failed to submit diagnosis precompute batch, jobId={}, windowId={}, dataVersion={}",
                 jobId, windowId, dataVersion, ex);
             throw ex;
         }

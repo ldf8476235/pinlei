@@ -128,23 +128,23 @@
         <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
             <choose>
                 <when test="param.classLevel == 1">
-                    AND one_class_no = #{param.classNo}
+                    AND sh7_saleplu.one_class_no = #{param.classNo}
                 </when>
                 <when test="param.classLevel == 2">
-                    AND two_class_no = #{param.classNo}
+                    AND sh7_saleplu.two_class_no = #{param.classNo}
                 </when>
                 <when test="param.classLevel == 3">
-                    AND three_class_no = #{param.classNo}
+                    AND sh7_saleplu.three_class_no = #{param.classNo}
                 </when>
                 <when test="param.classLevel == 4">
-                    AND four_class_no = #{param.classNo}
+                    AND sh7_saleplu.four_class_no = #{param.classNo}
                 </when>
                 <otherwise>
                     AND (
-                        one_class_no = #{param.classNo}
-                        OR two_class_no = #{param.classNo}
-                        OR three_class_no = #{param.classNo}
-                        OR four_class_no = #{param.classNo}
+                        sh7_saleplu.one_class_no = #{param.classNo}
+                        OR sh7_saleplu.two_class_no = #{param.classNo}
+                        OR sh7_saleplu.three_class_no = #{param.classNo}
+                        OR sh7_saleplu.four_class_no = #{param.classNo}
                     )
                 </otherwise>
             </choose>
@@ -153,7 +153,7 @@
 
     <sql id="storeFilterSh7">
         <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
-            AND store_no = #{param.storeNo}
+            AND sh7_saleplu.store_no = #{param.storeNo}
         </if>
         <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
             and (

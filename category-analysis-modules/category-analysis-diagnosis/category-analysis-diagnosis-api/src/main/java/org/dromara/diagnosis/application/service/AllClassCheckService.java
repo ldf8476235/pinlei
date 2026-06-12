@@ -28,6 +28,10 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Objects;
+import java.util.StringJoiner;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.CompletionException;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.stream.Collectors;
 
 @Service
@@ -46,6 +50,7 @@ public class AllClassCheckService {
     );
 
     private final JdbcTemplate jdbcTemplate;
+    private final ConcurrentHashMap<String, CompletableFuture<List<ClassAggRow>>> classAggregateFlights = new ConcurrentHashMap<>();
 
     public AllClassCheckSalesChangeResponse getSalesChange(AllClassCheckListRequest request) {
         int classLevel = normalizeClassLevel(request.getClassLevel());
@@ -219,6 +224,34 @@ public class AllClassCheckService {
     }
 
     private List<ClassAggRow> loadClassAggregates(AllClassCheckRequest request) {
+        String cacheKey = classAggregateKey(request);
+        CompletableFuture<List<ClassAggRow>> newFuture = new CompletableFuture<>();
+        CompletableFuture<List<ClassAggRow>> future = classAggregateFlights.putIfAbsent(cacheKey, newFuture);
+        if (future == null) {
+            try {
+                List<ClassAggRow> rows = queryClassAggregates(request);
+                newFuture.complete(rows);
+                return copyClassAggRows(rows);
+            } catch (Exception ex) {
+                newFuture.completeExceptionally(ex);
+                throw ex;
+            } finally {
+                classAggregateFlights.remove(cacheKey, newFuture);
+            }
+        }
+        try {
+            log.info("reuse in-flight all class aggregate, key={}", cacheKey);
+            return copyClassAggRows(future.join());
+        } catch (CompletionException ex) {
+            Throwable cause = ex.getCause();
+            if (cause instanceof RuntimeException runtimeException) {
+                throw runtimeException;
+            }
+            throw ex;
+        }
+    }
+
+    private List<ClassAggRow> queryClassAggregates(AllClassCheckRequest request) {
         int classLevel = normalizeClassLevel(request.getClassLevel());
         ClassLevelColumns columns = resolveClassLevelColumns(classLevel);
         List<Object> params = new ArrayList<>();
@@ -242,6 +275,10 @@ public class AllClassCheckService {
             FROM class_dim dim
             LEFT JOIN fact_sales_day fs
               ON fs.%s = dim.class_no
+             AND (
+                fs.sale_date BETWEEN ? AND ?
+                OR fs.sale_date BETWEEN ? AND ?
+             )
             WHERE 1 = 1
             """.formatted(
             columns.codeColumn,
@@ -256,6 +293,8 @@ public class AllClassCheckService {
         addDateParams(params, request.getCurrentStartDate(), request.getCurrentEndDate());
         addDateParams(params, request.getCompareStartDate(), request.getCompareEndDate());
         addDateParams(params, request.getCompareStartDate(), request.getCompareEndDate());
+        addDateParams(params, request.getCompareStartDate(), request.getCompareEndDate());
+        addDateParams(params, request.getCurrentStartDate(), request.getCurrentEndDate());
         addDateParams(params, request.getCompareStartDate(), request.getCompareEndDate());
 
         applyStoreScope(sql, params, request);
@@ -282,6 +321,51 @@ public class AllClassCheckService {
             row.roleCode = inferRoleCode(row.classNo, row.className);
             return row;
         }).stream().peek(this::enrichDerivedMetrics).toList();
+    }
+
+    private String classAggregateKey(AllClassCheckRequest request) {
+        StringJoiner joiner = new StringJoiner("|");
+        joiner.add(String.valueOf(normalizeClassLevel(request.getClassLevel())));
+        joiner.add(normalizeKeyPart(request.getStoreNo()));
+        joiner.add(normalizeKeyPart(request.getDeptId()));
+        joiner.add(normalizeKeyPart(request.getRetailTypeId()));
+        joiner.add(normalizeKeyPart(request.getBusinessCircleId()));
+        joiner.add(normalizeKeyPart(request.getDeptGroupId()));
+        joiner.add(normalizeKeyPart(request.getCurrentStartDate()));
+        joiner.add(normalizeKeyPart(request.getCurrentEndDate()));
+        joiner.add(normalizeKeyPart(request.getCompareStartDate()));
+        joiner.add(normalizeKeyPart(request.getCompareEndDate()));
+        joiner.add(String.join(",", normalizeList(request.getClassNo())));
+        return joiner.toString();
+    }
+
+    private String normalizeKeyPart(Object value) {
+        return value == null ? "" : String.valueOf(value).trim();
+    }
+
+    private List<ClassAggRow> copyClassAggRows(List<ClassAggRow> rows) {
+        return rows.stream().map(this::copyClassAggRow).collect(Collectors.toList());
+    }
+
+    private ClassAggRow copyClassAggRow(ClassAggRow source) {
+        ClassAggRow row = new ClassAggRow();
+        row.classNo = source.classNo;
+        row.className = source.className;
+        row.currentSales = source.currentSales;
+        row.currentGross = source.currentGross;
+        row.currentQty = source.currentQty;
+        row.compareSales = source.compareSales;
+        row.compareGross = source.compareGross;
+        row.compareQty = source.compareQty;
+        row.sales = source.sales;
+        row.salesCompare = source.salesCompare;
+        row.gross = source.gross;
+        row.saleQuantity = source.saleQuantity;
+        row.salesCompareRate = source.salesCompareRate;
+        row.contributionRatePer = source.contributionRatePer;
+        row.salesPer = source.salesPer;
+        row.roleCode = source.roleCode;
+        return row;
     }
 
     private void enrichDerivedMetrics(ClassAggRow row) {

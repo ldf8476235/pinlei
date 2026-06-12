@@ -55,13 +55,14 @@ public class LegacyClassDoctorSummaryService {
     private final DiagnosisCacheProperties cacheProperties;
     private final DiagnosisPrecomputeMapper precomputeMapper;
     private final CategoryTreeMapper categoryTreeMapper;
+    private final CategorySaleSkuCacheService categorySaleSkuCacheService;
     private final SubClassContributionService subClassContributionService;
     private final CustomerAnalysisService customerAnalysisService;
 
     public LegacyClassDoctorSummarySkuSetResponse querySkuSet(LegacyClassDoctorSummaryRequest request) {
         DiagnosisOverviewSnapshotRow overview = resolveOverviewSnapshot(requireSessionId(request));
         CategoryTreeQueryParam param = toCategoryQueryParam(overview);
-        Map<String, Integer> saleSkuMap = safeSaleSkuRows(categoryTreeMapper.selectCategorySaleSku(param)).stream()
+        Map<String, Integer> saleSkuMap = safeSaleSkuRows(categorySaleSkuCacheService.selectCategorySaleSku(param)).stream()
             .filter(Objects::nonNull)
             .filter(v -> hasText(v.getClassNo()))
             .collect(Collectors.toMap(CategorySaleSkuRow::getClassNo, v -> nvl(v.getSaleSku()), Integer::sum));

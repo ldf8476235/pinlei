@@ -10,6 +10,7 @@ import org.dromara.diagnosis.api.response.CategoryNodeConfigUpdateResponse;
 import org.dromara.diagnosis.api.response.DictDetailResponse;
 import org.dromara.diagnosis.api.response.DictOptionResponse;
 import org.dromara.diagnosis.api.response.CategoryTreeNodeResponse;
+import org.dromara.diagnosis.application.service.CategorySaleSkuCacheService;
 import org.dromara.diagnosis.application.service.CategoryTreeService;
 import org.dromara.diagnosis.common.exception.DiagnosisBizException;
 import org.dromara.diagnosis.common.exception.DiagnosisErrorCode;
@@ -51,6 +52,8 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
 
     private final CategoryTreeMapper categoryTreeMapper;
 
+    private final CategorySaleSkuCacheService categorySaleSkuCacheService;
+
     @Override
     public List<CategoryTreeNodeResponse> queryTree(CategoryTreeQueryRequest request) {
         CategoryTreeQueryRequest query = request == null ? new CategoryTreeQueryRequest() : request;
@@ -58,7 +61,7 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
 
         List<CategoryHierarchyRow> hierarchyRows = categoryTreeMapper.selectClassHierarchy();
         List<CategorySkuMetricRow> skuMetricRows = categoryTreeMapper.selectCategorySkuMetrics(param);
-        List<CategorySaleSkuRow> saleSkuRows = categoryTreeMapper.selectCategorySaleSku(param);
+        List<CategorySaleSkuRow> saleSkuRows = categorySaleSkuCacheService.selectCategorySaleSku(param);
 
         Map<String, CategorySkuMetricRow> skuMetricMap = skuMetricRows.stream()
             .filter(Objects::nonNull)
@@ -88,7 +91,7 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
 
         List<CategoryHierarchyRow> hierarchyRows = categoryTreeMapper.selectClassHierarchy();
         CategoryTreeQueryParam allParam = new CategoryTreeQueryParam();
-        List<CategorySaleSkuRow> saleSkuRows = categoryTreeMapper.selectCategorySaleSku(allParam);
+        List<CategorySaleSkuRow> saleSkuRows = categorySaleSkuCacheService.selectCategorySaleSku(allParam);
 
         Map<String, Integer> saleSkuMap = saleSkuRows.stream()
             .filter(Objects::nonNull)
