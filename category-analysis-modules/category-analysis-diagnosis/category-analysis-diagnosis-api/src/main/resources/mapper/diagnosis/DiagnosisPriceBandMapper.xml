@@ -160,7 +160,7 @@
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
           AND data_version = #{dataVersion}
-        <if test="promotionFlag != null and promotionFlag != '' and promotionFlag != '0'">
+        <if test="promotionFlag != null and promotionFlag != '' and !promotionFlag.equals(&quot;0&quot;)">
             <choose>
                 <when test="promotionFlag == '1'">
                     AND promotion_flag = '1'

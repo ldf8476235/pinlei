@@ -1,6 +1,7 @@
 package org.dromara.diagnosis.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisSourceDailyTrendRow;
@@ -37,6 +38,7 @@ import java.util.List;
  * Mapper for batch source aggregation queries.
  */
 @Mapper
+@DS("source")
 @InterceptorIgnore(tenantLine = "true")
 public interface DiagnosisBatchSourceMapper {
 
@@ -71,5 +73,6 @@ public interface DiagnosisBatchSourceMapper {
     List<DiagnosisSourceTagStockRow> aggregateTagStock(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceTagMetaRow> selectTagMeta(@Param("param") DiagnosisSourceShardParam param);
     List<DiagnosisSourceVendorAggRow> aggregateVendorMetrics(@Param("param") DiagnosisSourceShardParam param);
+    @DS("master")
     List<DiagnosisDictRow> selectOnlineChannelDictRows(@Param("dictTypes") List<String> dictTypes);
 }

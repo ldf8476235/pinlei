@@ -5,7 +5,7 @@
 <mapper namespace="org.dromara.diagnosis.infrastructure.mapper.DiagnosisBatchSourceMapper">
 
     <sql id="classFilterSales">
-        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+        <if test="param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
             <choose>
                 <when test="param.classLevel == 1">
                     AND one_class_no = #{param.classNo}
@@ -32,15 +32,15 @@
     </sql>
 
     <sql id="storeFilterSales">
-        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+        <if test="param.storeNo != null and param.storeNo != '' and !param.storeNo.equals(&quot;0&quot;) and param.storeNo != 'all'">
             AND store_no = #{param.storeNo}
         </if>
-        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo.equals(&quot;0&quot;) or param.storeNo == 'all')
             and (
-                (param.deptId != null and param.deptId != '' and param.deptId != '0')
-                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
-                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
-                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+                (param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;))
+                or (param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;))
+                or (param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;))
+                or (param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;))
             )">
             AND EXISTS (
                 SELECT 1
@@ -48,16 +48,16 @@
                 WHERE bd.store_no = fact_sales_day.store_no
                   AND bd.status_no = 1
                   AND bd.store_type_no = '1'
-                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                <if test="param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;)">
                     AND bd.preorgcode = #{param.deptId}
                 </if>
-                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;)">
                     AND bd.store_format_no = #{param.retailTypeId}
                 </if>
-                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;)">
                     AND bd.business_circle_no = #{param.businessCircleId}
                 </if>
-                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;)">
                     AND bd.store_group_no = #{param.deptGroupId}
                 </if>
             )
@@ -65,7 +65,7 @@
     </sql>
 
     <sql id="classFilterStock">
-        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+        <if test="param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
             <choose>
                 <when test="param.classLevel == 1">
                     AND one_class_no = #{param.classNo}
@@ -92,15 +92,15 @@
     </sql>
 
     <sql id="storeFilterStock">
-        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+        <if test="param.storeNo != null and param.storeNo != '' and !param.storeNo.equals(&quot;0&quot;) and param.storeNo != 'all'">
             AND store_no = #{param.storeNo}
         </if>
-        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo.equals(&quot;0&quot;) or param.storeNo == 'all')
             and (
-                (param.deptId != null and param.deptId != '' and param.deptId != '0')
-                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
-                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
-                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+                (param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;))
+                or (param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;))
+                or (param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;))
+                or (param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;))
             )">
             AND EXISTS (
                 SELECT 1
@@ -108,16 +108,16 @@
                 WHERE bd.store_no = fact_stock_day.store_no
                   AND bd.status_no = 1
                   AND bd.store_type_no = '1'
-                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                <if test="param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;)">
                     AND bd.preorgcode = #{param.deptId}
                 </if>
-                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;)">
                     AND bd.store_format_no = #{param.retailTypeId}
                 </if>
-                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;)">
                     AND bd.business_circle_no = #{param.businessCircleId}
                 </if>
-                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;)">
                     AND bd.store_group_no = #{param.deptGroupId}
                 </if>
             )
@@ -125,7 +125,7 @@
     </sql>
 
     <sql id="classFilterSh7">
-        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+        <if test="param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
             <choose>
                 <when test="param.classLevel == 1">
                     AND sh7_saleplu.one_class_no = #{param.classNo}
@@ -152,15 +152,15 @@
     </sql>
 
     <sql id="storeFilterSh7">
-        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+        <if test="param.storeNo != null and param.storeNo != '' and !param.storeNo.equals(&quot;0&quot;) and param.storeNo != 'all'">
             AND sh7_saleplu.store_no = #{param.storeNo}
         </if>
-        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo.equals(&quot;0&quot;) or param.storeNo == 'all')
             and (
-                (param.deptId != null and param.deptId != '' and param.deptId != '0')
-                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
-                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
-                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+                (param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;))
+                or (param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;))
+                or (param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;))
+                or (param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;))
             )">
             AND EXISTS (
                 SELECT 1
@@ -168,16 +168,16 @@
                 WHERE bd.store_no = sh7_saleplu.store_no
                   AND bd.status_no = 1
                   AND bd.store_type_no = '1'
-                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                <if test="param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;)">
                     AND bd.preorgcode = #{param.deptId}
                 </if>
-                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;)">
                     AND bd.store_format_no = #{param.retailTypeId}
                 </if>
-                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;)">
                     AND bd.business_circle_no = #{param.businessCircleId}
                 </if>
-                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;)">
                     AND bd.store_group_no = #{param.deptGroupId}
                 </if>
             )
@@ -185,7 +185,7 @@
     </sql>
 
     <sql id="classFilterDeptProducts">
-        <if test="param.classNo != null and param.classNo != '' and param.classNo != '0'">
+        <if test="param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
             <choose>
                 <when test="param.classLevel == 1">
                     AND p.one_class_no = #{param.classNo}
@@ -212,15 +212,15 @@
     </sql>
 
     <sql id="storeFilterDeptProducts">
-        <if test="param.storeNo != null and param.storeNo != '' and param.storeNo != '0' and param.storeNo != 'all'">
+        <if test="param.storeNo != null and param.storeNo != '' and !param.storeNo.equals(&quot;0&quot;) and param.storeNo != 'all'">
             AND p.store_no = #{param.storeNo}
         </if>
-        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo == '0' or param.storeNo == 'all')
+        <if test="(param.storeNo == null or param.storeNo == '' or param.storeNo.equals(&quot;0&quot;) or param.storeNo == 'all')
             and (
-                (param.deptId != null and param.deptId != '' and param.deptId != '0')
-                or (param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0')
-                or (param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0')
-                or (param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0')
+                (param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;))
+                or (param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;))
+                or (param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;))
+                or (param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;))
             )">
             AND EXISTS (
                 SELECT 1
@@ -228,16 +228,16 @@
                 WHERE bd.store_no = p.store_no
                   AND bd.status_no = 1
                   AND bd.store_type_no = '1'
-                <if test="param.deptId != null and param.deptId != '' and param.deptId != '0'">
+                <if test="param.deptId != null and param.deptId != '' and !param.deptId.equals(&quot;0&quot;)">
                     AND bd.preorgcode = #{param.deptId}
                 </if>
-                <if test="param.retailTypeId != null and param.retailTypeId != '' and param.retailTypeId != '0'">
+                <if test="param.retailTypeId != null and param.retailTypeId != '' and !param.retailTypeId.equals(&quot;0&quot;)">
                     AND bd.store_format_no = #{param.retailTypeId}
                 </if>
-                <if test="param.businessCircleId != null and param.businessCircleId != '' and param.businessCircleId != '0'">
+                <if test="param.businessCircleId != null and param.businessCircleId != '' and !param.businessCircleId.equals(&quot;0&quot;)">
                     AND bd.business_circle_no = #{param.businessCircleId}
                 </if>
-                <if test="param.deptGroupId != null and param.deptGroupId != '' and param.deptGroupId != '0'">
+                <if test="param.deptGroupId != null and param.deptGroupId != '' and !param.deptGroupId.equals(&quot;0&quot;)">
                     AND bd.store_group_no = #{param.deptGroupId}
                 </if>
             )
@@ -259,19 +259,19 @@
 
     <sql id="requireDirectSubclassSales">
         <choose>
-            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND one_class_no = #{param.classNo}
                 AND two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND two_class_no = #{param.classNo}
                 AND three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND three_class_no = #{param.classNo}
                 AND four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND four_class_no = #{param.classNo}
                 AND five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
             </when>
@@ -283,19 +283,19 @@
 
     <sql id="requireDirectSubclassStock">
         <choose>
-            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND one_class_no = #{param.classNo}
                 AND two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND two_class_no = #{param.classNo}
                 AND three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND three_class_no = #{param.classNo}
                 AND four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND four_class_no = #{param.classNo}
                 AND five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
             </when>
@@ -307,19 +307,19 @@
 
     <sql id="requireDirectSubclassSh7">
         <choose>
-            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND one_class_no = #{param.classNo}
                 AND two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND two_class_no = #{param.classNo}
                 AND three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND three_class_no = #{param.classNo}
                 AND four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND four_class_no = #{param.classNo}
                 AND five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
             </when>
@@ -331,19 +331,19 @@
 
     <sql id="requireDirectSubclassDeptProducts">
         <choose>
-            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 1 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND p.one_class_no = #{param.classNo}
                 AND p.two_class_no IS NOT NULL AND LTRIM(RTRIM(p.two_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 2 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND p.two_class_no = #{param.classNo}
                 AND p.three_class_no IS NOT NULL AND LTRIM(RTRIM(p.three_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 3 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND p.three_class_no = #{param.classNo}
                 AND p.four_class_no IS NOT NULL AND LTRIM(RTRIM(p.four_class_no)) &lt;&gt; ''
             </when>
-            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and param.classNo != '0'">
+            <when test="param.classLevel == 4 and param.classNo != null and param.classNo != '' and !param.classNo.equals(&quot;0&quot;)">
                 AND p.four_class_no = #{param.classNo}
                 AND p.five_class_no IS NOT NULL AND LTRIM(RTRIM(p.five_class_no)) &lt;&gt; ''
             </when>

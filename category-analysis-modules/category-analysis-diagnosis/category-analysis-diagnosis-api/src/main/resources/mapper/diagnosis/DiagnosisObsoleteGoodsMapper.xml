@@ -51,18 +51,18 @@
               </if>
           </if>
           <if test="useGross">
-              <if test="currentGrossRole != null and currentGrossRole != '' and currentGrossRole != '0'">
+              <if test="currentGrossRole != null and currentGrossRole != '' and !currentGrossRole.equals(&quot;0&quot;)">
                   AND g.current_gross_role = #{currentGrossRole}
               </if>
-              <if test="compareGrossRole != null and compareGrossRole != '' and compareGrossRole != '0'">
+              <if test="compareGrossRole != null and compareGrossRole != '' and !compareGrossRole.equals(&quot;0&quot;)">
                   AND g.compare_gross_role = #{compareGrossRole}
               </if>
           </if>
           <if test="useGmroi">
-              <if test="currentGmroiRole != null and currentGmroiRole != '' and currentGmroiRole != '0'">
+              <if test="currentGmroiRole != null and currentGmroiRole != '' and !currentGmroiRole.equals(&quot;0&quot;)">
                   AND g.current_gmroi_role = #{currentGmroiRole}
               </if>
-              <if test="compareGmroiRole != null and compareGmroiRole != '' and compareGmroiRole != '0'">
+              <if test="compareGmroiRole != null and compareGmroiRole != '' and !compareGmroiRole.equals(&quot;0&quot;)">
                   AND g.compare_gmroi_role = #{compareGmroiRole}
               </if>
           </if>

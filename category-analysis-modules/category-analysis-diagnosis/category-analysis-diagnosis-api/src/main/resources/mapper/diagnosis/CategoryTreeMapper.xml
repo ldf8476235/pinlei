@@ -58,16 +58,16 @@
 
     <sql id="storeFilterSql">
         <if test="param.storeNo != null and param.storeNo != ''">
-            AND d.store_no = #{param.storeNo}
+            AND s.store_no = #{param.storeNo}
         </if>
         <if test="param.retailTypeId != null and param.retailTypeId != ''">
-            AND d.store_format_no = #{param.retailTypeId}
+            AND s.store_format_no = #{param.retailTypeId}
         </if>
         <if test="param.businessCircleId != null and param.businessCircleId != ''">
-            AND d.business_circle_no = #{param.businessCircleId}
+            AND s.business_circle_no = #{param.businessCircleId}
         </if>
         <if test="param.deptGroupId != null and param.deptGroupId != ''">
-            AND d.store_group_no = #{param.deptGroupId}
+            AND s.store_group_no = #{param.deptGroupId}
         </if>
     </sql>
 
@@ -78,38 +78,64 @@
             CAST(SUM(COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.sys_suggest_sale_sku)), '')), COALESCE(TRY_CONVERT(INT, NULLIF(LTRIM(RTRIM(s.class_sku)), '')), 0))) AS INT) AS sysSuggestSaleSku,
             MAX(LTRIM(RTRIM(s.class_role))) AS roleNo
         FROM base_class_sku s
-        LEFT JOIN base_department d ON d.store_no = s.store_no
         WHERE s.class_no IS NOT NULL AND LTRIM(RTRIM(s.class_no)) &lt;&gt; ''
         <include refid="storeFilterSql"/>
         GROUP BY s.class_no
     </select>
 
     <select id="selectCategorySaleSku" resultType="org.dromara.diagnosis.infrastructure.model.CategorySaleSkuRow">
+        WITH product_scope AS (
+            SELECT DISTINCT
+                p.store_no,
+                p.product_no,
+                p.one_class_no,
+                p.two_class_no,
+                p.three_class_no,
+                p.four_class_no,
+                p.five_class_no
+            FROM base_dept_products p
+            <if test="
+                (param.retailTypeId != null and param.retailTypeId != '')
+                or (param.businessCircleId != null and param.businessCircleId != '')
+                or (param.deptGroupId != null and param.deptGroupId != '')
+            ">
+                INNER JOIN base_department d ON d.store_no = p.store_no
+            </if>
+            WHERE p.product_no IS NOT NULL
+              AND LTRIM(RTRIM(p.product_no)) &lt;&gt; ''
+              <if test="param.storeNo != null and param.storeNo != ''">
+                  AND p.store_no = #{param.storeNo}
+              </if>
+              <if test="param.retailTypeId != null and param.retailTypeId != ''">
+                  AND d.store_format_no = #{param.retailTypeId}
+              </if>
+              <if test="param.businessCircleId != null and param.businessCircleId != ''">
+                  AND d.business_circle_no = #{param.businessCircleId}
+              </if>
+              <if test="param.deptGroupId != null and param.deptGroupId != ''">
+                  AND d.store_group_no = #{param.deptGroupId}
+              </if>
+        ),
+        class_products AS (
+            SELECT one_class_no AS class_no, product_no FROM product_scope
+            WHERE one_class_no IS NOT NULL AND LTRIM(RTRIM(one_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT two_class_no AS class_no, product_no FROM product_scope
+            WHERE two_class_no IS NOT NULL AND LTRIM(RTRIM(two_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT three_class_no AS class_no, product_no FROM product_scope
+            WHERE three_class_no IS NOT NULL AND LTRIM(RTRIM(three_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT four_class_no AS class_no, product_no FROM product_scope
+            WHERE four_class_no IS NOT NULL AND LTRIM(RTRIM(four_class_no)) &lt;&gt; ''
+            UNION ALL
+            SELECT five_class_no AS class_no, product_no FROM product_scope
+            WHERE five_class_no IS NOT NULL AND LTRIM(RTRIM(five_class_no)) &lt;&gt; ''
+        )
         SELECT
             class_no AS classNo,
-            CAST(MAX(sale_sku) AS INT) AS saleSku
-        FROM category_sale_sku_summary
-        WHERE class_no IS NOT NULL AND LTRIM(RTRIM(class_no)) &lt;&gt; ''
-          AND store_no =
-          <choose>
-              <when test="param.storeNo != null and param.storeNo != ''">#{param.storeNo}</when>
-              <otherwise>N'__ALL__'</otherwise>
-          </choose>
-          AND store_format_no =
-          <choose>
-              <when test="param.retailTypeId != null and param.retailTypeId != ''">#{param.retailTypeId}</when>
-              <otherwise>N'__ALL__'</otherwise>
-          </choose>
-          AND business_circle_no =
-          <choose>
-              <when test="param.businessCircleId != null and param.businessCircleId != ''">#{param.businessCircleId}</when>
-              <otherwise>N'__ALL__'</otherwise>
-          </choose>
-          AND store_group_no =
-          <choose>
-              <when test="param.deptGroupId != null and param.deptGroupId != ''">#{param.deptGroupId}</when>
-              <otherwise>N'__ALL__'</otherwise>
-          </choose>
+            CAST(COUNT(DISTINCT product_no) AS INT) AS saleSku
+        FROM class_products
         GROUP BY class_no
     </select>
 
@@ -127,6 +153,38 @@
 
     <select id="countStoreByStoreNo" resultType="java.lang.Integer">
         SELECT COUNT(1)
+        FROM base_department
+        WHERE store_no = #{storeNo}
+    </select>
+
+    <select id="selectClassNameByClassNo" resultType="java.lang.String">
+        SELECT TOP 1 class_name
+        FROM (
+            SELECT one_class_name AS class_name FROM base_class WHERE one_class_no = #{classNo}
+            UNION ALL
+            SELECT two_class_name AS class_name FROM base_class WHERE two_class_no = #{classNo}
+            UNION ALL
+            SELECT three_class_name AS class_name FROM base_class WHERE three_class_no = #{classNo}
+            UNION ALL
+            SELECT four_class_name AS class_name FROM base_class WHERE four_class_no = #{classNo}
+            UNION ALL
+            SELECT five_class_name AS class_name FROM base_class WHERE five_class_no = #{classNo}
+        ) t
+        WHERE class_name IS NOT NULL AND LTRIM(RTRIM(class_name)) &lt;&gt; ''
+    </select>
+
+    <select id="selectStoreConfigByStoreNo" resultType="org.dromara.diagnosis.infrastructure.model.CategoryStoreConfigRow">
+        SELECT TOP 1
+            store_no AS storeNo,
+            ISNULL(store_name, '') AS storeName,
+            preorgcode AS storeOrgNo,
+            preorgname AS storeOrgName,
+            store_format_no AS storeFormatNo,
+            store_format_name AS storeFormatName,
+            business_circle_no AS businessCircleNo,
+            business_circle_name AS businessCircleName,
+            store_group_no AS storeGroupNo,
+            store_group_name AS storeGroupName
         FROM base_department
         WHERE store_no = #{storeNo}
     </select>
@@ -157,40 +215,24 @@
                 store_group_no, store_group_name,
                 class_no, class_name, class_sku, sys_suggest_sale_sku, class_role, updatetime
             )
-            SELECT
-                d.store_no,
-                ISNULL(d.store_name, ''),
-                d.preorgcode,
-                d.preorgname,
-                d.store_format_no,
-                d.store_format_name,
-                d.business_circle_no,
-                d.business_circle_name,
-                d.store_group_no,
-                d.store_group_name,
+            VALUES (
+                #{storeNo},
+                ISNULL(#{store.storeName}, ''),
+                #{store.storeOrgNo},
+                #{store.storeOrgName},
+                #{store.storeFormatNo},
+                #{store.storeFormatName},
+                #{store.businessCircleNo},
+                #{store.businessCircleName},
+                #{store.storeGroupNo},
+                #{store.storeGroupName},
                 #{classNo},
-                cls.class_name,
+                #{className},
                 CAST(#{suggestSaleSku} AS NVARCHAR(40)),
                 CAST(#{sysSuggestSaleSku} AS NVARCHAR(40)),
                 #{roleNo},
                 GETDATE()
-            FROM base_department d
-            CROSS APPLY (
-                SELECT TOP 1 class_name
-                FROM (
-                    SELECT one_class_name AS class_name FROM base_class WHERE one_class_no = #{classNo}
-                    UNION ALL
-                    SELECT two_class_name AS class_name FROM base_class WHERE two_class_no = #{classNo}
-                    UNION ALL
-                    SELECT three_class_name AS class_name FROM base_class WHERE three_class_no = #{classNo}
-                    UNION ALL
-                    SELECT four_class_name AS class_name FROM base_class WHERE four_class_no = #{classNo}
-                    UNION ALL
-                    SELECT five_class_name AS class_name FROM base_class WHERE five_class_no = #{classNo}
-                ) t
-                WHERE class_name IS NOT NULL AND LTRIM(RTRIM(class_name)) &lt;&gt; ''
-            ) cls
-            WHERE d.store_no = #{storeNo};
+            );
         END
     </update>
 

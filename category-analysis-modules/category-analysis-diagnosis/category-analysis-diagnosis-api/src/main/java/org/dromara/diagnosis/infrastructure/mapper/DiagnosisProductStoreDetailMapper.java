@@ -1,6 +1,7 @@
 package org.dromara.diagnosis.infrastructure.mapper;
 
 import com.baomidou.mybatisplus.annotation.InterceptorIgnore;
+import com.baomidou.dynamic.datasource.annotation.DS;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisProductStoreDetailRow;
@@ -10,6 +11,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @Mapper
+@DS("source")
 @InterceptorIgnore(tenantLine = "true")
 public interface DiagnosisProductStoreDetailMapper {
 

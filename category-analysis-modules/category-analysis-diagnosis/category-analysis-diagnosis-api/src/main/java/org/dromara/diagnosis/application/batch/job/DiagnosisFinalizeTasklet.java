@@ -1,6 +1,7 @@
 package org.dromara.diagnosis.application.batch.job;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.dromara.common.json.utils.JsonUtils;
 import org.dromara.diagnosis.api.response.PrecomputeJobProgressResponse;
 import org.dromara.diagnosis.application.batch.model.DiagnosisChannelFinalizeResult;
@@ -69,6 +70,7 @@ import java.util.function.Supplier;
  */
 @Component
 @RequiredArgsConstructor
+@Slf4j
 public class DiagnosisFinalizeTasklet implements Tasklet {
 
     private static final String TENANT_ID = "000000";
@@ -293,6 +295,15 @@ public class DiagnosisFinalizeTasklet implements Tasklet {
                 }
                 String publishStatus = (anySuccess && anyFailed) ? "PARTIAL_SUCCESS" : "FAILED";
                 String orchestratorStatus = (anySuccess && anyFailed) ? "PARTIAL_SUCCESS" : "FAILED";
+                log.error(
+                    "diagnosis finalize orchestrator failed, jobId={}, windowId={}, dataVersion={}, publishStatus={}, moduleStatus={}, moduleErrors={}",
+                    jobId,
+                    windowId,
+                    dataVersion,
+                    publishStatus,
+                    orchestratorResult.getModuleStatus(),
+                    orchestratorResult.getModuleErrors()
+                );
                 DiagnosisPrecomputeJobRow failed = new DiagnosisPrecomputeJobRow();
                 failed.setTenantId(TENANT_ID);
                 failed.setJobId(jobId);

@@ -18,6 +18,7 @@ import org.dromara.diagnosis.infrastructure.mapper.CategoryTreeMapper;
 import org.dromara.diagnosis.infrastructure.model.CategoryHierarchyRow;
 import org.dromara.diagnosis.infrastructure.model.CategorySaleSkuRow;
 import org.dromara.diagnosis.infrastructure.model.CategorySkuMetricRow;
+import org.dromara.diagnosis.infrastructure.model.CategoryStoreConfigRow;
 import org.dromara.diagnosis.infrastructure.model.CategoryTreeQueryParam;
 import org.dromara.diagnosis.infrastructure.model.DiagnosisDictRow;
 import org.springframework.stereotype.Service;
@@ -160,6 +161,14 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
         if (classCnt == null || classCnt <= 0) {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "classNo does not exist");
         }
+        CategoryStoreConfigRow store = categoryTreeMapper.selectStoreConfigByStoreNo(storeNo);
+        if (store == null) {
+            throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "storeNo does not exist");
+        }
+        String className = trim(categoryTreeMapper.selectClassNameByClassNo(classNo));
+        if (!notBlank(className)) {
+            className = classNo;
+        }
 
         List<DiagnosisDictRow> roleRows = categoryTreeMapper.selectDictRowsByType(DICT_TYPE_CATEGORY_ROLE);
         Map<String, String> roleMap = roleRows.stream()
@@ -170,7 +179,15 @@ public class CategoryTreeServiceImpl implements CategoryTreeService {
             throw new DiagnosisBizException(DiagnosisErrorCode.INVALID_ARGUMENT, "roleNo is not in dictionary");
         }
 
-        categoryTreeMapper.upsertCategoryNodeConfig(storeNo, classNo, roleNo, suggestSaleSku, sysSuggestSaleSku);
+        categoryTreeMapper.upsertCategoryNodeConfig(
+            storeNo,
+            classNo,
+            className,
+            store,
+            roleNo,
+            suggestSaleSku,
+            sysSuggestSaleSku
+        );
 
         CategorySkuMetricRow row = categoryTreeMapper.selectCategoryNodeConfig(storeNo, classNo);
         CategoryNodeConfigUpdateResponse response = new CategoryNodeConfigUpdateResponse();

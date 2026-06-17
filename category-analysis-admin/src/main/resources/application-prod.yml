@@ -49,6 +49,12 @@ spring:
           url: jdbc:sqlserver://${DIAG_SQLSERVER_HOST:localhost}:${DIAG_SQLSERVER_PORT:1433};databaseName=${DIAG_SQLSERVER_DB:diagnosis};selectMethod=cursor;encrypt=${DIAG_SQLSERVER_ENCRYPT:false};trustServerCertificate=true
           username: ${DIAG_SQLSERVER_USER:sa}
           password: ${DIAG_SQLSERVER_PASSWORD:123456}
+        source:
+          type: ${spring.datasource.type}
+          driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+          url: jdbc:sqlserver://${CUSTOMER_SQLSERVER_HOST:localhost}:${CUSTOMER_SQLSERVER_PORT:1433};databaseName=${CUSTOMER_SQLSERVER_DB:plsys};selectMethod=cursor;encrypt=${CUSTOMER_SQLSERVER_ENCRYPT:false};trustServerCertificate=true
+          username: ${CUSTOMER_SQLSERVER_USER:sa}
+          password: ${CUSTOMER_SQLSERVER_PASSWORD:}
       hikari:
         # 最大连接池数量
         maxPoolSize: 20
@@ -69,7 +75,7 @@ spring:
 diagnosis:
   datasource:
     system: master
-    source: master
+    source: source
     result: master
   batch:
     fetchSize: ${DIAG_FETCH_SIZE:4000}
@@ -261,4 +267,3 @@ justauth:
       client-id: 10**********6
       client-secret: 1f7d08**********5b7**********29e
       redirect-uri: ${justauth.address}/social-callback?source=gitea
-

@@ -112,13 +112,13 @@
         WHERE tenant_id = #{tenantId}
           AND query_hash = #{queryHash}
           AND data_version = #{dataVersion}
-        <if test="currentGmroi != null and currentGmroi != '' and currentGmroi != '0'">
+        <if test="currentGmroi != null and currentGmroi != '' and !currentGmroi.equals(&quot;0&quot;)">
             AND current_gmroi_role = #{currentGmroi}
         </if>
-        <if test="compareGmroi != null and compareGmroi != '' and compareGmroi != '0'">
+        <if test="compareGmroi != null and compareGmroi != '' and !compareGmroi.equals(&quot;0&quot;)">
             AND compare_gmroi_role = #{compareGmroi}
         </if>
-        <if test="promotion != null and promotion != '' and promotion != '0'">
+        <if test="promotion != null and promotion != '' and !promotion.equals(&quot;0&quot;)">
             <choose>
                 <when test="promotion == '1'">
                     AND promotion_flag = '1'

@@ -238,7 +238,7 @@
                 </otherwise>
             </choose>
         </if>
-        <if test="promotion != null and promotion != '' and promotion != '0'">
+        <if test="promotion != null and promotion != '' and !promotion.equals(&quot;0&quot;)">
             <choose>
                 <when test="promotion == '1'">
                     AND promotion_flag = '1'
